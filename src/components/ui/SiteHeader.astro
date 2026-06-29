@@ -1,0 +1,243 @@
+---
+/**
+ * Sticky site header — brand mark + wordmark, primary nav, persistent
+ * "Start your project" CTA, and a contact strip beneath.
+ * Frosted white on scroll; hairline base.
+ *
+ * Conversion notes vs SiteHeader.jsx:
+ * - onNav / onCta / onMenu callbacks removed; replaced with real <a href>.
+ * - JS onMouseEnter swell → CSS :hover via --link-base custom property.
+ * - Mobile .al-menu-btn revealed via media query (display: none → flex).
+ * - menu.ts handles the drawer toggle / ESC / scroll-lock.
+ */
+import logo from "../../assets/al-mark.webp";
+
+interface Props {
+  active?: string;
+}
+const { active = "home" } = Astro.props;
+
+// Nav links (from Shell.jsx) with real routes. Order preserved.
+const NAV_LINKS = [
+  { label: "Projects", href: "/projects", slug: "projects" },
+  { label: "Studio",   href: "/about",    slug: "about"    },
+  { label: "Contact",  href: "/contact",  slug: "contact"  },
+  { label: "News",     href: "/news",     slug: "news"     },
+];
+---
+
+<header
+  style="position:sticky;top:0;z-index:100;display:flex;flex-direction:column;background-color:rgba(255,255,255,0.55);backdrop-filter:var(--backdrop-frost);-webkit-backdrop-filter:var(--backdrop-frost);border-bottom:var(--border-hairline);"
+>
+  {/* ── Main bar — brand left, nav + CTA right ── */}
+  <div style="width:100%;max-width:var(--content-max);margin:0 auto;padding:0 var(--space-xl);height:var(--header-height);display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg);">
+
+    {/* Brand */}
+    <a
+      href="/"
+      aria-label="ArchitectureLIVE — home"
+      style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;"
+    >
+      <img
+        src={logo.src}
+        alt=""
+        width="38"
+        height="38"
+        style="width:38px;height:38px;border-radius:var(--radius-sm);display:block;"
+      />
+      <span style="font-family:var(--font-display);font-size:20px;font-weight:600;letter-spacing:-0.2px;color:var(--color-charcoal);">
+        Architecture<span style="color:var(--color-indigo-deep);">LIVE</span>
+      </span>
+    </a>
+
+    {/* Nav + CTA (desktop) */}
+    <nav class="al-nav-links" style="display:flex;align-items:center;gap:var(--space-xl);" aria-label="Primary navigation">
+      {NAV_LINKS.map(({ label, href, slug }) => {
+        const isActive = active === slug;
+        return (
+          <a
+            href={href}
+            class="al-nav-link"
+            aria-current={isActive ? "page" : undefined}
+            style={`font-weight:${isActive ? 600 : 500};--link-base:${isActive ? "var(--color-indigo-deep)" : "var(--color-charcoal)"};`}
+          >
+            {label}
+          </a>
+        );
+      })}
+
+      {/* CTA — separate from nav links per original design */}
+      <a
+        href="/contact"
+        class="al-header-cta al-nav-link"
+        style="font-weight:600;--link-base:var(--color-indigo-deep);"
+      >
+        Start your project
+      </a>
+    </nav>
+
+    {/* Mobile menu trigger */}
+    <button
+      class="al-menu-btn"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="al-nav-drawer"
+      style="display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--color-charcoal);"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="7" x2="21" y2="7" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="17" x2="21" y2="17" />
+      </svg>
+    </button>
+
+  </div>
+
+  {/* ── Contact strip — phone · email ── */}
+  <div class="al-topbar" style="border-top:var(--border-hairline);">
+    <div style="width:100%;max-width:var(--content-max);margin:0 auto;padding:9px var(--space-xl);display:flex;align-items:center;justify-content:flex-end;gap:var(--space-md);">
+      <a
+        href="tel:+441428652018"
+        style="font-family:var(--font-text);font-size:var(--type-caption-size);font-weight:500;color:var(--color-charcoal);text-decoration:none;letter-spacing:0.2px;"
+      >
+        +44 1428 652 018
+      </a>
+      <span style="color:var(--color-hairline);" aria-hidden="true">·</span>
+      <a
+        href="mailto:info@architecturelive.co.uk"
+        style="font-family:var(--font-text);font-size:var(--type-caption-size);color:var(--color-grey-light);text-decoration:none;"
+      >
+        info@architecturelive.co.uk
+      </a>
+    </div>
+  </div>
+
+  {/* ── Mobile drawer ── */}
+  <nav
+    id="al-nav-drawer"
+    class="al-nav-drawer"
+    aria-label="Mobile navigation"
+    aria-hidden="true"
+  >
+    {NAV_LINKS.map(({ label, href, slug }) => {
+      const isActive = active === slug;
+      return (
+        <a
+          href={href}
+          class="al-drawer-link"
+          aria-current={isActive ? "page" : undefined}
+          style={`font-weight:${isActive ? 600 : 500};color:${isActive ? "var(--color-indigo-deep)" : "var(--color-charcoal)"};`}
+        >
+          {label}
+        </a>
+      );
+    })}
+    <a href="/contact" class="al-drawer-link" style="font-weight:600;color:var(--color-indigo-deep);">
+      Start your project
+    </a>
+  </nav>
+</header>
+
+<style>
+  /* ── Nav links (desktop) — swell + colour swap on hover ── */
+  .al-nav-link {
+    font-family: var(--font-display);
+    font-size: var(--type-nav-link-size);
+    text-decoration: none;
+    display: inline-block;
+    transform-origin: center;
+    transition:
+      transform  var(--duration-base) var(--ease-out),
+      color      var(--duration-base) var(--ease-standard);
+    color: var(--link-base);
+  }
+
+  .al-nav-link:hover {
+    transform: scale(1.12);
+    color: var(--color-indigo-vivid);
+  }
+
+  .al-nav-link:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+
+  /* ── Mobile drawer ── */
+  .al-nav-drawer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    top: calc(var(--header-height) + 37px); /* below header + topbar */
+    background: var(--color-white);
+    padding: var(--space-xl);
+    gap: var(--space-lg);
+    border-top: var(--border-hairline);
+    transform: translateX(100%);
+    transition: transform var(--duration-base) var(--ease-out);
+    z-index: 99;
+    overflow-y: auto;
+    pointer-events: none;
+  }
+
+  .al-nav-drawer.is-open {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .al-drawer-link {
+    font-family: var(--font-display);
+    font-size: var(--type-display-md-size);
+    text-decoration: none;
+    transition: color var(--duration-base) var(--ease-standard);
+  }
+
+  .al-drawer-link:hover {
+    color: var(--color-indigo-vivid);
+  }
+
+  /* ── Responsive: reveal mobile button, hide desktop nav ── */
+  @media (max-width: 768px) {
+    .al-nav-links {
+      display: none !important;
+    }
+
+    .al-menu-btn {
+      display: flex !important;
+    }
+
+    .al-topbar {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Mobile drawer toggle — open/close, ESC, body scroll-lock.
+  const btn = document.querySelector<HTMLButtonElement>('.al-menu-btn');
+  const drawer = document.getElementById('al-nav-drawer');
+
+  function openMenu(): void {
+    if (!drawer) return;
+    drawer.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    btn?.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu(): void {
+    if (!drawer) return;
+    drawer.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    btn?.setAttribute('aria-expanded', 'false');
+  }
+
+  btn?.addEventListener('click', () => {
+    drawer?.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+</script>

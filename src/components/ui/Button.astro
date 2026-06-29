@@ -1,0 +1,77 @@
+---
+/**
+ * ArchitectureLIVE action — plain text label with swell-on-hover.
+ * No fill, no border, no pill. Variant controls colour; size controls
+ * the label font-size. JS hover handlers from the React source become
+ * scoped CSS hover rules keyed to a CSS custom property.
+ */
+interface Props {
+  href: string;
+  variant?: "primary" | "ghost" | "on-dark" | "subtle";
+  /** brief interface: small | medium | large  (medium = source "default") */
+  size?: "small" | "medium" | "large";
+  class?: string;
+}
+
+const { href, variant = "primary", size = "medium", class: cls } = Astro.props;
+
+// Colour maps from Button.jsx — no hard-coded hexes, token vars only.
+const colorMap: Record<string, { color: string; hover: string }> = {
+  primary:   { color: "var(--color-indigo-deep)", hover: "var(--color-indigo-vivid)" },
+  ghost:     { color: "var(--color-charcoal)",    hover: "var(--color-indigo-deep)"  },
+  "on-dark": { color: "var(--color-white)",        hover: "var(--color-lavender)"    },
+  subtle:    { color: "var(--color-grey-mid)",     hover: "var(--color-charcoal)"    },
+};
+
+// Size → font-size (source: default=button-large, large=display-md, small=button-utility)
+const sizeMap: Record<string, string> = {
+  small:  "var(--type-button-utility-size)",
+  medium: "var(--type-button-large-size)",
+  large:  "var(--type-display-md-size)",
+};
+
+const v = colorMap[variant] ?? colorMap.primary;
+const fs = sizeMap[size] ?? sizeMap.medium;
+---
+
+<a
+  href={href}
+  class:list={["al-btn", `al-btn--${variant}`, cls]}
+  style={`--btn-color:${v.color};--btn-hover:${v.hover};font-size:${fs}`}
+>
+  <slot />
+</a>
+
+<style>
+  .al-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-weight: var(--type-button-large-weight);
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 10px 2px;
+    cursor: pointer;
+    transform-origin: center;
+    transition:
+      transform var(--duration-base) var(--ease-out),
+      color    var(--duration-base) var(--ease-standard);
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    color: var(--btn-color);
+  }
+
+  .al-btn:hover {
+    transform: scale(1.09);
+    color: var(--btn-hover);
+  }
+
+  .al-btn:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+</style>

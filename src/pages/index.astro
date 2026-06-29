@@ -1,9 +1,15 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import PageShell from "../layouts/PageShell.astro";
 ---
-<BaseLayout title="ArchitectureLIVE">
-  <main style="padding: var(--space-section) var(--space-xl);">
-    <h1 style="font-family: var(--font-display); color: var(--color-indigo-deep);">ArchitectureLIVE</h1>
-    <p>Tokens wired.</p>
-  </main>
-</BaseLayout>
+<PageShell title="ArchitectureLIVE" description="Contemporary design &amp; sustainable living — Surrey, West Sussex &amp; Hampshire." active="home">
+  <section style="padding:var(--space-section) var(--space-xl);">
+    <div style="max-width:var(--content-max);margin:0 auto;">
+      <h1 style="font-family:var(--font-display);font-size:var(--type-hero-display-size);font-weight:600;letter-spacing:var(--type-hero-display-tracking);color:var(--color-charcoal);margin:0 0 var(--space-lg);">
+        Architecture<span style="color:var(--color-indigo-deep);">LIVE</span>
+      </h1>
+      <p style="font-family:var(--font-text);font-size:var(--type-lead-airy-size);color:var(--color-grey-mid);max-width:52ch;margin:0;">
+        Contemporary design &amp; sustainable living — Surrey, West Sussex &amp; Hampshire.
+      </p>
+    </div>
+  </section>
+</PageShell>

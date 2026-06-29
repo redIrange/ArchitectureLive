@@ -1,0 +1,161 @@
+---
+/**
+ * Site footer on the deep-indigo brand surface.
+ * Brand block + dense link columns + fine-print legal row.
+ * White text; --color-on-dark-muted links → white on hover.
+ *
+ * Conversion notes vs Footer.jsx:
+ * - onMouseEnter / onMouseLeave replaced with :hover CSS rule.
+ * - Hardcoded real contact details (address, phone, email) in brand block.
+ * - Real hrefs on navigable pages; # on sector/stub links.
+ */
+---
+
+<footer style="background-color:var(--color-surface-dark);color:var(--color-on-dark);padding:var(--space-3xl) var(--space-xl);">
+  <div style="max-width:var(--content-max);margin:0 auto;">
+
+    {/* ── Top grid: brand block + link columns ── */}
+    <div
+      class="al-footer-grid"
+      style="display:grid;grid-template-columns:1.6fr repeat(3, 1fr);gap:var(--space-xxl);padding-bottom:var(--space-xl);border-bottom:1px solid rgba(255,255,255,0.16);"
+    >
+
+      {/* Brand block */}
+      <div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.2px;color:var(--color-white);">
+          Architecture<span style="color:var(--color-lavender);">LIVE</span>
+        </div>
+        <p style="margin:var(--space-sm) 0 0;max-width:30ch;font-family:var(--font-display);font-size:26px;color:var(--color-lavender);line-height:1.2;">
+          Contemporary Design &amp; Sustainable Living
+        </p>
+        {/* Full contact details */}
+        <address style="font-style:normal;margin-top:var(--space-lg);display:flex;flex-direction:column;gap:var(--space-xs);">
+          <span style="font-family:var(--font-text);font-size:var(--type-fine-print-size);color:var(--color-on-dark-muted);line-height:1.6;">
+            ArchitectureLIVE, Tall Trees<br />
+            The Cylinders, Fernhurst<br />
+            Haslemere, Surrey GU27 3EL
+          </span>
+          <a
+            href="tel:+441428652018"
+            class="al-footer-link"
+          >
+            +44 1428 652 018
+          </a>
+          <a
+            href="mailto:info@architecturelive.co.uk"
+            class="al-footer-link"
+          >
+            info@architecturelive.co.uk
+          </a>
+        </address>
+      </div>
+
+      {/* Explore column */}
+      <div>
+        <h4 style="margin:0 0 var(--space-xs);font-family:var(--font-display);font-size:var(--type-caption-strong-size);font-weight:600;letter-spacing:0.4px;color:var(--color-white);">
+          Explore
+        </h4>
+        <ul style="list-style:none;margin:0;padding:0;">
+          {[
+            { label: "Projects", href: "/projects" },
+            { label: "News",     href: "/news"     },
+            { label: "About",    href: "/about"    },
+            { label: "Studio",   href: "/about"    },
+          ].map(({ label, href }) => (
+            <li style="line-height:2;">
+              <a href={href} class="al-footer-link">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Sectors column */}
+      <div>
+        <h4 style="margin:0 0 var(--space-xs);font-family:var(--font-display);font-size:var(--type-caption-strong-size);font-weight:600;letter-spacing:0.4px;color:var(--color-white);">
+          Sectors
+        </h4>
+        <ul style="list-style:none;margin:0;padding:0;">
+          {["Extensions", "New Build", "Education", "Commercial"].map((label) => (
+            <li style="line-height:2;">
+              <a href="/projects" class="al-footer-link">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Studio column */}
+      <div>
+        <h4 style="margin:0 0 var(--space-xs);font-family:var(--font-display);font-size:var(--type-caption-strong-size);font-weight:600;letter-spacing:0.4px;color:var(--color-white);">
+          Studio
+        </h4>
+        <ul style="list-style:none;margin:0;padding:0;">
+          {[
+            { label: "Haslemere, Surrey", href: "#"        },
+            { label: "Our approach",      href: "/about"   },
+            { label: "Awards",            href: "/news"    },
+            { label: "Contact",           href: "/contact" },
+          ].map(({ label, href }) => (
+            <li style="line-height:2;">
+              <a href={href} class="al-footer-link">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    {/* ── Legal row ── */}
+    <div style="display:flex;flex-wrap:wrap;gap:var(--space-md);justify-content:space-between;align-items:center;padding-top:var(--space-lg);">
+      <p style="margin:0;max-width:62ch;font-family:var(--font-text);font-size:var(--type-micro-legal-size);color:rgba(255,255,255,0.62);line-height:1.5;">
+        &copy; 2026 ArchitectureLIVE Ltd. Chartered architectural practice — Surrey &middot; West Sussex &middot; Hampshire &middot; Berkshire.
+      </p>
+      <ul style="display:flex;flex-wrap:wrap;gap:var(--space-md);list-style:none;margin:0;padding:0;">
+        {[
+          { label: "Houzz",     href: "#" },
+          { label: "Homify",    href: "#" },
+          { label: "LinkedIn",  href: "#" },
+          { label: "Instagram", href: "#" },
+          { label: "Privacy",   href: "#" },
+          { label: "Terms",     href: "#" },
+          { label: "Cookies",   href: "#" },
+        ].map(({ label, href }) => (
+          <li>
+            <a href={href} class="al-footer-link al-footer-link--micro">{label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .al-footer-link {
+    font-family: var(--font-text);
+    font-size: var(--type-fine-print-size);
+    color: var(--color-on-dark-muted);
+    text-decoration: none;
+    transition: color var(--duration-base) var(--ease-standard);
+  }
+
+  .al-footer-link:hover {
+    color: var(--color-white);
+  }
+
+  .al-footer-link--micro {
+    font-size: var(--type-micro-legal-size);
+  }
+
+  /* ── Responsive grid ── */
+  @media (max-width: 768px) {
+    .al-footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: var(--space-xl) !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .al-footer-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

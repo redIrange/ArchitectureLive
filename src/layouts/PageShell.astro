@@ -1,0 +1,44 @@
+---
+/**
+ * PageShell — the page-level layout used by every route.
+ * Wraps BaseLayout and assembles: SiteHeader + <slot> + optional CtaBand + Footer.
+ *
+ * Port of Shell.jsx (ui_kits/website/Shell.jsx):
+ * - NS runtime lookups and go() SPA router removed; replaced with <a href>.
+ * - cta prop (default true) controls whether the CtaBand renders.
+ * - active prop flows through to SiteHeader for nav-link highlighting.
+ */
+import BaseLayout from "./BaseLayout.astro";
+import SiteHeader from "../components/ui/SiteHeader.astro";
+import Footer from "../components/ui/Footer.astro";
+import CtaBand from "../components/ui/CtaBand.astro";
+import Button from "../components/ui/Button.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: "home" | "projects" | "news" | "about" | "contact";
+  cta?: boolean;
+}
+
+const { title, description, active = "home", cta = true } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div style="min-height:100%;display:flex;flex-direction:column;background:var(--color-white);">
+
+    <SiteHeader active={active} />
+
+    <main style="flex:1;">
+      <slot />
+    </main>
+
+    {cta && (
+      <CtaBand sub="A free, no-obligation conversation about your site, your ideas and what's possible.">
+        <Button href="/contact" variant="on-dark" size="large">Start your enquiry</Button>
+      </CtaBand>
+    )}
+
+    <Footer />
+  </div>
+</BaseLayout>

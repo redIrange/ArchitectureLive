@@ -1,0 +1,61 @@
+---
+/**
+ * Full-width call-to-action band — the recurring conversion prompt.
+ * Deep-indigo by default; tint and alt variants for lighter placements.
+ *
+ * Conversion notes vs CtaBand.jsx:
+ * - No runtime or onNav callbacks.
+ * - Surfaces and alignment expressed as static style strings from maps.
+ * - Slot receives the CTA button(s).
+ */
+interface Props {
+  eyebrow?: string;
+  headline?: string;
+  sub?: string;
+  surface?: "dark" | "tint" | "alt";
+  align?: "center" | "left";
+}
+
+const {
+  eyebrow,
+  headline = "Planning an extension or new build? Let's talk.",
+  sub,
+  surface = "dark",
+  align = "center",
+} = Astro.props;
+
+const surfaces = {
+  dark: { bg: "var(--color-surface-dark)", text: "var(--color-on-dark)", eyebrow: "var(--color-lavender)", sub: "rgba(255,255,255,0.84)" },
+  tint: { bg: "var(--color-lavender)",     text: "var(--color-indigo-deep)", eyebrow: "var(--color-indigo-deep)", sub: "var(--color-indigo-slate)" },
+  alt:  { bg: "var(--color-offwhite)",     text: "var(--color-charcoal)",    eyebrow: "var(--color-indigo-deep)", sub: "var(--color-grey-mid)" },
+};
+
+const s = surfaces[surface] ?? surfaces.dark;
+const isCenter = align === "center";
+---
+
+<section style={`background:${s.bg};color:${s.text};padding:var(--space-3xl) var(--space-xl);`}>
+  <div
+    style={`max-width:var(--content-max);margin:0 auto;display:flex;flex-direction:${isCenter ? "column" : "row"};align-items:center;justify-content:${isCenter ? "center" : "space-between"};text-align:${isCenter ? "center" : "left"};gap:var(--space-lg);`}
+  >
+    <div style={`display:flex;flex-direction:column;gap:var(--space-xs);max-width:${isCenter ? "32ch" : "44ch"};`}>
+      {eyebrow && (
+        <span style={`font-family:var(--font-display);font-size:var(--type-eyebrow-size);font-weight:600;letter-spacing:var(--type-eyebrow-tracking);text-transform:uppercase;color:${s.eyebrow};`}>
+          {eyebrow}
+        </span>
+      )}
+      <h2 style="margin:0;font-family:var(--font-display);font-size:var(--type-display-lg-size);font-weight:600;line-height:var(--type-display-lg-leading);letter-spacing:var(--type-display-lg-tracking);">
+        {headline}
+      </h2>
+      {sub && (
+        <p style={`margin:var(--space-xxs) 0 0;font-family:var(--font-text);font-size:var(--type-lead-airy-size);line-height:1.5;color:${s.sub};`}>
+          {sub}
+        </p>
+      )}
+    </div>
+
+    <div style="display:flex;gap:var(--space-sm);flex-wrap:wrap;justify-content:center;flex-shrink:0;">
+      <slot />
+    </div>
+  </div>
+</section>

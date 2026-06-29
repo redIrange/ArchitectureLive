@@ -1,0 +1,62 @@
+/* ============================================================
+   COLORS — ArchitectureLIVE Design System
+   Neutrals dominate (white / off-white / charcoal); the indigo
+   purples PUNCTUATE. A single accent family carries every
+   interactive element. No decorative gradients.
+   ============================================================ */
+
+:root {
+  /* —— Brand & Accent (the indigo–purple family) ————————— */
+  --color-purple: #7378d3;        /* brand purple — large headings, icons, borders, hover fills */
+  --color-indigo-vivid: #5952de;  /* primary buttons / CTAs (white text, AA) */
+  --color-indigo-deep: #4f5387;   /* coloured text on white, headings, footer bg, CTA hover */
+  --color-indigo-slate: #5c618c;  /* secondary accents, dividers, meta */
+  --color-lavender: #c3c6ec;      /* subtle section tints, tags, hover states */
+
+  /* —— Neutrals ——————————————————————————————————————— */
+  --color-white: #ffffff;         /* primary background */
+  --color-offwhite: #f5f5f5;      /* alternating section background */
+  --color-offwhite-2: #f6f6f6;    /* second off-white */
+  --color-charcoal: #363636;      /* primary body text & headings */
+  --color-grey-mid: #666666;      /* secondary text */
+  --color-grey-light: #9b9b9b;    /* captions, meta, muted text */
+
+  /* —— Dark surfaces (the "dark tile" in the rhythm) ————— */
+  --color-surface-dark: #4f5387;  /* deep indigo — primary dark tile & footer */
+  --color-surface-dark-2: #3f4470;/* a deeper step for stacked dark tiles */
+  --color-surface-charcoal: #363636; /* editorial charcoal tile */
+
+  /* —— Hairlines & Borders ——————————————————————————— */
+  --color-hairline: #e5e5e5;      /* 1px border on cards & inputs */
+  --color-divider: #ececec;       /* soft section divider */
+  --color-hairline-rgba: rgba(54, 54, 54, 0.10);
+  --color-tint-rgba: rgba(115, 120, 211, 0.08); /* lavender wash over tints */
+
+  /* —— On-color ——————————————————————————————————————— */
+  --color-on-primary: #ffffff;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #c3c6ec; /* muted copy / links on dark indigo */
+
+  /* —— Semantic aliases ——————————————————————————————— */
+  --surface-page: var(--color-white);
+  --surface-page-alt: var(--color-offwhite);
+  --surface-tint: var(--color-lavender);
+  --surface-dark: var(--color-surface-dark);
+
+  --text-default: var(--color-charcoal);   /* body */
+  --text-heading: var(--color-charcoal);    /* default heading ink */
+  --text-accent: var(--color-indigo-deep);  /* coloured text on white (AA) */
+  --text-muted: var(--color-grey-mid);
+  --text-meta: var(--color-grey-light);
+  --text-on-dark: var(--color-on-dark);
+  --text-on-dark-muted: var(--color-on-dark-muted);
+
+  --link: var(--color-indigo-deep);         /* inline text links (high contrast) */
+  --link-on-dark: var(--color-lavender);
+  --interactive: var(--color-indigo-vivid); /* CTA fill */
+  --interactive-hover: var(--color-indigo-deep);
+  --accent: var(--color-purple);            /* icons, borders, large headings, hover fills */
+  --focus-ring: var(--color-purple);        /* visible focus outline */
+
+  --border-card: var(--color-hairline);
+}

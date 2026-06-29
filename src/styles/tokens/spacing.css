@@ -1,0 +1,69 @@
+/* ============================================================
+   SPACING, RADIUS, ELEVATION & MOTION — ArchitectureLIVE
+   Base unit 8px. Editorial whitespace: sections breathe.
+   ============================================================ */
+
+:root {
+  /* —— Spacing scale ————————————————————————————————— */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-3xl: 64px;
+  --space-section: 96px;   /* vertical padding inside a full-bleed section */
+
+  /* —— Border radius ————————————————————————————————— */
+  --radius-none: 0px;      /* full-bleed tiles & hero imagery */
+  --radius-sm: 4px;        /* inputs, inline imagery, tags */
+  --radius-md: 8px;        /* cards, media frames */
+  --radius-lg: 12px;       /* large feature cards */
+  --radius-pill: 9999px;   /* primary CTA & filter chips — the action signal */
+
+  /* —— Elevation —————————————————————————————————————
+     Restrained. One soft shadow for imagery resting on a
+     surface; one gentle lift for interactive cards on hover. */
+  --shadow-image: 0 18px 48px -12px rgba(54, 54, 54, 0.22);
+  --shadow-card: 0 1px 2px rgba(54, 54, 54, 0.04);
+  --shadow-card-hover: 0 16px 40px -16px rgba(79, 83, 135, 0.30);
+  --shadow-header: 0 1px 0 rgba(54, 54, 54, 0.06);
+
+  /* Hairline borders */
+  --border-hairline: 1px solid var(--color-hairline);
+  --border-divider: 1px solid var(--color-divider);
+
+  /* Frosted glass for sticky header */
+  --backdrop-frost: saturate(160%) blur(16px); /* @kind other */
+
+  /* —— Layout constants —————————————————————————————— */
+  --content-max-text: 760px;    /* editorial reading measure */
+  --content-max: 1200px;        /* default content lock */
+  --content-max-wide: 1440px;   /* full project grids */
+  --header-height: 72px;
+
+  /* —— Motion ————————————————————————————————————————
+     Gentle fade / slide-in on scroll; smooth hover; subtle
+     press. No bounces, no gimmicks. */
+  --press-scale: 0.97;          /* @kind other */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);          /* @kind other */
+  --duration-fast: 120ms;       /* @kind other */
+  --duration-base: 280ms;       /* @kind other */
+  --duration-slow: 600ms;       /* @kind other */
+}
+
+/* —— Scroll-reveal helper (gentle fade + slide-in) ————————— */
+@media (prefers-reduced-motion: no-preference) {
+  .al-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity var(--duration-slow) var(--ease-out),
+                transform var(--duration-slow) var(--ease-out);
+  }
+  .al-reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}

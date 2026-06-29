@@ -1,0 +1,17 @@
+/* ============================================================
+   ArchitectureLIVE Design System — global entry point.
+   Tokens imported first; reset + base styles follow.
+   ============================================================ */
+
+@import "./tokens/colors.css";
+@import "./tokens/fonts.css";
+@import "./tokens/spacing.css";
+@import "./tokens/typography.css";
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--font-text); color: var(--text-default); background: var(--color-white); }
+img, picture, video, canvas { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, h4 { font-family: var(--font-display); }
+:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }

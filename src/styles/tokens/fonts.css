@@ -1,0 +1,15 @@
+/* ============================================================
+   FONTS — ArchitectureLIVE Design System
+   ------------------------------------------------------------
+   Display / headings : Quicksand (geometric, slightly rounded
+     sans — friendly-but-modern, architectural). Weights 500–700.
+   Body / UI          : the platform neutral sans (Helvetica
+     Neue → Helvetica → Arial → system-ui). No webfont needed;
+     this matches the current architecturelive.co.uk stack.
+
+   ⚠️  SUBSTITUTION FLAG: the original site's body face is
+       Helvetica/Arial; we use the live platform stack rather
+       than bundling a webfont.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');

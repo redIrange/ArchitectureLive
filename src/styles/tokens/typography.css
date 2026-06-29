@@ -1,0 +1,203 @@
+/* ============================================================
+   TYPOGRAPHY — ArchitectureLIVE Design System
+   Quicksand (display/headings) + platform neutral sans (body).
+   Editorial: generous body leading (1.6), big headings, strong
+   hierarchy. Slight negative tracking at display sizes.
+   Weight ladder: 400 / 500 / 600 / 700.
+   ============================================================ */
+
+:root {
+  /* —— Families ——————————————————————————————————————— */
+  --font-display: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-text: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-script: var(--font-display); /* script accent retired — falls back to display */
+
+  /* —— Weights ————————————————————————————————————————— */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* —— Type scale (size / weight / line-height / tracking) —— */
+  /* hero-display — the full-bleed hero headline */
+  --type-hero-display-size: 60px;
+  --type-hero-display-weight: 600;
+  --type-hero-display-leading: 1.08;
+  --type-hero-display-tracking: -0.5px;
+
+  /* display-lg — tile / section headlines */
+  --type-display-lg-size: 40px;
+  --type-display-lg-weight: 600;
+  --type-display-lg-leading: 1.12;
+  --type-display-lg-tracking: -0.3px;
+
+  /* display-md — sub-section heads */
+  --type-display-md-size: 30px;
+  --type-display-md-weight: 600;
+  --type-display-md-leading: 1.25;
+  --type-display-md-tracking: -0.2px;
+
+  /* lead — hero / tile sub-line */
+  --type-lead-size: 24px;
+  --type-lead-weight: 500;
+  --type-lead-leading: 1.4;
+  --type-lead-tracking: -0.1px;
+
+  /* lead-airy — editorial intro paragraphs */
+  --type-lead-airy-size: 21px;
+  --type-lead-airy-weight: 400;
+  --type-lead-airy-leading: 1.6;
+  --type-lead-airy-tracking: 0px;
+
+  /* tagline — Quicksand sub-headline */
+  --type-tagline-size: 18px;
+  --type-tagline-weight: 600;
+  --type-tagline-leading: 1.4;
+  --type-tagline-tracking: 0px;
+
+  /* eyebrow — uppercase category / kicker */
+  --type-eyebrow-size: 13px;
+  --type-eyebrow-weight: 600;
+  --type-eyebrow-leading: 1.2;
+  --type-eyebrow-tracking: 1.6px;
+
+  /* body-strong — inline strong emphasis */
+  --type-body-strong-size: 17px;
+  --type-body-strong-weight: 600;
+  --type-body-strong-leading: 1.5;
+  --type-body-strong-tracking: 0px;
+
+  /* body — default paragraph (17px, generous 1.6 leading) */
+  --type-body-size: 17px;
+  --type-body-weight: 400;
+  --type-body-leading: 1.6;
+  --type-body-tracking: 0px;
+
+  /* dense-link — footer link lists */
+  --type-dense-link-size: 15px;
+  --type-dense-link-weight: 400;
+  --type-dense-link-leading: 2.2;
+  --type-dense-link-tracking: 0px;
+
+  /* caption — secondary captions, meta */
+  --type-caption-size: 14px;
+  --type-caption-weight: 400;
+  --type-caption-leading: 1.5;
+  --type-caption-tracking: 0px;
+
+  /* caption-strong — emphasised captions */
+  --type-caption-strong-size: 14px;
+  --type-caption-strong-weight: 600;
+  --type-caption-strong-leading: 1.4;
+  --type-caption-strong-tracking: 0.2px;
+
+  /* button-large — primary CTA on hero surfaces */
+  --type-button-large-size: 17px;
+  --type-button-large-weight: 600;
+  --type-button-large-leading: 1;
+  --type-button-large-tracking: 0px;
+
+  /* button-utility — compact button / nav labels */
+  --type-button-utility-size: 14px;
+  --type-button-utility-weight: 500;
+  --type-button-utility-leading: 1;
+  --type-button-utility-tracking: 0px;
+
+  /* nav-link — header menu items (Quicksand medium) */
+  --type-nav-link-size: 15px;
+  --type-nav-link-weight: 500;
+  --type-nav-link-leading: 1;
+  --type-nav-link-tracking: 0px;
+
+  /* fine-print — footer body / legal */
+  --type-fine-print-size: 13px;
+  --type-fine-print-weight: 400;
+  --type-fine-print-leading: 1.5;
+  --type-fine-print-tracking: 0px;
+
+  /* micro-legal — micro disclaimers */
+  --type-micro-legal-size: 11px;
+  --type-micro-legal-weight: 400;
+  --type-micro-legal-leading: 1.4;
+  --type-micro-legal-tracking: 0px;
+
+  /* script — rare accent flourish */
+  --type-script-size: 34px;
+  --type-script-weight: 400;
+  --type-script-leading: 1;
+  --type-script-tracking: 0px;
+}
+
+/* —— Convenience text classes (mirror the scale) ————————— */
+.t-hero-display {
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: var(--type-hero-display-weight);
+  line-height: var(--type-hero-display-leading);
+  letter-spacing: var(--type-hero-display-tracking);
+}
+.t-display-lg {
+  font-family: var(--font-display);
+  font-size: var(--type-display-lg-size);
+  font-weight: var(--type-display-lg-weight);
+  line-height: var(--type-display-lg-leading);
+  letter-spacing: var(--type-display-lg-tracking);
+}
+.t-display-md {
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: var(--type-display-md-weight);
+  line-height: var(--type-display-md-leading);
+  letter-spacing: var(--type-display-md-tracking);
+}
+.t-tagline {
+  font-family: var(--font-display);
+  font-size: var(--type-tagline-size);
+  font-weight: var(--type-tagline-weight);
+  line-height: var(--type-tagline-leading);
+}
+.t-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+  line-height: var(--type-eyebrow-leading);
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+}
+.t-lead {
+  font-family: var(--font-display);
+  font-size: var(--type-lead-size);
+  font-weight: var(--type-lead-weight);
+  line-height: var(--type-lead-leading);
+  letter-spacing: var(--type-lead-tracking);
+}
+.t-lead-airy {
+  font-family: var(--font-text);
+  font-size: var(--type-lead-airy-size);
+  font-weight: var(--type-lead-airy-weight);
+  line-height: var(--type-lead-airy-leading);
+}
+.t-body {
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-leading);
+}
+.t-body-strong {
+  font-family: var(--font-text);
+  font-size: var(--type-body-strong-size);
+  font-weight: var(--type-body-strong-weight);
+  line-height: var(--type-body-strong-leading);
+}
+.t-caption {
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  font-weight: var(--type-caption-weight);
+  line-height: var(--type-caption-leading);
+}
+.t-script {
+  font-family: var(--font-script);
+  font-size: var(--type-script-size);
+  font-weight: var(--type-script-weight);
+  line-height: var(--type-script-leading);
+}

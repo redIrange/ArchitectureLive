@@ -110,7 +110,7 @@ const AWARDS = [
   {/* ── Approach ──────────────────────────────────────────────── */}
   {/* Background: --color-lavender. Design shows a leaf-texture backdrop;
       approximated here with the solid lavender token (no external asset needed). */}
-  <section class="al-approach">
+  <Section surface="tint">
     <Container>
       <div class="al-split">
         <div class="approach-text">
@@ -137,7 +137,7 @@ const AWARDS = [
         )}
       </div>
     </Container>
-  </section>
+  </Section>
 
   {/* ── Social proof — awards / press strip ───────────────────── */}
   <Section surface="light" pad="var(--space-xxl)">
@@ -228,10 +228,6 @@ const AWARDS = [
 }
 
 /* ── Approach section ─────────────────────────────────────────── */
-.al-approach {
-  background: var(--color-lavender);
-  padding: var(--space-section) 0;
-}
 .al-split {
   display: grid;
   grid-template-columns: 1fr 1fr;

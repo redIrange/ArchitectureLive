@@ -1,0 +1,13 @@
+# dependencies
+node_modules/
+# build output
+dist/
+.astro/
+# large local-only migration sources (NOT committed)
+Old_Website/
+Original_Images/
+# os
+.DS_Store
+# secrets
+.env
+.dev.vars

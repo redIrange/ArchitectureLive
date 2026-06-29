@@ -12,6 +12,7 @@ function openMenu(): void {
   drawer.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
   btn?.setAttribute('aria-expanded', 'true');
+  (drawer.querySelector<HTMLElement>('a, button'))?.focus();
 }
 
 function closeMenu(): void {

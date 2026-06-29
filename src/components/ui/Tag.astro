@@ -1,0 +1,28 @@
+---
+/**
+ * Type / category label — uppercase eyebrow text, no fill.
+ * active=true highlights the label (for filter use).
+ */
+interface Props {
+  label: string;
+  active?: boolean;
+}
+const { label, active = false } = Astro.props;
+---
+<span class:list={["tag", { "tag--active": active }]}>{label}</span>
+
+<style>
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--color-indigo-deep);
+}
+.tag--active {
+  color: var(--color-indigo-vivid);
+}
+</style>

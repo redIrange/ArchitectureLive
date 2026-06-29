@@ -1,0 +1,106 @@
+---
+/**
+ * Image-led project card for the projects grid.
+ * Gentle lift + image zoom on hover. Sector tag overlaid on image.
+ */
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import Tag from "./Tag.astro";
+
+interface Props {
+  href: string;
+  title: string;
+  sector: string;
+  meta: string;
+  image: ImageMetadata;
+  ratio?: string;
+}
+const { href, title, sector, meta, image, ratio = "4 / 3" } = Astro.props;
+---
+<a href={href} class="project-card">
+  <div class="al-card-media">
+    <div class="al-card-media-inner" style={`aspect-ratio:${ratio};`}>
+      <Image
+        src={image}
+        alt={title}
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 700px) 100vw, 33vw"
+      />
+    </div>
+    {sector && (
+      <div class="al-card-sector">
+        <Tag label={sector} />
+      </div>
+    )}
+  </div>
+  <div class="al-card-body">
+    <h3 class="al-card-title">{title}</h3>
+    {meta && <p class="al-card-meta">{meta}</p>}
+  </div>
+</a>
+
+<style>
+.project-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  overflow: hidden;
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.al-card-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+.al-card-media-inner {
+  overflow: hidden;
+}
+.al-card-media-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+.project-card:hover .al-card-media-inner img {
+  transform: scale(1.05);
+}
+
+.al-card-sector {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.al-card-body {
+  padding: var(--space-md) var(--space-xs) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.al-card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-tagline-size);
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  color: var(--color-charcoal);
+  line-height: 1.3;
+}
+.al-card-meta {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  color: var(--color-grey-light);
+}
+</style>

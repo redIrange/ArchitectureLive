@@ -1,0 +1,126 @@
+---
+/**
+ * Page pagination for News and Projects indexes.
+ * Prev / numbered pages / next — rendered as real <a> links (no JS).
+ * The current page is a filled indigo pill; others are quiet.
+ */
+interface Props {
+  currentPage: number;
+  lastPage: number;
+  urlPrev?: string;
+  urlNext?: string;
+  base: string;
+}
+const { currentPage, lastPage, urlPrev, urlNext, base } = Astro.props;
+
+const pages = Array.from({ length: lastPage }, (_, i) => i + 1);
+
+function pageUrl(p: number): string {
+  return p === 1 ? base : `${base}/${p}`;
+}
+---
+<nav aria-label="Pagination" class="pagination">
+  <!-- Previous arrow -->
+  {urlPrev ? (
+    <a href={urlPrev} aria-label="Previous page" class="pagination-arrow">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 5 8 12 15 19" />
+      </svg>
+    </a>
+  ) : (
+    <span aria-disabled="true" class="pagination-arrow pagination-arrow--disabled">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 5 8 12 15 19" />
+      </svg>
+    </span>
+  )}
+
+  <!-- Page numbers -->
+  {pages.map((p) =>
+    p === currentPage ? (
+      <span aria-current="page" class="pagination-page pagination-page--active">{p}</span>
+    ) : (
+      <a href={pageUrl(p)} class="pagination-page">{p}</a>
+    )
+  )}
+
+  <!-- Next arrow -->
+  {urlNext ? (
+    <a href={urlNext} aria-label="Next page" class="pagination-arrow">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 5 16 12 9 19" />
+      </svg>
+    </a>
+  ) : (
+    <span aria-disabled="true" class="pagination-arrow pagination-arrow--disabled">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 5 16 12 9 19" />
+      </svg>
+    </span>
+  )}
+</nav>
+
+<style>
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.pagination-arrow {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  border: var(--border-hairline);
+  background: var(--color-white);
+  color: var(--color-indigo-deep);
+  text-decoration: none;
+  transition:
+    background-color var(--duration-base) var(--ease-standard),
+    color var(--duration-base) var(--ease-standard);
+}
+.pagination-arrow:hover {
+  background: var(--color-lavender);
+}
+.pagination-arrow--disabled {
+  color: var(--color-grey-light);
+  cursor: default;
+}
+.pagination-arrow--disabled:hover {
+  background: var(--color-white);
+}
+
+.pagination-page {
+  min-width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  font-family: var(--font-display);
+  font-size: var(--type-button-utility-size);
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  transition:
+    background-color var(--duration-base) var(--ease-standard),
+    color var(--duration-base) var(--ease-standard);
+}
+.pagination-page:hover {
+  background: var(--color-lavender);
+}
+.pagination-page--active {
+  font-weight: 600;
+  background: var(--color-indigo-vivid);
+  color: var(--color-on-primary);
+  cursor: default;
+}
+.pagination-page--active:hover {
+  background: var(--color-indigo-vivid);
+}
+</style>

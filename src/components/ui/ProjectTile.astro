@@ -1,0 +1,258 @@
+---
+/**
+ * Full-bleed section tile — building block of marketing pages.
+ * default: content stack on a coloured surface + optional image.
+ * background: full-bleed photographic hero with content overlay.
+ * Tiles touch edges (radius 0); the surface-colour change is the divider.
+ */
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  surface?: "light" | "alt" | "tint" | "dark" | "charcoal";
+  eyebrow?: string;
+  headline?: string;
+  sub?: string;
+  script?: string;
+  image?: ImageMetadata;
+  imageLabel?: string;
+  imageRatio?: string;
+  align?: "center" | "left";
+  background?: boolean;
+  media?: boolean;
+  minHeight?: string;
+}
+
+const {
+  surface = "light",
+  eyebrow,
+  headline,
+  sub,
+  script,
+  image,
+  imageLabel = "Photography",
+  imageRatio = "16 / 9",
+  align = "center",
+  background = false,
+  media = true,
+  minHeight,
+} = Astro.props;
+
+const surfaces: Record<string, string> = {
+  light: "var(--color-white)",
+  alt: "var(--color-offwhite)",
+  tint: "var(--color-lavender)",
+  dark: "var(--color-surface-dark)",
+  charcoal: "var(--color-surface-charcoal)",
+};
+const isDark = surface === "dark" || surface === "charcoal" || background;
+const tone = isDark ? "var(--color-on-dark)" : "var(--color-charcoal)";
+const accentTone = isDark ? "var(--color-lavender)" : "var(--color-indigo-deep)";
+const bgColor = surfaces[surface] ?? surfaces.light;
+const contentAlign = align === "center" ? "center" : "flex-start";
+const textAlign = align;
+const maxW = align === "center" ? "40ch" : "48ch";
+const margin = align === "center" ? "0 auto" : "0";
+const headlineFontSize = background ? "var(--type-hero-display-size)" : "var(--type-display-lg-size)";
+const headlineFontWeight = background ? "400" : "600";
+const headlineLineHeight = background ? "var(--type-hero-display-leading)" : "var(--type-display-lg-leading)";
+const headlineTracking = background ? "var(--type-hero-display-tracking)" : "var(--type-display-lg-tracking)";
+const subColor = isDark ? "rgba(255,255,255,0.86)" : "var(--color-grey-mid)";
+const childrenJustify = align === "center" ? "center" : "flex-start";
+---
+
+{background ? (
+  <section
+    class="al-tile al-tile--bg"
+    style={`min-height:${minHeight ?? "82vh"};`}
+  >
+    <div class="al-tile-bg-media">
+      {image && (
+        <Image
+          src={image}
+          alt={imageLabel}
+          widths={[800, 1200, 1920]}
+          sizes="100vw"
+        />
+      )}
+      <div class="al-tile-bg-scrim"></div>
+    </div>
+    <div class="al-tile-bg-content" style={`max-width:var(--content-max);`}>
+      <div
+        class="al-tile-content-stack"
+        style={`align-items:${contentAlign};text-align:${textAlign};max-width:${maxW};margin:${margin};`}
+      >
+        {eyebrow && (
+          <span class="al-tile-eyebrow" style={`color:${accentTone};`}>{eyebrow}</span>
+        )}
+        {headline && (
+          <h2
+            class="al-tile-headline"
+            style={`font-size:${headlineFontSize};font-weight:${headlineFontWeight};line-height:${headlineLineHeight};letter-spacing:${headlineTracking};color:${tone};`}
+          >
+            {headline}
+          </h2>
+        )}
+        {script && (
+          <p class="al-tile-script" style={`color:${accentTone};`}>{script}</p>
+        )}
+        {sub && (
+          <p class="al-tile-sub" style={`color:${subColor};`}>{sub}</p>
+        )}
+        <div class="al-tile-slot" style={`justify-content:${childrenJustify};`}>
+          <slot />
+        </div>
+      </div>
+    </div>
+  </section>
+) : (
+  <section
+    class="al-tile"
+    style={`background-color:${bgColor};color:${tone};`}
+  >
+    <div
+      class="al-tile-inner"
+      style={`align-items:${contentAlign};`}
+    >
+      <div
+        class="al-tile-content-stack"
+        style={`align-items:${contentAlign};text-align:${textAlign};max-width:${maxW};margin:${margin};`}
+      >
+        {eyebrow && (
+          <span class="al-tile-eyebrow" style={`color:${accentTone};`}>{eyebrow}</span>
+        )}
+        {headline && (
+          <h2
+            class="al-tile-headline"
+            style={`font-size:${headlineFontSize};font-weight:${headlineFontWeight};line-height:${headlineLineHeight};letter-spacing:${headlineTracking};color:${tone};`}
+          >
+            {headline}
+          </h2>
+        )}
+        {script && (
+          <p class="al-tile-script" style={`color:${accentTone};`}>{script}</p>
+        )}
+        {sub && (
+          <p class="al-tile-sub" style={`color:${subColor};`}>{sub}</p>
+        )}
+        <div class="al-tile-slot" style={`justify-content:${childrenJustify};`}>
+          <slot />
+        </div>
+      </div>
+      {media && image && (
+        <div class="al-tile-image-wrap" style={`aspect-ratio:${imageRatio};`}>
+          <Image
+            src={image}
+            alt={imageLabel}
+            widths={[800, 1200, 1920]}
+            sizes="(max-width: 900px) 100vw, var(--content-max)"
+          />
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<style>
+.al-tile {
+  border-radius: var(--radius-none, 0);
+  padding: var(--space-section) var(--space-xl);
+}
+.al-tile--bg {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--space-section) var(--space-xl);
+  background: transparent;
+}
+
+.al-tile-bg-media {
+  position: absolute;
+  inset: 0;
+}
+.al-tile-bg-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.al-tile-bg-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(54, 54, 54, 0.04) 0%, rgba(54, 54, 54, 0.42) 100%);
+}
+
+.al-tile-bg-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.al-tile-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxl);
+}
+
+.al-tile-content-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.al-tile-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+}
+
+.al-tile-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+
+.al-tile-script {
+  margin: 0;
+  font-family: var(--font-script);
+  font-size: var(--type-lead-size);
+  line-height: 1.2;
+}
+
+.al-tile-sub {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-lead-airy-size);
+  font-weight: 400;
+  line-height: var(--type-lead-airy-leading);
+}
+
+.al-tile-slot {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+  flex-wrap: wrap;
+}
+.al-tile-slot:empty {
+  display: none;
+}
+
+.al-tile-image-wrap {
+  width: 100%;
+  overflow: hidden;
+  filter: drop-shadow(var(--shadow-image));
+  border-radius: var(--radius-md);
+}
+.al-tile-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md);
+}
+</style>

@@ -1,0 +1,129 @@
+---
+/**
+ * News / article card for the news index.
+ * Photo, date + category meta, title, and short excerpt.
+ * Gentle hover lift to match the project grid.
+ */
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  href: string;
+  title: string;
+  date: Date;
+  category: string;
+  excerpt: string;
+  image: ImageMetadata;
+}
+const { href, title, date, category, excerpt, image } = Astro.props;
+
+const dateStr = date.toLocaleDateString("en-GB", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+<a href={href} class="news-card">
+  <div class="al-news-media">
+    <div class="al-news-media-inner">
+      <Image
+        src={image}
+        alt={title}
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 700px) 100vw, 33vw"
+      />
+    </div>
+  </div>
+  <div class="al-news-body">
+    <div class="al-news-meta">
+      {category && <span class="al-news-category">{category}</span>}
+      {category && dateStr && <span class="al-news-sep">&bull;</span>}
+      {dateStr && <span class="al-news-date">{dateStr}</span>}
+    </div>
+    <h3 class="al-news-title">{title}</h3>
+    {excerpt && <p class="al-news-excerpt">{excerpt}</p>}
+  </div>
+</a>
+
+<style>
+.news-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+.news-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.al-news-media {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+.al-news-media-inner {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.al-news-media-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+.news-card:hover .al-news-media-inner img {
+  transform: scale(1.05);
+}
+
+.al-news-body {
+  padding: var(--space-md) var(--space-xs) var(--space-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.al-news-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.al-news-category {
+  color: var(--color-purple);
+}
+.al-news-sep {
+  color: var(--color-hairline);
+}
+.al-news-date {
+  color: var(--color-grey-light);
+}
+
+.al-news-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-tagline-size);
+  font-weight: 600;
+  color: var(--color-charcoal);
+  line-height: 1.3;
+  letter-spacing: -0.1px;
+}
+
+.al-news-excerpt {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  color: var(--color-grey-mid);
+  line-height: 1.55;
+}
+</style>

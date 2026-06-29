@@ -1,15 +1,324 @@
 ---
+/**
+ * Home page — ArchitectureLIVE
+ * Port of Home.jsx (ui_kits/website/Home.jsx).
+ * Sections: Hero · Featured projects · What we do · Approach · Awards strip · Latest news.
+ * CtaBand is provided by PageShell (cta defaults to true) — not added here.
+ */
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import PageShell from "../layouts/PageShell.astro";
+import ProjectTile from "../components/ui/ProjectTile.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+import SectionHead from "../components/ui/SectionHead.astro";
+import ProjectCard from "../components/ui/ProjectCard.astro";
+import NewsCard from "../components/ui/NewsCard.astro";
+import Tag from "../components/ui/Tag.astro";
+import Button from "../components/ui/Button.astro";
+
+/* ── Collection queries ── */
+const projects = await getCollection("projects", (p) => !p.data.draft);
+const featured = projects.filter((p) => p.data.featured).slice(0, 6);
+const featuredOrFallback = featured.length ? featured : projects.slice(0, 6);
+const latestNews = (await getCollection("news", (n) => !n.data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+/* ── Derived values ── */
+const heroProject = featuredOrFallback[0];
+// Use the second project for the approach image so the two images differ;
+// fall back to the first project if there is only one.
+const approachProject = featuredOrFallback[1] ?? featuredOrFallback[0];
+
+/* ── Static content from Shell.jsx SECTOR_CARDS ── */
+const SECTOR_CARDS = [
+  { type: "Extensions", blurb: "Remodelling and contemporary additions that transform how a home lives." },
+  { type: "New Build",  blurb: "Bespoke new and retirement homes, designed around site and light." },
+  { type: "Education",  blurb: "Schools, sixth-form centres and sports pavilions for learning." },
+  { type: "Commercial", blurb: "Offices, hospitality and conference spaces with a human feel." },
+] as const;
+
+const AWARDS = [
+  "Waverley Design Awards",
+  "Channel 4 · Extraordinary Extensions",
+  "Houzz",
+  "Homify",
+  "South Downs NPA",
+] as const;
 ---
-<PageShell title="ArchitectureLIVE" description="Contemporary design &amp; sustainable living — Surrey, West Sussex &amp; Hampshire." active="home">
-  <section style="padding:var(--space-section) var(--space-xl);">
-    <div style="max-width:var(--content-max);margin:0 auto;">
-      <h1 style="font-family:var(--font-display);font-size:var(--type-hero-display-size);font-weight:600;letter-spacing:var(--type-hero-display-tracking);color:var(--color-charcoal);margin:0 0 var(--space-lg);">
-        Architecture<span style="color:var(--color-indigo-deep);">LIVE</span>
-      </h1>
-      <p style="font-family:var(--font-text);font-size:var(--type-lead-airy-size);color:var(--color-grey-mid);max-width:52ch;margin:0;">
-        Contemporary design &amp; sustainable living — Surrey, West Sussex &amp; Hampshire.
-      </p>
-    </div>
+
+<PageShell
+  title="ArchitectureLIVE — Contemporary architecture for sustainable living"
+  description="A Surrey practice crafting low-energy homes, schools and spaces — from first sketch through planning to completion."
+  active="home"
+>
+
+  {/* ── Hero ──────────────────────────────────────────────────── */}
+  <ProjectTile
+    background
+    minHeight="86vh"
+    image={heroProject?.data.heroImage}
+    imageLabel={heroProject ? `${heroProject.data.title} — ${heroProject.data.location}` : "Signature project"}
+    eyebrow="ArchitectureLIVE — Haslemere, Surrey"
+    headline="Contemporary architecture for sustainable living"
+    sub="A Surrey practice crafting low-energy homes, schools and spaces — from first sketch through planning to completion."
+  >
+    <Button href="/projects" variant="on-dark" size="large">View our work</Button>
+    <Button href="/about"    variant="on-dark" size="large">Meet the studio</Button>
+  </ProjectTile>
+
+  {/* ── Featured projects ─────────────────────────────────────── */}
+  <Section surface="light">
+    <Container>
+      <SectionHead
+        eyebrow="Selected work"
+        title="Recent projects"
+        link="View all projects"
+        href="/projects"
+      />
+      <div class="al-grid-3">
+        {featuredOrFallback.slice(0, 3).map((p) => (
+          <ProjectCard
+            href={`/projects/${p.id}`}
+            title={p.data.title}
+            sector={p.data.sector}
+            meta={`${p.data.location} · ${p.data.status}`}
+            image={p.data.heroImage}
+          />
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  {/* ── What we do ────────────────────────────────────────────── */}
+  <Section surface="alt">
+    <Container>
+      <SectionHead eyebrow="What we do" title="Four ways we work" center />
+      <div class="al-grid-4">
+        {SECTOR_CARDS.map((s) => (
+          <div class="sector-card">
+            <Tag label={s.type} />
+            <p class="sector-card-blurb">{s.blurb}</p>
+            <a href="/projects" class="sector-card-link">See projects &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  {/* ── Approach ──────────────────────────────────────────────── */}
+  {/* Background: --color-lavender. Design shows a leaf-texture backdrop;
+      approximated here with the solid lavender token (no external asset needed). */}
+  <section class="al-approach">
+    <Container>
+      <div class="al-split">
+        <div class="approach-text">
+          <span class="approach-eyebrow">Our approach</span>
+          <h2 class="approach-headline">Low-energy living, beautifully made</h2>
+          <p class="approach-script">Contemporary design &amp; sustainable living</p>
+          <p class="approach-body">
+            We design fabric-first, Passivhaus-influenced buildings that are warm, quiet and
+            inexpensive to run — and that sit gently in the Surrey, Sussex and Hampshire landscape.
+          </p>
+          <div class="approach-cta">
+            <Button href="/about" variant="primary">Read our story</Button>
+          </div>
+        </div>
+        {approachProject && (
+          <div class="approach-image">
+            <Image
+              src={approachProject.data.heroImage}
+              alt={`${approachProject.data.title} — timber, glazing and daylight`}
+              widths={[600, 1000, 1400]}
+              sizes="(max-width: 900px) 100vw, 45vw"
+            />
+          </div>
+        )}
+      </div>
+    </Container>
   </section>
+
+  {/* ── Social proof — awards / press strip ───────────────────── */}
+  <Section surface="light" pad="var(--space-xxl)">
+    <Container>
+      <p class="awards-label">Recognised &amp; featured</p>
+      <div class="al-awards">
+        {AWARDS.map((a) => (
+          <span class="award-item">{a}</span>
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  {/* ── Latest news ───────────────────────────────────────────── */}
+  <Section surface="alt">
+    <Container>
+      <SectionHead
+        eyebrow="From the journal"
+        title="Latest news"
+        link="All news"
+        href="/news"
+      />
+      <div class="al-grid-3">
+        {latestNews.map((n) => (
+          <NewsCard
+            href={`/news/${n.id}`}
+            title={n.data.title}
+            date={n.data.date}
+            category={n.data.category}
+            excerpt={n.data.excerpt}
+            image={n.data.heroImage}
+          />
+        ))}
+      </div>
+    </Container>
+  </Section>
+
 </PageShell>
+
+<style>
+/* ── Responsive grids ──────────────────────────────────────────── */
+.al-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+.al-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+@media (max-width: 900px) {
+  .al-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .al-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .al-grid-3,
+  .al-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ── Sector cards ─────────────────────────────────────────────── */
+.sector-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  border: var(--border-hairline);
+}
+.sector-card-blurb {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  line-height: 1.55;
+  color: var(--color-grey-mid);
+}
+.sector-card-link {
+  margin-top: auto;
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  font-weight: 600;
+  color: var(--color-indigo-deep);
+  text-decoration: none;
+}
+.sector-card-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Approach section ─────────────────────────────────────────── */
+.al-approach {
+  background: var(--color-lavender);
+  padding: var(--space-section) 0;
+}
+.al-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .al-split { grid-template-columns: 1fr; }
+}
+.approach-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 46ch;
+}
+.approach-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-indigo-deep);
+}
+.approach-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-display-lg-size);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+  color: var(--color-indigo-deep);
+}
+.approach-script {
+  margin: 0;
+  font-family: var(--font-script);
+  font-size: 30px;
+  color: var(--color-indigo-slate);
+  line-height: 1.1;
+}
+.approach-body {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-lead-airy-size);
+  line-height: 1.6;
+  color: var(--color-indigo-slate);
+}
+.approach-cta {
+  margin-top: var(--space-xs);
+}
+.approach-image {
+  filter: drop-shadow(var(--shadow-image));
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+.approach-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+/* ── Awards strip ─────────────────────────────────────────────── */
+.awards-label {
+  text-align: center;
+  margin: 0 0 var(--space-lg);
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-grey-light);
+}
+.al-awards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xl);
+  align-items: center;
+}
+.award-item {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-indigo-slate);
+  opacity: 0.8;
+}
+</style>

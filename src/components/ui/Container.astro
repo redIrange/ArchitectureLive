@@ -1,0 +1,15 @@
+---
+/**
+ * Horizontal content lock: centres content with standard horizontal padding.
+ * Port of Container() in Shell.jsx (ui_kits/website/Shell.jsx).
+ * max defaults to --content-max; pass style string for one-off overrides.
+ */
+interface Props {
+  max?: string;
+  style?: string;
+}
+const { max = "var(--content-max)", style = "" } = Astro.props;
+---
+<div style={`max-width:${max};margin:0 auto;padding:0 var(--space-xl);${style}`}>
+  <slot />
+</div>

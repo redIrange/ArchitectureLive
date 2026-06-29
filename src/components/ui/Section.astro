@@ -1,0 +1,24 @@
+---
+/**
+ * Full-width section with surface background and vertical rhythm.
+ * Port of Section() in Shell.jsx (ui_kits/website/Shell.jsx).
+ * surface → background token; pad → vertical padding (default var(--space-section)).
+ */
+interface Props {
+  surface?: "light" | "alt" | "tint" | "dark";
+  pad?: string;
+  style?: string;
+}
+const { surface = "light", pad = "var(--space-section)", style = "" } = Astro.props;
+
+const bg: Record<string, string> = {
+  light: "var(--color-white)",
+  alt:   "var(--color-offwhite)",
+  tint:  "var(--color-lavender)",
+  dark:  "var(--color-surface-dark)",
+};
+const background = bg[surface] ?? bg.light;
+---
+<section style={`background:${background};padding:${pad} 0;${style}`}>
+  <slot />
+</section>

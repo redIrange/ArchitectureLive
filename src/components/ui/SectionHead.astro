@@ -1,0 +1,80 @@
+---
+/**
+ * Section header: eyebrow label + h2 title, with an optional right-aligned link.
+ * center=true stacks vertically (for "What we do" style panels).
+ * Port of SectionHead() in Shell.jsx (ui_kits/website/Shell.jsx).
+ */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  link?: string;
+  href?: string;
+  center?: boolean;
+}
+const { eyebrow, title, link, href = "#", center = false } = Astro.props;
+---
+<div class:list={["section-head", { "section-head--center": center }]}>
+  <div class:list={["section-head-text", { "section-head-text--center": center }]}>
+    {eyebrow && <div class="section-head-eyebrow">{eyebrow}</div>}
+    <h2 class="section-head-title">{title}</h2>
+  </div>
+  {link && (
+    <a href={href} class="section-head-link">{link} &rarr;</a>
+  )}
+</div>
+
+<style>
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xxl);
+  flex-wrap: wrap;
+}
+.section-head--center {
+  flex-direction: column;
+  text-align: center;
+}
+
+.section-head-text {
+  /* default: no extra constraint */
+}
+.section-head-text--center {
+  margin: 0 auto;
+  max-width: 30ch;
+}
+
+.section-head-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: 12px;
+}
+
+.section-head-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-display-lg-size);
+  font-weight: 600;
+  line-height: var(--type-display-lg-leading);
+  letter-spacing: var(--type-display-lg-tracking);
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+
+.section-head-link {
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  font-weight: 600;
+  color: var(--color-indigo-deep);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.section-head-link:hover {
+  text-decoration: underline;
+}
+</style>

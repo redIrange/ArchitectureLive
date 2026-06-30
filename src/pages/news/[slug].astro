@@ -14,6 +14,7 @@ import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
 import Tag from "../../components/ui/Tag.astro";
 import NewsCard from "../../components/ui/NewsCard.astro";
+import { readingTime } from "../../lib/reading-time.mjs";
 
 export async function getStaticPaths() {
   const posts = await getCollection("news", (n) => !n.data.draft);
@@ -22,6 +23,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const mins = readingTime(post.body);
 
 const dateStr = post.data.date.toLocaleDateString("en-GB", {
   year: "numeric",
@@ -55,7 +57,7 @@ const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !
       {/* Category tag + date */}
       <div class="article-meta">
         <Tag label={post.data.category} />
-        <span class="article-date">{dateStr}</span>
+        <span class="article-date">{dateStr} · {mins} min read</span>
       </div>
 
       {/* Title */}
@@ -183,7 +185,7 @@ const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !
 /* ── Dek (excerpt as intro pull line) ───────────────────────── */
 .article-dek {
   margin: var(--space-lg) 0 0;
-  font-family: var(--font-display);
+  font-family: var(--font-script);
   font-size: 28px;
   font-weight: 400;
   line-height: 1.3;

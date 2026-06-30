@@ -1,0 +1,30 @@
+---
+/**
+ * Inline text link in deep indigo (AA on white). onDark = lavender on dark tiles.
+ * arrow appends a "›" affordance; underline forces a persistent underline.
+ */
+interface Props {
+  href: string;
+  onDark?: boolean;
+  underline?: boolean;
+  arrow?: boolean;
+}
+const { href, onDark = false, underline = false, arrow = false } = Astro.props;
+---
+<a
+  href={href}
+  class:list={["text-link", { "text-link--on-dark": onDark, "text-link--underline": underline }]}
+>
+  <slot />{arrow && <span class="text-link__arrow" aria-hidden="true">›</span>}
+</a>
+
+<style>
+.text-link {
+  color: var(--link); text-decoration: none; font-weight: 500;
+  border-bottom: 1px solid transparent; transition: border-color var(--duration-base) var(--ease-standard), color var(--duration-base) var(--ease-standard);
+}
+.text-link:hover { border-bottom-color: currentColor; }
+.text-link--underline { border-bottom-color: currentColor; }
+.text-link--on-dark { color: var(--link-on-dark); }
+.text-link__arrow { margin-left: 0.3em; }
+</style>

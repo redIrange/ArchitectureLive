@@ -90,6 +90,22 @@ npm run check && npm run build              # verify, then git push to deploy
 
 Re-run incrementally as more originals are sourced — each pass only improves photos.
 
+## Image upscaling (Real-ESRGAN)
+
+Source photos are upscaled locally with Real-ESRGAN, then capped and recompressed so
+committed files stay lean while pixels are sharp.
+
+```bash
+# one-time: vendor the engine (git-ignored) — see docs plan Task 5
+node scripts/upscale/run.mjs            # every project + news image (idempotent)
+node scripts/upscale/run.mjs <slug>     # only the named folder(s)
+npm run check && npm run build          # verify, then git push to deploy
+```
+
+`scripts/upscale/done.json` (committed) records a hash per processed file, so re-runs skip
+already-upscaled images and never double-upscale. Pipeline: 4× upscale → downscale to 2560px
+longest edge → JPEG q88 mozjpeg → overwrite source.
+
 ## Repo layout
 
 - `src/content/{projects,news}/<slug>/` — content + source images (the site's data).

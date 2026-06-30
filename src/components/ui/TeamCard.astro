@@ -1,18 +1,20 @@
 ---
 /**
- * Team profile card — portrait, name, role, short bio.
+ * Team profile card — portrait, name, role, short bio, optional email.
  * Used on the About / Team page. Calm and editorial; no hover lift.
  */
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
+import TextLink from "./TextLink.astro";
 
 interface Props {
   name: string;
   role?: string;
   bio?: string;
   image?: ImageMetadata;
+  email?: string;
 }
-const { name, role, bio, image } = Astro.props;
+const { name, role, bio, image, email } = Astro.props;
 ---
 <div class="team-card">
   <div class="al-team-portrait">
@@ -28,6 +30,11 @@ const { name, role, bio, image } = Astro.props;
   <div class="al-team-info">
     <h3 class="al-team-name">{name}</h3>
     {role && <p class="al-team-role">{role}</p>}
+    {email && (
+      <p class="al-team-email">
+        <TextLink href={`mailto:${email}`}>{email}</TextLink>
+      </p>
+    )}
   </div>
   {bio && <p class="al-team-bio">{bio}</p>}
 </div>
@@ -74,6 +81,12 @@ const { name, role, bio, image } = Astro.props;
   letter-spacing: var(--type-eyebrow-tracking);
   text-transform: uppercase;
   color: var(--color-purple);
+}
+
+.al-team-email {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
 }
 
 .al-team-bio {

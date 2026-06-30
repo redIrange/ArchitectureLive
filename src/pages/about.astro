@@ -1,13 +1,13 @@
 ---
 /**
  * About / Studio page — ArchitectureLIVE
- * Port of About.jsx (ui_kits/website/About.jsx).
- * Sections: Intro · Practice story · Process · Approach quote (dark tile) · Team grid.
+ * Re-port of About.jsx (ui_kits/website/About.jsx) — design-refresh update.
+ * Section order: hero → title (h1) → intro → team → story → process → belief.
+ * Belief = lavender tint section (Section surface="tint"); not a dark ProjectTile.
  */
 import PageShell from "../layouts/PageShell.astro";
 import Section from "../components/ui/Section.astro";
 import Container from "../components/ui/Container.astro";
-import ProjectTile from "../components/ui/ProjectTile.astro";
 import TeamCard from "../components/ui/TeamCard.astro";
 import { team } from "../lib/team";
 
@@ -36,45 +36,58 @@ const steps = [
   active="about"
 >
 
-  {/* ── Intro ──────────────────────────────────────────────────── */}
+  {/* ── Hero: full-bleed studio image (94vh, slides under glass header) ──── */}
+  {/* TODO: import studioHero from "../assets/studio/hero.jpg" and render:
+      <Image src={studioHero} alt="The studio, Haslemere" widths={[800,1200,1920,2560]}
+             sizes="100vw" class="hero__image" loading="eager" fetchpriority="high" />
+      inside the section below when the studio photograph is available. */}
+  <section class="hero" aria-label="The studio, Haslemere"></section>
+
+  {/* ── Title — the page's single <h1> ──────────────────────────────────── */}
   <Section surface="light" pad="var(--space-xxl)">
-    <Container>
-      <div class="intro-header">
-        <div class="intro-eyebrow">About the studio</div>
-        <h1 class="intro-headline">
-          A studio for<br />contemporary,<br />sustainable<br />design
-        </h1>
-      </div>
-      <p class="intro-lead">
-        ArchitectureLIVE is a small, hands-on practice in Haslemere, Surrey. We work across the South of England on homes, schools and commercial spaces — combining contemporary design with a genuine commitment to low-energy, sustainable living.
-      </p>
-    </Container>
+    <div class="title-block">
+      <p class="title-eyebrow">Haslemere, Surrey</p>
+      <h1 class="title-headline">
+        A studio for<br />contemporary,<br />sustainable<br />design
+      </h1>
+    </div>
   </Section>
 
-  {/* ── Practice story ────────────────────────────────────────── */}
-  <Section surface="alt" pad="var(--space-section)">
+  {/* ── Intro — centred lead prose ──────────────────────────────────────── */}
+  <Section surface="light" pad="var(--space-section)" style="padding-top:0;">
+    <div class="prose">
+      <p>ArchitectureLIVE is a small, hands-on practice working across the South of England on homes, schools and commercial spaces — combining contemporary design with a genuine commitment to low-energy, sustainable living.</p>
+    </div>
+  </Section>
+
+  {/* ── Team — moved high; before the story ─────────────────────────────── */}
+  <Section surface="light" pad="var(--space-section)" style="padding-top:0;">
     <Container>
-      <div class="al-split">
-        <div class="story-image-wrap">
-          <div class="story-placeholder" aria-hidden="true">
-            <span class="story-placeholder-label">The studio, Haslemere</span>
-          </div>
-        </div>
-        <div class="story-text">
-          <h2 class="story-headline">Craft, local knowledge, and a full service</h2>
-          <p class="story-body">
-            We know this landscape — Surrey, West Sussex, Hampshire and the South Downs National Park — and we know how to navigate planning and conservation here. From the first conversation to the final handover, the people you meet are the people who design and deliver your project.
-          </p>
-          <p class="story-body">
-            Our work has been recognised at the Waverley Design Awards and featured on Channel 4's <em>Extraordinary Extensions</em>.
-          </p>
-        </div>
+      <h2 class="team-headline">People you'll work with</h2>
+      <div class="al-team">
+        {team.map((member) => (
+          <TeamCard
+            name={member.name}
+            role={member.role}
+            bio={member.bio}
+            image={member.image}
+            email={member.email}
+          />
+        ))}
       </div>
     </Container>
   </Section>
 
-  {/* ── Process ───────────────────────────────────────────────── */}
+  {/* ── Story — centred editorial prose (no split image) ────────────────── */}
   <Section surface="light" pad="var(--space-section)">
+    <div class="prose prose--story">
+      <p>We know this landscape — Surrey, West Sussex, Hampshire and the South Downs National Park — and we know how to navigate planning and conservation here. From the first conversation to the final handover, the people you meet are the people who design and deliver your project.</p>
+      <p>Our work has been recognised at the Waverley Design Awards and featured on Channel 4's <em>Extraordinary Extensions</em>.</p>
+    </div>
+  </Section>
+
+  {/* ── Process ─────────────────────────────────────────────────────────── */}
+  <Section surface="alt" pad="var(--space-section)">
     <Container>
       <h2 class="process-headline">How we work</h2>
       <div class="al-grid-3">
@@ -89,30 +102,13 @@ const steps = [
     </Container>
   </Section>
 
-  {/* ── Approach quote — dark tile ────────────────────────────── */}
-  <ProjectTile
-    surface="dark"
-    media={false}
-    align="center"
-    eyebrow="Our belief"
-    script="Sustainability and delight are the same project."
-    sub="We design fabric-first buildings that are warm, quiet, inexpensive to run — and beautiful enough to be loved for generations."
-  />
-
-  {/* ── Team ──────────────────────────────────────────────────── */}
-  <Section surface="alt" pad="var(--space-section)">
+  {/* ── Belief — lavender tint text section (surface="tint") ────────────── */}
+  <Section surface="tint" pad="var(--space-section)">
     <Container>
-      <div class="team-eyebrow">The team</div>
-      <h2 class="team-headline">People you'll work with</h2>
-      <div class="al-team">
-        {team.map((member) => (
-          <TeamCard
-            name={member.name}
-            role={member.role}
-            bio={member.bio}
-            image={member.image}
-          />
-        ))}
+      <div class="belief">
+        <span class="belief-eyebrow">Our belief</span>
+        <h2 class="belief-headline">Sustainability and delight are the same project.</h2>
+        <p class="belief-body">We design fabric-first buildings that are warm, quiet, inexpensive to run — and beautiful enough to be loved for generations.</p>
       </div>
     </Container>
   </Section>
@@ -120,22 +116,32 @@ const steps = [
 </PageShell>
 
 <style>
-/* ── Intro ──────────────────────────────────────────────────────── */
-.intro-header {
-  margin-bottom: var(--space-lg);
+/* ── Hero ──────────────────────────────────────────────────────────────── */
+.hero {
+  margin-top: calc(-1 * var(--header-height));
+  height: 94vh;
+  overflow: hidden;
+  background: var(--color-charcoal);
+}
+/* When a studio image is imported, add: */
+/* .hero__image { width: 100%; height: 100%; object-fit: cover; display: block; } */
+
+/* ── Title block ────────────────────────────────────────────────────────── */
+.title-block {
+  text-align: center;
 }
 
-.intro-eyebrow {
+.title-eyebrow {
+  margin: 0 0 var(--space-sm);
   font-family: var(--font-display);
   font-size: var(--type-eyebrow-size);
   font-weight: 600;
   letter-spacing: var(--type-eyebrow-tracking);
   text-transform: uppercase;
-  color: var(--color-purple);
-  margin-bottom: 14px;
+  color: var(--color-grey-light);
 }
 
-.intro-headline {
+.title-headline {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-hero-display-size);
@@ -146,83 +152,61 @@ const steps = [
   color: var(--color-charcoal);
 }
 
-.intro-lead {
-  max-width: 58ch;
+/* ── Prose (intro + story) ─────────────────────────────────────────────── */
+.prose {
+  max-width: 60ch;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
   font-family: var(--font-text);
   font-size: var(--type-lead-airy-size);
   line-height: 1.6;
-  color: var(--color-grey-mid);
+  color: var(--color-charcoal);
+  text-align: center;
+}
+
+.prose p {
   margin: 0;
 }
 
-/* ── Story ──────────────────────────────────────────────────────── */
-.al-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xxl);
-  align-items: center;
+.prose--story {
+  max-width: 62ch;
 }
 
-@media (max-width: 900px) {
-  .al-split {
+/* ── Team ──────────────────────────────────────────────────────────────── */
+.team-headline {
+  margin: 0 0 var(--space-xxl);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--type-display-lg-size);
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+
+.al-team {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+@media (max-width: 500px) {
+  .al-team {
     grid-template-columns: 1fr;
   }
 }
 
-.story-image-wrap {
-  filter: drop-shadow(var(--shadow-image));
-}
-
-.story-placeholder {
-  aspect-ratio: 4 / 5;
-  background: var(--color-lavender);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.story-placeholder-label {
-  font-family: var(--font-display);
-  font-size: var(--type-caption-size);
-  font-weight: 500;
-  color: var(--color-indigo-deep);
-  opacity: 0.7;
-  text-align: center;
-  padding: var(--space-md);
-}
-
-.story-text {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  justify-content: center;
-}
-
-.story-headline {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-display-md-size);
-  font-weight: 600;
-  letter-spacing: -0.2px;
-  color: var(--color-charcoal);
-}
-
-.story-body {
-  margin: 0;
-  font-family: var(--font-text);
-  font-size: var(--type-body-size);
-  line-height: 1.7;
-  color: var(--color-grey-mid);
-}
-
-/* ── Process ────────────────────────────────────────────────────── */
+/* ── Process ───────────────────────────────────────────────────────────── */
 .process-headline {
   margin: 0 0 var(--space-xxl);
+  text-align: center;
   font-family: var(--font-display);
   font-size: var(--type-display-lg-size);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.3px;
+  text-transform: uppercase;
   color: var(--color-charcoal);
 }
 
@@ -248,8 +232,7 @@ const steps = [
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  padding-top: var(--space-md);
-  border-top: 2px solid var(--color-lavender);
+  text-align: center;
 }
 
 .process-num {
@@ -276,42 +259,40 @@ const steps = [
   color: var(--color-grey-mid);
 }
 
-/* ── Team ───────────────────────────────────────────────────────── */
-.team-eyebrow {
+/* ── Belief ────────────────────────────────────────────────────────────── */
+.belief {
+  max-width: 30ch;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.belief-eyebrow {
   font-family: var(--font-display);
   font-size: var(--type-eyebrow-size);
   font-weight: 600;
   letter-spacing: var(--type-eyebrow-tracking);
   text-transform: uppercase;
-  color: var(--color-purple);
-  margin-bottom: 12px;
+  color: var(--color-indigo-deep);
 }
 
-.team-headline {
-  margin: 0 0 var(--space-xxl);
+.belief-headline {
+  margin: 0;
   font-family: var(--font-display);
-  font-size: var(--type-display-lg-size);
-  font-weight: 600;
-  letter-spacing: -0.3px;
-  color: var(--color-charcoal);
+  font-size: var(--type-display-md-size);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  color: var(--color-indigo-deep);
 }
 
-.al-team {
-  display: grid;
-  /* 2 columns matches current two-member team; increase to repeat(3, 1fr) or repeat(4, 1fr) when team grows */
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-xl);
-}
-
-@media (max-width: 900px) {
-  .al-team {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 500px) {
-  .al-team {
-    grid-template-columns: 1fr;
-  }
+.belief-body {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-lead-airy-size);
+  line-height: 1.6;
+  color: var(--color-indigo-slate);
 }
 </style>

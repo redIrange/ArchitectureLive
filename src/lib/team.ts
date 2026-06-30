@@ -11,6 +11,7 @@ export interface TeamMember {
   role: string;
   bio: string;
   image: ImageMetadata;
+  email?: string;
 }
 
 export const team: TeamMember[] = [

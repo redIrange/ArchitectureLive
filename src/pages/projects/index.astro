@@ -2,12 +2,14 @@
 /**
  * Projects index — ArchitectureLIVE
  * Port of Projects.jsx (ui_kits/website/Projects.jsx).
- * Sections: editorial intro · sector filter · responsive 3-col grid.
+ * Slim header: h1 "Selected work" + sector filters inline on the same row.
+ * Dense 1→2→3-col grid of square reveal cards.
  * Filter is pure client-side progressive enhancement (sector-filter.ts).
  * With JS off, all cards remain visible (no display:none in initial HTML).
  */
 import PageShell from "../../layouts/PageShell.astro";
 import ProjectCard from "../../components/ui/ProjectCard.astro";
+import Tag from "../../components/ui/Tag.astro";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
 import { getCollection } from "astro:content";
@@ -20,41 +22,34 @@ const sectors = ["All", "Extensions", "New Build", "Education", "Commercial"];
 
 <PageShell title="Projects — ArchitectureLIVE" active="projects">
 
-  {/* ── Intro ─────────────────────────────────────────────────── */}
-  <Section surface="light" pad="var(--space-xxl)">
+  {/* ── Slim header row ─────────────────────────────────────────── */}
+  <Section surface="light" pad="var(--space-xl)">
     <Container>
-      <div class="projects-intro">
-        <div class="projects-eyebrow">Projects</div>
+      <div class="projects-header">
         <h1 class="projects-headline">Selected work</h1>
+        <div class="projects-filters" role="group" aria-label="Filter projects by sector">
+          {sectors.map((s) => (
+            <button
+              class="filter-btn"
+              data-filter={s}
+              aria-pressed={s === "All" ? "true" : "false"}
+            >
+              <Tag variant="filter" label={s} />
+            </button>
+          ))}
+        </div>
       </div>
-      <p class="projects-lead">
-        Residential, education and commercial projects across Surrey, West Sussex,
-        Hampshire and Berkshire — each shaped by its site, its light and a
-        fabric-first approach to energy.
-      </p>
     </Container>
   </Section>
 
-  {/* ── Filter + grid ─────────────────────────────────────────── */}
-  <Section surface="alt" pad="var(--space-xxl)" style="padding-top:0">
+  {/* ── Dense reveal grid ───────────────────────────────────────── */}
+  <Section surface="alt" pad="var(--space-xxl)" style="padding-top:var(--space-lg)">
     <Container>
-
-      {/* Segmented filter control */}
-      <div class="filter-bar" role="group" aria-label="Filter projects by sector">
-        {sectors.map((s) => (
-          <button
-            class="filter-btn"
-            data-filter={s}
-            aria-pressed={s === "All" ? "true" : "false"}
-          >{s}</button>
-        ))}
-      </div>
-
-      {/* Project grid — each card wrapper carries data-sector for the filter */}
-      <div class="al-grid-3">
+      <div class="al-grid-projects">
         {projects.map((p) => (
           <div data-sector={p.data.sector}>
             <ProjectCard
+              variant="reveal"
               href={`/projects/${p.id}`}
               title={p.data.title}
               sector={p.data.sector}
@@ -64,7 +59,6 @@ const sectors = ["All", "Extensions", "New Build", "Education", "Commercial"];
           </div>
         ))}
       </div>
-
     </Container>
   </Section>
 
@@ -73,85 +67,56 @@ const sectors = ["All", "Extensions", "New Build", "Education", "Commercial"];
 <script src="../../scripts/sector-filter.ts"></script>
 
 <style>
-/* ── Intro ───────────────────────────────────────────────────────── */
-.projects-eyebrow {
-  font-family: var(--font-display);
-  font-size: var(--type-eyebrow-size);
-  font-weight: 600;
-  letter-spacing: var(--type-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--color-purple);
-  margin-bottom: 14px;
+/* ── Header row ──────────────────────────────────────────────────── */
+.projects-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-xl);
+  padding-top: var(--space-md);
 }
 .projects-headline {
   margin: 0;
   font-family: var(--font-display);
-  font-size: var(--type-hero-display-size);
+  font-size: var(--type-display-md-size);
   font-weight: 400;
   line-height: 1.05;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   text-transform: uppercase;
   color: var(--color-charcoal);
 }
-.projects-intro {
-  max-width: 26ch;
-}
-.projects-lead {
-  max-width: 52ch;
-  margin: var(--space-lg) 0 0;
-  font-family: var(--font-text);
-  font-size: var(--type-lead-airy-size);
-  line-height: 1.6;
-  color: var(--color-grey-mid);
-}
-
-/* ── Filter bar ──────────────────────────────────────────────────── */
-.filter-bar {
+.projects-filters {
   display: flex;
-  gap: var(--space-xs);
+  gap: var(--space-lg);
   flex-wrap: wrap;
-  padding: var(--space-xl) 0 var(--space-xxl);
-  border-bottom: var(--border-hairline);
-  margin-bottom: var(--space-xxl);
 }
 
-/* Buttons styled to match Tag / segmented-control appearance */
+/* Invisible button shell — Tag handles all visual styling */
 .filter-btn {
-  display: inline-flex;
-  align-items: center;
   background: none;
   border: none;
+  padding: 0;
   cursor: pointer;
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-display);
-  font-size: var(--type-eyebrow-size);
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: var(--color-indigo-deep);
-  transition: color var(--duration-base) var(--ease-standard),
-              background var(--duration-base) var(--ease-standard);
+  display: inline-flex;
+  align-items: center;
 }
-.filter-btn:hover {
+/* Active state is driven by aria-pressed (toggled by sector-filter.ts) */
+.filter-btn[aria-pressed="true"] :global(.tag--filter) {
   color: var(--color-indigo-vivid);
-  background: var(--color-lavender);
-}
-.filter-btn[aria-pressed="true"] {
-  color: var(--color-indigo-vivid);
-  background: var(--color-lavender);
+  font-weight: 700;
 }
 
 /* ── Project grid ────────────────────────────────────────────────── */
-.al-grid-3 {
+.al-grid-projects {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-xl);
 }
 @media (max-width: 900px) {
-  .al-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .al-grid-projects { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
-  .al-grid-3 { grid-template-columns: 1fr; }
+  .al-grid-projects { grid-template-columns: 1fr; }
 }
 </style>

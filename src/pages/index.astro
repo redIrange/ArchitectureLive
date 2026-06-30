@@ -6,6 +6,7 @@
  * Removed: "What we do" sector cards, awards/press strip.
  * CtaBand is provided by PageShell (cta defaults to true) — not added here.
  */
+import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import PageShell from "../layouts/PageShell.astro";
@@ -15,22 +16,30 @@ import SectionHead from "../components/ui/SectionHead.astro";
 import NewsCard from "../components/ui/NewsCard.astro";
 import Button from "../components/ui/Button.astro";
 
+/* ── Hero slideshow images (src/assets/slider/*.jpg, sorted) ── */
+const sliderMods = import.meta.glob<ImageMetadata>("../assets/slider/*.jpg", {
+  eager: true,
+  import: "default",
+});
+const sliderImages = Object.keys(sliderMods)
+  .sort()
+  .map((k) => sliderMods[k]);
+
 /* ── Collection queries ── */
-const projects = (await getCollection("projects", (p) => !p.data.draft))
-  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
-const featured = projects.filter((p) => p.data.featured);
-const featuredOrFallback = featured.length ? featured : projects.slice(0, 5);
+const projects = await getCollection("projects", (p) => !p.data.draft);
 const latestNews = (await getCollection("news", (n) => !n.data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
-/* ── Slideshow: exactly 5 hero images, featured first then non-featured ── */
-const slideshowProjects: typeof projects = [...featured.slice(0, 5)];
-if (slideshowProjects.length < 5) {
-  const usedIds = new Set(slideshowProjects.map((p) => p.id));
-  const fillers = projects.filter((p) => !usedIds.has(p.id));
-  slideshowProjects.push(...fillers.slice(0, 5 - slideshowProjects.length));
-}
+/* ── Home "Selected work" — three chosen projects, in this order ── */
+const HOME_PROJECT_SLUGS = [
+  "country-house-lodsworth-west-sussex",    // Lodsworth
+  "1960s-detached-house-haslemere-surrey",  // Courtsmount
+  "1960s-bungalow-haslemere-surrey",        // Longdene
+];
+const homeProjects = HOME_PROJECT_SLUGS
+  .map((slug) => projects.find((p) => p.id === slug))
+  .filter((p): p is (typeof projects)[number] => Boolean(p));
 ---
 
 <PageShell
@@ -39,12 +48,12 @@ if (slideshowProjects.length < 5) {
   active="home"
 >
 
-  {/* ── Hero — rotating cross-fade slideshow, 5 images ─────────── */}
+  {/* ── Hero — rotating cross-fade slideshow (src/assets/slider) ─ */}
   <section class="hero">
-    {slideshowProjects.map((p, i) => p.data.heroImage && (
+    {sliderImages.map((img, i) => (
       <Image
-        src={p.data.heroImage}
-        alt={p.data.location ?? p.data.title}
+        src={img}
+        alt="ArchitectureLIVE — contemporary, sustainable architecture"
         widths={[800, 1200, 1920, 2560]}
         sizes="100vw"
         class={`hero__image${i === 0 ? " is-active" : ""}`}
@@ -64,7 +73,7 @@ if (slideshowProjects.length < 5) {
 
   {/* ── Selected work — full-bleed stacked images with captions ─ */}
   <section class="selected-work">
-    {featuredOrFallback.slice(1).map((p, i) => (
+    {homeProjects.map((p, i) => (
       <div class="project-item">
         <a
           href={`/projects/${p.id}`}

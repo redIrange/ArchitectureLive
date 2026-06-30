@@ -1,7 +1,7 @@
 ---
 title: "Our approach to near-Passivhaus design"
 date: 2024-09-03
-category: "Insight"
+category: "General"
 heroImage: "./hero.jpg"
 excerpt: "Why fabric-first thinking delivers better buildings — and lower running costs — for our clients."
 draft: false

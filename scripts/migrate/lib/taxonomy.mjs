@@ -31,9 +31,13 @@ export const SECTOR_BY_SLUG = {
   "workers-cottage-south-downs-national-park": "Extensions",
 };
 
-const CATEGORY_ALIAS = { news: "Insight", insight: "Insight", insights: "Insight", awards: "Awards",
-  award: "Awards", press: "Press", media: "Press", "in-the-press": "Press", studio: "Studio",
-  practice: "Studio", projects: "Projects", project: "Projects" };
+const CATEGORY_ALIAS = {
+  extensions: "Extensions",
+  "new-build": "New Build",
+  education: "Education",
+  commercial: "Commercial",
+  uncategorised: "General",
+};
 
 let _cache = null;
 function categoryIndex(sql) {
@@ -52,11 +56,14 @@ function categoryIndex(sql) {
 
 export function newsCategory(sql, postId) {
   const { terms, ttById, rel } = categoryIndex(sql);
+  let result = "General";
   for (const ttId of rel.get(postId) ?? []) {
     const tt = ttById.get(ttId);
     if (!tt) continue;
     const slug = (terms.get(tt.term_id)?.slug || "").toLowerCase();
-    if (CATEGORY_ALIAS[slug]) return CATEGORY_ALIAS[slug];
+    const mapped = CATEGORY_ALIAS[slug];
+    if (mapped && mapped !== "General") return mapped; // specific category wins immediately
+    if (mapped === "General") result = "General";      // record fallback but keep scanning
   }
-  return "Insight";
+  return result;
 }

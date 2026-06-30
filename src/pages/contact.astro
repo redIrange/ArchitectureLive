@@ -63,10 +63,10 @@ import TextLink from "../components/ui/TextLink.astro";
         <div class="c-group">
           <div class="c-group-eyebrow">Find us online</div>
           <div class="c-social">
-            <a href="https://www.houzz.co.uk" class="c-social-pill" rel="noopener noreferrer" target="_blank">Houzz</a>
-            <a href="https://www.homify.co.uk" class="c-social-pill" rel="noopener noreferrer" target="_blank">Homify</a>
-            <a href="https://www.linkedin.com" class="c-social-pill" rel="noopener noreferrer" target="_blank">LinkedIn</a>
-            <a href="https://www.instagram.com" class="c-social-pill" rel="noopener noreferrer" target="_blank">Instagram</a>
+            <a href="https://www.houzz.co.uk" class="c-social-link" rel="noopener noreferrer" target="_blank">Houzz</a>
+            <a href="https://www.homify.co.uk" class="c-social-link" rel="noopener noreferrer" target="_blank">Homify</a>
+            <a href="https://www.linkedin.com" class="c-social-link" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+            <a href="https://www.instagram.com" class="c-social-link" rel="noopener noreferrer" target="_blank">Instagram</a>
           </div>
         </div>
 
@@ -205,32 +205,25 @@ import TextLink from "../components/ui/TextLink.astro";
   line-height: 1.6;
 }
 
-/* ── Social pills ────────────────────────────────────────────────── */
+/* ── Social links ────────────────────────────────────────────────── */
 .c-social {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm);
+  gap: var(--space-lg);
   justify-content: center;
 }
 
-.c-social-pill {
+.c-social-link {
   font-family: var(--font-display);
   font-size: var(--type-caption-strong-size);
   font-weight: 600;
-  color: var(--color-indigo-slate);
+  color: var(--color-indigo-deep);
   text-decoration: none;
-  border: 1px solid var(--color-lavender);
-  border-radius: var(--radius-pill);
-  padding: 6px var(--space-md);
-  transition: background var(--duration-base) var(--ease-standard),
-              color var(--duration-base) var(--ease-standard),
-              border-color var(--duration-base) var(--ease-standard);
+  transition: color var(--duration-base) var(--ease-standard);
 }
 
-.c-social-pill:hover {
-  background: var(--color-lavender);
-  color: var(--color-indigo-deep);
-  border-color: var(--color-lavender);
+.c-social-link:hover {
+  color: var(--color-indigo-vivid);
 }
 
 /* ── Coverage ────────────────────────────────────────────────────── */

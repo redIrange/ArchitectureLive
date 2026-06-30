@@ -12,6 +12,7 @@ import { adjacent } from "../../lib/adjacent.mjs";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
 import Testimonial from "../../components/ui/Testimonial.astro";
+import Button from "../../components/ui/Button.astro";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects", (p) => !p.data.draft))
@@ -36,27 +37,18 @@ const { Content } = await render(project);
   active="projects"
 >
 
-  {/* ── Breadcrumb ───────────────────────────────────────────── */}
-  <Section surface="light" pad="var(--space-lg)">
-    <Container>
-      <nav class="detail-breadcrumb" aria-label="Breadcrumb">
-        <a href="/projects">Projects</a>
-        <span aria-hidden="true">/</span>
-        <span>{project.data.title}</span>
-      </nav>
-    </Container>
-  </Section>
-
-  {/* ── Hero — full-bleed image ───────────────────────────────── */}
-  <div class="detail-hero-wrap">
+  {/* ── Hero — full-bleed (94vh, slides under the glass header) ─ */}
+  <section class="detail-hero" aria-label={project.data.title}>
     <Image
       src={project.data.heroImage}
       alt={project.data.title}
-      widths={[800, 1200, 1600, 2400]}
+      widths={[800, 1200, 1920, 2560]}
       sizes="100vw"
-      class="detail-hero-img"
+      class="detail-hero__image"
+      loading="eager"
+      fetchpriority="high"
     />
-  </div>
+  </section>
 
   {/* ── Caption below hero — h1 lives here ───────────────────── */}
   <Section surface="light" pad="var(--space-xxl)">
@@ -153,7 +145,7 @@ const { Content } = await render(project);
           </a>
         )}
 
-        <a href="/contact" class="detail-enquire">Enquire about a project</a>
+        <Button href="/contact" variant="primary">Enquire about a project</Button>
 
         {next && (
           <a href={`/projects/${next}`} class="detail-prevnext-link detail-prevnext-link--next">
@@ -171,31 +163,16 @@ const { Content } = await render(project);
 </PageShell>
 
 <style>
-/* ── Breadcrumb ──────────────────────────────────────────────── */
-.detail-breadcrumb {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  font-family: var(--font-text);
-  font-size: var(--type-caption-size);
-  color: var(--color-grey-light);
-  padding-top: var(--space-md);
-}
-.detail-breadcrumb a {
-  color: var(--color-indigo-deep);
-  text-decoration: none;
-}
-.detail-breadcrumb a:hover { text-decoration: underline; }
-
 /* ── Full-bleed hero image ───────────────────────────────────── */
-.detail-hero-wrap {
-  width: 100%;
-  filter: drop-shadow(var(--shadow-image));
+.detail-hero {
+  margin-top: calc(-1 * var(--header-height));
+  height: 94vh;
+  overflow: hidden;
+  background: var(--color-charcoal);
 }
-.detail-hero-img {
+.detail-hero__image {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -407,21 +384,5 @@ const { Content } = await render(project);
 .detail-prevnext-link:hover .detail-prevnext-name {
   color: var(--color-indigo-vivid);
 }
-.detail-enquire {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 28px;
-  border-radius: var(--radius-pill);
-  background: var(--color-indigo-vivid);
-  color: var(--color-on-primary);
-  font-family: var(--font-display);
-  font-size: var(--type-button-large-size);
-  font-weight: 600;
-  text-decoration: none;
-  transition: background var(--duration-base) var(--ease-standard);
-}
-.detail-enquire:hover {
-  background: var(--color-indigo-deep);
-}
+
 </style>

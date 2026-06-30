@@ -2,13 +2,16 @@
 /**
  * Project detail page — ArchitectureLIVE
  * Port of ProjectDetail.jsx (ui_kits/website/ProjectDetail.jsx).
- * Sections: breadcrumb · hero · caption · facts · body+gallery bands · testimonial · prev/next.
- * Lightbox omitted — static site.
+ * Flow (design rhythm): hero · caption · [prose · image band · testimonial · image band · prose …] · facts · prev/next.
+ * The migrated body is parsed (project-body.mjs) to lift the inline testimonial and strip the
+ * title/sector echo, then prose groups are interleaved with gallery image bands. Lightbox omitted — static site.
  */
 import PageShell from "../../layouts/PageShell.astro";
 import { Image } from "astro:assets";
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
+import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import { adjacent } from "../../lib/adjacent.mjs";
+import { parseProjectBody, groupProse } from "../../lib/project-body.mjs";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
 import Testimonial from "../../components/ui/Testimonial.astro";
@@ -28,7 +31,42 @@ export async function getStaticPaths() {
 }
 
 const { project, prev, next, prevTitle, nextTitle } = Astro.props;
-const { Content } = await render(project);
+
+// Parse the migrated body: lift the inline testimonial (unless one is already in
+// frontmatter) and strip the title/sector echo, leaving clean prose paragraphs.
+const { testimonial: bodyTestimonial, prose } = parseProjectBody(project.body, {
+  hasFrontmatterTestimonial: !!project.data.testimonial,
+});
+const testimonial = project.data.testimonial ?? bodyTestimonial;
+
+// Render prose in 2-paragraph groups through Astro's own Markdown pipeline.
+const mdProcessor = await createMarkdownProcessor({});
+const proseHtml = await Promise.all(
+  groupProse(prose, 2).map(async (g) => (await mdProcessor.render(g)).code),
+);
+
+// Interleave: prose → image → (testimonial → image) → prose → image → …
+const gallery = [...project.data.gallery];
+let gi = 0;
+const nextImg = () => (gi < gallery.length ? gallery[gi++] : null);
+const seq = [];
+proseHtml.forEach((html, idx) => {
+  seq.push({ type: "prose", html });
+  if (idx === 0) {
+    const a = nextImg(); if (a) seq.push({ type: "image", img: a });
+    if (testimonial) {
+      seq.push({ type: "testimonial" });
+      const b = nextImg(); if (b) seq.push({ type: "image", img: b });
+    }
+  } else if (idx < proseHtml.length - 1) {
+    const a = nextImg(); if (a) seq.push({ type: "image", img: a });
+  }
+});
+if (!proseHtml.length && testimonial) {
+  seq.push({ type: "testimonial" });
+  const a = nextImg(); if (a) seq.push({ type: "image", img: a });
+}
+const leftover = gallery.slice(gi);
 ---
 
 <PageShell
@@ -58,33 +96,51 @@ const { Content } = await render(project);
     </div>
   </Section>
 
-  {/* ── Body — centred editorial prose ───────────────────────── */}
-  <Section surface="light" pad="var(--space-section)">
-    <div class="detail-prose-wrap">
-      <Content />
-    </div>
-  </Section>
+  {/* ── Body: prose · image bands · testimonial, interleaved ──── */}
+  {seq.map((item) => (
+    item.type === "prose" ? (
+      <Section surface="light" pad="var(--space-section)">
+        <div class="detail-prose-wrap" set:html={item.html} />
+      </Section>
+    ) : item.type === "image" ? (
+      <div class="detail-band">
+        <Image
+          src={item.img}
+          widths={[800, 1200, 1920, 2560]}
+          sizes="100vw"
+          alt={project.data.title}
+          class="detail-band-img"
+        />
+      </div>
+    ) : (
+      <Section surface="light" pad="var(--space-xl)">
+        <Container>
+          <Testimonial quote={testimonial.quote} author={testimonial.author} />
+        </Container>
+      </Section>
+    )
+  ))}
 
-  {/* ── Gallery — first 5 as full-width bands, rest as grid ──── */}
-  {project.data.gallery.slice(0, 5).map((img, i) => (
+  {/* ── Leftover gallery images ───────────────────────────────── */}
+  {leftover.length === 1 && (
     <div class="detail-band">
       <Image
-        src={img}
-        widths={[800, 1200, 1600, 2400]}
+        src={leftover[0]}
+        widths={[800, 1200, 1920, 2560]}
         sizes="100vw"
-        alt={`${project.data.title} — image ${i + 1}`}
+        alt={project.data.title}
         class="detail-band-img"
       />
     </div>
-  ))}
-  {project.data.gallery.length > 5 && (
+  )}
+  {leftover.length > 1 && (
     <div class="detail-gallery-grid">
-      {project.data.gallery.slice(5).map((img, i) => (
+      {leftover.map((img, i) => (
         <Image
           src={img}
           widths={[400, 700, 1000]}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          alt={`${project.data.title} — image ${i + 6}`}
+          alt={`${project.data.title} — image ${i + 1}`}
           class="detail-gallery-grid-img"
         />
       ))}
@@ -118,18 +174,6 @@ const { Content } = await render(project);
       </div>
     </Container>
   </Section>
-
-  {/* ── Testimonial (conditional) ─────────────────────────────── */}
-  {project.data.testimonial && (
-    <Section surface="light" pad="var(--space-section)">
-      <Container>
-        <Testimonial
-          quote={project.data.testimonial.quote}
-          author={project.data.testimonial.author}
-        />
-      </Container>
-    </Section>
-  )}
 
   {/* ── Prev / Next ──────────────────────────────────────────── */}
   <Section surface="alt" pad="var(--space-xxl)">

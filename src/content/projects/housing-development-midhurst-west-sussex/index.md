@@ -23,8 +23,3 @@ The building orientation follows the principles of Passivhaus to benefit from so
 architect
 
 ArchitectureLIVE
-
-[show all](https://www.architecturelive.co.uk/projects/#filter=All "Private")  
-[new build](https://www.architecturelive.co.uk/projects/#filter=new%20build "New Build")  
-[extensions](https://www.architecturelive.co.uk/projects/#filter=extensions "Extensions")  
-[education](https://www.architecturelive.co.uk/projects/#filter=education "Education")

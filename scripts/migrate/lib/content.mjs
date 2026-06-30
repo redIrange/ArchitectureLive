@@ -21,6 +21,11 @@ export function convert(postContent) {
     .replace(/\[\/?et_pb_[^\]]*\]/g, "")            // drop Divi wrappers
     .replace(/\[\/?[a-z_]+[^\]]*\]/g, "");          // drop any other shortcodes
 
-  const markdown = td.turndown(html).replace(/\n{3,}/g, "\n\n").trim();
+  // Strip old WordPress projects-filter nav links (UI chrome, not editorial content).
+  // These look like: [label](https://...#filter=something "title")
+  const markdown = td.turndown(html)
+    .replace(/\[[^\]]*\]\([^)]*#filter=[^)]*\)/g, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
   return { markdown, galleryIds: [...new Set(galleryIds)], videoUrls };
 }

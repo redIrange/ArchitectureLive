@@ -13,4 +13,5 @@ test("converts a Divi project: gallery ids + clean markdown, no shortcodes", () 
   assert.deepEqual(galleryIds, ["5728", "8013", "8686", "6822", "4522"]);
   assert.ok(!markdown.includes("[et_pb"), "no Divi shortcodes remain");
   assert.ok(/Passivhaus/i.test(markdown), "prose preserved");
+  assert.ok(!markdown.includes("#filter="), "no WP projects-filter nav links remain");
 });

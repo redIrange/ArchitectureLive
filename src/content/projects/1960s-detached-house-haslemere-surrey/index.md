@@ -43,8 +43,3 @@ engineer
 photographer
 
 [Chris Murphy](https://www.chrismurphy.london/)
-
-[show all](https://www.architecturelive.co.uk/projects/#filter=All "Private")  
-[new build](https://www.architecturelive.co.uk/projects/#filter=new%20build "New Build")  
-[extensions](https://www.architecturelive.co.uk/projects/#filter=extensions "Extensions")  
-[education](https://www.architecturelive.co.uk/projects/#filter=education "Education")

@@ -22,7 +22,7 @@ export const SECTOR_BY_SLUG = {
   "1960s-house-haslemere-surrey": "Extensions",
   "1960s-house-lodsworth-west-sussex": "Extensions",
   "arts-crafts-home-haslemere-surrey": "Extensions",
-  "country-house-cranleigh-surrey": "Extensions",
+  "country-house-cranleigh-surrey": "New Build",
   "country-house-lodsworth-west-sussex": "Extensions",
   "listed-country-house-chiddingfold-surrey": "Extensions",
   "period-house-haslemere-surrey": "Extensions",

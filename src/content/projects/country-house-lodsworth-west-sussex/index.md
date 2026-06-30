@@ -57,8 +57,3 @@ staircase fabricator
 photographer
 
 [Chris Murphy](https://www.chrismurphy.london/)
-
-[remodelling & extensions](https://www.architecturelive.co.uk/projects/#filter=extensions "Extensions")  
-[new build](https://www.architecturelive.co.uk/projects/#filter=new%20build "New Build")  
-[education](https://www.architecturelive.co.uk/projects/#filter=education "Education")  
-[show all](https://www.architecturelive.co.uk/projects/#filter=All "Private")

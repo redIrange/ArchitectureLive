@@ -1,6 +1,6 @@
 ---
 title: "Country House, Cranleigh, Surrey"
-sector: "Extensions"
+sector: "New Build"
 location: "Cranleigh, Surrey"
 status: "Completed"
 year: 2020
@@ -33,8 +33,3 @@ Building integrated photovoltaics (BIPV) will provide the necessary solar protec
 architect
 
 ArchitectureLIVE
-
-[show all](https://www.architecturelive.co.uk/projects/#filter=All "Private")  
-[new build](https://www.architecturelive.co.uk/projects/#filter=new%20build "New Build")  
-[extensions](https://www.architecturelive.co.uk/projects/#filter=extensions "Extensions")  
-[education](https://www.architecturelive.co.uk/projects/#filter=education "Education")

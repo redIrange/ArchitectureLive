@@ -1,0 +1,381 @@
+---
+/**
+ * Contact page — ArchitectureLIVE
+ * Port of Contact.jsx (ui_kits/website/Contact.jsx).
+ * The enquiry form has been removed entirely per deliberate decision.
+ * Contact actions (phone, email, address) replace the form column.
+ * cta={false} — suppresses the CtaBand that links to /contact (this IS /contact).
+ */
+import PageShell from "../layouts/PageShell.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+---
+
+<PageShell
+  title="Contact — ArchitectureLIVE"
+  description="Get in touch with ArchitectureLIVE. Call, email, or visit our studio in Fernhurst, Haslemere, Surrey."
+  active="contact"
+  cta={false}
+>
+
+  {/* ── Hero header ──────────────────────────────────────────── */}
+  <Section surface="light" pad="var(--space-xxl)">
+    <Container>
+      <div class="contact-header">
+        <div class="contact-eyebrow">Contact</div>
+        <h1 class="contact-headline">Let's talk</h1>
+      </div>
+      <p class="contact-lead">
+        Planning an extension, a new build or a project for your school or business? Give us a call or drop us an email — we'd love to hear about it.
+      </p>
+    </Container>
+  </Section>
+
+  {/* ── Contact content ──────────────────────────────────────── */}
+  <Section surface="alt" pad="var(--space-section)" style="padding-top:var(--space-xl);">
+    <Container>
+      <div class="al-contact">
+
+        {/* ── Prominent contact actions (replaces form) ───────── */}
+        <div class="contact-actions">
+
+          {/* Phone */}
+          <div class="contact-action-item">
+            <div class="contact-action-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="contact-action-content">
+              <div class="contact-action-label">Call the studio</div>
+              <a href="tel:+441428652018" class="contact-action-link contact-action-link--primary">
+                +44 1428 652 018
+              </a>
+              <div class="contact-action-note">Mon–Fri, 9am – 5.30pm</div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div class="contact-divider" aria-hidden="true"></div>
+
+          {/* Email */}
+          <div class="contact-action-item">
+            <div class="contact-action-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <polyline points="2,4 12,13 22,4"/>
+              </svg>
+            </div>
+            <div class="contact-action-content">
+              <div class="contact-action-label">Email us</div>
+              <a href="mailto:info@architecturelive.co.uk" class="contact-action-link contact-action-link--primary">
+                info@architecturelive.co.uk
+              </a>
+              <div class="contact-action-note">We reply within two working days</div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div class="contact-divider" aria-hidden="true"></div>
+
+          {/* Address */}
+          <div class="contact-action-item">
+            <div class="contact-action-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="contact-action-content">
+              <div class="contact-action-label">Visit us</div>
+              <address class="contact-address">
+                ArchitectureLIVE<br />
+                Tall Trees, The Cylinders<br />
+                Fernhurst, Haslemere<br />
+                Surrey GU27 3EL
+              </address>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div class="contact-divider" aria-hidden="true"></div>
+
+          {/* Social */}
+          <div class="contact-social">
+            <div class="contact-action-label">Find us online</div>
+            <div class="contact-social-links">
+              <a href="https://www.houzz.co.uk" class="contact-social-link" rel="noopener noreferrer" target="_blank">Houzz</a>
+              <a href="https://www.homify.co.uk" class="contact-social-link" rel="noopener noreferrer" target="_blank">Homify</a>
+              <a href="https://www.linkedin.com" class="contact-social-link" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+              <a href="https://www.instagram.com" class="contact-social-link" rel="noopener noreferrer" target="_blank">Instagram</a>
+            </div>
+          </div>
+
+        </div>
+
+        {/* ── Aside: map + working area ────────────────────────── */}
+        <aside class="contact-aside">
+
+          {/* Map */}
+          <div class="contact-map-wrap">
+            <iframe
+              title="ArchitectureLIVE studio location — Fernhurst, Haslemere, Surrey"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-0.7700%2C51.0300%2C-0.6600%2C51.0800&layer=mapnik&marker=51.0520%2C-0.7145"
+              width="100%"
+              height="300"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              style="border:0;display:block;border-radius:var(--radius-md);"
+            ></iframe>
+            <a
+              href="https://www.openstreetmap.org/?mlat=51.0520&mlon=-0.7145#map=14/51.0520/-0.7145"
+              class="contact-map-credit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View larger map
+            </a>
+          </div>
+
+          {/* Working area */}
+          <div class="contact-coverage">
+            <div class="contact-coverage-eyebrow">Working across</div>
+            <p class="contact-coverage-text">
+              Surrey &middot; West Sussex &middot; Hampshire &middot; Berkshire &middot; South Downs National Park
+            </p>
+          </div>
+
+        </aside>
+
+      </div>
+    </Container>
+  </Section>
+
+</PageShell>
+
+<style>
+/* ── Header ─────────────────────────────────────────────────────── */
+.contact-header {
+  margin-bottom: var(--space-lg);
+}
+
+.contact-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: 14px;
+}
+
+.contact-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+
+.contact-lead {
+  max-width: 52ch;
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-lead-airy-size);
+  line-height: 1.6;
+  color: var(--color-grey-mid);
+}
+
+/* ── Two-column grid ─────────────────────────────────────────────── */
+.al-contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .al-contact {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Contact actions (left column) ──────────────────────────────── */
+.contact-actions {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: var(--border-hairline);
+  padding: var(--space-xxl);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.contact-action-item {
+  display: flex;
+  gap: var(--space-lg);
+  padding: var(--space-xl) 0;
+  align-items: flex-start;
+}
+
+.contact-action-item:first-child {
+  padding-top: 0;
+}
+
+.contact-action-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--color-lavender);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-indigo-deep);
+}
+
+.contact-action-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.contact-action-label {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-purple);
+}
+
+.contact-action-link {
+  text-decoration: none;
+  font-family: var(--font-text);
+  transition: color var(--duration-base) var(--ease-standard);
+}
+
+.contact-action-link--primary {
+  font-size: var(--type-tagline-size);
+  font-weight: 600;
+  color: var(--color-indigo-deep);
+  line-height: 1.3;
+  word-break: break-all;
+}
+
+.contact-action-link--primary:hover {
+  color: var(--color-indigo-vivid);
+}
+
+.contact-action-note {
+  font-family: var(--font-text);
+  font-size: var(--type-fine-print-size);
+  color: var(--color-grey-light);
+  margin-top: 2px;
+}
+
+.contact-address {
+  font-style: normal;
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
+.contact-divider {
+  height: 1px;
+  background: var(--color-hairline);
+}
+
+/* ── Social row ──────────────────────────────────────────────────── */
+.contact-social {
+  padding-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.contact-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.contact-social-link {
+  font-family: var(--font-display);
+  font-size: var(--type-caption-strong-size);
+  font-weight: 600;
+  color: var(--color-indigo-slate);
+  text-decoration: none;
+  border: 1px solid var(--color-lavender);
+  border-radius: var(--radius-pill);
+  padding: 6px var(--space-md);
+  transition: background var(--duration-base) var(--ease-standard),
+              color var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard);
+}
+
+.contact-social-link:hover {
+  background: var(--color-lavender);
+  color: var(--color-indigo-deep);
+  border-color: var(--color-lavender);
+}
+
+/* ── Aside (right column) ────────────────────────────────────────── */
+.contact-aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.contact-map-wrap {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: var(--border-hairline);
+  box-shadow: var(--shadow-card);
+}
+
+.contact-map-credit {
+  display: block;
+  font-family: var(--font-text);
+  font-size: var(--type-fine-print-size);
+  color: var(--color-grey-light);
+  padding: var(--space-xs) var(--space-sm);
+  text-decoration: none;
+  background: var(--color-white);
+  text-align: right;
+  transition: color var(--duration-base) var(--ease-standard);
+}
+
+.contact-map-credit:hover {
+  color: var(--color-indigo-deep);
+}
+
+.contact-coverage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.contact-coverage-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-purple);
+}
+
+.contact-coverage-text {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+  color: var(--color-grey-mid);
+}
+</style>

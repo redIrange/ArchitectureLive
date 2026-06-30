@@ -17,16 +17,16 @@ We started designing with SIPs, [Structural Insulated Panels](https://www.kingsp
 
 Ultimately, SIPs are a really cost effective way of constructing exciting spaces at an unmatched speed, capable of become something _significant_.
 
-![](./g01.jpg)
+![SIPs stretch budgets](./g01.jpg)
 
-![](./g02.jpg)
+![SIPs stretch budgets](./g02.jpg)
 
-![](./g03.jpg)
+![SIPs stretch budgets](./g03.jpg)
 
-![](./g04.jpg)
+![SIPs stretch budgets](./g04.jpg)
 
-![](./g05.jpg)
+![SIPs stretch budgets](./g05.jpg)
 
-![](./g06.jpg)
+![SIPs stretch budgets](./g06.jpg)
 
-![](./g07.jpg)
+![SIPs stretch budgets](./g07.jpg)

@@ -11,4 +11,4 @@ Work has restarted on our contemporary home extension to a 1960s property in Has
 
 To read more on this project click [here](https://www.architecturelive.co.uk/2019/05/planning-approved-for-contemporary-extension-in-haslemere-surrey/)​.
 
-![](./g01.jpg)
+![Construction work recommences for contemporary extension in Haslemere, Surrey](./g01.jpg)

@@ -13,10 +13,10 @@ This extensive renovation and extension of an arts & crafts family home is neari
 
 To read more about this project, click [here](https://www.architecturelive.co.uk/2021/06/a-room-with-a-view-dorking-surrey/).
 
-![](./g01.jpg)
+![Glazing installation takes place at extension project in Dorking, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Glazing installation takes place at extension project in Dorking, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Glazing installation takes place at extension project in Dorking, Surrey](./g03.jpg)
 
-![](./g04.jpg)
+![Glazing installation takes place at extension project in Dorking, Surrey](./g04.jpg)

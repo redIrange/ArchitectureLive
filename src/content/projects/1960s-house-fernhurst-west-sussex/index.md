@@ -16,7 +16,7 @@ draft: false
 
 ### _\- Oscar, age 10, Fernhurst_
 
-# 1960s House
+## 1960s House
 
 ## Remodelling & Extension, Fernhurst, West Sussex
 

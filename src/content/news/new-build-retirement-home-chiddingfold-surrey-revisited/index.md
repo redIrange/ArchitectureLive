@@ -19,8 +19,8 @@ The garden design, in part yet to be realised, includes pergolas for undercover 
 
 ​
 
-![](./g01.jpg)
+![New build retirement home, Chiddingfold Surrey, revisited](./g01.jpg)
 
-![](./g02.jpg)
+![New build retirement home, Chiddingfold Surrey, revisited](./g02.jpg)
 
-![](./g03.jpg)
+![New build retirement home, Chiddingfold Surrey, revisited](./g03.jpg)

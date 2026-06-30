@@ -13,10 +13,10 @@ All existing brickwork walls have been rendered, with the new extension forming 
 
 The new master bedroom suite features a polished plaster bathroom with ambient LED lighting in perimeter shadow gaps. The new bedroom is orientated towards far-reaching views with a full height corner glazed screen accessing the roof terrace. Ample daylight and beautiful views have assisted to creation of these dramatic new spaces.
 
-![](./g01.jpg)
+![Dramatic transformation at 1960s Detached House, Haslemere, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Dramatic transformation at 1960s Detached House, Haslemere, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Dramatic transformation at 1960s Detached House, Haslemere, Surrey](./g03.jpg)
 
-![](./g04.jpg)
+![Dramatic transformation at 1960s Detached House, Haslemere, Surrey](./g04.jpg)

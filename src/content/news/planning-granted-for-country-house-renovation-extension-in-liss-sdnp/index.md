@@ -15,4 +15,4 @@ The new contemporary extensions feature generous westerly glazing to take in the
 
 ​
 
-![](./g01.jpg)
+![Planning granted for country house renovation & extension in Liss, SDNP](./g01.jpg)

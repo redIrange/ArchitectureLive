@@ -13,6 +13,6 @@ Kingspan’s Structural Insulated Panels are made up of rigid polyurethane insul
 
 ​
 
-![](./g01.jpg)
+![Near-Passivhaus Annex - SIPs Day 3](./g01.jpg)
 
-![](./g02.jpg)
+![Near-Passivhaus Annex - SIPs Day 3](./g02.jpg)

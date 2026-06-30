@@ -35,10 +35,10 @@ A green roof and a sleek, metal-framed glass canopy to highlight the new entranc
 
 This project showcases how thoughtful architectural design can modernise a chalet bungalow, enhancing its connection to the landscape while delivering a beautiful, functional, and sustainable home for the future.
 
-![](./g01.jpg)
+![Planning granted for chalet bungalow extension and remodelling, Liphook, East Hampshire](./g01.jpg)
 
-![](./g02.jpg)
+![Planning granted for chalet bungalow extension and remodelling, Liphook, East Hampshire](./g02.jpg)
 
-![](./g03.jpg)
+![Planning granted for chalet bungalow extension and remodelling, Liphook, East Hampshire](./g03.jpg)
 
-![](./g04.jpg)
+![Planning granted for chalet bungalow extension and remodelling, Liphook, East Hampshire](./g04.jpg)

@@ -7,6 +7,12 @@ import { convert, cleanExcerpt } from "./lib/content.mjs";
 import { SECTOR_BY_SLUG } from "./lib/taxonomy.mjs";
 import { extractRawImages, normalizeImages } from "./lib/images.mjs";
 
+// Curated homepage featured slugs — kept here so re-runs don't silently un-curate.
+const FEATURED_SLUGS = new Set([
+  "near-passivhaus-office-extension", "listed-country-house-chiddingfold-surrey",
+  "6th-form-centre-newbury-west-berkshire", "restaurant-duke-of-york-square-london",
+]);
+
 const sql = extractOne(ARCHIVE, "database.sql").toString("utf8");
 const posts = rowObjects(sql, "SERVMASK_PREFIX_posts");
 const metaDesc = new Map(rowObjects(sql, "SERVMASK_PREFIX_postmeta")
@@ -26,23 +32,25 @@ const items = projects.map((p) => {
   const { markdown, galleryIds } = convert(p.post_content);
   const heroId = thumbs.get(p.ID);
   const heroIds = heroId ? [heroId] : galleryIds.slice(0, 1);
-  return { p, slug: p.post_name, markdown, galleryIds, heroIds };
+  // Exclude the hero image from the gallery to avoid duplicating hero-01 as g01.
+  const bodyGalleryIds = galleryIds.filter((id) => id !== heroIds[0]);
+  return { p, slug: p.post_name, markdown, galleryIds, heroIds, bodyGalleryIds };
 });
-const allIds = items.flatMap((it) => [...it.heroIds, ...it.galleryIds]);
+const allIds = items.flatMap((it) => [...it.heroIds, ...it.bodyGalleryIds]);
 
 // ONE archive pass for every project image (see Task 6 timing rationale).
 const tmpDir = "scripts/migrate/.raw-projects";
 const raw = extractRawImages(ARCHIVE, attMap, allIds, tmpDir);
 
 for (const it of items) {
-  const { p, slug, markdown, galleryIds, heroIds } = it;
+  const { p, slug, markdown, heroIds, bodyGalleryIds } = it;
   const dir = `src/content/projects/${slug}`;
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(dir, { recursive: true });
 
   const heroFiles = await normalizeImages(raw, heroIds, dir, "hero-");
   const heroName = heroFiles[0] ?? null;
-  const galleryFiles = await normalizeImages(raw, galleryIds, dir, "g");
+  const galleryFiles = await normalizeImages(raw, bodyGalleryIds, dir, "g");
   if (!heroName && galleryFiles.length === 0) console.warn(`  ! ${slug}: no images resolved`);
 
   const title = (p.post_title || slug).replace(/&amp;/g, "&");
@@ -61,7 +69,7 @@ for (const it of items) {
     heroName ? `heroImage: ${yaml("./" + heroName)}` : `# heroImage: MISSING`,
     `gallery: [${galleryFiles.map((f) => yaml("./" + f)).join(", ")}]`,
     `excerpt: ${yaml(excerpt)}`,
-    `featured: false`,
+    `featured: ${FEATURED_SLUGS.has(slug)}`,
     `draft: false`,
     "---",
     "",

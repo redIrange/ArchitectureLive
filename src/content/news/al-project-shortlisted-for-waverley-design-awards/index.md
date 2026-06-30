@@ -15,4 +15,4 @@ We will bring you further details on this competition in the New Year, including
 
 Click [here](https://www.architecturelive.co.uk/projects/period-house-haslemere-surrey/) to read more about this project.
 
-![](./g01.jpg)
+![AL project shortlisted for Waverley Design Awards!](./g01.jpg)

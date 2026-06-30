@@ -16,7 +16,7 @@ draft: false
 
 ### _\- Jamie, Duncton, West Sussex_
 
-# Grade I Listed Retirement Property
+## Grade I Listed Retirement Property
 
 ## Reconfiguration, Duncton, West Sussex
 

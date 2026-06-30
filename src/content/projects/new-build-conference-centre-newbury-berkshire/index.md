@@ -12,7 +12,7 @@ featured: false
 draft: false
 ---
 
-# Secondary School Extension
+## Secondary School Extension
 
 ## New conference centre with catering facilities, Newbury, Berkshire
 

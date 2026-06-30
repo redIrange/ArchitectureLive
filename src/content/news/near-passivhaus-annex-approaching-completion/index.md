@@ -11,8 +11,8 @@ We are thrilled that one of our projects, the remodelling and extension of a 196
 
 To read more about the project, click [here](https://www.architecturelive.co.uk/projects/near-passivhaus-office-extension/).
 
-![](./g01.jpg)
+![Near-Passivhaus Annex approaching completion](./g01.jpg)
 
-![](./g02.jpg)
+![Near-Passivhaus Annex approaching completion](./g02.jpg)
 
-![](./g03.jpg)
+![Near-Passivhaus Annex approaching completion](./g03.jpg)

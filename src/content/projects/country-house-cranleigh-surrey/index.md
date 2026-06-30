@@ -6,13 +6,13 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg"]
 excerpt: "A design for a contemporary, new-build, sustainable 5 bed house in the Surrey Green Belt featuring building-integrated photovoltaics."
 featured: false
 draft: false
 ---
 
-# Country House (for a meadow)
+## Country House (for a meadow)
 
 ## New Build Private Home, Cranleigh, Surrey
 

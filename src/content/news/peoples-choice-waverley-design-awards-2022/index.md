@@ -13,4 +13,4 @@ Last week, we were delighted to welcome the judges & team at our shortlisted pro
 
 Please take a moment and [vote](https://www.waverley.gov.uk/Services/Planning-and-building/Heritage-trees-and-design/Design/Design-Awards) for us if you agree that our team of visionary clients & architects, paired with highly skilled contractors has delivered an exciting transformation. Votes close on the 28th November 2022.
 
-![](./g01.jpg)
+![People's Choice Waverley Design Awards 2022](./g01.jpg)

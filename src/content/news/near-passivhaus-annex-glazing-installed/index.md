@@ -13,4 +13,4 @@ All openings have been fitted with polyester powder coated windows or doors. The
 
 One of the benefits of using SIPs at this time of the year was that despite the unreliable and very wet weather, the superstructure could be erected at such speed - just over 2 weeks - that it remained dry throughout, eliminating the need for any drying-out.
 
-![](./g01.jpg)
+![Near-Passivhaus Annex - glazing installed](./g01.jpg)

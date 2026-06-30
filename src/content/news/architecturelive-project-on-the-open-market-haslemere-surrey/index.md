@@ -19,34 +19,34 @@ The property benefits from a wrap around garden and private driveway, which have
 
 A note of caution, EPCs refer to the building regulation targets at the time of construction, but do not make allowances for the actual thermal performance of the specific building elements, whether higher or lower.
 
-![](./g01.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g01.jpg)
 
-![](./g02.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g02.jpg)
 
-![](./g03.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g03.jpg)
 
-![](./g04.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g04.jpg)
 
-![](./g05.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g05.jpg)
 
-![](./g06.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g06.jpg)
 
-![](./g07.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g07.jpg)
 
-![](./g08.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g08.jpg)
 
-![](./g09.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g09.jpg)
 
-![](./g10.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g10.jpg)
 
-![](./g11.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g11.jpg)
 
-![](./g12.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g12.jpg)
 
-![](./g13.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g13.jpg)
 
-![](./g14.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g14.jpg)
 
-![](./g15.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g15.jpg)
 
-![](./g16.jpg)
+![ArchitectureLIVE's project near Haslemere, Surrey on the open market](./g16.jpg)

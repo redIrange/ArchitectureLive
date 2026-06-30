@@ -46,4 +46,4 @@ fully accessible facilities with kitchenette & living area and covered outdoor s
 
 living & dining, teaching, fitness, green roof terrace and gardens, car sharing and parking
 
-![](./g01.jpg)
+![Our Concept for Multigenerational Living](./g01.jpg)

@@ -19,30 +19,30 @@ Since then much has changed. The last decade alone has seen vast advances in lum
 
 ​
 
-![](./g01.jpg)
+![Lighting Design](./g01.jpg)
 
-![](./g02.jpg)
+![Lighting Design](./g02.jpg)
 
-![](./g03.jpg)
+![Lighting Design](./g03.jpg)
 
-![](./g04.jpg)
+![Lighting Design](./g04.jpg)
 
-![](./g05.jpg)
+![Lighting Design](./g05.jpg)
 
-![](./g06.jpg)
+![Lighting Design](./g06.jpg)
 
-![](./g07.jpg)
+![Lighting Design](./g07.jpg)
 
-![](./g08.jpg)
+![Lighting Design](./g08.jpg)
 
-![](./g09.jpg)
+![Lighting Design](./g09.jpg)
 
-![](./g10.jpg)
+![Lighting Design](./g10.jpg)
 
-![](./g11.jpg)
+![Lighting Design](./g11.jpg)
 
-![](./g12.jpg)
+![Lighting Design](./g12.jpg)
 
-![](./g13.jpg)
+![Lighting Design](./g13.jpg)
 
-![](./g14.jpg)
+![Lighting Design](./g14.jpg)

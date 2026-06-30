@@ -17,4 +17,4 @@ The interior remodelling will provide a double-height entrance hall with feature
 
 ​
 
-![](./g01.jpg)
+![Energy efficient bungalow remodelling & extension receives planning in Haslemere, Surrey](./g01.jpg)

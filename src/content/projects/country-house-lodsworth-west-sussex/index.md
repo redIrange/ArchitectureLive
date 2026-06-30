@@ -6,7 +6,7 @@ status: "Completed"
 year: 2022
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg", "./g11.jpg", "./g12.jpg", "./g13.jpg", "./g14.jpg", "./g15.jpg", "./g16.jpg", "./g17.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg", "./g11.jpg", "./g12.jpg", "./g13.jpg", "./g14.jpg", "./g15.jpg", "./g16.jpg"]
 excerpt: "18C Country House Remodelling & Extension in Lodsworth, West Sussex, South Down National Park, with contemporary interior & lighting design."
 featured: false
 draft: false
@@ -16,7 +16,7 @@ draft: false
 
 ### _\- Rebecca & Dom, Lodsworth, West Sussex_
 
-# Country House
+## Country House
 
 ## Remodelling & Extension, Lodsworth, West Sussex
 

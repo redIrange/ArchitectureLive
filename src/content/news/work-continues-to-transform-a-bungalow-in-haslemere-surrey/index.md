@@ -13,16 +13,16 @@ As part of a low carbon heating strategy, this property will benefit from an air
 
 ​
 
-![](./g01.jpg)
+![Work continues to transform a bungalow in Haslemere, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Work continues to transform a bungalow in Haslemere, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Work continues to transform a bungalow in Haslemere, Surrey](./g03.jpg)
 
-![](./g04.jpg)
+![Work continues to transform a bungalow in Haslemere, Surrey](./g04.jpg)
 
-![](./g05.jpg)
+![Work continues to transform a bungalow in Haslemere, Surrey](./g05.jpg)
 
-![](./g06.jpg)
+![Work continues to transform a bungalow in Haslemere, Surrey](./g06.jpg)
 
-![](./g07.jpg)
+![Work continues to transform a bungalow in Haslemere, Surrey](./g07.jpg)

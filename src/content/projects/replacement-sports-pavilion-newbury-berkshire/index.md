@@ -12,7 +12,7 @@ featured: false
 draft: false
 ---
 
-# Sports Pavillion
+## Sports Pavillion
 
 ## Replacement Sports Pavilion, Newbury, Berkshire
 

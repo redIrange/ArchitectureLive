@@ -13,12 +13,12 @@ Front, side and rear extensions will replace dated dormers and open up the previ
 
 Significant energy efficiency improvements on the entire building fabric, integrated photovoltaics and the even distribution of daylight and cross ventilation will complete this transformation.
 
-![](./g01.jpg)
+![Planning permission granted for seafront property modernisation in Hill Head, Fareham](./g01.jpg)
 
-![](./g02.jpg)
+![Planning permission granted for seafront property modernisation in Hill Head, Fareham](./g02.jpg)
 
-![](./g03.jpg)
+![Planning permission granted for seafront property modernisation in Hill Head, Fareham](./g03.jpg)
 
-![](./g04.jpg)
+![Planning permission granted for seafront property modernisation in Hill Head, Fareham](./g04.jpg)
 
-![](./g05.jpg)
+![Planning permission granted for seafront property modernisation in Hill Head, Fareham](./g05.jpg)

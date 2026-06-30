@@ -25,4 +25,4 @@ Voting closes on Friday, February 15th at 5pm.
 
 Thank you for supporting us!
 
-![](./g01.jpg)
+![Please vote for ArchitectureLIVE!](./g01.jpg)

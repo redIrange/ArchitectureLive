@@ -23,12 +23,12 @@ Using examples of art through the ages by Roy Lichtenstein, Maurits Cornelis Esc
 
 ​
 
-![](./g01.jpg)
+![Supporting students at St Bartholomew's School](./g01.jpg)
 
-![](./g02.jpg)
+![Supporting students at St Bartholomew's School](./g02.jpg)
 
-![](./g03.jpg)
+![Supporting students at St Bartholomew's School](./g03.jpg)
 
-![](./g04.jpg)
+![Supporting students at St Bartholomew's School](./g04.jpg)
 
-![](./g05.jpg)
+![Supporting students at St Bartholomew's School](./g05.jpg)

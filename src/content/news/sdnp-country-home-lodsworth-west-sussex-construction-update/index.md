@@ -15,4 +15,4 @@ Can you guess the name of the bat pictured?
 
 ​
 
-![](./g01.jpg)
+![SDNP country home, Lodsworth, West Sussex, Construction update](./g01.jpg)

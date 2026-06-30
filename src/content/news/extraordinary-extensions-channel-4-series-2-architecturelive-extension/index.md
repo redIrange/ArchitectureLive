@@ -13,4 +13,4 @@ Presented by Tinie, this second instalment follows yet another set of extraordin
 
 Our project will be one of the retrospective reviews, aired in Series 2, Episode 4, on the 2nd of February 2024.
 
-![](./g01.jpg)
+![Extraordinary Extensions, Series 2 features our extension](./g01.jpg)

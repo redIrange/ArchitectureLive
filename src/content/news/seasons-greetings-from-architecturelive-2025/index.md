@@ -19,4 +19,4 @@ art work
 
 Evelyn Gratton
 
-![](./g01.jpg)
+![Season's Greetings from ArchitectureLIVE 2025](./g01.jpg)

@@ -6,13 +6,13 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg"]
 excerpt: "A project to transform and extend a 1950s detached house into a 4-bedroom, New England style inspired family home with open-plan living."
 featured: false
 draft: false
 ---
 
-# 1950s House
+## 1950s House
 
 ## Remodelling & Extensions, Lodsworth, West Sussex
 

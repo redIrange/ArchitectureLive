@@ -15,4 +15,4 @@ Powered by a ground source heat pump, a new plant room extension runs a low temp
 
 ​
 
-![](./g01.jpg)
+![Transformation taking shape as old meets new in Lodsworth, West Sussex](./g01.jpg)

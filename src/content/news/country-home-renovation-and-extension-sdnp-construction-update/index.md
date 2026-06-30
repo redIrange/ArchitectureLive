@@ -13,6 +13,6 @@ Little did we know that severe weather would further hamper progress at the begi
 
 As a consequence of this, and in view of increased surface water flooding and record rainfall intensities, our brief - to make this cottage renovation future proof - further expanded to include land drainage and storm water retention with a new western-end attenuation pond.
 
-![](./g01.jpg)
+![Country home renovation and extension, SDNP, construction update](./g01.jpg)
 
-![](./g02.jpg)
+![Country home renovation and extension, SDNP, construction update](./g02.jpg)

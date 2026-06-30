@@ -17,8 +17,8 @@ The original New Buildings & Developments category was split into new builds, ex
 
 Congratulations to our fellow winners!
 
-![](./g01.jpg)
+![Waverley Design Awards 2023 winner](./g01.jpg)
 
-![](./g02.jpg)
+![Waverley Design Awards 2023 winner](./g02.jpg)
 
-![](./g03.jpg)
+![Waverley Design Awards 2023 winner](./g03.jpg)

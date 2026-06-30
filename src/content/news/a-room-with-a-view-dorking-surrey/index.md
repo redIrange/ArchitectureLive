@@ -17,8 +17,8 @@ For this family home, given its views, the potential was clear from the onset an
 
 Due to the near Passivhaus thermal performance of the new extensions and further improvements to the existing, the north-facing building envelope will now perform well above building regulation standards, despite its orientation. The new north-facing glazing elements, therefore, celebrate a combination of factors - the views, cross ventilation and a new seasonal approach that adds variety and richness to family living.
 
-![](./g01.jpg)
+![A Room with a View, Dorking, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![A Room with a View, Dorking, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![A Room with a View, Dorking, Surrey](./g03.jpg)

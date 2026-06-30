@@ -14,6 +14,9 @@ test("converts a Divi project: gallery ids + clean markdown, no shortcodes", () 
   assert.ok(!markdown.includes("[et_pb"), "no Divi shortcodes remain");
   assert.ok(/Passivhaus/i.test(markdown), "prose preserved");
   assert.ok(!markdown.includes("#filter="), "no WP projects-filter nav links remain");
+  // No body H1 — page title is already <h1>; all body headings must be H2+
+  const h1Lines = markdown.split("\n").filter((l) => /^# /.test(l));
+  assert.equal(h1Lines.length, 0, `body H1 lines found: ${JSON.stringify(h1Lines)}`);
 });
 
 test("strips trailing credits block, preserves narrative prose", () => {

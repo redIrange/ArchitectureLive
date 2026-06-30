@@ -17,4 +17,4 @@ art work
 
 Evelyn Gratton
 
-![](./g01.jpg)
+![Season’s Greetings from ArchitectureLIVE 2024](./g01.jpg)

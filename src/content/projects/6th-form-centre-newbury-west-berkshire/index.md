@@ -12,7 +12,7 @@ featured: true
 draft: false
 ---
 
-# 6th Form Centre
+## 6th Form Centre
 
 ## Interior Design of Social & Independent Learning Centre, St Bartholomew's School, Newbury, West Berkshire
 

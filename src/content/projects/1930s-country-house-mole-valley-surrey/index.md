@@ -16,7 +16,7 @@ draft: false
 
 ### _\- Angela, Mole Valley, Surrey_
 
-# 1930s Country House
+## 1930s Country House
 
 ## Remodelling and Extension Mole Valley, Dorking, Surrey
 

@@ -17,12 +17,12 @@ The completely remodelled exterior boasts insulated render and artificial slate 
 
 Once completed, the large sun terrace and outdoor pool will provide a stunning backdrop for this rejuvenation project.
 
-![](./g01.jpg)
+![Country house remodelling nearing completion, Liss SDNP](./g01.jpg)
 
-![](./g02.jpg)
+![Country house remodelling nearing completion, Liss SDNP](./g02.jpg)
 
-![](./g03.jpg)
+![Country house remodelling nearing completion, Liss SDNP](./g03.jpg)
 
-![](./g04.jpg)
+![Country house remodelling nearing completion, Liss SDNP](./g04.jpg)
 
-![](./g05.jpg)
+![Country house remodelling nearing completion, Liss SDNP](./g05.jpg)

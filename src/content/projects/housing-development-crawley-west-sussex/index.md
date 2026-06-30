@@ -6,13 +6,13 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg"]
+gallery: []
 excerpt: "This is a residential development scheme replacing a single family dwelling in a suburban location."
 featured: false
 draft: false
 ---
 
-# Housing Development
+## Housing Development
 
 ## Crawley, West Sussex
 

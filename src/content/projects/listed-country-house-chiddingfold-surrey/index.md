@@ -6,7 +6,7 @@ status: "Completed"
 year: 2019
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg", "./g11.jpg", "./g12.jpg", "./g13.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg", "./g11.jpg", "./g12.jpg"]
 excerpt: "This Grade II listed country house underwent extensive renovations on the ground floor, as well as a sandstone-clad entrance and cloakroom extension."
 featured: true
 draft: false
@@ -16,7 +16,7 @@ draft: false
 
 ### _\- Norse Build_
 
-# Listed Country House
+## Listed Country House
 
 ## Remodelling & Extension, Chiddingfold, Surrey
 

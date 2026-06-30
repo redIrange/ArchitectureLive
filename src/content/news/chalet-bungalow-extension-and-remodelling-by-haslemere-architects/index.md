@@ -13,22 +13,22 @@ Thanks to Haslemere’s topography, an upside down house [once again](https://ww
 
 The building works also included a new [SIPs](https://kingspantimbersolutions.co.uk/sips/) lean-to entrance and the reroofing of an existing extension to open up the views from the back garden. All new building elements are clad in artificial slate tiles, delivering an unassuming and calm exterior for the soon to be new family hub.
 
-![](./g01.jpg)
+![Chalet bungalow extension & remodelling nearing completion by Haslemere architects](./g01.jpg)
 
-![](./g02.jpg)
+![Chalet bungalow extension & remodelling nearing completion by Haslemere architects](./g02.jpg)
 
-![](./g03.jpg)
+![Chalet bungalow extension & remodelling nearing completion by Haslemere architects](./g03.jpg)
 
-![](./g04.jpg)
+![Chalet bungalow extension & remodelling nearing completion by Haslemere architects](./g04.jpg)
 
-![](./g05.jpg)
+![Chalet bungalow extension & remodelling nearing completion by Haslemere architects](./g05.jpg)
 
-![](./g06.jpg)
+![Chalet bungalow extension & remodelling nearing completion by Haslemere architects](./g06.jpg)
 
-![](./g07.jpg)
+![Chalet bungalow extension & remodelling nearing completion by Haslemere architects](./g07.jpg)
 
-![](./g08.jpg)
+![Chalet bungalow extension & remodelling nearing completion by Haslemere architects](./g08.jpg)
 
-![](./g09.jpg)
+![Chalet bungalow extension & remodelling nearing completion by Haslemere architects](./g09.jpg)
 
-![](./g10.jpg)
+![Chalet bungalow extension & remodelling nearing completion by Haslemere architects](./g10.jpg)

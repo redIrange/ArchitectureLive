@@ -13,4 +13,4 @@ The existing property features generous room sizes and stunning views from the r
 
 The ground floor extensions will use matching brick and new brick on edge parapets to refer to the existing arts & craft details. The new cantilevered tile-hung gable extension will be executed with hidden gutters and down pipes to add a new contemporary aspect to the design, which will be complimented by a new structurally glazed entrance atrium cut into the existing cat-slide roof.
 
-![](./g01.jpg)
+![Planning granted for extension & renovation of 1930 vernacular family home, Dorking](./g01.jpg)

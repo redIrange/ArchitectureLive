@@ -13,10 +13,10 @@ First fix electrics are currently on the go and the reconstituted stone window s
 
 ​
 
-![](./g01.jpg)
+![Near Passivhaus timber-frame completed for new build retirement home in Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Near Passivhaus timber-frame completed for new build retirement home in Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Near Passivhaus timber-frame completed for new build retirement home in Surrey](./g03.jpg)
 
-![](./g04.jpg)
+![Near Passivhaus timber-frame completed for new build retirement home in Surrey](./g04.jpg)

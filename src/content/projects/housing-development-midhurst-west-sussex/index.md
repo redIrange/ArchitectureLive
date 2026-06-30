@@ -6,13 +6,13 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg"]
+gallery: []
 excerpt: "Masterplanning project for a new build, low energy, single family dwelling within a suburban setting in Midhurst, West Sussex"
 featured: false
 draft: false
 ---
 
-# Housing Development
+## Housing Development
 
 ## Masterplan, Midhurst, West Sussex
 

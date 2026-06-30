@@ -15,4 +15,4 @@ These Descender Fronts are the first to be installed in the UK and will allow th
 
 For more information on the restaurant, click [here](https://www.vardorestaurant.co.uk/).
 
-![](./g01.jpg)
+![The UK's first Kollegger Descender Fronts are now complete and in use](./g01.jpg)

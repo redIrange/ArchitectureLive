@@ -6,13 +6,13 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg"]
 excerpt: "As UK agent, we supported Kollegger Metallbau, to deliver an exclusive retractable facade system for the Duke of York Restaurant, London"
 featured: true
 draft: false
 ---
 
-# Duke of York Restaurant, London
+## Duke of York Restaurant, London
 
 ## The UK's first Descender Fronts
 

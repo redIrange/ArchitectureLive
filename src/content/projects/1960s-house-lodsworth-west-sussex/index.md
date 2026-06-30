@@ -6,7 +6,7 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg"]
 excerpt: "A project to totally transform and renovate a derelict 1960s detached house, providing contemporary, open plan living on the ground floor."
 featured: false
 draft: false
@@ -16,7 +16,7 @@ draft: false
 
 ### _\- Sonja, Lodsworth, West Sussex_
 
-# 1960s House
+## 1960s House
 
 ## Remodelling & Extension, Lodsworth, West Sussex
 

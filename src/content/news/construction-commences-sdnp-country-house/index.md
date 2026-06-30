@@ -19,4 +19,4 @@ Our design focusses on enhancing the original stone cottage character, whilst re
 
 ​
 
-![](./g01.jpg)
+![Construction commences for our SDNP country home transformation, Lodsworth, West Sussex](./g01.jpg)

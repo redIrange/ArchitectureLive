@@ -12,7 +12,7 @@ featured: false
 draft: false
 ---
 
-# Eco-friendly Retirement House
+## Eco-friendly Retirement House
 
 ## Sustainable New Build, Liss, Hampshire
 

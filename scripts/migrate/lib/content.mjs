@@ -48,6 +48,8 @@ export function convert(postContent) {
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 
-  const markdown = stripTrailingCredits(rawMarkdown);
+  // Demote body H1s to H2 — the page title is already rendered as <h1>.
+  // Only matches lines starting with exactly "# " (a single hash), never "## ".
+  const markdown = stripTrailingCredits(rawMarkdown).replace(/^# /gm, "## ");
   return { markdown, galleryIds: [...new Set(galleryIds)], videoUrls };
 }

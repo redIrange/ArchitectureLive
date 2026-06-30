@@ -15,4 +15,4 @@ Taking in our own autumnal studio views, what better way to start the day - with
 
 In the meantime, we will do some _daydreaming_.
 
-![](./g01.jpg)
+![Commission for new build, low-energy, sustainable home, Surrey](./g01.jpg)

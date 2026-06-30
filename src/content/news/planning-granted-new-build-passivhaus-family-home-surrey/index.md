@@ -15,8 +15,8 @@ In order to deliver a fully accessible layout for the open plan kitchen, dining 
 
 The proposed new materials are clay roof tiles, tile hanging and facing brickwork, typical of the area to sympathetically blend with the surrounding vernacular and woodland setting. The building has been designed using Passivhaus principles and will feature a carbon-positive timber frame superstructure such as SIPs (structurally insulated panels). The installation of a heat pump, photovoltaics and a rainwater harvesting system conclude our sustainable design.
 
-![](./g01.jpg)
+![Planning approved for new build Passivhaus family home, Rushmoor, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Planning approved for new build Passivhaus family home, Rushmoor, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Planning approved for new build Passivhaus family home, Rushmoor, Surrey](./g03.jpg)

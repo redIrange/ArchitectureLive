@@ -15,4 +15,4 @@ Our design will remodel an existing rear extension and compliment it with a furt
 
 A new holistic design approach will unite both the existing and the new, sympathetic to the original building.
 
-![](./g01.jpg)
+![Planning granted to remodel & extend a 1940s home, Haslemere, Surrey](./g01.jpg)

@@ -17,12 +17,12 @@ The exterior of the cottage features original stone walls on the ground floor, b
 
 Thermal improvements to the historic building envelope include interior hemp plaster, which retains a breathable wall construction and minimises the impact on the interior layout. The new open-plan extension will be completed with a render finish, a contemporary take on the cottage stone walls. And buttress blinker walls will protect the new glazing from neighbouring views. On the first floor, the new master bedroom suite will blend in with the later extensions, set back from the original building line and finished with new sympathetic tile hanging.
 
-![](./g01.jpg)
+![Cottage extension and remodelling, Pulborough, Horsham](./g01.jpg)
 
-![](./g02.jpg)
+![Cottage extension and remodelling, Pulborough, Horsham](./g02.jpg)
 
-![](./g03.jpg)
+![Cottage extension and remodelling, Pulborough, Horsham](./g03.jpg)
 
-![](./g04.jpg)
+![Cottage extension and remodelling, Pulborough, Horsham](./g04.jpg)
 
-![](./g05.jpg)
+![Cottage extension and remodelling, Pulborough, Horsham](./g05.jpg)

@@ -6,7 +6,7 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg"]
 excerpt: "A project to extend the ground floor of this workers cottage to provide a contemporary, open plan kitchen dining room allowing easy access to the garden."
 featured: false
 draft: false
@@ -16,7 +16,7 @@ draft: false
 
 ### _\- Steve, Rake, Hampshire_
 
-# Workers Cottage
+## Workers Cottage
 
 ## Contemporary Kitchen Extension, South Downs National Park
 

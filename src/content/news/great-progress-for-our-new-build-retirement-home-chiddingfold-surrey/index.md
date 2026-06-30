@@ -11,10 +11,10 @@ Substantial progress has been made with the construction of our new build retire
 
 Exterior brick work and reconstituted stone window surrounds are being constructed, whilst composite windows are due to be installed next week. For the interior, final decisions are being made on finishes.
 
-![](./g01.jpg)
+![Great progress for our new build retirement home, Chiddingfold, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Great progress for our new build retirement home, Chiddingfold, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Great progress for our new build retirement home, Chiddingfold, Surrey](./g03.jpg)
 
-![](./g04.jpg)
+![Great progress for our new build retirement home, Chiddingfold, Surrey](./g04.jpg)

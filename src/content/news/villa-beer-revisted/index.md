@@ -17,8 +17,8 @@ The subject of defined functions within an open-plan layout and the use of a vol
 
 Having been credited to be the most important example of Viennese living culture from the inter-war period, Josef Frank’s concept _“Haus als Weg und Platz“_ - the house as a journey and place, is something we too seek to implement in every project. The progression through the house, seemingly open plan (on the lower floors), is nevertheless carefully orchestrated to offer places to linger with restricted views that frame the desired connection to the garden and further connecting parts of the interior. Even the accentuation of the perspective view was used as an element of design.
 
-![](./g01.jpg)
+![Villa Beer visited](./g01.jpg)
 
-![](./g02.jpg)
+![Villa Beer visited](./g02.jpg)
 
-![](./g03.jpg)
+![Villa Beer visited](./g03.jpg)

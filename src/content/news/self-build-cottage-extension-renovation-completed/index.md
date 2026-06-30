@@ -19,12 +19,12 @@ The lowering of the existing cottage slab delivered a much improved floor to cei
 
 Replacement windows and doors throughout with newly proportioned panes, sympathetic to the period character of the property, and a new central heating system in addition to the existing wood-burning stove concluded this renovation resulting in an energy efficient property.
 
-![](./g01.jpg)
+![Self Build Cottage Extension & Renovation Completed](./g01.jpg)
 
-![](./g02.jpg)
+![Self Build Cottage Extension & Renovation Completed](./g02.jpg)
 
-![](./g03.jpg)
+![Self Build Cottage Extension & Renovation Completed](./g03.jpg)
 
-![](./g04.jpg)
+![Self Build Cottage Extension & Renovation Completed](./g04.jpg)
 
-![](./g05.jpg)
+![Self Build Cottage Extension & Renovation Completed](./g05.jpg)

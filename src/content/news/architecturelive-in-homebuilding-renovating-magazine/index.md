@@ -13,6 +13,6 @@ This is one of our earlier designs and we are delighted that it continues to ins
 
 To read more about the project, click [here](https://www.architecturelive.co.uk/projects/1960s-house-fernhurst-west-sussex/).
 
-![](./g01.jpg)
+![ArchitectureLIVE published in Homebuilding & Renovating magazine](./g01.jpg)
 
-![](./g02.jpg)
+![ArchitectureLIVE published in Homebuilding & Renovating magazine](./g02.jpg)

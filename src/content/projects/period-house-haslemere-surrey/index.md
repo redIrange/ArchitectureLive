@@ -16,7 +16,7 @@ draft: false
 
 ### _\- Rebecca and Jim, Haslemere_
 
-# Period House
+## Period House
 
 ## Extension and Alterations, Haslemere, Surrey
 

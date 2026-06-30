@@ -13,20 +13,20 @@ The distinctive plywood kitchen with a new picture window opens up views and fra
 
 The new master bedroom suite opens up to Haslemere's stunning autumnal views with corner glazing under the vaulted ceiling. The frameless balustrade is due to be installed next.
 
-![](./g01.jpg)
+![Extension & Refurbishment of 1960s Detached House, Haslemere, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Extension & Refurbishment of 1960s Detached House, Haslemere, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Extension & Refurbishment of 1960s Detached House, Haslemere, Surrey](./g03.jpg)
 
-![](./g04.jpg)
+![Extension & Refurbishment of 1960s Detached House, Haslemere, Surrey](./g04.jpg)
 
-![](./g05.jpg)
+![Extension & Refurbishment of 1960s Detached House, Haslemere, Surrey](./g05.jpg)
 
-![](./g06.jpg)
+![Extension & Refurbishment of 1960s Detached House, Haslemere, Surrey](./g06.jpg)
 
-![](./g07.jpg)
+![Extension & Refurbishment of 1960s Detached House, Haslemere, Surrey](./g07.jpg)
 
-![](./g08.jpg)
+![Extension & Refurbishment of 1960s Detached House, Haslemere, Surrey](./g08.jpg)
 
-![](./g09.jpg)
+![Extension & Refurbishment of 1960s Detached House, Haslemere, Surrey](./g09.jpg)

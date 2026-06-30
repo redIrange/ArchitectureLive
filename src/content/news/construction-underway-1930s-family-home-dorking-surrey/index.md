@@ -15,20 +15,20 @@ The existing porch, hallway and landing have been redesigned as one open-plan sp
 
 The shell of the extensions is nearing completion, with the ground floor masonry walls and steel frame now cantilevering the first floor timber-framed gable. Internally, a new family bathroom layout has been formed and the new master bedroom suite is taking shape.
 
-![](./g01.jpg)
+![Extension & remodelling to 1930s family home, Dorking, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Extension & remodelling to 1930s family home, Dorking, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Extension & remodelling to 1930s family home, Dorking, Surrey](./g03.jpg)
 
-![](./g04.jpg)
+![Extension & remodelling to 1930s family home, Dorking, Surrey](./g04.jpg)
 
-![](./g05.jpg)
+![Extension & remodelling to 1930s family home, Dorking, Surrey](./g05.jpg)
 
-![](./g06.jpg)
+![Extension & remodelling to 1930s family home, Dorking, Surrey](./g06.jpg)
 
-![](./g07.jpg)
+![Extension & remodelling to 1930s family home, Dorking, Surrey](./g07.jpg)
 
-![](./g08.jpg)
+![Extension & remodelling to 1930s family home, Dorking, Surrey](./g08.jpg)
 
-![](./g09.jpg)
+![Extension & remodelling to 1930s family home, Dorking, Surrey](./g09.jpg)

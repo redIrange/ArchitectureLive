@@ -20,4 +20,4 @@ art photography 
 
 Evelyn Gratton
 
-![](./g01.jpg)
+![Season's Greetings from ArchitectureLIVE](./g01.jpg)

@@ -11,8 +11,8 @@ In July we took a study trip to the Library & Learning Centre at the Vienna Uni
 
 The centre, which spans an area of 28,000m2, is home to a library, learning support services, an auditorium, workspaces and classrooms as well as a bookshop and cafe.  Definitely worth a visit!
 
-![](./g01.jpg)
+![Re-visiting Zaha Hadid's Library & Learning Centre in Vienna](./g01.jpg)
 
-![](./g02.jpg)
+![Re-visiting Zaha Hadid's Library & Learning Centre in Vienna](./g02.jpg)
 
-![](./g03.jpg)
+![Re-visiting Zaha Hadid's Library & Learning Centre in Vienna](./g03.jpg)

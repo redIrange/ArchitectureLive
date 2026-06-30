@@ -6,7 +6,7 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg", "./g11.jpg", "./g12.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg", "./g11.jpg"]
 excerpt: "A contemporary single storey extension to a period property in Haslemere, Surrey featuring a glazed corner slider."
 featured: false
 draft: false
@@ -16,7 +16,7 @@ draft: false
 
 ### _\- Vicky & Tony, Haslemere_
 
-# Period Property
+## Period Property
 
 ## Remodelling & Extension, Haslemere, Surrey
 

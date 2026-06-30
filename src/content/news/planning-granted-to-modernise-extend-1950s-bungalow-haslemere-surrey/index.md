@@ -19,8 +19,8 @@ Internally, the new first floor layout provides an open plan kitchen, dining and
 
 A new air source heat pump (ASHP) in conjunction with underfloor heating will complete the transformation into a contemporary family home.
 
-![](./g01.jpg)
+![Planning granted to modernise & extend 1950s bungalow, Haslemere, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Planning granted to modernise & extend 1950s bungalow, Haslemere, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Planning granted to modernise & extend 1950s bungalow, Haslemere, Surrey](./g03.jpg)

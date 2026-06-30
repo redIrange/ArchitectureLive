@@ -13,4 +13,4 @@ To read more about this project, click [here](https://www.architecturelive.co.u
 
 ​
 
-![](./g01.jpg)
+![Eco-friendly retirement house design, Liss, Hampshire](./g01.jpg)

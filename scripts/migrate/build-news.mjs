@@ -37,7 +37,8 @@ for (const it of items) {
   mkdirSync(dir, { recursive: true });
   const heroFiles = heroId ? await normalizeImages(raw, [heroId], dir, "hero-") : [];
   const galleryFiles = await normalizeImages(raw, bodyGalleryIds, dir, "g");
-  const body = markdown + (galleryFiles.length ? "\n\n" + galleryFiles.map((f) => `![](./${f})`).join("\n\n") : "");
+  const altText = (p.post_title || slug).replace(/&amp;/g, "&").replace(/\]/g, "");
+  const body = markdown + (galleryFiles.length ? "\n\n" + galleryFiles.map((f) => `![${altText}](./${f})`).join("\n\n") : "");
   const title = (p.post_title || slug).replace(/&amp;/g, "&");
   const date = (p.post_date || "1970-01-01").slice(0, 10);
   const excerpt = cleanExcerpt(metaDesc.get(p.ID) || firstPara(markdown));

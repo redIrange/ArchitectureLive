@@ -19,16 +19,16 @@ Lighting, natural as well as artificial was at the heart of our redesign, with t
 
 The opportunity for a two storey metal clad bay window presented itself as the replacement of a tired looking balcony which nevertheless delivered most of the substructure already in place. This new, full height glazed bay frames views and provides a new focal point from dawn till dusk.
 
-![](./g01.jpg)
+![Remodelling, interior design and new two-storey bay window nearing completion, Godalming Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Remodelling, interior design and new two-storey bay window nearing completion, Godalming Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Remodelling, interior design and new two-storey bay window nearing completion, Godalming Surrey](./g03.jpg)
 
-![](./g04.jpg)
+![Remodelling, interior design and new two-storey bay window nearing completion, Godalming Surrey](./g04.jpg)
 
-![](./g05.jpg)
+![Remodelling, interior design and new two-storey bay window nearing completion, Godalming Surrey](./g05.jpg)
 
-![](./g06.jpg)
+![Remodelling, interior design and new two-storey bay window nearing completion, Godalming Surrey](./g06.jpg)
 
-![](./g07.jpg)
+![Remodelling, interior design and new two-storey bay window nearing completion, Godalming Surrey](./g07.jpg)

@@ -26,14 +26,14 @@ The new extension facilitate contemporary family living with an open plan ground
 ### _– Design South East  
 _
 
-![](./g01.jpg)
+![Planning Application has officer’s support at Waverley Borough Council Committee Meeting](./g01.jpg)
 
-![](./g02.jpg)
+![Planning Application has officer’s support at Waverley Borough Council Committee Meeting](./g02.jpg)
 
-![](./g03.jpg)
+![Planning Application has officer’s support at Waverley Borough Council Committee Meeting](./g03.jpg)
 
-![](./g04.jpg)
+![Planning Application has officer’s support at Waverley Borough Council Committee Meeting](./g04.jpg)
 
-![](./g05.jpg)
+![Planning Application has officer’s support at Waverley Borough Council Committee Meeting](./g05.jpg)
 
-![](./g06.jpg)
+![Planning Application has officer’s support at Waverley Borough Council Committee Meeting](./g06.jpg)

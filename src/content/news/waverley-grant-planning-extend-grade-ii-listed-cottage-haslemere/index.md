@@ -17,4 +17,4 @@ Our design replaces the existing porch built in 2000 with a slightly larger louv
 
 The new porch also allows for a new and separate circulation route, freeing up the existing living accommodation with more efficient use and accessing a further new rear extension. This contemporary open-plan living, dining and kitchen space will be tile hung with a green roof. It will maximise the currently under-utilised garden setting and views onto a listed tree whilst being located entirety behind existing building lines, thus retaining the character of the Haslemere conservation area.
 
-![](./g01.jpg)
+![Waverley grants planning to extend Grade II Listed cottage in Haslemere](./g01.jpg)

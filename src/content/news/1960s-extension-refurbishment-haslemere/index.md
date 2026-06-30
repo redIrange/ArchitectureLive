@@ -19,10 +19,10 @@ Our new lighting concept completes the holistic design transformation into a ser
 
 To read more about this project, click [here](https://www.architecturelive.co.uk/projects/1960s-detached-house-haslemere-surrey/).
 
-![](./g01.jpg)
+![Completed - a 1960s Extension & Refurbishment, Haslemere](./g01.jpg)
 
-![](./g02.jpg)
+![Completed - a 1960s Extension & Refurbishment, Haslemere](./g02.jpg)
 
-![](./g03.jpg)
+![Completed - a 1960s Extension & Refurbishment, Haslemere](./g03.jpg)
 
-![](./g04.jpg)
+![Completed - a 1960s Extension & Refurbishment, Haslemere](./g04.jpg)

@@ -13,8 +13,8 @@ The new extension superstructure will take shape in just 4 weeks, utilising a st
 
 This project is managed as a self-build, thanks to a highly involved client team, supported by ArchitectureLIVE.
 
-![](./g01.jpg)
+![Work has begun to transform a bungalow in Haslemere, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![Work has begun to transform a bungalow in Haslemere, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![Work has begun to transform a bungalow in Haslemere, Surrey](./g03.jpg)

@@ -11,8 +11,8 @@ Our bungalow conversion into a 5 bedroom upside down house has reached a new mi
 
 New polyester powder coated aluminium glazing has been installed throughout. This includes double aspect slimline aluminium sliding doors in the open-plan kitchen and dining area. First fix building services are also finished, with the installation of the plaster boarding onto the SIPs superstructure in full swing.
 
-![](./g01.jpg)
+![Upside-down house conversion in progress](./g01.jpg)
 
-![](./g02.jpg)
+![Upside-down house conversion in progress](./g02.jpg)
 
-![](./g03.jpg)
+![Upside-down house conversion in progress](./g03.jpg)

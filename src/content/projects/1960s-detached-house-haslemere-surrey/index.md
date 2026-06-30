@@ -12,7 +12,7 @@ featured: false
 draft: false
 ---
 
-# 1960s Detached House
+## 1960s Detached House
 
 ## Extension & Refurbishment, Haslemere, Surrey
 

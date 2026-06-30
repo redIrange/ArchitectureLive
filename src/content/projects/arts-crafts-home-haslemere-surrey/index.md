@@ -12,7 +12,7 @@ featured: false
 draft: false
 ---
 
-# Arts & Crafts Home
+## Arts & Crafts Home
 
 ## Extension and Reconfiguration, Haslemere, Surrey
 

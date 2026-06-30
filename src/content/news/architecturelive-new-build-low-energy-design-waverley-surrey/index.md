@@ -19,14 +19,14 @@ Taking the form of a carport retaining wall, the new stonewall commences at the 
 
 Public views in and out of the dwelling are managed to avoid loss of privacy, with timber louvers, set behind the oak tree, to control the views from the driveway and building approach into the dwelling. In contrast, the courtyard elevation maximises the natural sunlight into the building with its south-westerly aspect and gives way to far reaching countryside views.
 
-![](./g01.jpg)
+![New-build, low-energy design, Waverley, Surrey](./g01.jpg)
 
-![](./g02.jpg)
+![New-build, low-energy design, Waverley, Surrey](./g02.jpg)
 
-![](./g03.jpg)
+![New-build, low-energy design, Waverley, Surrey](./g03.jpg)
 
-![](./g04.jpg)
+![New-build, low-energy design, Waverley, Surrey](./g04.jpg)
 
-![](./g05.jpg)
+![New-build, low-energy design, Waverley, Surrey](./g05.jpg)
 
-![](./g06.jpg)
+![New-build, low-energy design, Waverley, Surrey](./g06.jpg)

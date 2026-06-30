@@ -15,4 +15,4 @@ A small first floor extension and internal alterations further improve the exist
 
 Extensive energy efficiency measures and the provision of sustainable heating conclude the modernisation of this proposal.
 
-![](./g01.jpg)
+![Country house planning design, SDNP](./g01.jpg)

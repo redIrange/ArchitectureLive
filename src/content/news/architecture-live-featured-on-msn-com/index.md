@@ -19,6 +19,6 @@ The latest extension will provide open plan living in the form of a garden pavil
 
 Take a look at the article here - [From drab to dream: home transformations you won't believe.](https://www.msn.com/en-gb/money/homes-property/from-drab-to-dream-home-transformations-you-wont-believe/ss-BBMZOyB#image=32)
 
-![](./g01.jpg)
+![ArchitectureLIVE Featured on msn.com](./g01.jpg)
 
-![](./g02.jpg)
+![ArchitectureLIVE Featured on msn.com](./g02.jpg)

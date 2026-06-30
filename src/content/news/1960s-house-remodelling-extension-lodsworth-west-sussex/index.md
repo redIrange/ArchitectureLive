@@ -15,18 +15,18 @@ Applying the Lutyens-inspired concept of a garden wall defining space and formin
 
 Internal updates of the main house include an enlarged new kitchen layout and the partial garage conversion into a generous utility room. These final additions implement the book-end extension concept originally envisaged in 2012, and we look forward to its completion.
 
-![](./g01.jpg)
+![1960s House Remodelling & Extension, Lodsworth, West Sussex](./g01.jpg)
 
-![](./g02.jpg)
+![1960s House Remodelling & Extension, Lodsworth, West Sussex](./g02.jpg)
 
-![](./g03.jpg)
+![1960s House Remodelling & Extension, Lodsworth, West Sussex](./g03.jpg)
 
-![](./g04.jpg)
+![1960s House Remodelling & Extension, Lodsworth, West Sussex](./g04.jpg)
 
-![](./g05.jpg)
+![1960s House Remodelling & Extension, Lodsworth, West Sussex](./g05.jpg)
 
-![](./g06.jpg)
+![1960s House Remodelling & Extension, Lodsworth, West Sussex](./g06.jpg)
 
-![](./g07.jpg)
+![1960s House Remodelling & Extension, Lodsworth, West Sussex](./g07.jpg)
 
-![](./g08.jpg)
+![1960s House Remodelling & Extension, Lodsworth, West Sussex](./g08.jpg)

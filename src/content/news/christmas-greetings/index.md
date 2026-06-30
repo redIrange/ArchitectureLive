@@ -18,4 +18,4 @@ photographer
 
 Evelyn Gratton
 
-![](./g01.jpg)
+![Christmas Greetings](./g01.jpg)

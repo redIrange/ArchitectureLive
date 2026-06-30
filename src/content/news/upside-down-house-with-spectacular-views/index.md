@@ -19,12 +19,12 @@ This project bears testament to the collective, creative force a successful clie
 
 To read more about this project, click [here](https://www.architecturelive.co.uk/projects/1960s-bungalow-haslemere-surrey/).
 
-![](./g01.jpg)
+![Upside-down house with spectacular views](./g01.jpg)
 
-![](./g02.jpg)
+![Upside-down house with spectacular views](./g02.jpg)
 
-![](./g03.jpg)
+![Upside-down house with spectacular views](./g03.jpg)
 
-![](./g04.jpg)
+![Upside-down house with spectacular views](./g04.jpg)
 
-![](./g05.jpg)
+![Upside-down house with spectacular views](./g05.jpg)

@@ -15,6 +15,6 @@ Based on Passivhaus retrofit principles, our project specific low-energy design 
 
 To read more about the project, click [here](https://www.architecturelive.co.uk/projects/1960s-bungalow-haslemere-surrey/).
 
-![](./g01.jpg)
+![Our 1960s Bungalow project has been featured in The Times newspaper](./g01.jpg)
 
-![](./g02.jpg)
+![Our 1960s Bungalow project has been featured in The Times newspaper](./g02.jpg)

@@ -9,4 +9,4 @@ draft: false
 
 The weather has finally improved, which has allowed for the roof to be completed with a coloured top layer of resin. The external timber cladding will be next to be installed.
 
-![](./g01.jpg)
+![Near-Passivhaus Annex - roof nearing completion](./g01.jpg)

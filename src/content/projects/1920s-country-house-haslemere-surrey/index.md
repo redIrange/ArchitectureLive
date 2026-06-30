@@ -12,7 +12,7 @@ featured: false
 draft: false
 ---
 
-# 1920s Country House
+## 1920s Country House
 
 ## Remodelling & Extension, Fridays Hill, Haslemere, Surrey 
 

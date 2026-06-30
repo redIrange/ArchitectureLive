@@ -27,4 +27,4 @@ However, whether or not we all go vegetarian by 2030 will be insignificant in co
 
 ​
 
-![](./g01.jpg)
+![Action is what’s needed now](./g01.jpg)

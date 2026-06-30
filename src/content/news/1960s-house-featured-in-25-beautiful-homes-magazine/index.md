@@ -11,6 +11,6 @@ We are thrilled that one of our projects, the remodelling and extension of a 196
 
 To read more about the project, click [here](https://www.architecturelive.co.uk/projects/1960s-house-lodsworth-west-sussex/).
 
-![](./g01.jpg)
+![1960s house featured in 25 Beautiful Homes magazine](./g01.jpg)
 
-![](./g02.jpg)
+![1960s house featured in 25 Beautiful Homes magazine](./g02.jpg)

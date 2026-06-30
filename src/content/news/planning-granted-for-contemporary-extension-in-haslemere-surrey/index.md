@@ -15,4 +15,4 @@ The remodelling of the existing property also includes a new building approach, 
 
 The modest, liner extension has been designed to maximise sunlight and views with a monolithic design. In order to retain an existing first floor bedroom, the massing blends a classic gable frontage with a mono pitched lean-to in a contemporary take of the original, garden facing house entrance.
 
-![](./g01.jpg)
+![Planning granted for contemporary extension, Haslemere, Surrey](./g01.jpg)

@@ -17,4 +17,4 @@ The design was partially inspired by the reception facilities of a sports club, 
 
 The project will be realised with near-Passivhaus thermal performance targets, an air source heat pump, ASHP, and a mechanical ventilation system with heat recovery, MVHR.
 
-![](./g01.jpg)
+![Chichester DC grants permission for a new build annex nr. Chiddingfold, Surrey](./g01.jpg)

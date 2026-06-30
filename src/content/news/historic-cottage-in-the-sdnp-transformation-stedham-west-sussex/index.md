@@ -15,10 +15,10 @@ Following planning permission for our design in 2019, the construction work has 
 
 ​
 
-![](./g01.jpg)
+![Historic cottage in the SDNP undergoing a wonderful transformation, Stedham, West Sussex](./g01.jpg)
 
-![](./g02.jpg)
+![Historic cottage in the SDNP undergoing a wonderful transformation, Stedham, West Sussex](./g02.jpg)
 
-![](./g03.jpg)
+![Historic cottage in the SDNP undergoing a wonderful transformation, Stedham, West Sussex](./g03.jpg)
 
-![](./g04.jpg)
+![Historic cottage in the SDNP undergoing a wonderful transformation, Stedham, West Sussex](./g04.jpg)

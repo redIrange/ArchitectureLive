@@ -1,9 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { splitBlocks, parseProjectBody, groupProse } from "./project-body.mjs";
+import { splitBlocks, bodySegments } from "./project-body.mjs";
 
-// Real shape: inline testimonial (###) + title echo (##) + prose, no frontmatter testimonial.
-const LODSWORTH = `### _"This has been an amazing project which ArchitectureLIVE delivered with calm and confidence."_
+const LODSWORTH = `### _"This has been an amazing project delivered with calm and confidence."_
 
 ### _\\- Rebecca & Dom, Lodsworth, West Sussex_
 
@@ -11,72 +10,48 @@ const LODSWORTH = `### _"This has been an amazing project which ArchitectureLIVE
 
 ## Remodelling & Extension, Lodsworth, West Sussex
 
-The brief, to update an 18C cottage and its numerous extensions.
+The brief, to update an 18C cottage and its numerous extensions to deliver a contemporary home.
 
-This historic country home is located in the SDNP and has been subject to numerous extensions.
+This historic country home is located in the SDNP and has been subject to numerous extensions over time.
 
-Our design remodelled the entire interior and added extensions.`;
+Our design remodelled the entire interior and added extensions to form a new open-plan family room.
 
-// Same inline testimonial present, but ALSO in frontmatter (Plan B) → body copy is a duplicate.
-const PERIOD_HOUSE = `### _"..... we're finding, pretty much daily, we catch ourselves in the space."_
+architect & lighting & interior design
 
-### _\\- Rebecca and Jim, Haslemere_
-
-## Period House
-
-## Extension and Alterations, Haslemere, Surrey
-
-The brief, to reconfigure the existing ground floor.
-
-The property is a detached two storey house from the inter-war period.`;
-
-// No testimonial, just the title echo.
-const OFFICE = `## 1960s House
-
-## Near Passivhaus Office Extension
-
-This 1960 family home was first remodelled by ArchitectureLIVE 8 years ago.
-
-The final phase of our design is a near Passivhaus single storey annex.
-
-Externally, the design falls inline with the remodelled character of the house.`;
+ArchitectureLIVE`;
 
 test("splitBlocks splits on blank lines and trims", () => {
   assert.deepEqual(splitBlocks("a\n\n  b  \n\n\n c"), ["a", "b", "c"]);
 });
 
-test("lifts the inline testimonial when there is no frontmatter one", () => {
-  const { testimonial, prose } = parseProjectBody(LODSWORTH, { hasFrontmatterTestimonial: false });
-  assert.ok(testimonial, "testimonial should be lifted");
-  assert.match(testimonial.quote, /^This has been an amazing project/);
-  assert.equal(testimonial.author, "Rebecca & Dom, Lodsworth, West Sussex");
-  // title echo + testimonial removed; only the 3 prose paragraphs remain
-  assert.equal(prose.length, 3);
-  assert.match(prose[0], /^The brief/);
-  assert.ok(!prose.some((p) => /^#/.test(p)), "no heading blocks left in prose");
+test("leading headings stay with the first paragraph; nothing is removed", () => {
+  const segs = bodySegments(LODSWORTH);
+  // every original block is still present, in order, when segments are rejoined
+  const rejoined = segs.join("\n\n");
+  assert.ok(rejoined.includes("## Country House"), "title heading kept");
+  assert.ok(rejoined.includes("amazing project"), "testimonial kept");
+  // segment 1 carries the headings + the first paragraph (no break among headings)
+  assert.match(segs[0], /^### /);
+  assert.ok(segs[0].includes("The brief, to update"), "first paragraph joins the headings");
+  assert.ok(!segs[0].includes("This historic"), "second paragraph starts a new segment");
 });
 
-test("drops the body testimonial as a duplicate when frontmatter has one", () => {
-  const { testimonial, prose } = parseProjectBody(PERIOD_HOUSE, { hasFrontmatterTestimonial: true });
-  assert.equal(testimonial, null, "body testimonial dropped (frontmatter wins)");
-  assert.equal(prose.length, 2);
-  assert.match(prose[0], /^The brief/);
+test("short trailing lines (credits) attach to the previous prose, not their own segment", () => {
+  const segs = bodySegments(LODSWORTH);
+  const last = segs[segs.length - 1];
+  assert.ok(last.includes("architect & lighting"), "credit attaches");
+  assert.ok(last.includes("ArchitectureLIVE"), "sign-off attaches");
+  assert.ok(last.includes("Our design remodelled"), "to the last substantial paragraph");
 });
 
-test("strips the title/sector echo even with no testimonial", () => {
-  const { testimonial, prose } = parseProjectBody(OFFICE, { hasFrontmatterTestimonial: false });
-  assert.equal(testimonial, null);
-  assert.equal(prose.length, 3);
-  assert.match(prose[0], /^This 1960 family home/);
-  assert.ok(!prose.some((p) => /^#/.test(p)), "no heading blocks left in prose");
+test("produces one break per substantial paragraph after the first", () => {
+  // 3 substantial paragraphs → segment1 (headings+para1), para2, para3+credits = 3 segments
+  const segs = bodySegments(LODSWORTH);
+  assert.equal(segs.length, 3);
 });
 
-test("a plain body with no headings passes through untouched", () => {
-  const { testimonial, prose } = parseProjectBody("Para one.\n\nPara two.", {});
-  assert.equal(testimonial, null);
-  assert.deepEqual(prose, ["Para one.", "Para two."]);
-});
-
-test("groupProse chunks paragraphs into pairs", () => {
-  assert.deepEqual(groupProse(["a", "b", "c", "d", "e"], 2), ["a\n\nb", "c\n\nd", "e"]);
+test("a plain body with no headings still segments by paragraph", () => {
+  const md = "First long paragraph that is clearly over the fifty character threshold here.\n\nSecond long paragraph that is also clearly over the fifty character threshold.";
+  const segs = bodySegments(md);
+  assert.equal(segs.length, 2);
 });

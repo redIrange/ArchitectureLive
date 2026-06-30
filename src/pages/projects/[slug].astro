@@ -2,16 +2,15 @@
 /**
  * Project detail page — ArchitectureLIVE
  * Port of ProjectDetail.jsx (ui_kits/website/ProjectDetail.jsx).
- * Flow (design rhythm): hero · caption · [prose · image band · testimonial · image band · prose …] · facts · prev/next.
- * The migrated body is parsed (project-body.mjs) to lift the inline testimonial and strip the
- * title/sector echo, then prose groups are interleaved with gallery image bands. Lightbox omitted — static site.
+ * Sections: breadcrumb · hero · caption · facts · body+gallery bands · testimonial · prev/next.
+ * Lightbox omitted — static site.
  */
 import PageShell from "../../layouts/PageShell.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import { adjacent } from "../../lib/adjacent.mjs";
-import { parseProjectBody, groupProse } from "../../lib/project-body.mjs";
+import { bodySegments } from "../../lib/project-body.mjs";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
 import Testimonial from "../../components/ui/Testimonial.astro";
@@ -32,40 +31,24 @@ export async function getStaticPaths() {
 
 const { project, prev, next, prevTitle, nextTitle } = Astro.props;
 
-// Parse the migrated body: lift the inline testimonial (unless one is already in
-// frontmatter) and strip the title/sector echo, leaving clean prose paragraphs.
-const { testimonial: bodyTestimonial, prose } = parseProjectBody(project.body, {
-  hasFrontmatterTestimonial: !!project.data.testimonial,
-});
-const testimonial = project.data.testimonial ?? bodyTestimonial;
-
-// Render prose in 2-paragraph groups through Astro's own Markdown pipeline.
+// Render the body unchanged (same Markdown pipeline → same styling), but split
+// into ordered segments so full-width gallery image bands can sit BETWEEN the
+// prose paragraphs. Nothing is reordered or removed.
 const mdProcessor = await createMarkdownProcessor({});
 const proseHtml = await Promise.all(
-  groupProse(prose, 2).map(async (g) => (await mdProcessor.render(g)).code),
+  bodySegments(project.body).map(async (s) => (await mdProcessor.render(s)).code),
 );
-
-// Interleave: prose → image → (testimonial → image) → prose → image → …
 const gallery = [...project.data.gallery];
 let gi = 0;
-const nextImg = () => (gi < gallery.length ? gallery[gi++] : null);
-const seq = [];
+const bodyItems: Array<
+  { type: "prose"; html: string } | { type: "image"; img: (typeof gallery)[number] }
+> = [];
 proseHtml.forEach((html, idx) => {
-  seq.push({ type: "prose", html });
-  if (idx === 0) {
-    const a = nextImg(); if (a) seq.push({ type: "image", img: a });
-    if (testimonial) {
-      seq.push({ type: "testimonial" });
-      const b = nextImg(); if (b) seq.push({ type: "image", img: b });
-    }
-  } else if (idx < proseHtml.length - 1) {
-    const a = nextImg(); if (a) seq.push({ type: "image", img: a });
+  bodyItems.push({ type: "prose", html });
+  if (idx < proseHtml.length - 1 && gi < gallery.length) {
+    bodyItems.push({ type: "image", img: gallery[gi++] });
   }
 });
-if (!proseHtml.length && testimonial) {
-  seq.push({ type: "testimonial" });
-  const a = nextImg(); if (a) seq.push({ type: "image", img: a });
-}
 const leftover = gallery.slice(gi);
 ---
 
@@ -96,13 +79,13 @@ const leftover = gallery.slice(gi);
     </div>
   </Section>
 
-  {/* ── Body: prose · image bands · testimonial, interleaved ──── */}
-  {seq.map((item) => (
+  {/* ── Body — centred prose with image bands between paragraphs ─ */}
+  {bodyItems.map((item) => (
     item.type === "prose" ? (
-      <Section surface="light" pad="var(--space-section)">
+      <Section surface="light" pad="var(--space-xl)">
         <div class="detail-prose-wrap" set:html={item.html} />
       </Section>
-    ) : item.type === "image" ? (
+    ) : (
       <div class="detail-band">
         <Image
           src={item.img}
@@ -112,16 +95,10 @@ const leftover = gallery.slice(gi);
           class="detail-band-img"
         />
       </div>
-    ) : (
-      <Section surface="light" pad="var(--space-xl)">
-        <Container>
-          <Testimonial quote={testimonial.quote} author={testimonial.author} />
-        </Container>
-      </Section>
     )
   ))}
 
-  {/* ── Leftover gallery images ───────────────────────────────── */}
+  {/* ── Remaining gallery images — as before, after the body ──── */}
   {leftover.length === 1 && (
     <div class="detail-band">
       <Image
@@ -174,6 +151,18 @@ const leftover = gallery.slice(gi);
       </div>
     </Container>
   </Section>
+
+  {/* ── Testimonial (conditional) ─────────────────────────────── */}
+  {project.data.testimonial && (
+    <Section surface="light" pad="var(--space-section)">
+      <Container>
+        <Testimonial
+          quote={project.data.testimonial.quote}
+          author={project.data.testimonial.author}
+        />
+      </Container>
+    </Section>
+  )}
 
   {/* ── Prev / Next ──────────────────────────────────────────── */}
   <Section surface="alt" pad="var(--space-xxl)">

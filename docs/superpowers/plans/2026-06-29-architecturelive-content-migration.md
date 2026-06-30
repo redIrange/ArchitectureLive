@@ -526,8 +526,11 @@ git add -A && git commit -m "feat(migrate): sector table + news-category mapping
 - Create: `scripts/migrate/lib/images.mjs`
 - Test: `scripts/migrate/lib/images.test.mjs`
 
-**Interfaces:**
-- Produces `materialize(archive, attMap, ids, destDir, prefix): Promise<string[]>` — for each attachment ID: resolve its upload path, extract bytes from the archive into a temp area, normalize with sharp (auto-rotate via EXIF, strip metadata, cap longest edge at 2400 px, re-encode JPEG q82), write `destDir/<prefix><nn>.jpg`, and return the written relative filenames in order. Missing IDs are skipped with a warning.
+**Interfaces (SINGLE-PASS design — measured: a full archive scan is ~4 s cold / 0.5 s warm, so the naive per-item `extractPaths` of the original draft would do hundreds of scans and risk the 600 s command timeout if the page cache evicts; instead extract ALL needed images in ONE pass, then normalize from the local temp tree):**
+- Produces `extractRawImages(archive, attMap, ids, tmpDir): Map<id, rawLocalPath>` — resolve every (deduped) attachment ID to its `uploads/<rel>` path and extract them all from the archive in **one** `extractPaths` call into `tmpDir`. Returns `id → extracted raw file path`. IDs with no `_wp_attached_file` (or that fail extraction) are absent + warned.
+- Produces `normalizeImages(rawById, ids, destDir, prefix): Promise<string[]>` — for the given ordered `ids`, sharp-normalize each present raw file (auto-rotate via EXIF, strip metadata, cap longest edge 2400 px, JPEG q82) into `destDir/<prefix><nn>.jpg`; returns the written filenames in order. No archive access — reads only the local `rawById` tree. IDs absent from `rawById` are skipped.
+
+The builders (Tasks 7–8) call `extractRawImages` ONCE with every hero+gallery id across all items, then call `normalizeImages` per item per image-group.
 
 - [ ] **Step 1: Implement**
 
@@ -539,34 +542,40 @@ import sharp from "sharp";
 import { extractPaths } from "./wpress.mjs";
 import { uploadPath } from "./attachments.mjs";
 
-export async function materialize(archive, attMap, ids, destDir, prefix) {
-  const wanted = new Map();                    // archivePath -> id
-  for (const id of ids) {
+// ONE archive pass for every needed id. Returns Map<id, rawLocalPath>.
+export function extractRawImages(archive, attMap, ids, tmpDir) {
+  const pathById = new Map();                    // archivePath -> id
+  for (const id of new Set(ids)) {
     const rel = attMap.get(id);
     if (!rel) { console.warn(`  ! attachment ${id} has no file, skipping`); continue; }
-    wanted.set(uploadPath(rel), id);
+    pathById.set(uploadPath(rel), id);
   }
-  const tmp = join(destDir, "._raw");
-  rmSync(tmp, { recursive: true, force: true });
-  mkdirSync(tmp, { recursive: true });
-  const written = extractPaths(archive, new Set(wanted.keys()), tmp);
+  rmSync(tmpDir, { recursive: true, force: true });
+  mkdirSync(tmpDir, { recursive: true });
+  const written = extractPaths(archive, new Set(pathById.keys()), tmpDir);  // single pass
+  const rawById = new Map();
+  for (const [apath, dest] of written) rawById.set(pathById.get(apath), dest);
+  return rawById;
+}
+
+// Normalize a specific ordered id list into destDir from the prebuilt raw tree. No archive access.
+export async function normalizeImages(rawById, ids, destDir, prefix) {
   mkdirSync(destDir, { recursive: true });
   const out = [];
   let n = 0;
-  for (const [apath] of wanted) {
-    const src = written.get(apath);
-    if (!src) continue;                        // extraction missed it
+  for (const id of ids) {
+    const src = rawById.get(id);
+    if (!src) continue;
     const name = `${prefix}${String(++n).padStart(2, "0")}.jpg`;
     await sharp(src).rotate().resize({ width: 2400, height: 2400, fit: "inside", withoutEnlargement: true })
       .jpeg({ quality: 82, mozjpeg: true }).toFile(join(destDir, name));
     out.push(name);
   }
-  rmSync(tmp, { recursive: true, force: true });
   return out;
 }
 ```
 
-- [ ] **Step 2: Test — extract the Near Passivhaus gallery**
+- [ ] **Step 2: Test — one-pass extract + normalize the Near Passivhaus gallery**
 
 ```js
 // scripts/migrate/lib/images.test.mjs
@@ -575,16 +584,20 @@ import assert from "node:assert/strict";
 import { rmSync, existsSync } from "node:fs";
 import { extractOne, ARCHIVE } from "./wpress.mjs";
 import { attachmentMap } from "./attachments.mjs";
-import { materialize } from "./images.mjs";
+import { extractRawImages, normalizeImages } from "./images.mjs";
 const sql = extractOne(ARCHIVE, "database.sql").toString("utf8");
 
-test("materialize writes normalized jpgs for resolvable ids", async () => {
+test("single-pass extract + normalize writes jpgs for resolvable ids", async () => {
+  const tmp = "scripts/migrate/.tmp-raw";
   const dir = "scripts/migrate/.tmp-imgtest";
   rmSync(dir, { recursive: true, force: true });
-  const out = await materialize(ARCHIVE, attachmentMap(sql), ["5728", "8013"], dir, "g");
+  const raw = extractRawImages(ARCHIVE, attachmentMap(sql), ["5728", "8013"], tmp);
+  assert.ok(raw.size >= 1, "extracted at least one raw image in one pass");
+  const out = await normalizeImages(raw, ["5728", "8013"], dir, "g");
   assert.ok(out.length >= 1);
   for (const f of out) assert.ok(existsSync(`${dir}/${f}`));
   rmSync(dir, { recursive: true, force: true });
+  rmSync(tmp, { recursive: true, force: true });
 });
 ```
 
@@ -614,13 +627,13 @@ git add -A && git commit -m "feat(migrate): image extraction + sharp normalize"
 
 ```js
 // scripts/migrate/build-projects.mjs
-import { writeFileSync, rmSync, mkdirSync, existsSync } from "node:fs";
+import { writeFileSync, rmSync, mkdirSync } from "node:fs";
 import { extractOne, ARCHIVE } from "./lib/wpress.mjs";
 import { rowObjects } from "./lib/sql.mjs";
 import { attachmentMap, thumbnailMap } from "./lib/attachments.mjs";
 import { convert } from "./lib/content.mjs";
 import { SECTOR_BY_SLUG } from "./lib/taxonomy.mjs";
-import { materialize } from "./lib/images.mjs";
+import { extractRawImages, normalizeImages } from "./lib/images.mjs";
 
 const sql = extractOne(ARCHIVE, "database.sql").toString("utf8");
 const posts = rowObjects(sql, "SERVMASK_PREFIX_posts");
@@ -636,18 +649,28 @@ const projects = posts
 const yaml = (s) => '"' + String(s ?? "").replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
 const firstPara = (md) => (md.split("\n\n").find((b) => b.trim().length > 40) || "").replace(/\s+/g, " ").slice(0, 200);
 
-for (const p of projects) {
-  const slug = p.post_name;
+// First pass: parse content + plan each project's image ids; collect ALL ids for one extraction.
+const items = projects.map((p) => {
+  const { markdown, galleryIds } = convert(p.post_content);
+  const heroId = thumbs.get(p.ID);
+  const heroIds = heroId ? [heroId] : galleryIds.slice(0, 1);
+  return { p, slug: p.post_name, markdown, galleryIds, heroIds };
+});
+const allIds = items.flatMap((it) => [...it.heroIds, ...it.galleryIds]);
+
+// ONE archive pass for every project image (see Task 6 timing rationale).
+const tmpDir = "scripts/migrate/.raw-projects";
+const raw = extractRawImages(ARCHIVE, attMap, allIds, tmpDir);
+
+for (const it of items) {
+  const { p, slug, markdown, galleryIds, heroIds } = it;
   const dir = `src/content/projects/${slug}`;
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(dir, { recursive: true });
 
-  const { markdown, galleryIds } = convert(p.post_content);
-  const heroId = thumbs.get(p.ID);
-  const heroIds = heroId ? [heroId] : galleryIds.slice(0, 1);
-  const heroFiles = await materialize(ARCHIVE, attMap, heroIds, dir, "hero-");
+  const heroFiles = await normalizeImages(raw, heroIds, dir, "hero-");
   const heroName = heroFiles[0] ?? null;
-  const galleryFiles = await materialize(ARCHIVE, attMap, galleryIds, dir, "g");
+  const galleryFiles = await normalizeImages(raw, galleryIds, dir, "g");
   if (!heroName && galleryFiles.length === 0) console.warn(`  ! ${slug}: no images resolved`);
 
   const title = (p.post_title || slug).replace(/&amp;/g, "&");
@@ -676,6 +699,7 @@ for (const p of projects) {
   writeFileSync(`${dir}/index.md`, fm);
   console.log(`✓ ${slug}  hero=${heroName ? "y" : "n"} gallery=${galleryFiles.length}`);
 }
+rmSync(tmpDir, { recursive: true, force: true });
 console.log(`\nBuilt ${projects.length} projects.`);
 ```
 
@@ -728,7 +752,7 @@ import { rowObjects } from "./lib/sql.mjs";
 import { attachmentMap, thumbnailMap } from "./lib/attachments.mjs";
 import { convert } from "./lib/content.mjs";
 import { newsCategory } from "./lib/taxonomy.mjs";
-import { materialize } from "./lib/images.mjs";
+import { extractRawImages, normalizeImages } from "./lib/images.mjs";
 
 const sql = extractOne(ARCHIVE, "database.sql").toString("utf8");
 const posts = rowObjects(sql, "SERVMASK_PREFIX_posts");
@@ -740,16 +764,26 @@ const news = posts.filter((p) => p.post_type === "post" && p.post_status === "pu
 const yaml = (s) => '"' + String(s ?? "").replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
 const firstPara = (md) => (md.split("\n\n").find((b) => b.trim().length > 40) || "").replace(/\s+/g, " ").slice(0, 200);
 
-for (const p of news) {
-  const slug = p.post_name;
+// First pass: parse + plan image ids; collect all ids. Hero is excluded from the inline body gallery.
+const items = news.map((p) => {
+  const { markdown, galleryIds } = convert(p.post_content);
+  const heroId = thumbs.get(p.ID) || galleryIds[0];
+  const bodyGalleryIds = galleryIds.filter((id) => id !== heroId);   // don't duplicate the hero in the body
+  return { p, slug: p.post_name, markdown, heroId, bodyGalleryIds };
+});
+const allIds = items.flatMap((it) => [it.heroId, ...it.bodyGalleryIds].filter(Boolean));
+
+// ONE archive pass for every news image (see Task 6 timing rationale).
+const tmpDir = "scripts/migrate/.raw-news";
+const raw = extractRawImages(ARCHIVE, attMap, allIds, tmpDir);
+
+for (const it of items) {
+  const { p, slug, markdown, heroId, bodyGalleryIds } = it;
   const dir = `src/content/news/${slug}`;
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(dir, { recursive: true });
-  const { markdown, galleryIds } = convert(p.post_content);
-  const heroId = thumbs.get(p.ID) || galleryIds[0];
-  const heroFiles = heroId ? await materialize(ARCHIVE, attMap, [heroId], dir, "hero-") : [];
-  // also pull remaining gallery images and inline them at the end of the body if present
-  const galleryFiles = await materialize(ARCHIVE, attMap, galleryIds, dir, "g");
+  const heroFiles = heroId ? await normalizeImages(raw, [heroId], dir, "hero-") : [];
+  const galleryFiles = await normalizeImages(raw, bodyGalleryIds, dir, "g");
   const body = markdown + (galleryFiles.length ? "\n\n" + galleryFiles.map((f) => `![](./${f})`).join("\n\n") : "");
   const title = (p.post_title || slug).replace(/&amp;/g, "&");
   const date = (p.post_date || "1970-01-01").slice(0, 10);
@@ -761,6 +795,7 @@ for (const p of news) {
   writeFileSync(`${dir}/index.md`, fm);
   console.log(`✓ ${date} ${slug}`);
 }
+rmSync(tmpDir, { recursive: true, force: true });
 console.log(`\nBuilt ${news.length} news posts.`);
 ```
 

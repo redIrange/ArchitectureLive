@@ -17,8 +17,8 @@ import TextLink from "../components/ui/TextLink.astro";
 
 /* ── Collection queries ── */
 const projects = await getCollection("projects", (p) => !p.data.draft);
-const featured = projects.filter((p) => p.data.featured).slice(0, 4);
-const featuredOrFallback = featured.length ? featured : projects.slice(0, 4);
+const featured = projects.filter((p) => p.data.featured).slice(0, 5);
+const featuredOrFallback = featured.length ? featured : projects.slice(0, 5);
 const latestNews = (await getCollection("news", (n) => !n.data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
@@ -62,7 +62,7 @@ const heroProject = featuredOrFallback[0];
     <div class="selected-work__label-row">
       <p class="selected-work__eyebrow">Selected work</p>
     </div>
-    {featuredOrFallback.map((p, i) => (
+    {featuredOrFallback.slice(1).map((p, i) => (
       <div class="project-item">
         <a
           href={`/projects/${p.id}`}

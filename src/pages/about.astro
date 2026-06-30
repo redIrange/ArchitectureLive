@@ -298,7 +298,8 @@ const steps = [
 
 .al-team {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* 2 columns matches current two-member team; increase to repeat(3, 1fr) or repeat(4, 1fr) when team grows */
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-xl);
 }
 

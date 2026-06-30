@@ -23,7 +23,7 @@ export const team: TeamMember[] = [
   {
     name: "Irene Konschill",
     role: "Architect",
-    bio: "Irene leads the residential team and is the practice's specialist in low-energy detailing and Passivhaus-influenced design. Her eye for daylight, materiality and the small moves that make a building feel right is central to how ArchitectureLIVE works.",
+    bio: "Irene leads the residential team, bringing careful attention to detailing and the quality of everyday spaces. Her eye for daylight, materiality and the small moves that make a building feel right is central to how ArchitectureLIVE works.",
     image: irene,
   },
 ];

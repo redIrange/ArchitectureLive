@@ -1,0 +1,356 @@
+---
+/**
+ * Project detail page — ArchitectureLIVE
+ * Port of ProjectDetail.jsx (ui_kits/website/ProjectDetail.jsx).
+ * Sections: breadcrumb · hero · facts + narrative · gallery · prev/next.
+ * Lightbox (JS-only) omitted — static site; gallery opens native browser zoom.
+ * NS runtime lookups, go() router and onNav removed; real <a href> used throughout.
+ */
+import PageShell from "../../layouts/PageShell.astro";
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import { adjacent } from "../../lib/adjacent.mjs";
+import Section from "../../components/ui/Section.astro";
+import Container from "../../components/ui/Container.astro";
+
+export async function getStaticPaths() {
+  const projects = (await getCollection("projects", (p) => !p.data.draft))
+    .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+  const ids = projects.map((p) => p.id);
+  return projects.map((project) => {
+    const { prev, next } = adjacent(ids, project.id);
+    return { params: { slug: project.id }, props: { project, prev, next } };
+  });
+}
+
+const { project, prev, next } = Astro.props;
+const { Content } = await render(project);
+
+// Resolve adjacent project titles for the nav
+const allProjects = await getCollection("projects", (p) => !p.data.draft);
+const prevProject = allProjects.find((p) => p.id === prev);
+const nextProject = allProjects.find((p) => p.id === next);
+---
+
+<PageShell
+  title={`${project.data.title} — ArchitectureLIVE`}
+  description={project.data.excerpt}
+  active="projects"
+>
+
+  {/* ── Breadcrumb ───────────────────────────────────────────── */}
+  <Section surface="light" pad="var(--space-lg)">
+    <Container>
+      <nav class="detail-breadcrumb" aria-label="Breadcrumb">
+        <a href="/projects">Projects</a>
+        <span aria-hidden="true">/</span>
+        <span>{project.data.title}</span>
+      </nav>
+    </Container>
+  </Section>
+
+  {/* ── Hero ─────────────────────────────────────────────────── */}
+  <Section surface="light" pad="0" style="padding-bottom:var(--space-xl)">
+    <Container>
+      <div class="detail-sector">{project.data.sector}</div>
+      <h1 class="detail-title">{project.data.title}</h1>
+      <p class="detail-location">{project.data.location}</p>
+    </Container>
+    <div class="detail-hero-wrap">
+      <Image
+        src={project.data.heroImage}
+        alt={project.data.title}
+        widths={[800, 1200, 1600, 2400]}
+        sizes="100vw"
+        class="detail-hero-img"
+      />
+    </div>
+  </Section>
+
+  {/* ── Facts + Narrative ────────────────────────────────────── */}
+  <Section surface="alt" pad="var(--space-section)">
+    <Container>
+      <div class="al-detail">
+
+        {/* Left: narrative body */}
+        <div class="detail-narrative">
+          <Content />
+        </div>
+
+        {/* Right: project facts sidebar */}
+        <aside class="detail-facts">
+          <div class="detail-facts-item">
+            <div class="detail-facts-label">Location</div>
+            <div class="detail-facts-value">{project.data.location}</div>
+          </div>
+          <div class="detail-facts-item">
+            <div class="detail-facts-label">Sector</div>
+            <div class="detail-facts-value">{project.data.sector}</div>
+          </div>
+          <div class="detail-facts-item">
+            <div class="detail-facts-label">Status</div>
+            <div class="detail-facts-value">
+              {project.data.status}{project.data.year ? ` ${project.data.year}` : ""}
+            </div>
+          </div>
+          {project.data.features.length > 0 && (
+            <div class="detail-facts-item">
+              <div class="detail-facts-label">Features</div>
+              <div class="detail-facts-value">{project.data.features.join(" · ")}</div>
+            </div>
+          )}
+        </aside>
+
+      </div>
+    </Container>
+  </Section>
+
+  {/* ── Gallery ──────────────────────────────────────────────── */}
+  {project.data.gallery.length > 0 && (
+    <Section surface="light" pad="var(--space-section)">
+      <Container>
+        <h2 class="detail-gallery-heading">Gallery</h2>
+        <div class="al-gallery">
+          {project.data.gallery.map((img, i) => (
+            <div class="detail-gallery-item">
+              <Image
+                src={img}
+                widths={[600, 1200, 2000]}
+                sizes="(max-width:800px) 100vw, 50vw"
+                alt={`${project.data.title} — image ${i + 1}`}
+                class="detail-gallery-img"
+              />
+            </div>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  )}
+
+  {/* ── Prev / Next ──────────────────────────────────────────── */}
+  <Section surface="alt" pad="var(--space-xxl)">
+    <Container>
+      <div class="detail-prevnext">
+
+        {prev && (
+          <a href={`/projects/${prev}`} class="detail-prevnext-link detail-prevnext-link--prev">
+            <div class="detail-prevnext-dir">← Previous</div>
+            <div class="detail-prevnext-name">
+              {prevProject ? prevProject.data.title : "Previous project"}
+            </div>
+          </a>
+        )}
+
+        <a href="/contact" class="detail-enquire">Enquire about a project</a>
+
+        {next && (
+          <a href={`/projects/${next}`} class="detail-prevnext-link detail-prevnext-link--next">
+            <div class="detail-prevnext-dir">Next →</div>
+            <div class="detail-prevnext-name">
+              {nextProject ? nextProject.data.title : "Next project"}
+            </div>
+          </a>
+        )}
+
+      </div>
+    </Container>
+  </Section>
+
+</PageShell>
+
+<style>
+/* ── Breadcrumb ──────────────────────────────────────────────── */
+.detail-breadcrumb {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  color: var(--color-grey-light);
+  padding-top: var(--space-md);
+}
+.detail-breadcrumb a {
+  color: var(--color-indigo-deep);
+  text-decoration: none;
+}
+.detail-breadcrumb a:hover { text-decoration: underline; }
+
+/* ── Hero text ───────────────────────────────────────────────── */
+.detail-sector {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-sm);
+}
+.detail-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  color: var(--color-charcoal);
+  max-width: 18ch;
+  text-transform: uppercase;
+}
+.detail-location {
+  margin: var(--space-sm) 0 var(--space-xl);
+  font-family: var(--font-text);
+  font-size: var(--type-lead-size);
+  color: var(--color-grey-mid);
+}
+
+/* ── Full-bleed hero image ───────────────────────────────────── */
+.detail-hero-wrap {
+  width: 100%;
+  filter: drop-shadow(var(--shadow-image));
+}
+.detail-hero-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Facts + narrative two-column layout ─────────────────────── */
+.al-detail {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-section);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .al-detail {
+    grid-template-columns: 1fr;
+    gap: var(--space-xxl);
+  }
+  .detail-facts { order: -1; }
+}
+
+/* Narrative body prose */
+.detail-narrative {
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  line-height: 1.65;
+  color: var(--color-charcoal);
+}
+.detail-narrative h2 {
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: var(--color-charcoal);
+  margin: 0 0 var(--space-md);
+}
+.detail-narrative p { margin: 0 0 var(--space-md); }
+.detail-narrative p:last-child { margin-bottom: 0; }
+
+/* Facts sidebar */
+.detail-facts {
+  border-left: 2px solid var(--color-lavender);
+  padding-left: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+.detail-facts-label {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: 6px;
+}
+.detail-facts-value {
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  color: var(--color-charcoal);
+  line-height: 1.4;
+}
+
+/* ── Gallery grid ────────────────────────────────────────────── */
+.detail-gallery-heading {
+  margin: 0 0 var(--space-xxl);
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+.al-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+@media (max-width: 600px) {
+  .al-gallery { grid-template-columns: 1fr; }
+}
+.detail-gallery-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  line-height: 0;
+}
+.detail-gallery-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+.detail-gallery-item:hover .detail-gallery-img {
+  transform: scale(1.02);
+}
+
+/* ── Prev / next nav ─────────────────────────────────────────── */
+.detail-prevnext {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+.detail-prevnext-link {
+  text-decoration: none;
+  color: inherit;
+  flex: 0 1 auto;
+}
+.detail-prevnext-link--next { text-align: right; }
+.detail-prevnext-dir {
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  color: var(--color-grey-light);
+  margin-bottom: 4px;
+}
+.detail-prevnext-name {
+  font-family: var(--font-display);
+  font-size: var(--type-tagline-size);
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+.detail-prevnext-link:hover .detail-prevnext-name {
+  color: var(--color-indigo-vivid);
+}
+.detail-enquire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  background: var(--color-indigo-vivid);
+  color: var(--color-on-primary);
+  font-family: var(--font-display);
+  font-size: var(--type-button-large-size);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--duration-base) var(--ease-standard);
+}
+.detail-enquire:hover {
+  background: var(--color-indigo-deep);
+}
+</style>

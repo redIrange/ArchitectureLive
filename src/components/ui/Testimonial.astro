@@ -1,0 +1,35 @@
+---
+/**
+ * Client testimonial — lavender quote block. Renders nothing without a quote.
+ */
+interface Props {
+  quote?: string;
+  author?: string;
+}
+const { quote, author } = Astro.props;
+---
+{quote && (
+  <figure class="testimonial">
+    <blockquote class="testimonial__quote">"{quote}"</blockquote>
+    {author && <figcaption class="testimonial__author">— {author}</figcaption>}
+  </figure>
+)}
+
+<style>
+.testimonial {
+  margin: 0; padding: var(--space-xxl) var(--space-xl);
+  background: var(--color-lavender); border-radius: var(--radius-lg);
+  text-align: center;
+}
+.testimonial__quote {
+  margin: 0 auto; max-width: 46ch;
+  font-family: var(--font-display); font-weight: 500;
+  font-size: var(--type-lead-size); line-height: 1.4; letter-spacing: -0.1px;
+  color: var(--color-indigo-deep);
+}
+.testimonial__author {
+  margin-top: var(--space-md);
+  font-family: var(--font-text); font-size: var(--type-caption-size);
+  color: var(--color-indigo-slate);
+}
+</style>

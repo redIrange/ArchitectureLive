@@ -1,0 +1,379 @@
+---
+/**
+ * News article page — ArchitectureLIVE
+ * Port of NewsArticle.jsx (ui_kits/website/NewsArticle.jsx).
+ * Sections: breadcrumb · header (category, date, title, dek) · hero image ·
+ *           prose body · share bar · related reading.
+ * NS runtime lookups, go() router and onNav removed; real <a href> used throughout.
+ * Hover JS → CSS; tokens-only colours throughout.
+ */
+import PageShell from "../../layouts/PageShell.astro";
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import Section from "../../components/ui/Section.astro";
+import Container from "../../components/ui/Container.astro";
+import Tag from "../../components/ui/Tag.astro";
+import NewsCard from "../../components/ui/NewsCard.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("news", (n) => !n.data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateStr = post.data.date.toLocaleDateString("en-GB", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+// Related articles — other published posts, newest first, capped at 3
+const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !== post.id))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<PageShell
+  title={`${post.data.title} — ArchitectureLIVE`}
+  description={post.data.excerpt}
+  active="news"
+>
+
+  {/* ── Header ─────────────────────────────────────────────────── */}
+  <Section surface="light" pad="var(--space-xxl)">
+    <div class="article-measure">
+
+      {/* Breadcrumb */}
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="/news">News</a>
+        <span aria-hidden="true">/</span>
+        <span>{post.data.category}</span>
+      </nav>
+
+      {/* Category tag + date */}
+      <div class="article-meta">
+        <Tag label={post.data.category} />
+        <span class="article-date">{dateStr}</span>
+      </div>
+
+      {/* Title */}
+      <h1 class="article-title">{post.data.title}</h1>
+
+      {/* Dek / excerpt */}
+      {post.data.excerpt && (
+        <p class="article-dek">{post.data.excerpt}</p>
+      )}
+
+    </div>
+  </Section>
+
+  {/* ── Hero image ─────────────────────────────────────────────── */}
+  <Container style="padding-bottom:var(--space-section)">
+    <div class="article-hero-wrap">
+      <Image
+        src={post.data.heroImage}
+        alt={post.data.title}
+        widths={[800, 1200, 1600, 2400]}
+        sizes="(max-width:1200px) 100vw, 1200px"
+        class="article-hero-img"
+      />
+    </div>
+  </Container>
+
+  {/* ── Prose body ─────────────────────────────────────────────── */}
+  <div class="article-measure article-body-wrap">
+    <article class="article-prose">
+      <Content />
+    </article>
+
+    {/* Share bar */}
+    <div class="article-share">
+      <span class="article-share-label">Share</span>
+      <a
+        href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://architecturelive.co.uk/news/${post.id}`)}&title=${encodeURIComponent(post.data.title)}`}
+        rel="noopener noreferrer"
+        target="_blank"
+        class="article-share-link"
+      >LinkedIn</a>
+      <a
+        href={`https://www.houzz.com/ideabooks`}
+        rel="noopener noreferrer"
+        target="_blank"
+        class="article-share-link"
+      >Houzz</a>
+      <button
+        class="article-share-link article-copy-btn"
+        aria-label="Copy article link"
+      >Copy link</button>
+    </div>
+  </div>
+
+  {/* ── Related reading ────────────────────────────────────────── */}
+  {relatedPosts.length > 0 && (
+    <Section surface="alt" pad="var(--space-section)">
+      <Container>
+        <h2 class="article-related-heading">Related reading</h2>
+        <div class="article-related-grid">
+          {relatedPosts.map((n) => (
+            <NewsCard
+              href={`/news/${n.id}`}
+              title={n.data.title}
+              date={n.data.date}
+              category={n.data.category}
+              excerpt={n.data.excerpt}
+              image={n.data.heroImage}
+            />
+          ))}
+        </div>
+      </Container>
+    </Section>
+  )}
+
+</PageShell>
+
+<style>
+/* ── Measure container (max reading width, centred) ─────────── */
+.article-measure {
+  max-width: var(--content-max-text);
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+/* ── Breadcrumb ─────────────────────────────────────────────── */
+.article-breadcrumb {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  color: var(--color-grey-light);
+  margin-bottom: var(--space-lg);
+}
+.article-breadcrumb a {
+  color: var(--color-indigo-deep);
+  text-decoration: none;
+}
+.article-breadcrumb a:hover { text-decoration: underline; }
+
+/* ── Category + date row ────────────────────────────────────── */
+.article-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+.article-date {
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  color: var(--color-grey-light);
+}
+
+/* ── Title ──────────────────────────────────────────────────── */
+.article-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  color: var(--color-charcoal);
+}
+
+/* ── Dek (excerpt as intro pull line) ───────────────────────── */
+.article-dek {
+  margin: var(--space-lg) 0 0;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--color-indigo-slate);
+}
+
+/* ── Hero image ─────────────────────────────────────────────── */
+.article-hero-wrap {
+  filter: drop-shadow(var(--shadow-image));
+}
+.article-hero-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Body wrapper (measure + spacing) ──────────────────────── */
+.article-body-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-section);
+}
+
+/* ── Prose typography ───────────────────────────────────────── */
+.article-prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  font-family: var(--font-text);
+  font-size: var(--type-lead-airy-size);
+  line-height: 1.7;
+  color: var(--color-charcoal);
+}
+
+/* Paragraphs */
+.article-prose p {
+  margin: 0;
+}
+
+/* Headings */
+.article-prose h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-display-lg-size);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+  color: var(--color-charcoal);
+}
+.article-prose h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+  color: var(--color-charcoal);
+}
+.article-prose h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-tagline-size);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-charcoal);
+}
+
+/* Lists */
+.article-prose ul,
+.article-prose ol {
+  margin: 0;
+  padding-left: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.article-prose li {
+  line-height: 1.6;
+}
+
+/* Blockquote — pull quote with indigo-purple accent border */
+.article-prose blockquote {
+  margin: 0;
+  border-left: 3px solid var(--color-purple);
+  padding-left: var(--space-lg);
+}
+.article-prose blockquote p {
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  color: var(--color-indigo-deep);
+}
+
+/* Links */
+.article-prose a {
+  color: var(--color-indigo-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.article-prose a:hover {
+  color: var(--color-indigo-vivid);
+}
+
+/* Inline images */
+.article-prose img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+/* Strong / em */
+.article-prose strong {
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+.article-prose em {
+  font-style: italic;
+}
+
+/* ── Share bar ──────────────────────────────────────────────── */
+.article-share {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  padding-top: var(--space-lg);
+  border-top: var(--border-hairline);
+}
+.article-share-label {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-grey-light);
+}
+.article-share-link {
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  font-weight: 600;
+  color: var(--color-indigo-deep);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.article-share-link:hover {
+  color: var(--color-indigo-vivid);
+  text-decoration: underline;
+}
+
+/* ── Related reading ────────────────────────────────────────── */
+.article-related-heading {
+  margin: 0 0 var(--space-xxl);
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+.article-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+@media (max-width: 900px) {
+  .article-related-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .article-title { font-size: clamp(32px, 8vw, var(--type-hero-display-size)); }
+  .article-related-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+// Copy link button — progressive enhancement
+document
+  .querySelector<HTMLButtonElement>(".article-copy-btn")
+  ?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+    } catch {
+      // fallback: no-op on failure
+    }
+  });
+</script>

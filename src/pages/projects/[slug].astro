@@ -66,7 +66,40 @@ const { Content } = await render(project);
     </div>
   </Section>
 
-  {/* ── Facts row — centred 4-up ──────────────────────────────── */}
+  {/* ── Body — centred editorial prose ───────────────────────── */}
+  <Section surface="light" pad="var(--space-section)">
+    <div class="detail-prose-wrap">
+      <Content />
+    </div>
+  </Section>
+
+  {/* ── Gallery — first 5 as full-width bands, rest as grid ──── */}
+  {project.data.gallery.slice(0, 5).map((img, i) => (
+    <div class="detail-band">
+      <Image
+        src={img}
+        widths={[800, 1200, 1600, 2400]}
+        sizes="100vw"
+        alt={`${project.data.title} — image ${i + 1}`}
+        class="detail-band-img"
+      />
+    </div>
+  ))}
+  {project.data.gallery.length > 5 && (
+    <div class="detail-gallery-grid">
+      {project.data.gallery.slice(5).map((img, i) => (
+        <Image
+          src={img}
+          widths={[400, 700, 1000]}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          alt={`${project.data.title} — image ${i + 6}`}
+          class="detail-gallery-grid-img"
+        />
+      ))}
+    </div>
+  )}
+
+  {/* ── Facts row — centred 4-up (after narrative + gallery) ──── */}
   <Section surface="alt" pad="var(--space-section)">
     <Container>
       <div class="detail-facts-row">
@@ -93,26 +126,6 @@ const { Content } = await render(project);
       </div>
     </Container>
   </Section>
-
-  {/* ── Body — centred editorial prose ───────────────────────── */}
-  <Section surface="light" pad="var(--space-section)">
-    <div class="detail-prose-wrap">
-      <Content />
-    </div>
-  </Section>
-
-  {/* ── Gallery — full-width image bands ─────────────────────── */}
-  {project.data.gallery.map((img, i) => (
-    <div class="detail-band">
-      <Image
-        src={img}
-        widths={[800, 1200, 1600, 2400]}
-        sizes="100vw"
-        alt={`${project.data.title} — image ${i + 1}`}
-        class="detail-band-img"
-      />
-    </div>
-  ))}
 
   {/* ── Testimonial (conditional) ─────────────────────────────── */}
   {project.data.testimonial && (
@@ -259,6 +272,7 @@ const { Content } = await render(project);
   font-size: var(--type-lead-airy-size);
   line-height: var(--type-lead-airy-leading);
   color: var(--color-charcoal);
+  text-align: center;
 }
 .detail-prose-wrap :global(h2) {
   font-family: var(--font-display);
@@ -340,6 +354,26 @@ const { Content } = await render(project);
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Gallery grid (images 6+) ────────────────────────────────── */
+.detail-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+@media (min-width: 641px) {
+  .detail-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1025px) {
+  .detail-gallery-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.detail-gallery-grid-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
 }

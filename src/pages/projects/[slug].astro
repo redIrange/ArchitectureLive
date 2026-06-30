@@ -2,9 +2,8 @@
 /**
  * Project detail page — ArchitectureLIVE
  * Port of ProjectDetail.jsx (ui_kits/website/ProjectDetail.jsx).
- * Sections: breadcrumb · hero · facts + narrative · gallery · prev/next.
- * Lightbox (JS-only) omitted — static site; gallery opens native browser zoom.
- * NS runtime lookups, go() router and onNav removed; real <a href> used throughout.
+ * Sections: breadcrumb · hero · caption · facts · body+gallery bands · testimonial · prev/next.
+ * Lightbox omitted — static site.
  */
 import PageShell from "../../layouts/PageShell.astro";
 import { Image } from "astro:assets";
@@ -12,6 +11,7 @@ import { getCollection, render } from "astro:content";
 import { adjacent } from "../../lib/adjacent.mjs";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
+import Testimonial from "../../components/ui/Testimonial.astro";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects", (p) => !p.data.draft))
@@ -47,80 +47,81 @@ const { Content } = await render(project);
     </Container>
   </Section>
 
-  {/* ── Hero ─────────────────────────────────────────────────── */}
-  <Section surface="light" pad="0" style="padding-bottom:var(--space-xl)">
-    <Container>
-      <div class="detail-sector">{project.data.sector}</div>
-      <h1 class="detail-title">{project.data.title}</h1>
-      <p class="detail-location">{project.data.location}</p>
-    </Container>
-    <div class="detail-hero-wrap">
-      <Image
-        src={project.data.heroImage}
-        alt={project.data.title}
-        widths={[800, 1200, 1600, 2400]}
-        sizes="100vw"
-        class="detail-hero-img"
-      />
+  {/* ── Hero — full-bleed image ───────────────────────────────── */}
+  <div class="detail-hero-wrap">
+    <Image
+      src={project.data.heroImage}
+      alt={project.data.title}
+      widths={[800, 1200, 1600, 2400]}
+      sizes="100vw"
+      class="detail-hero-img"
+    />
+  </div>
+
+  {/* ── Caption below hero — h1 lives here ───────────────────── */}
+  <Section surface="light" pad="var(--space-xxl)">
+    <div class="detail-caption">
+      <div class="detail-caption-place">{project.data.location}</div>
+      <h1 class="detail-caption-title">{project.data.title}</h1>
     </div>
   </Section>
 
-  {/* ── Facts + Narrative ────────────────────────────────────── */}
+  {/* ── Facts row — centred 4-up ──────────────────────────────── */}
   <Section surface="alt" pad="var(--space-section)">
     <Container>
-      <div class="al-detail">
-
-        {/* Left: narrative body */}
-        <div class="detail-narrative">
-          <Content />
+      <div class="detail-facts-row">
+        <div class="detail-facts-cell">
+          <div class="detail-facts-label">Location</div>
+          <div class="detail-facts-value">{project.data.location}</div>
         </div>
-
-        {/* Right: project facts sidebar */}
-        <aside class="detail-facts">
-          <div class="detail-facts-item">
-            <div class="detail-facts-label">Location</div>
-            <div class="detail-facts-value">{project.data.location}</div>
+        <div class="detail-facts-cell">
+          <div class="detail-facts-label">Project type</div>
+          <div class="detail-facts-value">{project.data.sector}</div>
+        </div>
+        <div class="detail-facts-cell">
+          <div class="detail-facts-label">Status</div>
+          <div class="detail-facts-value">
+            {project.data.status}{project.data.year ? ` ${project.data.year}` : ""}
           </div>
-          <div class="detail-facts-item">
-            <div class="detail-facts-label">Sector</div>
-            <div class="detail-facts-value">{project.data.sector}</div>
+        </div>
+        {project.data.features.length > 0 && (
+          <div class="detail-facts-cell">
+            <div class="detail-facts-label">Sustainability</div>
+            <div class="detail-facts-value">{project.data.features.join(" · ")}</div>
           </div>
-          <div class="detail-facts-item">
-            <div class="detail-facts-label">Status</div>
-            <div class="detail-facts-value">
-              {project.data.status}{project.data.year ? ` ${project.data.year}` : ""}
-            </div>
-          </div>
-          {project.data.features.length > 0 && (
-            <div class="detail-facts-item">
-              <div class="detail-facts-label">Features</div>
-              <div class="detail-facts-value">{project.data.features.join(" · ")}</div>
-            </div>
-          )}
-        </aside>
-
+        )}
       </div>
     </Container>
   </Section>
 
-  {/* ── Gallery ──────────────────────────────────────────────── */}
-  {project.data.gallery.length > 0 && (
+  {/* ── Body — centred editorial prose ───────────────────────── */}
+  <Section surface="light" pad="var(--space-section)">
+    <div class="detail-prose-wrap">
+      <Content />
+    </div>
+  </Section>
+
+  {/* ── Gallery — full-width image bands ─────────────────────── */}
+  {project.data.gallery.map((img, i) => (
+    <div class="detail-band">
+      <Image
+        src={img}
+        widths={[800, 1200, 1600, 2400]}
+        sizes="100vw"
+        alt={`${project.data.title} — image ${i + 1}`}
+        class="detail-band-img"
+      />
+    </div>
+  ))}
+
+  {/* ── Testimonial (conditional) ─────────────────────────────── */}
+  {project.data.testimonial && (
     <Section surface="light" pad="var(--space-section)">
       <Container>
-        <h2 class="detail-gallery-heading">Gallery</h2>
-        <div class="al-gallery">
-          {project.data.gallery.map((img, i) => (
-            <div class="detail-gallery-item">
-              <Image
-                src={img}
-                widths={[600, 1200, 2000]}
-                sizes="(max-width:800px) 100vw, 50vw"
-                alt={`${project.data.title} — image ${i + 1}`}
-                class="detail-gallery-img"
-              />
-            </div>
-          ))}
-        </div>
+        <Testimonial
+          quote={project.data.testimonial.quote}
+          author={project.data.testimonial.author}
+        />
       </Container>
     </Section>
   )}
@@ -173,35 +174,6 @@ const { Content } = await render(project);
 }
 .detail-breadcrumb a:hover { text-decoration: underline; }
 
-/* ── Hero text ───────────────────────────────────────────────── */
-.detail-sector {
-  font-family: var(--font-display);
-  font-size: var(--type-eyebrow-size);
-  font-weight: 600;
-  letter-spacing: var(--type-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--color-purple);
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-sm);
-}
-.detail-title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-hero-display-size);
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -0.5px;
-  color: var(--color-charcoal);
-  max-width: 18ch;
-  text-transform: uppercase;
-}
-.detail-location {
-  margin: var(--space-sm) 0 var(--space-xl);
-  font-family: var(--font-text);
-  font-size: var(--type-lead-size);
-  color: var(--color-grey-mid);
-}
-
 /* ── Full-bleed hero image ───────────────────────────────────── */
 .detail-hero-wrap {
   width: 100%;
@@ -215,108 +187,47 @@ const { Content } = await render(project);
   display: block;
 }
 
-/* ── Facts + narrative two-column layout ─────────────────────── */
-.al-detail {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: var(--space-section);
-  align-items: start;
+/* ── Caption block below hero ────────────────────────────────── */
+.detail-caption {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto;
 }
-@media (max-width: 900px) {
-  .al-detail {
-    grid-template-columns: 1fr;
-    gap: var(--space-xxl);
-  }
-  .detail-facts { order: -1; }
-}
-
-/* Narrative body prose */
-.detail-narrative {
+.detail-caption-place {
   font-family: var(--font-text);
-  font-size: var(--type-body-size);
-  line-height: 1.65;
-  color: var(--color-charcoal);
-}
-.detail-narrative :global(h2) {
-  font-family: var(--font-display);
-  font-size: var(--type-display-md-size);
+  font-size: var(--type-eyebrow-size);
   font-weight: 600;
-  letter-spacing: -0.2px;
-  color: var(--color-charcoal);
-  margin: 0 0 var(--space-md);
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-grey-light);
+  margin-bottom: var(--space-sm);
 }
-.detail-narrative :global(h3) {
-  font-family: var(--font-display);
-  font-size: var(--type-tagline-size);
-  font-weight: 600;
-  letter-spacing: -0.1px;
-  color: var(--color-charcoal);
-  margin: var(--space-lg) 0 var(--space-sm);
-}
-.detail-narrative :global(p) { margin: 0 0 var(--space-md); }
-.detail-narrative :global(p:last-child) { margin-bottom: 0; }
-.detail-narrative :global(ul),
-.detail-narrative :global(ol) {
-  margin: 0 0 var(--space-md);
-  padding-left: 1.5em;
-}
-.detail-narrative :global(li) {
-  margin-bottom: 0.4em;
-}
-.detail-narrative :global(a) {
-  color: var(--color-indigo-vivid);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.detail-narrative :global(a:hover) {
-  color: var(--color-indigo-deep);
-}
-.detail-narrative :global(strong) {
-  font-weight: 600;
-  color: var(--color-charcoal);
-}
-.detail-narrative :global(h4) {
-  font-family: var(--font-display);
-  font-size: var(--type-tagline-size);
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--color-charcoal);
-  margin: var(--space-md) 0 var(--space-sm);
-}
-.detail-narrative :global(blockquote) {
-  margin: var(--space-lg) 0;
-  border-left: 3px solid var(--color-purple);
-  padding-left: var(--space-lg);
-}
-.detail-narrative :global(blockquote p) {
-  font-family: var(--font-display);
-  font-size: var(--type-display-md-size);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.2px;
-  color: var(--color-indigo-deep);
+.detail-caption-title {
   margin: 0;
-}
-.detail-narrative :global(hr) {
-  border: none;
-  border-top: 1px solid var(--color-hairline);
-  margin: var(--space-xl) 0;
-}
-.detail-narrative :global(img) {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: var(--space-lg) 0;
-  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
 }
 
-/* Facts sidebar */
-.detail-facts {
-  border-left: 2px solid var(--color-lavender);
-  padding-left: var(--space-lg);
-  display: flex;
-  flex-direction: column;
+/* ── Facts row — centred 4-up ────────────────────────────────── */
+.detail-facts-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-lg);
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .detail-facts-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+}
+@media (max-width: 400px) {
+  .detail-facts-row { grid-template-columns: 1fr; }
 }
 .detail-facts-label {
   font-family: var(--font-display);
@@ -325,7 +236,7 @@ const { Content } = await render(project);
   letter-spacing: var(--type-eyebrow-tracking);
   text-transform: uppercase;
   color: var(--color-purple);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .detail-facts-value {
   font-family: var(--font-text);
@@ -334,37 +245,103 @@ const { Content } = await render(project);
   line-height: 1.4;
 }
 
-/* ── Gallery grid ────────────────────────────────────────────── */
-.detail-gallery-heading {
-  margin: 0 0 var(--space-xxl);
+/* ── Centred editorial prose ─────────────────────────────────── */
+/*
+ * All selectors below use :global() because <Content /> renders Markdown
+ * beyond Astro's scoped-style boundary. Without :global() the scoped
+ * attribute suffix (data-astro-cid-…) never appears on Markdown-rendered
+ * elements and the rules have zero specificity match.
+ */
+.detail-prose-wrap {
+  max-width: 60ch;
+  margin: 0 auto;
+  font-family: var(--font-text);
+  font-size: var(--type-lead-airy-size);
+  line-height: var(--type-lead-airy-leading);
+  color: var(--color-charcoal);
+}
+.detail-prose-wrap :global(h2) {
   font-family: var(--font-display);
   font-size: var(--type-display-md-size);
   font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+  color: var(--color-charcoal);
+  margin: var(--space-xl) 0 var(--space-md);
+}
+.detail-prose-wrap :global(h3) {
+  font-family: var(--font-display);
+  font-size: var(--type-tagline-size);
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  color: var(--color-charcoal);
+  margin: var(--space-lg) 0 var(--space-sm);
+}
+.detail-prose-wrap :global(h4) {
+  font-family: var(--font-display);
+  font-size: var(--type-tagline-size);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-charcoal);
+  margin: var(--space-md) 0 var(--space-sm);
+}
+.detail-prose-wrap :global(p) { margin: 0 0 var(--space-md); }
+.detail-prose-wrap :global(p:last-child) { margin-bottom: 0; }
+.detail-prose-wrap :global(ul),
+.detail-prose-wrap :global(ol) {
+  margin: 0 0 var(--space-md);
+  padding-left: 1.5em;
+}
+.detail-prose-wrap :global(li) { margin-bottom: 0.4em; }
+.detail-prose-wrap :global(a) {
+  color: var(--color-indigo-vivid);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.detail-prose-wrap :global(a:hover) { color: var(--color-indigo-deep); }
+.detail-prose-wrap :global(strong) {
+  font-weight: 600;
   color: var(--color-charcoal);
 }
-.al-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-lg);
+.detail-prose-wrap :global(em) { font-style: italic; }
+.detail-prose-wrap :global(blockquote) {
+  margin: var(--space-lg) 0;
+  border-left: 3px solid var(--color-purple);
+  padding-left: var(--space-lg);
 }
-@media (max-width: 600px) {
-  .al-gallery { grid-template-columns: 1fr; }
+.detail-prose-wrap :global(blockquote p) {
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  color: var(--color-indigo-deep);
+  margin: 0;
 }
-.detail-gallery-item {
+.detail-prose-wrap :global(hr) {
+  border: none;
+  border-top: 1px solid var(--color-hairline);
+  margin: var(--space-xl) 0;
+}
+.detail-prose-wrap :global(img) {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: var(--space-lg) 0;
   border-radius: var(--radius-md);
-  overflow: hidden;
+}
+
+/* ── Full-width gallery image bands ──────────────────────────── */
+.detail-band {
+  width: 100%;
   line-height: 0;
 }
-.detail-gallery-img {
+.detail-band-img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
-  transition: transform var(--duration-base) var(--ease-standard);
-}
-.detail-gallery-item:hover .detail-gallery-img {
-  transform: scale(1.02);
 }
 
 /* ── Prev / next nav ─────────────────────────────────────────── */

@@ -11,3 +11,6 @@ Original_Images/
 # secrets
 .env
 .dev.vars
+# migration temp dirs (interrupted runs)
+scripts/migrate/.tmp-*
+scripts/migrate/.raw-*

@@ -1,51 +1,30 @@
 ---
 /**
  * Home page — ArchitectureLIVE
- * Port of Home.jsx (ui_kits/website/Home.jsx).
- * Sections: Hero · Featured projects · What we do · Approach · Awards strip · Latest news.
+ * Re-port of Home.jsx (ui_kits/website/Home.jsx) — design-refresh branch.
+ * Sections: Hero (full-bleed, no overlay) · Intro h1 · Selected work (stacked) · Approach (text-only tint) · Latest news.
+ * Removed: "What we do" sector cards, awards/press strip.
  * CtaBand is provided by PageShell (cta defaults to true) — not added here.
  */
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import PageShell from "../layouts/PageShell.astro";
-import ProjectTile from "../components/ui/ProjectTile.astro";
 import Section from "../components/ui/Section.astro";
 import Container from "../components/ui/Container.astro";
 import SectionHead from "../components/ui/SectionHead.astro";
-import ProjectCard from "../components/ui/ProjectCard.astro";
 import NewsCard from "../components/ui/NewsCard.astro";
-import Tag from "../components/ui/Tag.astro";
-import Button from "../components/ui/Button.astro";
+import TextLink from "../components/ui/TextLink.astro";
 
 /* ── Collection queries ── */
 const projects = await getCollection("projects", (p) => !p.data.draft);
-const featured = projects.filter((p) => p.data.featured).slice(0, 6);
-const featuredOrFallback = featured.length ? featured : projects.slice(0, 6);
+const featured = projects.filter((p) => p.data.featured).slice(0, 4);
+const featuredOrFallback = featured.length ? featured : projects.slice(0, 4);
 const latestNews = (await getCollection("news", (n) => !n.data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
 /* ── Derived values ── */
 const heroProject = featuredOrFallback[0];
-// Use the second project for the approach image so the two images differ;
-// fall back to the first project if there is only one.
-const approachProject = featuredOrFallback[1] ?? featuredOrFallback[0];
-
-/* ── Static content from Shell.jsx SECTOR_CARDS ── */
-const SECTOR_CARDS = [
-  { type: "Extensions", blurb: "Remodelling and contemporary additions that transform how a home lives." },
-  { type: "New Build",  blurb: "Bespoke new and retirement homes, designed around site and light." },
-  { type: "Education",  blurb: "Schools, sixth-form centres and sports pavilions for learning." },
-  { type: "Commercial", blurb: "Offices, hospitality and conference spaces with a human feel." },
-] as const;
-
-const AWARDS = [
-  "Waverley Design Awards",
-  "Channel 4 · Extraordinary Extensions",
-  "Houzz",
-  "Homify",
-  "South Downs NPA",
-] as const;
 ---
 
 <PageShell
@@ -54,100 +33,75 @@ const AWARDS = [
   active="home"
 >
 
-  {/* ── Hero ──────────────────────────────────────────────────── */}
-  <ProjectTile
-    background
-    minHeight="86vh"
-    image={heroProject?.data.heroImage}
-    imageLabel={heroProject ? `${heroProject.data.title} — ${heroProject.data.location}` : "Signature project"}
-    eyebrow="ArchitectureLIVE — Haslemere, Surrey"
-    headline="Contemporary architecture for sustainable living"
-    headingLevel="h1"
-    sub="A Surrey practice crafting low-energy homes, schools and spaces — from first sketch through planning to completion."
-  >
-    <Button href="/projects" variant="on-dark" size="large">View our work</Button>
-    <Button href="/about"    variant="on-dark" size="large">Meet the studio</Button>
-  </ProjectTile>
-
-  {/* ── Featured projects ─────────────────────────────────────── */}
-  <Section surface="light">
-    <Container>
-      <SectionHead
-        eyebrow="Selected work"
-        title="Recent projects"
-        link="View all projects"
-        href="/projects"
+  {/* ── Hero — full-bleed image, no overlay text ──────────────── */}
+  <section class="hero">
+    {heroProject?.data.heroImage && (
+      <Image
+        src={heroProject.data.heroImage}
+        alt={`${heroProject.data.title} — ${heroProject.data.location}`}
+        widths={[800, 1200, 1920, 2560]}
+        sizes="100vw"
+        class="hero__image"
+        loading="eager"
+        fetchpriority="high"
       />
-      <div class="al-grid-3">
-        {featuredOrFallback.slice(0, 3).map((p) => (
-          <ProjectCard
-            href={`/projects/${p.id}`}
-            title={p.data.title}
-            sector={p.data.sector}
-            meta={`${p.data.location} · ${p.data.status}`}
-            image={p.data.heroImage}
-          />
-        ))}
-      </div>
-    </Container>
+    )}
+  </section>
+
+  {/* ── Intro block — the page's single <h1> ─────────────────── */}
+  <Section surface="light" pad="var(--space-xxl)">
+    <div class="intro">
+      <p class="intro__eyebrow">ArchitectureLIVE — Haslemere, Surrey</p>
+      <h1 class="intro__headline">Contemporary architecture for sustainable living</h1>
+      <p class="intro__sub">A Surrey practice crafting low-energy homes, schools and spaces — from first sketch through planning to completion.</p>
+    </div>
   </Section>
 
-  {/* ── What we do ────────────────────────────────────────────── */}
-  <Section surface="alt">
-    <Container>
-      <SectionHead eyebrow="What we do" title="Four ways we work" center />
-      <div class="al-grid-4">
-        {SECTOR_CARDS.map((s) => (
-          <div class="sector-card">
-            <Tag label={s.type} />
-            <p class="sector-card-blurb">{s.blurb}</p>
-            <a href="/projects" class="sector-card-link">See projects &rarr;</a>
-          </div>
-        ))}
+  {/* ── Selected work — full-bleed stacked images with captions ─ */}
+  <section class="selected-work">
+    <div class="selected-work__label-row">
+      <p class="selected-work__eyebrow">Selected work</p>
+    </div>
+    {featuredOrFallback.map((p, i) => (
+      <div class="project-item">
+        <a
+          href={`/projects/${p.id}`}
+          class={`project-band project-band--${i % 2 === 0 ? "wide" : "tall"}`}
+          aria-label={p.data.title}
+        >
+          {p.data.heroImage && (
+            <Image
+              src={p.data.heroImage}
+              alt={`${p.data.title} — ${p.data.location}`}
+              widths={[800, 1200, 1920, 2560]}
+              sizes="100vw"
+              class="project-band__image"
+            />
+          )}
+        </a>
+        <div class="caption">
+          <h2 class="caption__name">{p.data.title}</h2>
+          {(p.data.sector || p.data.location) && (
+            <p class="caption__meta">{p.data.sector} · {p.data.location}</p>
+          )}
+        </div>
       </div>
-    </Container>
-  </Section>
+    ))}
+    <div class="selected-work__cta">
+      <TextLink href="/projects" arrow>View all projects</TextLink>
+    </div>
+  </section>
 
-  {/* ── Approach ──────────────────────────────────────────────── */}
-  {/* Background: --color-lavender. Design shows a leaf-texture backdrop;
-      approximated here with the solid lavender token (no external asset needed). */}
+  {/* ── Approach — text-only on lavender, no image, no script line */}
   <Section surface="tint">
     <Container>
-      <div class="al-split">
-        <div class="approach-text">
-          <span class="approach-eyebrow">Our approach</span>
-          <h2 class="approach-headline">Low-energy living, beautifully made</h2>
-          <p class="approach-script">Contemporary design &amp; sustainable living</p>
-          <p class="approach-body">
-            We design fabric-first, Passivhaus-influenced buildings that are warm, quiet and
-            inexpensive to run — and that sit gently in the Surrey, Sussex and Hampshire landscape.
-          </p>
-          <div class="approach-cta">
-            <Button href="/about" variant="primary">Read our story</Button>
-          </div>
-        </div>
-        {approachProject && (
-          <div class="approach-image">
-            <Image
-              src={approachProject.data.heroImage}
-              alt={`${approachProject.data.title} — timber, glazing and daylight`}
-              widths={[600, 1000, 1400]}
-              sizes="(max-width: 900px) 100vw, 45vw"
-            />
-          </div>
-        )}
-      </div>
-    </Container>
-  </Section>
-
-  {/* ── Social proof — awards / press strip ───────────────────── */}
-  <Section surface="light" pad="var(--space-xxl)">
-    <Container>
-      <p class="awards-label">Recognised &amp; featured</p>
-      <div class="al-awards">
-        {AWARDS.map((a) => (
-          <span class="award-item">{a}</span>
-        ))}
+      <div class="approach">
+        <span class="approach__eyebrow">Our approach</span>
+        <h2 class="approach__headline">Low-energy living, beautifully made</h2>
+        <p class="approach__body">
+          We design fabric-first, Passivhaus-influenced buildings that are warm, quiet and
+          inexpensive to run — and that sit gently in the Surrey, Sussex and Hampshire landscape.
+        </p>
       </div>
     </Container>
   </Section>
@@ -179,124 +133,30 @@ const AWARDS = [
 </PageShell>
 
 <style>
-/* ── Responsive grids ──────────────────────────────────────────── */
-.al-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-xl);
-}
-.al-grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-lg);
-}
-@media (max-width: 900px) {
-  .al-grid-3 { grid-template-columns: repeat(2, 1fr); }
-  .al-grid-4 { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-  .al-grid-3,
-  .al-grid-4 { grid-template-columns: 1fr; }
-}
-
-/* ── Sector cards ─────────────────────────────────────────────── */
-.sector-card {
-  background: var(--color-white);
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  border: var(--border-hairline);
-}
-.sector-card-blurb {
-  margin: 0;
-  font-family: var(--font-text);
-  font-size: var(--type-body-size);
-  line-height: 1.55;
-  color: var(--color-grey-mid);
-}
-.sector-card-link {
-  margin-top: auto;
-  font-family: var(--font-text);
-  font-size: var(--type-caption-size);
-  font-weight: 600;
-  color: var(--color-indigo-deep);
-  text-decoration: none;
-}
-.sector-card-link:hover {
-  text-decoration: underline;
-}
-
-/* ── Approach section ─────────────────────────────────────────── */
-.al-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xxl);
-  align-items: center;
-}
-@media (max-width: 900px) {
-  .al-split { grid-template-columns: 1fr; }
-}
-.approach-text {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  max-width: 46ch;
-}
-.approach-eyebrow {
-  font-family: var(--font-display);
-  font-size: var(--type-eyebrow-size);
-  font-weight: 600;
-  letter-spacing: var(--type-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--color-indigo-deep);
-}
-.approach-headline {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-display-lg-size);
-  font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.3px;
-  text-transform: uppercase;
-  color: var(--color-indigo-deep);
-}
-.approach-script {
-  margin: 0;
-  font-family: var(--font-script);
-  font-size: 30px;
-  color: var(--color-indigo-slate);
-  line-height: 1.1;
-}
-.approach-body {
-  margin: 0;
-  font-family: var(--font-text);
-  font-size: var(--type-lead-airy-size);
-  line-height: 1.6;
-  color: var(--color-indigo-slate);
-}
-.approach-cta {
-  margin-top: var(--space-xs);
-}
-.approach-image {
-  filter: drop-shadow(var(--shadow-image));
-  border-radius: var(--radius-md);
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero {
+  margin-top: calc(-1 * var(--header-height));
+  height: 94vh;
   overflow: hidden;
-  aspect-ratio: 4 / 5;
 }
-.approach-image img {
+.hero__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: var(--radius-md);
 }
 
-/* ── Awards strip ─────────────────────────────────────────────── */
-.awards-label {
+/* ── Intro block ──────────────────────────────────────────────── */
+.intro {
+  max-width: 34ch;
+  margin: 0 auto;
   text-align: center;
-  margin: 0 0 var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.intro__eyebrow {
+  margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-eyebrow-size);
   font-weight: 600;
@@ -304,18 +164,138 @@ const AWARDS = [
   text-transform: uppercase;
   color: var(--color-grey-light);
 }
-.al-awards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-xl);
-  align-items: center;
-}
-.award-item {
+.intro__headline {
+  margin: 0;
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: var(--type-display-sm-size);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  color: var(--color-charcoal);
+}
+.intro__sub {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  line-height: 1.55;
+  color: var(--color-grey-mid);
+}
+
+/* ── Selected work ────────────────────────────────────────────── */
+.selected-work__label-row {
+  text-align: center;
+  padding: var(--space-xl) 0 var(--space-md);
+}
+.selected-work__eyebrow {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
   font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-purple);
+}
+
+.project-item {
+  /* stack: link then caption */
+}
+.project-band {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+}
+/* alternating aspect ratios: 16/9 and 3/2 */
+.project-band--wide {
+  aspect-ratio: 16 / 9;
+}
+.project-band--tall {
+  aspect-ratio: 3 / 2;
+}
+.project-band__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+.project-band:hover .project-band__image {
+  transform: scale(1.03);
+}
+
+.caption {
+  text-align: center;
+  padding: var(--space-xl) var(--space-xl) var(--space-xxl);
+}
+.caption__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+.caption__meta {
+  margin: 10px 0 0;
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  letter-spacing: 0.4px;
+  color: var(--color-grey-light);
+}
+
+.selected-work__cta {
+  text-align: center;
+  padding: var(--space-md) 0 var(--space-section);
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+}
+
+/* ── Approach (text-only, lavender) ───────────────────────────── */
+.approach {
+  max-width: 52ch;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.approach__eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-indigo-deep);
+}
+.approach__headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-display-lg-size);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+  color: var(--color-indigo-deep);
+}
+.approach__body {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-lead-airy-size);
+  line-height: 1.6;
   color: var(--color-indigo-slate);
-  opacity: 0.8;
+}
+
+/* ── News grid ────────────────────────────────────────────────── */
+.al-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+@media (max-width: 900px) {
+  .al-grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .al-grid-3 { grid-template-columns: 1fr; }
 }
 </style>

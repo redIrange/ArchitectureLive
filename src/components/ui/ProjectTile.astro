@@ -12,6 +12,7 @@ interface Props {
   surface?: "light" | "alt" | "tint" | "dark" | "charcoal";
   eyebrow?: string;
   headline?: string;
+  headingLevel?: "h1" | "h2" | "h3";
   sub?: string;
   script?: string;
   image?: ImageMetadata;
@@ -27,6 +28,7 @@ const {
   surface = "light",
   eyebrow,
   headline,
+  headingLevel = "h2",
   sub,
   script,
   image,
@@ -37,6 +39,8 @@ const {
   media = true,
   minHeight,
 } = Astro.props;
+
+const HeadingTag = headingLevel;
 
 const surfaces: Record<string, string> = {
   light: "var(--color-white)",
@@ -86,12 +90,12 @@ const childrenJustify = align === "center" ? "center" : "flex-start";
           <span class="al-tile-eyebrow" style={`color:${accentTone};`}>{eyebrow}</span>
         )}
         {headline && (
-          <h2
+          <HeadingTag
             class="al-tile-headline"
             style={`font-size:${headlineFontSize};font-weight:${headlineFontWeight};line-height:${headlineLineHeight};letter-spacing:${headlineTracking};color:${tone};`}
           >
             {headline}
-          </h2>
+          </HeadingTag>
         )}
         {script && (
           <p class="al-tile-script" style={`color:${accentTone};`}>{script}</p>
@@ -122,12 +126,12 @@ const childrenJustify = align === "center" ? "center" : "flex-start";
           <span class="al-tile-eyebrow" style={`color:${accentTone};`}>{eyebrow}</span>
         )}
         {headline && (
-          <h2
+          <HeadingTag
             class="al-tile-headline"
             style={`font-size:${headlineFontSize};font-weight:${headlineFontWeight};line-height:${headlineLineHeight};letter-spacing:${headlineTracking};color:${tone};`}
           >
             {headline}
-          </h2>
+          </HeadingTag>
         )}
         {script && (
           <p class="al-tile-script" style={`color:${accentTone};`}>{script}</p>

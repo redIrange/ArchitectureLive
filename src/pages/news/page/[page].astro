@@ -8,6 +8,7 @@ import type { GetStaticPathsOptions, Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 import PageShell from "../../../layouts/PageShell.astro";
 import NewsCard from "../../../components/ui/NewsCard.astro";
+import NewsIntro from "../../../components/ui/NewsIntro.astro";
 import Pagination from "../../../components/ui/Pagination.astro";
 import Section from "../../../components/ui/Section.astro";
 import Container from "../../../components/ui/Container.astro";
@@ -26,12 +27,7 @@ const prevUrl = page.currentPage === 2 ? "/news" : page.url.prev;
 <PageShell title={`News — ArchitectureLIVE (page ${page.currentPage})`} active="news">
 
   {/* ── Intro (ported from News.jsx) ─────────────────────────── */}
-  <Section surface="light" pad="var(--space-xxl)">
-    <Container>
-      <div class="news-eyebrow">Journal</div>
-      <h1 class="news-headline">News &amp; insight</h1>
-    </Container>
-  </Section>
+  <NewsIntro />
 
   {/* ── Card grid ───────────────────────────────────────────────── */}
   <Section surface="alt" pad="var(--space-section)" style="padding-top:var(--space-xl)">
@@ -54,7 +50,8 @@ const prevUrl = page.currentPage === 2 ? "/news" : page.url.prev;
           lastPage={page.lastPage}
           urlPrev={prevUrl}
           urlNext={page.url.next}
-          base="/news/page"
+          firstPageUrl="/news"
+          pageBase="/news/page"
         />
       </div>
     </Container>
@@ -63,27 +60,6 @@ const prevUrl = page.currentPage === 2 ? "/news" : page.url.prev;
 </PageShell>
 
 <style>
-/* ── Intro ─────────────────────────────────────────────────────── */
-.news-eyebrow {
-  font-family: var(--font-display);
-  font-size: var(--type-eyebrow-size);
-  font-weight: 600;
-  letter-spacing: var(--type-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--color-purple);
-  margin-bottom: 14px;
-}
-.news-headline {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-hero-display-size);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
-  color: var(--color-charcoal);
-}
-
 /* ── Card grid ─────────────────────────────────────────────────── */
 .news-grid {
   display: grid;

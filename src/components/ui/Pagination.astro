@@ -3,21 +3,24 @@
  * Page pagination for News and Projects indexes.
  * Prev / numbered pages / next — rendered as real <a> links (no JS).
  * The current page is a filled indigo pill; others are quiet.
+ *
+ * URL scheme (news example):
+ *   firstPageUrl = "/news"      → page 1 link
+ *   pageBase     = "/news/page" → pages 2+ get `${pageBase}/${p}`
  */
+import { pageHref } from "../../lib/page-href.mjs";
+
 interface Props {
   currentPage: number;
   lastPage: number;
   urlPrev?: string;
   urlNext?: string;
-  base: string;
+  firstPageUrl: string;
+  pageBase: string;
 }
-const { currentPage, lastPage, urlPrev, urlNext, base } = Astro.props;
+const { currentPage, lastPage, urlPrev, urlNext, firstPageUrl, pageBase } = Astro.props;
 
 const pages = Array.from({ length: lastPage }, (_, i) => i + 1);
-
-function pageUrl(p: number): string {
-  return p === 1 ? base : `${base}/${p}`;
-}
 ---
 <nav aria-label="Pagination" class="pagination">
   <!-- Previous arrow -->
@@ -40,7 +43,7 @@ function pageUrl(p: number): string {
     p === currentPage ? (
       <span aria-current="page" class="pagination-page pagination-page--active">{p}</span>
     ) : (
-      <a href={pageUrl(p)} class="pagination-page">{p}</a>
+      <a href={pageHref(p, { firstPageUrl, pageBase })} class="pagination-page">{p}</a>
     )
   )}
 

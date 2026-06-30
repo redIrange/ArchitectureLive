@@ -1,0 +1,38 @@
+---
+/**
+ * News index intro block — eyebrow + headline.
+ * Shared between news/index.astro (page 1) and news/page/[page].astro (pages 2+).
+ * Scoped styles here only cover the intro elements; grid/pagination CSS stays
+ * in each page file so Astro's scoped class hashing remains consistent.
+ */
+import Section from "./Section.astro";
+import Container from "./Container.astro";
+---
+<Section surface="light" pad="var(--space-xxl)">
+  <Container>
+    <div class="news-eyebrow">Journal</div>
+    <h1 class="news-headline">News &amp; insight</h1>
+  </Container>
+</Section>
+
+<style>
+.news-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: 14px;
+}
+.news-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+</style>

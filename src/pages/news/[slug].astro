@@ -98,9 +98,8 @@ const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !
         class="article-share-link"
       >LinkedIn</a>
       <a
-        href={`https://www.houzz.com/ideabooks`}
-        rel="noopener noreferrer"
-        target="_blank"
+        href="#"
+        aria-disabled="true"
         class="article-share-link"
       >Houzz</a>
       <button
@@ -223,12 +222,12 @@ const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !
 }
 
 /* Paragraphs */
-.article-prose p {
+.article-prose :global(p) {
   margin: 0;
 }
 
 /* Headings */
-.article-prose h2 {
+.article-prose :global(h2) {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-display-lg-size);
@@ -237,7 +236,7 @@ const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !
   letter-spacing: -0.3px;
   color: var(--color-charcoal);
 }
-.article-prose h3 {
+.article-prose :global(h3) {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-display-md-size);
@@ -246,7 +245,7 @@ const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !
   letter-spacing: -0.2px;
   color: var(--color-charcoal);
 }
-.article-prose h4 {
+.article-prose :global(h4) {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-tagline-size);
@@ -256,25 +255,25 @@ const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !
 }
 
 /* Lists */
-.article-prose ul,
-.article-prose ol {
+.article-prose :global(ul),
+.article-prose :global(ol) {
   margin: 0;
   padding-left: var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
 }
-.article-prose li {
+.article-prose :global(li) {
   line-height: 1.6;
 }
 
 /* Blockquote — pull quote with indigo-purple accent border */
-.article-prose blockquote {
+.article-prose :global(blockquote) {
   margin: 0;
   border-left: 3px solid var(--color-purple);
   padding-left: var(--space-lg);
 }
-.article-prose blockquote p {
+.article-prose :global(blockquote p) {
   font-family: var(--font-display);
   font-size: var(--type-display-md-size);
   font-weight: 500;
@@ -284,18 +283,18 @@ const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !
 }
 
 /* Links */
-.article-prose a {
+.article-prose :global(a) {
   color: var(--color-indigo-deep);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
-.article-prose a:hover {
+.article-prose :global(a:hover) {
   color: var(--color-indigo-vivid);
 }
 
 /* Inline images */
-.article-prose img {
+.article-prose :global(img) {
   width: 100%;
   height: auto;
   display: block;
@@ -303,11 +302,11 @@ const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !
 }
 
 /* Strong / em */
-.article-prose strong {
+.article-prose :global(strong) {
   font-weight: 600;
   color: var(--color-charcoal);
 }
-.article-prose em {
+.article-prose :global(em) {
   font-style: italic;
 }
 

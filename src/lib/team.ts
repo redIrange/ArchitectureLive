@@ -16,15 +16,15 @@ export interface TeamMember {
 
 export const team: TeamMember[] = [
   {
-    name: "Jonathan Gratton",
-    role: "Principal Architect",
-    bio: "Jonathan founded ArchitectureLIVE and leads the practice across residential, conservation and commercial work. He brings a thoughtful approach to each project — combining contemporary design with a deep respect for the Surrey, Sussex and Hampshire landscape.",
-    image: jonathan,
+    name: "Irene Konschill",
+    role: "Architect, RIBA",
+    bio: "Irene founded ArchitectureLIVE in 2009 and has worked as a qualified architect for over 20 years. Originally from Vienna, she trained at the Technical University of Vienna and the University of Portsmouth. Before starting the practice she was an associate and lead project architect at Alison Brooks Architects, working on the Stirling Prize-winning Accordia scheme in Cambridge, and her designs have won Housing Design Awards.",
+    image: irene,
   },
   {
-    name: "Irene Konschill",
-    role: "Architect",
-    bio: "Irene leads the residential team, bringing careful attention to detailing and the quality of everyday spaces. Her eye for daylight, materiality and the small moves that make a building feel right is central to how ArchitectureLIVE works.",
-    image: irene,
+    name: "Jonathan Gratton",
+    role: "Architect, RIBA",
+    bio: "Jonathan has over 20 years' experience as a qualified architect and trained as a BREEAM sustainability assessor, so a practical approach to sustainability runs through everything we design. He has worked on challenging sites and listed buildings on projects worth up to £40 million, and has led education work including the new-build St Bartholomew's secondary school.",
+    image: jonathan,
   },
 ];

@@ -16,15 +16,21 @@ import NewsCard from "../components/ui/NewsCard.astro";
 import TextLink from "../components/ui/TextLink.astro";
 
 /* ── Collection queries ── */
-const projects = await getCollection("projects", (p) => !p.data.draft);
-const featured = projects.filter((p) => p.data.featured).slice(0, 5);
+const projects = (await getCollection("projects", (p) => !p.data.draft))
+  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+const featured = projects.filter((p) => p.data.featured);
 const featuredOrFallback = featured.length ? featured : projects.slice(0, 5);
 const latestNews = (await getCollection("news", (n) => !n.data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
-/* ── Derived values ── */
-const heroProject = featuredOrFallback[0];
+/* ── Slideshow: exactly 5 hero images, featured first then non-featured ── */
+const slideshowProjects: typeof projects = [...featured.slice(0, 5)];
+if (slideshowProjects.length < 5) {
+  const usedIds = new Set(slideshowProjects.map((p) => p.id));
+  const fillers = projects.filter((p) => !usedIds.has(p.id));
+  slideshowProjects.push(...fillers.slice(0, 5 - slideshowProjects.length));
+}
 ---
 
 <PageShell
@@ -33,19 +39,19 @@ const heroProject = featuredOrFallback[0];
   active="home"
 >
 
-  {/* ── Hero — full-bleed image, no overlay text ──────────────── */}
+  {/* ── Hero — rotating cross-fade slideshow, 5 images ─────────── */}
   <section class="hero">
-    {heroProject?.data.heroImage && (
+    {slideshowProjects.map((p, i) => p.data.heroImage && (
       <Image
-        src={heroProject.data.heroImage}
-        alt={`${heroProject.data.title} — ${heroProject.data.location}`}
+        src={p.data.heroImage}
+        alt={p.data.location ?? p.data.title}
         widths={[800, 1200, 1920, 2560]}
         sizes="100vw"
-        class="hero__image"
-        loading="eager"
-        fetchpriority="high"
+        class={`hero__image${i === 0 ? " is-active" : ""}`}
+        loading={i === 0 ? "eager" : "lazy"}
+        fetchpriority={i === 0 ? "high" : undefined}
       />
-    )}
+    ))}
   </section>
 
   {/* ── Intro block — the page's single <h1> ─────────────────── */}
@@ -80,10 +86,7 @@ const heroProject = featuredOrFallback[0];
           )}
         </a>
         <div class="caption">
-          <h2 class="caption__name">{p.data.title}</h2>
-          {(p.data.sector || p.data.location) && (
-            <p class="caption__meta">{p.data.sector} · {p.data.location}</p>
-          )}
+          <h2 class="caption__name">{p.data.location}</h2>
         </div>
       </div>
     ))}
@@ -132,18 +135,41 @@ const heroProject = featuredOrFallback[0];
 
 </PageShell>
 
+<script>
+(function () {
+  const imgs = /** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll('.hero__image'));
+  if (imgs.length < 2) return;
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mq.matches) return;
+  let current = 0;
+  setInterval(function () {
+    imgs[current].classList.remove('is-active');
+    current = (current + 1) % imgs.length;
+    imgs[current].classList.add('is-active');
+  }, 5000);
+})();
+</script>
+
 <style>
 /* ── Hero ─────────────────────────────────────────────────────── */
 .hero {
   margin-top: calc(-1 * var(--header-height));
   height: 94vh;
   overflow: hidden;
+  position: relative;
 }
 .hero__image {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0;
+  transition: opacity 800ms ease;
+}
+.hero__image.is-active {
+  opacity: 1;
 }
 
 /* ── Intro block ──────────────────────────────────────────────── */
@@ -216,10 +242,6 @@ const heroProject = featuredOrFallback[0];
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform var(--duration-slow) var(--ease-out);
-}
-.project-band:hover .project-band__image {
-  transform: scale(1.03);
 }
 
 .caption {
@@ -236,14 +258,6 @@ const heroProject = featuredOrFallback[0];
   text-transform: uppercase;
   color: var(--color-charcoal);
 }
-.caption__meta {
-  margin: 10px 0 0;
-  font-family: var(--font-text);
-  font-size: var(--type-caption-size);
-  letter-spacing: 0.4px;
-  color: var(--color-grey-light);
-}
-
 .selected-work__cta {
   text-align: center;
   padding: var(--space-md) 0 var(--space-section);

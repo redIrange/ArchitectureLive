@@ -15,15 +15,16 @@ interface Props {
   image: ImageMetadata;
   ratio?: string;
   variant?: "default" | "reveal";
+  label?: string;
 }
-const { href, title, sector, meta, image, ratio = "4 / 3", variant = "default" } = Astro.props;
+const { href, title, sector, meta, image, ratio = "4 / 3", variant = "default", label } = Astro.props;
 ---
 {variant === "reveal" ? (
   <a href={href} class="project-card project-card--reveal" aria-label={title}>
     <div class="al-reveal-media">
       <Image src={image} alt={title} widths={[400, 700, 1000]} sizes="(max-width: 700px) 100vw, 33vw" />
       <div class="al-reveal-scrim"></div>
-      <div class="al-reveal-caption">{title}</div>
+      <div class="al-reveal-caption">{label ?? title}</div>
     </div>
   </a>
 ) : (

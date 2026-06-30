@@ -6,7 +6,7 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg", "./g11.jpg", "./g12.jpg", "./g13.jpg", "./g14.jpg", "./g15.jpg", "./g16.jpg", "./g17.jpg", "./g18.jpg", "./g19.jpg", "./g20.jpg", "./g21.jpg", "./g22.jpg", "./g23.jpg", "./g24.jpg", "./g25.jpg", "./g26.jpg", "./g27.jpg"]
 excerpt: "A project to totally transform and renovate a derelict 1960s detached house, providing contemporary, open plan living on the ground floor."
 featured: false
 draft: false

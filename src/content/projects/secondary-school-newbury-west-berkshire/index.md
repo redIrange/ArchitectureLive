@@ -6,7 +6,7 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg", "./g11.jpg", "./g12.jpg", "./g13.jpg", "./g14.jpg", "./g15.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg", "./g11.jpg", "./g12.jpg", "./g13.jpg", "./g14.jpg", "./g15.jpg", "./g16.jpg", "./g17.jpg", "./g18.jpg", "./g19.jpg", "./g20.jpg", "./g21.jpg"]
 excerpt: "A multi-purpose school extension providing a new 6th Form study area, extended changing facilities, and increased exam capacity."
 featured: false
 draft: false

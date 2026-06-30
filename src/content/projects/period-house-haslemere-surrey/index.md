@@ -6,7 +6,7 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg"]
 excerpt: "A project to extend & reconfigure the ground floor of a period house to provide a contemporary open-plan family living space."
 featured: false
 draft: false

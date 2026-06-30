@@ -6,7 +6,7 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg"]
+gallery: []
 excerpt: "A project to redesign and remodel the 6th Form facilities at the ever-growing and successful St Bartholomews School in Newbury, Berkshire"
 featured: true
 draft: false

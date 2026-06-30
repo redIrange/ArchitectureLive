@@ -1,0 +1,34 @@
+{
+  "6th-form-centre-newbury-west-berkshire": {
+    "dirs": ["01 RIBA Project Images/St Barts 6th Form"],
+    "hero": "ArchitectureLIVE-6th-Form-centre-St-Bartholomew's-school-West-Berkshire.jpg"
+  },
+  "secondary-school-newbury-west-berkshire": {
+    "dirs": ["01 RIBA Project Images/St Bartholomews", "13 AL projects/St Barts BIPV Installation"],
+    "hero": "ArchitectureLIVE_School_Extension_BIPV.jpg"
+  },
+  "new-build-retirement-house-fareham-hampshire": {
+    "dirs": ["01 RIBA Project Images/Crofton Lane"],
+    "hero": "ArchitectureLIVE-new-build-retirment-house-Fareham-Hampshire.jpg"
+  },
+  "1960s-detached-house-haslemere-surrey": {
+    "dirs": ["01 RIBA Project Images/Courts Mount"],
+    "hero": "ArchitectureLIVE-exterior-view-contemporary-extension-renovated-1960s-detached-home-Haslemere-Surrey.jpg"
+  },
+  "listed-country-house-chiddingfold-surrey": {
+    "dirs": ["01 RIBA Project Images/Old Pickhurst"],
+    "hero": "Listed-country-house-remodelling-and-renovation-by-ArchitectureLIVE.jpg"
+  },
+  "period-house-haslemere-surrey": {
+    "dirs": ["01 RIBA Project Images/Critchmere"],
+    "hero": "ArchitectureLIVE-extension-Cedar-louvers-Haslemere-Surrey.jpg"
+  },
+  "1960s-house-lodsworth-west-sussex": {
+    "dirs": ["01 RIBA Project Images/Stonehurst", "13 AL projects/Stonehurst"],
+    "hero": "Renovated-1960s-house-West-Sussex.jpg"
+  },
+  "1960s-house-haslemere-surrey": {
+    "dirs": ["01 RIBA Project Images/Escale"],
+    "hero": "1960s-house-renovation-extension-Haslemere-Surrey.jpg"
+  }
+}

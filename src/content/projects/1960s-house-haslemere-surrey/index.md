@@ -6,7 +6,7 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg", "./g09.jpg", "./g10.jpg", "./g11.jpg", "./g12.jpg", "./g13.jpg", "./g14.jpg", "./g15.jpg", "./g16.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg"]
 excerpt: "The complete renovation and extension to a 1960s detached house in Haslemere, Surrey created a contemporary, striking family home"
 featured: false
 draft: false

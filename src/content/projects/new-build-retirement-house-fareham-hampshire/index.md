@@ -6,7 +6,7 @@ status: "Completed"
 year: 2019
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g06.jpg", "./g07.jpg", "./g08.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg"]
 excerpt: "A contemporary new-build retirement house in Fareham, Hampshire, designed by ArchitectureLIVE."
 featured: false
 draft: false

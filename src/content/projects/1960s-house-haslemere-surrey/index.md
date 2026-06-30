@@ -10,6 +10,8 @@ gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g0
 excerpt: "The complete renovation and extension to a 1960s detached house in Haslemere, Surrey created a contemporary, striking family home"
 featured: false
 draft: false
+testimonial:
+  quote: "We chose ArchitectureLIVE because of their enthusiasm, collective experience and out-and-out creativity. They were highly engaged with our project and always able to find creative solutions within budget."
 ---
 
 ### _"We chose ArchitectureLIVE because of their enthusiasm, collective experience and out-and-out creativity. They were highly engaged with our project and always able to find creative solutions within budget."_

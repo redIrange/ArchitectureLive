@@ -10,6 +10,8 @@ gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g0
 excerpt: "A project to extend and refurbish an apartment, part of a 19th-century Grade I listed mansion, surrounded by Grade II listed gardens and parkland."
 featured: false
 draft: false
+testimonial:
+  quote: "An excellent and articulate team — listens well to what the client wants and delivers a well thought-through solution."
 ---
 
 ### _“An excellent and articulate team - listens well to what the client wants and delivers a well thought through solution”._

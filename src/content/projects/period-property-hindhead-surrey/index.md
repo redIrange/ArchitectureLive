@@ -10,6 +10,8 @@ gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g0
 excerpt: "This period property in Hindhead, Surrey, has been extended with a contemporary, single storey courtyard extension providing a new layout."
 featured: false
 draft: false
+testimonial:
+  quote: "They resolved every challenge in a sensible way, applying a great depth of knowledge about how buildings are put together."
 ---
 
 ### _"They resolved every challenge in a sensible way, applying a great depth of knowledge about how buildings are put together."_

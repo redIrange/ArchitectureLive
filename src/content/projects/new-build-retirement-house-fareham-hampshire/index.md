@@ -10,6 +10,8 @@ gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg"]
 excerpt: "A contemporary new-build retirement house in Fareham, Hampshire, designed by ArchitectureLIVE."
 featured: false
 draft: false
+testimonial:
+  quote: "We think your design is awesome!"
 ---
 
 ### _“We think your design is awesome!”_

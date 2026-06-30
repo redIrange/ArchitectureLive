@@ -10,6 +10,8 @@ gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g0
 excerpt: "Our brief was to improve the appearance of the front of this property, provide a better kitchen layout and a new spacious family bathroom."
 featured: false
 draft: false
+testimonial:
+  quote: "Irene and Jonathan put their minds together and presented multiple feasibility options, exhausting all ideas which allowed us to choose the final design with confidence. We felt really supported throughout the whole process. It just worked for us!"
 ---
 
 ### _"Irene and Jonathan put their minds together and presented multiple feasibility options, exhausting all ideas which allowed us to choose the final design with confidence. It fully met the objectives we wanted to achieve. We felt really supported throughout the whole process. It just worked for us!”_

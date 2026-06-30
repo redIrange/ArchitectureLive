@@ -10,6 +10,8 @@ gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g0
 excerpt: "This project was featured on Extraordinary Extensions, Series 2: Episode 4, a contemporary upside down house extension in Haslemere, Surrey"
 featured: false
 draft: false
+testimonial:
+  quote: "ArchitectureLIVE exceeded our expectations of what could be achieved and answered every part of our brief fully. Watching the seasons change through our large gable window are moments we will cherish every day. We couldn't have wished for a better place to bring up our girls, and would like to thank the team wholeheartedly for designing us our perfect and entirely unique family home."
 ---
 
 ### _"ArchitectureLIVE exceeded our expectations of what could be achieved and answered every part of our brief fully. Watching the seasons change through our large gable window are moments we will cherish every day.......  We couldn’t have wished for a better place to bring up our girls and would like to thank the team wholeheartedly for designing us our perfect and entirely unique family home.”_

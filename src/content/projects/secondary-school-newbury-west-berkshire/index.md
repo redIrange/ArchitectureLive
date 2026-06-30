@@ -10,6 +10,8 @@ gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g0
 excerpt: "A multi-purpose school extension providing a new 6th Form study area, extended changing facilities, and increased exam capacity."
 featured: false
 draft: false
+testimonial:
+  quote: "ArchitectureLIVE have proven to be visionary thinkers matched by down-to-earth practicality and a passion for detail. Their confident and friendly handling of our project meant I never felt out of my depth."
 ---
 
 ### _"ArchitectureLIVE have proven to be visionary thinkers matched by down-to-earth practicality and a passion for detail. Their confident and friendly handling of our project meant I never felt out of my depth."_

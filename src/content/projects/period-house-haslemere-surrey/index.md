@@ -10,6 +10,8 @@ gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg"]
 excerpt: "A project to extend & reconfigure the ground floor of a period house to provide a contemporary open-plan family living space."
 featured: false
 draft: false
+testimonial:
+  quote: "We're finding, pretty much daily, we catch ourselves in the space doing something wonderfully mundane like cooking in the kitchen or reading books on the sofa in front of the wood-burner, and every time we do, we still can't quite believe how incredibly lucky we have been and how successful your design is."
 ---
 
 ### _"..... we're finding, pretty much daily, we catch ourselves in the space doing something wonderfully mundane like cooking in the kitchen or reading books on the sofa in front of the wood-burner or having a meal round the table, and every time we do, we still can’t quite believe how incredibly lucky we have been and how successful your design is."_ 

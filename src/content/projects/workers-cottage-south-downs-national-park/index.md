@@ -10,6 +10,8 @@ gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g0
 excerpt: "A project to extend the ground floor of this workers cottage to provide a contemporary, open plan kitchen dining room allowing easy access to the garden."
 featured: false
 draft: false
+testimonial:
+  quote: "In contrast to other architects, we found Irene was very positive and generated a number of interesting ideas. We were looking for a design that would contrast with the rest of the house, and ArchitectureLIVE achieved this using clever angles that gave us new views of our garden."
 ---
 
 ### _"In contrast to other architects, we found Irene was very positive and generated a number of interesting ideas. We were looking for a design that would contrast with the rest of the house and ArchitectureLIVE achieved this using clever angles that gave us new views of our garden."_

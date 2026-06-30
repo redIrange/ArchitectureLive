@@ -10,6 +10,8 @@ gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg", "./g05.jpg", "./g0
 excerpt: "This 1960s house was refurbished and extended transforming it into a contemporary family home with a bright and airy character and flexible layout."
 featured: false
 draft: false
+testimonial:
+  quote: "What I find nice about my home is that it's very spacious and open, so you can hear each other and don't need to run up or downstairs all the time. There are lots of windows so you don't need the lights on all the time, and you look out to the garden wherever you are in the house."
 ---
 
 ### _"What I find nice about my home is that its very spacious and open, so you can hear each other and don't need to run up or downstairs all the time. You always know your family is around. There are lots of windows so you don't need the lights on all the time and you look out to the garden wherever you are in the house."_

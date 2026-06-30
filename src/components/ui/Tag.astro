@@ -1,15 +1,23 @@
 ---
 /**
- * Type / category label — uppercase eyebrow text, no fill.
- * active=true highlights the label (for filter use).
+ * Type / category label (default) or selectable filter control (variant="filter").
+ * Backward compatible: existing `<Tag label="…" active />` callers keep working.
  */
 interface Props {
   label: string;
-  active?: boolean;
+  active?: boolean;          // legacy highlight (default variant)
+  variant?: "tag" | "filter";
+  selected?: boolean;        // filter variant selected state
 }
-const { label, active = false } = Astro.props;
+const { label, active = false, variant = "tag", selected = false } = Astro.props;
+const isFilter = variant === "filter";
 ---
-<span class:list={["tag", { "tag--active": active }]}>{label}</span>
+<span
+  class:list={[
+    "tag",
+    { "tag--active": active, "tag--filter": isFilter, "tag--selected": selected },
+  ]}
+>{label}</span>
 
 <style>
 .tag {
@@ -22,7 +30,19 @@ const { label, active = false } = Astro.props;
   text-transform: uppercase;
   color: var(--color-indigo-deep);
 }
-.tag--active {
+.tag--active { color: var(--color-indigo-vivid); }
+
+/* filter variant: selectable text control that swells on hover/selection */
+.tag--filter {
+  cursor: pointer;
+  color: var(--color-grey-mid);
+  transition:
+    color var(--duration-base) var(--ease-standard),
+    font-weight var(--duration-base) var(--ease-standard);
+}
+.tag--filter:hover { color: var(--color-indigo-deep); }
+.tag--selected {
   color: var(--color-indigo-vivid);
+  font-weight: 700;
 }
 </style>

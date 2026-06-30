@@ -1,0 +1,101 @@
+---
+/**
+ * News index — page 1.
+ * Port of News.jsx (ui_kits/website/News.jsx): intro eyebrow + headline,
+ * 3-col card grid, paginated footer.
+ * Articles live at /news/<slug> (Task 10); pages 2+ at /news/page/N.
+ */
+import PageShell from "../../layouts/PageShell.astro";
+import NewsCard from "../../components/ui/NewsCard.astro";
+import Pagination from "../../components/ui/Pagination.astro";
+import Section from "../../components/ui/Section.astro";
+import Container from "../../components/ui/Container.astro";
+import { getCollection } from "astro:content";
+
+const PAGE_SIZE = 9;
+const posts = (await getCollection("news", (n) => !n.data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const pageItems = posts.slice(0, PAGE_SIZE);
+const lastPage = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
+---
+<PageShell title="News — ArchitectureLIVE" active="news">
+
+  {/* ── Intro (ported from News.jsx) ─────────────────────────── */}
+  <Section surface="light" pad="var(--space-xxl)">
+    <Container>
+      <div class="news-eyebrow">Journal</div>
+      <h1 class="news-headline">News &amp; insight</h1>
+    </Container>
+  </Section>
+
+  {/* ── Card grid ───────────────────────────────────────────────── */}
+  <Section surface="alt" pad="var(--space-section)" style="padding-top:var(--space-xl)">
+    <Container>
+      <div class="news-grid">
+        {pageItems.map((post) => (
+          <NewsCard
+            href={`/news/${post.id}`}
+            title={post.data.title}
+            date={post.data.date}
+            category={post.data.category}
+            excerpt={post.data.excerpt}
+            image={post.data.heroImage}
+          />
+        ))}
+      </div>
+      <div class="pagination-wrap">
+        <Pagination
+          currentPage={1}
+          lastPage={lastPage}
+          urlPrev={undefined}
+          urlNext={lastPage > 1 ? "/news/page/2" : undefined}
+          base="/news"
+        />
+      </div>
+    </Container>
+  </Section>
+
+</PageShell>
+
+<style>
+/* ── Intro ─────────────────────────────────────────────────────── */
+.news-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: 14px;
+}
+.news-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+
+/* ── Card grid ─────────────────────────────────────────────────── */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+@media (max-width: 900px) {
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .news-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Pagination ────────────────────────────────────────────────── */
+.pagination-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-3xl);
+}
+</style>

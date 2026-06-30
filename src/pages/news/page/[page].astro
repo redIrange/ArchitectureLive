@@ -1,0 +1,106 @@
+---
+/**
+ * News index — pages 2+ (e.g. /news/page/2, /news/page/3 …).
+ * Page 1 is served by news/index.astro to avoid a route collision with article slugs.
+ * The "previous" link on page 2 points to /news (not /news/page/1).
+ */
+import type { GetStaticPathsOptions, Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+import PageShell from "../../../layouts/PageShell.astro";
+import NewsCard from "../../../components/ui/NewsCard.astro";
+import Pagination from "../../../components/ui/Pagination.astro";
+import Section from "../../../components/ui/Section.astro";
+import Container from "../../../components/ui/Container.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = (await getCollection("news", (n) => !n.data.draft))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  // paginate() yields pages 1..N; emit only 2..N here (page 1 is news/index.astro).
+  return paginate(posts, { pageSize: 9 }).filter((p: { params: { page: string | undefined } }) => p.params.page !== "1" && p.params.page !== undefined);
+}
+const { page } = Astro.props as { page: Page<CollectionEntry<"news">> };
+// page-1 link should point to /news, not /news/page/1
+const prevUrl = page.currentPage === 2 ? "/news" : page.url.prev;
+---
+<PageShell title={`News — ArchitectureLIVE (page ${page.currentPage})`} active="news">
+
+  {/* ── Intro (ported from News.jsx) ─────────────────────────── */}
+  <Section surface="light" pad="var(--space-xxl)">
+    <Container>
+      <div class="news-eyebrow">Journal</div>
+      <h1 class="news-headline">News &amp; insight</h1>
+    </Container>
+  </Section>
+
+  {/* ── Card grid ───────────────────────────────────────────────── */}
+  <Section surface="alt" pad="var(--space-section)" style="padding-top:var(--space-xl)">
+    <Container>
+      <div class="news-grid">
+        {page.data.map((post) => (
+          <NewsCard
+            href={`/news/${post.id}`}
+            title={post.data.title}
+            date={post.data.date}
+            category={post.data.category}
+            excerpt={post.data.excerpt}
+            image={post.data.heroImage}
+          />
+        ))}
+      </div>
+      <div class="pagination-wrap">
+        <Pagination
+          currentPage={page.currentPage}
+          lastPage={page.lastPage}
+          urlPrev={prevUrl}
+          urlNext={page.url.next}
+          base="/news/page"
+        />
+      </div>
+    </Container>
+  </Section>
+
+</PageShell>
+
+<style>
+/* ── Intro ─────────────────────────────────────────────────────── */
+.news-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: 14px;
+}
+.news-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+
+/* ── Card grid ─────────────────────────────────────────────────── */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+@media (max-width: 900px) {
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .news-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Pagination ────────────────────────────────────────────────── */
+.pagination-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-3xl);
+}
+</style>

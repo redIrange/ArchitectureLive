@@ -1,0 +1,38 @@
+---
+/**
+ * Circular icon control that floats over photography (gallery arrows, lightbox close).
+ * Renders <a> when href is given, else <button>. Icon passed as slotted inline SVG.
+ */
+interface Props {
+  href?: string;
+  ariaLabel: string;
+  size?: number;
+  variant?: "translucent" | "solid" | "dark";
+}
+const { href, ariaLabel, size = 44, variant = "translucent" } = Astro.props;
+const Tag = href ? "a" : "button";
+---
+<Tag
+  class:list={["icon-btn", `icon-btn--${variant}`]}
+  style={`--ibsize:${size}px`}
+  href={href}
+  type={href ? undefined : "button"}
+  aria-label={ariaLabel}
+>
+  <slot />
+</Tag>
+
+<style>
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: var(--ibsize); height: var(--ibsize); border-radius: 50%;
+  border: none; cursor: pointer; padding: 0; color: inherit;
+  transition: transform var(--duration-base) var(--ease-standard), background var(--duration-base) var(--ease-standard);
+}
+.icon-btn:hover { transform: scale(1.08); }
+.icon-btn :global(svg) { width: 42%; height: 42%; display: block; }
+.icon-btn--translucent { background: rgba(255,255,255,0.82); color: var(--color-indigo-deep); backdrop-filter: blur(6px); }
+.icon-btn--solid { background: var(--color-white); color: var(--color-indigo-deep); box-shadow: var(--shadow-card); }
+.icon-btn--dark { background: rgba(54,54,54,0.55); color: var(--color-white); backdrop-filter: blur(6px); }
+.icon-btn:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+</style>

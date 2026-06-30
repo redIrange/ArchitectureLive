@@ -17,19 +17,17 @@ export async function getStaticPaths() {
   const projects = (await getCollection("projects", (p) => !p.data.draft))
     .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
   const ids = projects.map((p) => p.id);
+  const titleMap = Object.fromEntries(projects.map((p) => [p.id, p.data.title]));
   return projects.map((project) => {
     const { prev, next } = adjacent(ids, project.id);
-    return { params: { slug: project.id }, props: { project, prev, next } };
+    const prevTitle = prev ? titleMap[prev] : null;
+    const nextTitle = next ? titleMap[next] : null;
+    return { params: { slug: project.id }, props: { project, prev, next, prevTitle, nextTitle } };
   });
 }
 
-const { project, prev, next } = Astro.props;
+const { project, prev, next, prevTitle, nextTitle } = Astro.props;
 const { Content } = await render(project);
-
-// Resolve adjacent project titles for the nav
-const allProjects = await getCollection("projects", (p) => !p.data.draft);
-const prevProject = allProjects.find((p) => p.id === prev);
-const nextProject = allProjects.find((p) => p.id === next);
 ---
 
 <PageShell
@@ -136,7 +134,7 @@ const nextProject = allProjects.find((p) => p.id === next);
           <a href={`/projects/${prev}`} class="detail-prevnext-link detail-prevnext-link--prev">
             <div class="detail-prevnext-dir">← Previous</div>
             <div class="detail-prevnext-name">
-              {prevProject ? prevProject.data.title : "Previous project"}
+              {prevTitle ?? "Previous project"}
             </div>
           </a>
         )}
@@ -147,7 +145,7 @@ const nextProject = allProjects.find((p) => p.id === next);
           <a href={`/projects/${next}`} class="detail-prevnext-link detail-prevnext-link--next">
             <div class="detail-prevnext-dir">Next →</div>
             <div class="detail-prevnext-name">
-              {nextProject ? nextProject.data.title : "Next project"}
+              {nextTitle ?? "Next project"}
             </div>
           </a>
         )}

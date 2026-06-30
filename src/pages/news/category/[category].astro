@@ -9,7 +9,7 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PageShell from "../../../layouts/PageShell.astro";
 import NewsCard from "../../../components/ui/NewsCard.astro";
-import NewsFilter from "../../../components/ui/NewsFilter.astro";
+import NewsHeader from "../../../components/ui/NewsHeader.astro";
 import Section from "../../../components/ui/Section.astro";
 import Container from "../../../components/ui/Container.astro";
 
@@ -39,10 +39,7 @@ const { activeCategory, posts } = Astro.props as {
   {/* ── Header: headline + category filter ──────────────────────── */}
   <Section surface="light" pad="var(--space-xl)">
     <Container>
-      <div class="news-header">
-        <h1 class="news-headline">News &amp; insight</h1>
-        <NewsFilter activeCategory={activeCategory} />
-      </div>
+      <NewsHeader title={activeCategory} activeCategory={activeCategory} />
     </Container>
   </Section>
 
@@ -71,26 +68,6 @@ const { activeCategory, posts } = Astro.props as {
 </PageShell>
 
 <style>
-/* ── Header row ─────────────────────────────────────────────────── */
-.news-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--space-md) var(--space-xl);
-  padding-top: var(--space-md);
-}
-.news-headline {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-hero-display-size);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
-  color: var(--color-charcoal);
-}
-
 /* ── Card grid ─────────────────────────────────────────────────── */
 .news-grid {
   display: grid;

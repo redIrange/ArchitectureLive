@@ -1,0 +1,42 @@
+---
+/**
+ * Shared news section header — h1 + category filter pills.
+ * Used on /news (title="News & insight") and /news/category/[category]
+ * (title = the active category name, e.g. "Awards").
+ * Wrapped by the caller in Section + Container so padding/surface stay
+ * under page control.
+ */
+import NewsFilter from "./NewsFilter.astro";
+
+interface Props {
+  title: string;
+  activeCategory?: string | null;
+}
+const { title, activeCategory = null } = Astro.props;
+---
+<div class="news-header">
+  <h1 class="news-headline">{title}</h1>
+  <NewsFilter activeCategory={activeCategory} />
+</div>
+
+<style>
+/* ── Header row ─────────────────────────────────────────────────── */
+.news-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-xl);
+  padding-top: var(--space-md);
+}
+.news-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+</style>

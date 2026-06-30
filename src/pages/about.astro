@@ -5,11 +5,13 @@
  * Section order: hero → title (h1) → intro → team → story → process → belief.
  * Belief = lavender tint section (Section surface="tint"); not a dark ProjectTile.
  */
+import { Image } from "astro:assets";
 import PageShell from "../layouts/PageShell.astro";
 import Section from "../components/ui/Section.astro";
 import Container from "../components/ui/Container.astro";
 import TeamCard from "../components/ui/TeamCard.astro";
 import { team } from "../lib/team";
+import studioHero from "../content/projects/near-passivhaus-office-extension/hero-01.jpg";
 
 const steps = [
   {
@@ -37,11 +39,18 @@ const steps = [
 >
 
   {/* ── Hero: full-bleed studio image (94vh, slides under glass header) ──── */}
-  {/* TODO: import studioHero from "../assets/studio/hero.jpg" and render:
-      <Image src={studioHero} alt="The studio, Haslemere" widths={[800,1200,1920,2560]}
-             sizes="100vw" class="hero__image" loading="eager" fetchpriority="high" />
-      inside the section below when the studio photograph is available. */}
-  <section class="hero" aria-label="The studio, Haslemere"></section>
+  {/* Default: AL office. Swap for a dedicated studio/team photo when available. */}
+  <section class="hero" aria-label="The studio, Haslemere">
+    <Image
+      src={studioHero}
+      alt="ArchitectureLIVE studio, Fernhurst office extension"
+      widths={[800, 1200, 1920, 2560]}
+      sizes="100vw"
+      class="hero__image"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </section>
 
   {/* ── Title — the page's single <h1> ──────────────────────────────────── */}
   <Section surface="light" pad="var(--space-xxl)">
@@ -123,8 +132,12 @@ const steps = [
   overflow: hidden;
   background: var(--color-charcoal);
 }
-/* When a studio image is imported, add: */
-/* .hero__image { width: 100%; height: 100%; object-fit: cover; display: block; } */
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 /* ── Title block ────────────────────────────────────────────────────────── */
 .title-block {

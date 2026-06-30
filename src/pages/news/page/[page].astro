@@ -8,7 +8,7 @@ import type { GetStaticPathsOptions, Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 import PageShell from "../../../layouts/PageShell.astro";
 import NewsCard from "../../../components/ui/NewsCard.astro";
-import NewsIntro from "../../../components/ui/NewsIntro.astro";
+import NewsHeader from "../../../components/ui/NewsHeader.astro";
 import Pagination from "../../../components/ui/Pagination.astro";
 import Section from "../../../components/ui/Section.astro";
 import Container from "../../../components/ui/Container.astro";
@@ -26,8 +26,12 @@ const prevUrl = page.currentPage === 2 ? "/news" : page.url.prev;
 ---
 <PageShell title={`News — ArchitectureLIVE (page ${page.currentPage})`} active="news">
 
-  {/* ── Intro (ported from News.jsx) ─────────────────────────── */}
-  <NewsIntro />
+  {/* ── Header: headline + category filter (matches news/index.astro) ── */}
+  <Section surface="light" pad="var(--space-xl)">
+    <Container>
+      <NewsHeader title="News & insight" activeCategory={null} />
+    </Container>
+  </Section>
 
   {/* ── Card grid ───────────────────────────────────────────────── */}
   <Section surface="alt" pad="var(--space-section)" style="padding-top:var(--space-xl)">

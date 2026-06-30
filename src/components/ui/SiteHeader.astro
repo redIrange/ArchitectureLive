@@ -80,14 +80,6 @@ const NAV_LINKS = [
         );
       })}
 
-      {/* CTA — separate from nav links per original design */}
-      <a
-        href="/contact"
-        class="al-header-cta al-nav-link"
-        style="font-weight:600;--link-base:var(--color-indigo-deep);"
-      >
-        Start your project
-      </a>
     </nav>
 
     {/* Mobile menu trigger */}
@@ -105,25 +97,6 @@ const NAV_LINKS = [
       </svg>
     </button>
 
-  </div>
-
-  {/* ── Contact strip — phone · email ── */}
-  <div class="al-topbar" style="border-top:var(--border-hairline);">
-    <div style="width:100%;max-width:var(--content-max);margin:0 auto;padding:9px var(--space-xl);display:flex;align-items:center;justify-content:flex-end;gap:var(--space-md);">
-      <a
-        href="tel:+441428652018"
-        style="font-family:var(--font-text);font-size:var(--type-caption-size);font-weight:500;color:var(--color-charcoal);text-decoration:none;letter-spacing:0.2px;"
-      >
-        +44 1428 652 018
-      </a>
-      <span style="color:var(--color-hairline);" aria-hidden="true">·</span>
-      <a
-        href="mailto:info@architecturelive.co.uk"
-        style="font-family:var(--font-text);font-size:var(--type-caption-size);color:var(--color-grey-light);text-decoration:none;"
-      >
-        info@architecturelive.co.uk
-      </a>
-    </div>
   </div>
 
   {/* ── Mobile drawer ── */}
@@ -146,9 +119,6 @@ const NAV_LINKS = [
         </a>
       );
     })}
-    <a href="/contact" class="al-drawer-link" style="font-weight:600;color:var(--color-indigo-deep);">
-      Start your project
-    </a>
   </nav>
 </header>
 
@@ -182,7 +152,7 @@ const NAV_LINKS = [
     flex-direction: column;
     position: fixed;
     inset: 0;
-    top: calc(var(--header-height) + 37px); /* below header + topbar */
+    top: var(--header-height);
     background: var(--color-white);
     padding: var(--space-xl);
     gap: var(--space-lg);
@@ -220,9 +190,6 @@ const NAV_LINKS = [
       display: flex !important;
     }
 
-    .al-topbar {
-      display: none;
-    }
   }
 </style>
 

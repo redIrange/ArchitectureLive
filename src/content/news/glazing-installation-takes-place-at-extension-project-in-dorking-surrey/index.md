@@ -13,18 +13,6 @@ This extensive renovation and extension of an arts & crafts family home is neari
 
 To read more about this project, click [here](https://www.architecturelive.co.uk/2021/06/a-room-with-a-view-dorking-surrey/).
 
-architect
-
-ArchitectureLIVE
-
-contractor
-
-[Birchland Homes](https://www.birchlandhomes.co.uk/)
-
-engineer
-
-[Archibald Shaw](https://www.archibaldshaw.co.uk/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

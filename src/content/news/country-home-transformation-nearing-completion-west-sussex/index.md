@@ -15,30 +15,6 @@ Ambient LED lighting throughout delivers an energy efficient and eco-friendly en
 
 ​
 
-architect
-
-ArchitectureLIVE
-
-interior design
-
-ArchitectureLIVE
-
-contractor
-
-[Brickfield Construction](http://brickfieldconstruction.co.uk/)
-
-engineer
-
-[Design4Structures](https://www.design4structures.com/)
-
-joinery
-
-[Peach Bespoke Joinery](https://www.instagram.com/peachbespokejoinery/)
-
-Upholstery & more
-
-[Clou & Antidote](https://www.instagram.com/clouandantidote/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

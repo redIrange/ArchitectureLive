@@ -25,15 +25,3 @@ Descender Fronts are bespoke glass or solid “walls” that drop effortlessly a
 The Duke of York restaurant has ben shortlisted for the [2020 RIBA awards](https://www.architecture.com/knowledge-and-resources/knowledge-landing-page/riba-london-awards-shortlist-2020).
 
 Please [contact us](https://www.architecturelive.co.uk/contact/) for further information.
-
-architect
-
-[Nex—](https://www.nex-architecture.com/)
-
-contractor
-
-[Westgreen Construction](https://www.westgreen.com/portfolio-items/vardo/)
-
-facade specialist    
-
-[Kollegger Metallbau](http://www.kollegger.net/) with ArchitectureLIVE

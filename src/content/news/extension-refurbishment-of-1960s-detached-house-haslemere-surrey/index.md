@@ -13,10 +13,6 @@ The distinctive plywood kitchen with a new picture window opens up views and fra
 
 The new master bedroom suite opens up to Haslemere's stunning autumnal views with corner glazing under the vaulted ceiling. The frameless balustrade is due to be installed next.
 
-contractor
-
-[Corner Construction](http://cornerconstruction.co.uk/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

@@ -27,15 +27,3 @@ Housed in the south-westerly ‘bookend’ extension, the new fitness suite will
 Drystone walls on the ground floor will refer back to the existing garden walls and terracing of the site. The new extensions open up towards the views with south facing, two-storey glazed elevations and a first floor viewing terrace.
 
 The South Downs National Park Authority’s (SDNPA) newly adopted Dark Night Skies policy required careful consideration. The desire to take advantage of the stunning location and magnificent far-reaching views was juxtaposed by the need to limit any nighttime light pollution. Our extensive research and close collaboration with the SDNPA provided the solution for this project by adopting state-of-the-art smart glass technology to eliminate any light pollution at night.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Archibald Shaw](http://www.archibaldshaw.co.uk/)
-
-contractor
-
-[Birchland Homes & Construction](https://www.birchlandhomes.co.uk/)

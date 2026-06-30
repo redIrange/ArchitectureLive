@@ -15,16 +15,4 @@ Powered by a ground source heat pump, a new plant room extension runs a low temp
 
 ​
 
-architect
-
-ArchitectureLIVE
-
-contractor
-
-[Brickfield Construction](http://brickfieldconstruction.co.uk/)
-
-engineer
-
-[Design4Structures](https://www.design4structures.com/)
-
 ![](./g01.jpg)

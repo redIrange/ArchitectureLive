@@ -23,15 +23,3 @@ This property, located in Lodsworth, a picturesque West Sussex village in the So
 Our design facilitated the enlargement of the existing habitable rooms within the existing building envelope, thus maintaining their perfect orientation. New front, side and rear extensions were added to relocate all existing ancillary spaces as well as provide new accommodation.
 
 A front extension houses the entrance and hallway, stairs and landing and a first floor family bathroom. And a side wing accommodates a dedicated kitchen-dining room and sizeable master-bedroom suite above, replacing an existing garage and glazed lean-to.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Dixon Hurst Kemp](http://www.dhk.co.uk/)
-
-contractor
-
-self-build

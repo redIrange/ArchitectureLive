@@ -13,18 +13,6 @@ As part of a low carbon heating strategy, this property will benefit from an air
 
 ​
 
-contractor
-
-JCT Project Services Ltd
-
-SIPs
-
-[Bentley Projects Ltd](https://www.bentley-projects.com/)
-
-roofing contractor
-
-[Kingsley Specialist Roofing](https://www.kingsleyspecialistroofing.co.uk/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

@@ -31,31 +31,3 @@ The new open-plan kitchen, dining and living accommodation on the first floor is
 The extension’s new superstructure has been built using a structurally insulated panel system (SIPs), which radically reduced the construction period and delivers high levels of thermal performance for the new first floor. The complete refurbishment of the existing building fabric and services reduced the existing carbon footprint by half, despite nearly doubling the property’s size. The property now also benefits from an air source heat pump, ASHP and new double glazing throughout, including double aspect, slimline aluminium sliding doors for the new open-plan kitchen and dining area.
 
 A timber staircase in a dark matt finish takes centre stage in the new two storey layout, framing principle garden views. The new, bespoke entrance door refers back to this new design element and completes the reconfiguration and extension, transforming a 1960s bungalow into a striking, contemporary, two storey family home.
-
-architect
-
-ArchitectureLIVE
-
-contractor
-
-JCT Project Services Ltd
-
-SIPs
-
-[Bentley Projects Ltd](https://www.bentley-projects.com/)
-
-roofing
-
-[Kingsley Specialist Roofing](https://www.kingsleyspecialistroofing.co.uk/)
-
-carpenter
-
-[Sam Ogilvie](http://samogilvie.co.uk/)
-
-photographer
-
-[Chris Murphy](https://www.chrismurphy.london/)
-
-drone photography
-
-[From the Air](https://www.fromtheairproperty.com/)

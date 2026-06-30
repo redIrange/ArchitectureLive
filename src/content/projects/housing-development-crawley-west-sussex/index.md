@@ -23,7 +23,3 @@ Both founding partners at ArchitectureLIVE have successfully designed master pla
 We find that success lies within an early collaboration between our client, the design team and the local authority to create a strong identity for the new development paired with optimum accommodation density.
 
 This quality of thinking delivers a master plan design that not only successfully meets the client's brief for a new community, but also harmonises and enhances those which already exist.
-
-architect
-
-ArchitectureLIVE

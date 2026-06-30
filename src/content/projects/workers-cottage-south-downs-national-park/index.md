@@ -33,15 +33,3 @@ The existing living accommodation, whilst orientated around the courtyard garden
 The new extension therefore balances the space requirements between the cottage and the garden in order to form a new open-plan kitchen & dining layout that fully addresses the garden and views whilst remaining invisible from the front of the property.
 
 Conceived as a single storey, mono-pitched garden pavilion, with full width glazing onto the courtyard garden, the new facade has been rotated towards the south to optimise views and light. The high level hillside garden views are framed by a picture window, which meets the requirements of the Dark Night Skies policies whilst taking in a previously entirely missed aspect of the setting.
-
-architect
-
-ArchitectureLIVE
-
-contractor
-
-Les Knight & Son
-
-kitchen
-
-[Daulby and Tickle](http://daulbyandtickle.co.uk/)

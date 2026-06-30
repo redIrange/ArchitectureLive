@@ -15,10 +15,6 @@ Following planning permission for our design in 2019, the construction work has 
 
 ​
 
-contractor
-
-[C. Morgan & Son Ltd](http://www.cmorganandson.co.uk)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

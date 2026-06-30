@@ -33,15 +33,3 @@ For practicality, the extension provides a new secondary hallway, lined with ful
 The new focal point of the house is the open-plan kitchen and dining room. It is isolated in the southerly wing of the extension with bi-fold doors and a vaulted ceiling under a zinc butterfly roof.
 
 The transition between the new and existing hallway features renovated floorboards and a built-in bookcases framing the courtyard views and expel any memories of the former dark and unloved interiors.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Dixon Hurst Kemp](http://www.dhk.co.uk/)
-
-contractor
-
-self build

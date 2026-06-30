@@ -13,18 +13,6 @@ The new extension superstructure will take shape in just 4 weeks, utilising a st
 
 This project is managed as a self-build, thanks to a highly involved client team, supported by ArchitectureLIVE.
 
-contractor
-
-JCT Project Services Ltd
-
-SIPs
-
-[Bentley Projects Ltd](https://www.bentley-projects.com/)
-
-roofing contractor
-
-[Kingsley Specialist Roofing](https://www.kingsleyspecialistroofing.co.uk/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

@@ -29,7 +29,3 @@ Importantly, by optimising the building location and layout, together with engag
 The new accommodation will comprise of team and staff changing rooms, individual showers and WCs with separate disabled facilities, a kitchenette, a physio room, storage for sports equipment and an activity hall with a capacity for up to 100 people.
 
 The pavilion cladding colours have been chosen from a clay palette of terracotta and grey with buff highlights for the entrance and community terrace areas.
-
-architect
-
-ArchitectureLIVE

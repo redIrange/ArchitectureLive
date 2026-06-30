@@ -21,18 +21,6 @@ We are delighted that our clients are proceeding with the MVHR system, which not
 
 [Planning news](https://www.architecturelive.co.uk/2020/07/planning-granted-for-country-house-renovation-extension-in-liss-sdnp/)
 
-architect
-
-ArchitectureLIVE
-
-contractor
-
-[Corner Construction](http://cornerconstruction.co.uk/)
-
-engineer
-
-[Design4Structures](https://www.design4structures.com)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

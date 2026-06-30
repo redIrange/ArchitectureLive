@@ -7,12 +7,4 @@ excerpt: "Work has commenced on our new build retirement home near Chiddingfold,
 draft: false
 ---
 
-Work has commenced on our new build retirement home near Chiddingfold, Surrey. The good weather is assisting the speedy progress of ground works with foundations being poured next week. Our contractor has been working hard, with great success, to mitigate the current programme risks due to the coronavirus lockdown, securing all the materials through his supply chain. 
-
-contractor
-
-[Brickfield Construction](https://brickfieldconstruction.co.uk)
-
-structural engineer
-
-[Design4Structures](http://www.design4structures.com/)
+Work has commenced on our new build retirement home near Chiddingfold, Surrey. The good weather is assisting the speedy progress of ground works with foundations being poured next week. Our contractor has been working hard, with great success, to mitigate the current programme risks due to the coronavirus lockdown, securing all the materials through his supply chain.

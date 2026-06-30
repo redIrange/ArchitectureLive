@@ -19,22 +19,6 @@ Our new lighting concept completes the holistic design transformation into a ser
 
 To read more about this project, click [here](https://www.architecturelive.co.uk/projects/1960s-detached-house-haslemere-surrey/).
 
-architect
-
-ArchitectureLIVE
-
-contractor
-
-[Corner Construction](http://cornerconstruction.co.uk/)
-
-engineer
-
-[Marbas](https://www.marbas.co.uk/)
-
-photographer
-
-[Chris Murphy](https://www.chrismurphy.london/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

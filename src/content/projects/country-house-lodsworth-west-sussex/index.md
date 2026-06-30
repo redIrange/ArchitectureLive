@@ -33,27 +33,3 @@ During the construction, the design team uncovered complex maintenance issues st
 architect & lighting & interior design
 
 ArchitectureLIVE
-
-engineer
-
-[Design4Structures](https://www.design4structures.com)
-
-contractor
-
-[Brickfield Construction](http://brickfieldconstruction.co.uk/)
-
-joinery
-
-[Peach Bespoke Joinery](https://www.facebook.com/peachjoinery/)
-
-soft furnishing
-
-[Clou & Antidote](https://www.instagram.com/clouandantidote)
-
-staircase fabricator
-
-[Flight Design](https://flightdesign.co.uk)
-
-photographer
-
-[Chris Murphy](https://www.chrismurphy.london/)

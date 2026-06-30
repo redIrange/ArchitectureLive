@@ -19,14 +19,6 @@ The garden design, in part yet to be realised, includes pergolas for undercover 
 
 ​
 
-contractor
-
-[Brickfield Construction](http://brickfieldconstruction.co.uk/)
-
-structural engineer
-
-[Design4Structures](http://www.design4structures.com/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

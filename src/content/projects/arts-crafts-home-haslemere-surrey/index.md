@@ -23,15 +23,3 @@ Located in the heart of Haslemere, Surrey, this property is an Arts & Crafts hou
 Our design delivers a single storey side extension to remodel all living accommodation on the upper garden level, housing an open-plan kitchen/dining space set within the mature gardens and linked to the historic, oak panelled living room.
 
 Conceived as a new garden pavilion, the extension is set behind an existing two storey feature garden wall, minimising the impact on the existing building approach with only the small Arts & Crafts inspired, Crittall glazed link visible at the street frontage. The new accommodation freed up the lower floor to be remodelled with two good size double bedrooms, a new utility and bathroom. Our redesign also reconfigured a secondary garden entrance to become part of the upper floor garden layout, with a generously sized new hall and cloak room and a new, Arts & Crafts inspired wood panelled front door.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-Sisan Associates
-
-contractor
-
-[Acorn Builders of Haslemere](https://acornbuilders-haslemere.co.uk/)

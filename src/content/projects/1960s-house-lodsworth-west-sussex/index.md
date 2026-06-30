@@ -27,15 +27,3 @@ This property is located in a picturesque village in the South Down's National P
 Parts of the property were beyond repair and these were replaced with new, bijou zinc-clad extensions, orientated in such a way to optimise daylight and views whilst maintaining privacy from neighbours. The proportions of the existing facade and windows were carefully reconfigured to provide symmetry and a new backdrop for the zinc-clad bays as a fresh appearance.
 
 On the ground floor, extensive internal alterations were made to create open-plan living, tying the kitchen, dining and living areas together with a polished concrete floor. The entrance hallway features the restored and adapted original staircase made compliant for the young family. A new double-aspect fire place with a polished plaster finish replaced an existing internal wall, introducing new vistas across the house. Upstairs, further reconfigurations were made to deliver a 6-bedroom family home, including several new bathrooms, a terrace integrated into one of the zinc bays and a number of Juliette balconies.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Archibald Shaw](https://www.archibaldshaw.co.uk/)
-
-contractor
-
-[Aspen Construction](http://www.aspenconstruction.co.uk/)

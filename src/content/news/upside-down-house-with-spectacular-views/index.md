@@ -19,18 +19,6 @@ This project bears testament to the collective, creative force a successful clie
 
 To read more about this project, click [here](https://www.architecturelive.co.uk/projects/1960s-bungalow-haslemere-surrey/).
 
-architect
-
-ArchitectureLIVE
-
-photographer
-
-[Chris Murphy](https://www.chrismurphy.london/)
-
-client's IG
-
-[@overlookingthecanopy](https://www.instagram.com/overlookingthecanopy/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

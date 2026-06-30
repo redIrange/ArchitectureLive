@@ -3,7 +3,7 @@ import { writeFileSync, rmSync, mkdirSync } from "node:fs";
 import { extractOne, ARCHIVE } from "./lib/wpress.mjs";
 import { rowObjects } from "./lib/sql.mjs";
 import { attachmentMap, thumbnailMap } from "./lib/attachments.mjs";
-import { convert } from "./lib/content.mjs";
+import { convert, cleanExcerpt } from "./lib/content.mjs";
 import { newsCategory } from "./lib/taxonomy.mjs";
 import { extractRawImages, normalizeImages } from "./lib/images.mjs";
 
@@ -40,7 +40,7 @@ for (const it of items) {
   const body = markdown + (galleryFiles.length ? "\n\n" + galleryFiles.map((f) => `![](./${f})`).join("\n\n") : "");
   const title = (p.post_title || slug).replace(/&amp;/g, "&");
   const date = (p.post_date || "1970-01-01").slice(0, 10);
-  const excerpt = (metaDesc.get(p.ID) || firstPara(markdown)).replace(/\s+/g, " ").trim();
+  const excerpt = cleanExcerpt(metaDesc.get(p.ID) || firstPara(markdown));
   const fm = ["---", `title: ${yaml(title)}`, `date: ${date}`, `category: ${yaml(newsCategory(sql, p.ID))}`,
     heroFiles[0] ? `heroImage: ${yaml("./" + heroFiles[0])}` : `# heroImage: MISSING`,
     `excerpt: ${yaml(excerpt)}`, `draft: false`, "---", "", body, ""]

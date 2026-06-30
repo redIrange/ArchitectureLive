@@ -29,7 +29,3 @@ The reorientation of the building permitted the definition of a public, westerly
 The two storey base shape is complimented by a number of single storey building elements that serve to form a private courtyard setting. In line with Passivhaus principles, the north facing part of the property is enclosed and restraint. Whereas the southern courtyard features full height glazing and rendered facades overlooking the outdoor swimming pool.
 
 Building integrated photovoltaics (BIPV) will provide the necessary solar protection for the double height glazed central core of the building, as well as the generation of green electricity.
-
-architect
-
-ArchitectureLIVE

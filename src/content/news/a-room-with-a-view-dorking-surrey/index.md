@@ -17,14 +17,6 @@ For this family home, given its views, the potential was clear from the onset an
 
 Due to the near Passivhaus thermal performance of the new extensions and further improvements to the existing, the north-facing building envelope will now perform well above building regulation standards, despite its orientation. The new north-facing glazing elements, therefore, celebrate a combination of factors - the views, cross ventilation and a new seasonal approach that adds variety and richness to family living.
 
-contractor
-
-[Birchland Homes](https://www.birchlandhomes.co.uk/)
-
-engineer
-
-[Archibald Shaw](https://www.archibaldshaw.co.uk/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

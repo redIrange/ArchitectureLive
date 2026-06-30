@@ -25,15 +25,3 @@ The brief, to relocate the living room to the garden side and reconfigure the sm
 This 19th century property is located on the outskirts of Haslemere, Surrey, in the Green Belt and an Area of Outstanding Natural Beauty. Our clients had fallen in love with its historic appearance and tranquil setting. Nevertheless, the interior layout - typical for the age of the property - did not match their style of living. This was a particular concern at the rear of the property which is north facing and surrounded by mature tress.
 
 Our design comprises of extensive internal reconfigurations and the complete modernisation of the ground floor. A new single storey rear extension provides the necessary additional space for the new dining area with a long roof-light providing natural daylight into the depth of the building. Slimline, polyester powder coated windows and doors and a frameless corner slider provide the new access and views to the garden. All new elements have been designed to respect the existing and parts of the historic fabric, which had been damaged in the past, have also been restored.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Archibald Shaw](https://www.archibaldshaw.co.uk/)
-
-contractor
-
-[Norse Build](http://www.norsebuild.com/)

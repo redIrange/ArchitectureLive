@@ -17,14 +17,6 @@ This project has been constructed with a thermal performance and airtightness ne
 
 This is a great example of inclusive design reuniting a family of multiple generations for their future.
 
-contractor
-
-[Brickfield Construction](http://brickfieldconstruction.co.uk/)
-
-structural engineer
-
-[Design4Structures](https://www.design4structures.com/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

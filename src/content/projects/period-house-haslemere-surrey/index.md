@@ -31,15 +31,3 @@ The vertical timber louvers are also used to modulate the views out, allowing vi
 This project was "Highly Commended" in the Alterations & Extensions category of the Waverley Design Awards 2019 with the judges commenting:
 
 _“… the charm of this development is in its simplicity and detailing - it is an aspirational and achievable development that should stand out as a role model for other extensions throughout Waverley.”_
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Dixon Hurst Kemp](http://www.dhk.co.uk/)
-
-contractor
-
-CRL Developments Ltd

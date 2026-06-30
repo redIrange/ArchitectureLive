@@ -17,18 +17,6 @@ The completely remodelled exterior boasts insulated render and artificial slate 
 
 Once completed, the large sun terrace and outdoor pool will provide a stunning backdrop for this rejuvenation project.
 
-architect
-
-ArchitectureLIVE
-
-contractor
-
-[Corner Construction](http://cornerconstruction.co.uk)
-
-engineer
-
-[Design4Structures](https://www.design4structures.com)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

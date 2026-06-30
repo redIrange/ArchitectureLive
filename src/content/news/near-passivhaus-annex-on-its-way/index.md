@@ -16,15 +16,3 @@ The final phase of our design - a near Passivhaus single storey annex is now due
 Externally, the design will fall inline with the remodelled character of the house with dark Cedar cladding, aluminium glazing and a pitched green roof, overlooked by the existing master bedroom suite. Internally, materials were chosen for their natural characteristics and sustainably sourced. Ply sheeting in place of plasterboard and marmoleum flooring, a linseed based product currently 43% recycled, will provide a warm and calming interior.
 
 With the SIPs construction to start on site next week, more will follow shortly.​
-
-architect
-
-ArchitectureLIVE
-
-SIPs
-
-[Bentley Projects Ltd](https://www.bentley-projects.com/)
-
-contractor
-
-[Birchland Homes & Construction](https://www.birchlandhomes.co.uk/)

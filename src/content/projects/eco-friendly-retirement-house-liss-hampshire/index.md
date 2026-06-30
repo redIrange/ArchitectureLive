@@ -27,11 +27,3 @@ We chose the metaphor of the Tern, a sea bird, so as to juxtapose the existing n
 The building design evolved from an initially compact rectangular layout to a sequence of highly personal spaces. Each space is oriented towards a view and a different quality of light as a processional route through the new home.
 
 The new dwelling meets the Lifetime Homes standards and has a layout that will enable its occupants to be cared for in their home. The sustainable building services strategy allows for minimal building maintenance and includes building integrated photovoltaics inlaid into the new and striking blue zinc roof with optimum orientation for maximum electrical yields.
-
-architect
-
-ArchitectureLIVE
-
-planning consultant
-
-[Murray Planning Associates](https://www.murrayplanning.co.uk/)

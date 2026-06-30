@@ -29,15 +29,3 @@ Our design added an open-plan kitchen-dining area and a gallery study, that can 
 The new accommodation is flooded with light from double-height glazing to the south as well as full-height glazing for the kitchen and a high level feature window, carefully designed to cast the early morning sunlight across the entire length of the new open-plan layout.
 
 By applying Passivhaus principals and low-energy design, thermal improvements were made to the entire building envelope. These changes together with a new solar thermal hot water system, have achieved a two-third reduction in energy bills.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Dixon Hurst Kemp](http://www.dhk.co.uk/)
-
-contractor
-
-Mike Hutchings

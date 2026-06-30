@@ -27,19 +27,3 @@ A partially double-height entrance hall provides the link between old and new, j
 The new ground floor accommodation delivers an open-plan living space that links back to the existing dining and kitchen area which has been reconfigured around a large terrace. The remaining existing accommodation has, likewise, been reorientated and upgraded in line with the new contextual design and new fixtures and finishes.
 
 The result... a calm, yet uplifting smart home right in the centre of Haslemere.
-
-architect
-
-ArchitectureLIVE
-
-contractor
-
-[Corner Construction](http://cornerconstruction.co.uk/)
-
-engineer
-
-[Marbas](https://www.marbas.co.uk/)
-
-photographer
-
-[Chris Murphy](https://www.chrismurphy.london/)

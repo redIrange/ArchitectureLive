@@ -13,14 +13,6 @@ First fix electrics are currently on the go and the reconstituted stone window s
 
 ​
 
-contractor
-
-[Brickfield Construction](http://brickfieldconstruction.co.uk/)
-
-structual engineer
-
-[Design4Structures](https://www.design4structures.com/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

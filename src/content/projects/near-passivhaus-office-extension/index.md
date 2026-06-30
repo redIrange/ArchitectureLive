@@ -21,19 +21,3 @@ This 1960 family home was first remodelled by ArchitectureLIVE 8 years ago and h
 The final phase of our design is a near Passivhaus single storey annex. The superstructure has been constructed with [Kingspan Tek SIPs](https://www.kingspan.com/gb/en-gb/products/engineered-timber-systems/structural-insulated-panel-technology) - Structural Insulated Panels. SIPS are an off-site manufactured system. It was chosen for its high thermal performance, air tightness and integral structural capabilities accommodating open plan spans and vaulted ceilings.
 
 Externally, the design falls inline with the remodelled character of the house. Features include dark Cedar cladding, aluminium glazing and a pitched green roof, overlooked by the existing master bedroom suite. Internally, materials have been chosen for their natural characteristics and sustainably sourced. Oak veneer paneling in place of plasterboard and marmoleum flooring, a linseed based product currently 43% recycled, provide a warm and calming interior.
-
-architect
-
-ArchitectureLIVE
-
-SIPs
-
-[Bentley SIPs](https://www.bentley-sips.com)
-
-engineer
-
-Farshad Sisan
-
-contractor
-
-[Birchland Homes & Construction](https://www.birchlandhomes.co.uk/)

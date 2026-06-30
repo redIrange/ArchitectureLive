@@ -27,15 +27,3 @@ Whilst the property benefits from a beautiful south westerly aspect, the existin
 Our design relocated the centre of the home to maximise the garden aspect and views. The existing carport was converted into a new, dual-aspect entrance hall and multifunctional space. This space benefits from full height glazing and permits partial views onto a new courtyard garden. All necessary services and utilities were grouped in a central service pod. This allowed for the entire ground floor layout to be opened up into a series of fluid spaces, reorientated towards the garden and benefiting from direct access onto a large terrace.
 
 The new extension has been positioned to redefine the approach to the property. It houses the open plan kitchen and dining area and the new master bedroom suite with a cantilevering Juliette balcony and near-double height glazing for optimal views. The new-build elements are slate clad and deliver a monolithic building volume in contrast with the new insulated render finish for the existing house.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Dixon Hurst Kemp](http://www.dhk.co.uk/)
-
-contractor
-
-Eight Building Ltd

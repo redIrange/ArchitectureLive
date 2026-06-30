@@ -23,19 +23,3 @@ A previous analysis of the existing 6th From facilities by ArchitectureLIVE, ide
 The design for the new centre has been conceived as a distinctive, yet complementary element to the existing school, with rendered facades matching the existing colour concept and a cantilevered canopy framing the new entrance. Inside, a new tiered seating auditorium with catering facilities and an ancillary meeting space and office deliver the slightly larger provision for school and local community events alike.
 
 ArchitectureLIVE has also supported the school’s 6th Form students to create a mural design that will advertise the school’s vibrant identity, to be implemented in the future.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Archibald Shaw](https://www.archibaldshaw.co.uk/)
-
-contractor
-
-[Ascia Construction](https://asciaconstruction.co.uk/)
-
-quantity surveyor
-
-[MTP Consultants](http://www.mtpconsultants.co.uk/)

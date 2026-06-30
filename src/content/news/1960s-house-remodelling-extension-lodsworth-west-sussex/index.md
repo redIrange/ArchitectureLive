@@ -15,14 +15,6 @@ Applying the Lutyens-inspired concept of a garden wall defining space and formin
 
 Internal updates of the main house include an enlarged new kitchen layout and the partial garage conversion into a generous utility room. These final additions implement the book-end extension concept originally envisaged in 2012, and we look forward to its completion.
 
-architect
-
-ArchitectureLIVE
-
-contractor
-
-[greenbuild](https://www.greenbuildconstruction.co.uk/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

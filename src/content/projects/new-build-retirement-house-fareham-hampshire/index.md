@@ -31,15 +31,3 @@ Early stage 3D modelling highlighted three key amenity areas with optimum light 
 The interior layout implemented the principles of the [Lifetime Homes Standard](http://www.lifetimehomes.org.uk/pages/lifetime-homes-principles.html) to ensure future adaptability and use. The building superstructure was prefabricated with high performance [Kingspan TEK](https://www.kingspan.com/gb/en-gb/products/structural-insulated-panels) panels approximating Passivhaus standards and erected in the shortest possible time.
 
 Taking inspiration from the woodland setting, the building was clad and predominately roofed with artificial slate in a natural colour palette, developed in reference to the dappled shades of light coming through a tree canopy.
-
-architect
-
-ArchitectureLIVE
-
-contractors
-
-[O'Neill Contractors (Fareham) Ltd](https://oneillconstruction.co.uk)
-
-SIPs
-
-[Bentley Projects Ltd](https://www.bentley-projects.com/)

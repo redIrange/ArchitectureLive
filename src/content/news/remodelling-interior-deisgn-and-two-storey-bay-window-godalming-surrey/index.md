@@ -19,26 +19,6 @@ Lighting, natural as well as artificial was at the heart of our redesign, with t
 
 The opportunity for a two storey metal clad bay window presented itself as the replacement of a tired looking balcony which nevertheless delivered most of the substructure already in place. This new, full height glazed bay frames views and provides a new focal point from dawn till dusk.
 
-architect
-
-ArchitectureLIVE
-
-lighting & interior design
-
-ArchitectureLIVE
-
-contractor
-
-[Greenbuild](https://www.greenbuildconstruction.co.uk)
-
-structural engineer
-
-[D4S](https://www.design4structures.com)
-
-glazing
-
-[Maxlight](https://www.maxlight.co.uk)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

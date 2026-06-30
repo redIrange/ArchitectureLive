@@ -19,18 +19,6 @@ The lowering of the existing cottage slab delivered a much improved floor to cei
 
 Replacement windows and doors throughout with newly proportioned panes, sympathetic to the period character of the property, and a new central heating system in addition to the existing wood-burning stove concluded this renovation resulting in an energy efficient property.
 
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[CWPM Consulting](http://cwpmconsulting.com/)
-
-contractor
-
-[Strongbuild](https://strongbuild.co.uk/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

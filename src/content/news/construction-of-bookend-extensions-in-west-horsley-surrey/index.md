@@ -17,14 +17,6 @@ The building approach has been improved in order to respond to the new parking l
 
 Externally, our design features new timber cladding and a slate roof for the entire building, thereby updating the appearance of the property and using sustainable, natural timber cladding. Existing windows have, in part, been enlarged to improve their appearance and are being replaced with dark grey polyester powder coated aluminium glazing to complete the transformation.
 
-architect
-
-ArchitectureLIVE
-
-SIPs
-
-[Bentley Projects Ltd](https://www.bentley-projects.com/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

@@ -31,31 +31,3 @@ Historic parts of the country house have been stripped of any later additions in
 The interior redesign provided a new principle entrance with hallway and feature staircase. A new kitchen layout and dining room as well as a secondary entrance hall connected to the new sitting room were also established. The living room fireplace was refurbished, whilst a new master bedroom suite was created on the first floor.
 
 Our design also included all bespoke furniture, new finishes and the new lighting concept throughout. Externally, the listed stone facades and chimney have been meticulously restored to preserve the future health of this building.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Dixon Hurst Kemp](http://www.dhk.co.uk/)
-
-contractor
-
-[Norse Build](http://www.norsebuild.com/)
-
-stonework
-
-[Chichester Stoneworks Ltd](http://www.chichesterstoneworks.co.uk/)
-
-carpenter
-
-[Sam Ogilvie](http://samogilvie.co.uk/)
-
-kitchen
-
-[Hobsons Choice](http://www.hobsonschoice.uk.com/)
-
-photography
-
-[Peter Wright](http://www.peter-wright-photographer.co.uk/)

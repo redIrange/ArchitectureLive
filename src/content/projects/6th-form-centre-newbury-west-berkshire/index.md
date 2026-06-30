@@ -25,11 +25,3 @@ As part of our latest appointment, we have undertaken the redesign and remodelli
 Remodelled socialising, independent learning and eating spaces are now joined by a new collaborative learning mode and matched with current and future technological requirements together with dynamic, yet hard wearing new furniture.
 
 The next phase of our design will focus on independent study and student collaboration. Further interior remodelling and a new extension will deliver additional independent learning spaces and a new dedicated entrance to complete the exciting, new identity for the 6th Form.
-
-architect
-
-ArchitectureLIVE
-
-furniture solutions
-
-[insightful environments](https://www.ie-uk.com/)

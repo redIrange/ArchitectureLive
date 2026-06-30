@@ -15,12 +15,4 @@ Can you guess the name of the bat pictured?
 
 ​
 
-contractor
-
-[Brickfield Construction](http://brickfieldconstruction.co.uk/)
-
-engineer
-
-[Design4Structures](http://www.tdsg.co.uk)
-
 ![](./g01.jpg)

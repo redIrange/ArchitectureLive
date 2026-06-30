@@ -13,18 +13,6 @@ Our brief was to extend and reconfigure an existing kitchen as a new open-plan k
 
 The new extension also rises from the existing kitchen towards the hillside by 1.5 storeys, addressing the steeply sloping contours of the site. The new open-plan interior space therefore benefits from level courtyard access as well as high level hillside garden views framed by a picture window. The garden pavilion glazing has been complemented by a led-clad facade which combines traditi
 
-architect
-
-ArchitectureLIVE
-
-contractor
-
-Les Knight & Son
-
-kitchen
-
-[Daulby and Tickle](http://daulbyandtickle.co.uk/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

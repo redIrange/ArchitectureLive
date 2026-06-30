@@ -10,11 +10,3 @@ draft: false
 Our new build retirement home near Chiddingfold, Surrey is taking shape. The highly insulated timber framed walls are nearing completion. The large feature gables are now clearly visible and the composite windows are on order. We have found a local supplier that has been able to continue manufacturing during the lockdown, thus ensuring deliveries are met.
 
 As this project is targeting near-Passivhaus thermal performance, great care is being taken to construct the required high levels of vapour control that go hand in hand with this.
-
-contractor
-
-[Brickfield Construction](http://brickfieldconstruction.co.uk)
-
-structural engineer
-
-[Design4Structures](http://www.design4structures.com/)

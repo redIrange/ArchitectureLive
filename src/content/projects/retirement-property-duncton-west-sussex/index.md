@@ -29,7 +29,3 @@ Our client’s property is a new-build, semi-detached, 3-bedroom property which,
 Due to the plot size and the strong character of the existing design, the majority of our interventions are limited to internal reconfiguration stripping the majority of the ground and first floor to deliver open-plan kitchen, dining and living, as well as a generous new master bedroom suite.
 
 These layout changes also benefit from a small, two-storey extension, which blends in seamlessly with the existing external appearance by restricting the material pallet to the use of existing materials and details.
-
-architect
-
-ArchitectureLIVE

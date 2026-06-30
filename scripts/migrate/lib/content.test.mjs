@@ -15,3 +15,28 @@ test("converts a Divi project: gallery ids + clean markdown, no shortcodes", () 
   assert.ok(/Passivhaus/i.test(markdown), "prose preserved");
   assert.ok(!markdown.includes("#filter="), "no WP projects-filter nav links remain");
 });
+
+test("strips trailing credits block, preserves narrative prose", () => {
+  // Simulate a Divi post_content already converted to markdown with a credits block at the end.
+  // We test the credits stripping by constructing a synthetic markdown string and calling convert
+  // with a fake HTML body (wrapped in et_pb_text so convert processes it).
+  const syntheticContent = `[et_pb_text]<p>This is the narrative paragraph describing the project in detail and it is long enough.</p>
+
+<p>architect</p>
+
+<p>ArchitectureLIVE</p>
+
+<p>contractor</p>
+
+<p>JCT Project Services Ltd</p>
+
+<p>photographer</p>
+
+<p>Chris Murphy</p>[/et_pb_text]`;
+  const { markdown } = convert(syntheticContent);
+  assert.ok(/narrative paragraph/i.test(markdown), "narrative prose preserved");
+  assert.ok(!/^architect$/im.test(markdown), "credits lead label 'architect' removed");
+  assert.ok(!/ArchitectureLIVE/.test(markdown), "credit value 'ArchitectureLIVE' removed");
+  assert.ok(!/JCT Project Services/.test(markdown), "credit value 'JCT Project Services' removed");
+  assert.ok(!/photographer/i.test(markdown), "credits trailing label 'photographer' removed");
+});

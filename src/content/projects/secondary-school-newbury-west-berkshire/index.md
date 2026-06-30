@@ -29,19 +29,3 @@ Whilst the overriding factor for the design was to make the new extension fit in
 A new hard landscaped auditorium also provides teared seating for open air performances, using the new foyer space as a stage and back stage area. As required by West Berkshire Borough Council, Planning Department the school is certified BREEAM Very Good.
 
 Click below to read our detailed Case Study.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Buro Happold](https://www.burohappold.com/)
-
-contractor
-
-Herbert Drew & Sons Ltd
-
-BIPV
-
-[Ertex Solar](https://www.ertex-solar.at/en/)

@@ -3,7 +3,7 @@ import { writeFileSync, rmSync, mkdirSync } from "node:fs";
 import { extractOne, ARCHIVE } from "./lib/wpress.mjs";
 import { rowObjects } from "./lib/sql.mjs";
 import { attachmentMap, thumbnailMap } from "./lib/attachments.mjs";
-import { convert } from "./lib/content.mjs";
+import { convert, cleanExcerpt } from "./lib/content.mjs";
 import { SECTOR_BY_SLUG } from "./lib/taxonomy.mjs";
 import { extractRawImages, normalizeImages } from "./lib/images.mjs";
 
@@ -47,7 +47,7 @@ for (const it of items) {
 
   const title = (p.post_title || slug).replace(/&amp;/g, "&");
   const locationPart = title.includes(",") ? title.split(",").slice(1).join(",").trim() : "";
-  const excerpt = (metaDesc.get(p.ID) || firstPara(markdown)).replace(/\s+/g, " ").trim();
+  const excerpt = cleanExcerpt(metaDesc.get(p.ID) || firstPara(markdown));
   const year = Number((p.post_date || "").slice(0, 4)) || undefined;
 
   const fm = [

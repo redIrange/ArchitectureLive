@@ -15,14 +15,6 @@ The existing porch, hallway and landing have been redesigned as one open-plan sp
 
 The shell of the extensions is nearing completion, with the ground floor masonry walls and steel frame now cantilevering the first floor timber-framed gable. Internally, a new family bathroom layout has been formed and the new master bedroom suite is taking shape.
 
-contractor
-
-[Birchland Homes](https://www.birchlandhomes.co.uk/)
-
-engineer
-
-[Archibald Shaw](https://www.archibaldshaw.co.uk/)
-
 ![](./g01.jpg)
 
 ![](./g02.jpg)

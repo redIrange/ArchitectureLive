@@ -27,19 +27,3 @@ Full of style and character, this property nestles in a secluded location and en
 Our design re-orientated all habitable accommodation to look out towards the lakeside and countryside views. A clear approach to the house was established by removing all unsightly extensions and the new addition of a stunning, double-height, glazed hallway and porch. The restructuring of the facade reflects the interior remodelling, including a first floor extension that rebalanced the front elevation of the property and allowed for the creation of the larger family bathroom and spacious landing, flooded with daylight.
 
 In order to update the remaining facilities within the extensive grounds, an existing summerhouse and sheds will also be replaced by a new double garage, pool house and home gym.
-
-architect
-
-ArchitectureLIVE
-
-engineer
-
-[Dixon Hurst Kemp](http://www.dhk.co.uk/)
-
-contractor
-
-[Norse Build Ltd](http://www.norsebuild.com/)
-
-photographer
-
-Kirsty Brierley

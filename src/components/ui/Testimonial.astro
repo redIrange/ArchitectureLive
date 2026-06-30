@@ -11,7 +11,7 @@ const { quote, author } = Astro.props;
 {quote && (
   <figure class="testimonial">
     <blockquote class="testimonial__quote">"{quote}"</blockquote>
-    {author && <figcaption class="testimonial__author">— {author}</figcaption>}
+    {author && <figcaption class="testimonial__author">{author}</figcaption>}
   </figure>
 )}
 
@@ -29,7 +29,11 @@ const { quote, author } = Astro.props;
 }
 .testimonial__author {
   margin-top: var(--space-md);
-  font-family: var(--font-text); font-size: var(--type-caption-size);
+  font-family: var(--font-text);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
   color: var(--color-indigo-slate);
 }
 </style>

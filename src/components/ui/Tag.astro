@@ -36,11 +36,15 @@ const isFilter = variant === "filter";
 .tag--filter {
   cursor: pointer;
   color: var(--color-grey-mid);
+  transform-origin: center;
   transition:
     color var(--duration-base) var(--ease-standard),
-    font-weight var(--duration-base) var(--ease-standard);
+    transform var(--duration-base) var(--ease-out);
 }
-.tag--filter:hover { color: var(--color-indigo-deep); }
+.tag--filter:hover {
+  color: var(--color-indigo-deep);
+  transform: scale(1.1);
+}
 .tag--selected {
   color: var(--color-indigo-vivid);
   font-weight: 700;

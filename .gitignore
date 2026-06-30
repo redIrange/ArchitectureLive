@@ -16,3 +16,6 @@ scripts/migrate/.tmp-*
 scripts/migrate/.raw-*
 # superpowers SDD scratch (briefs, reports, diff packages)
 .superpowers/
+
+scripts/upscale/vendor/
+scripts/upscale/.tmp/

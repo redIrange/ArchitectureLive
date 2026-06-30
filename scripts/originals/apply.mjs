@@ -22,10 +22,12 @@ if (!existsSync(MAP)) {
 }
 const map = JSON.parse(readFileSync(MAP, "utf8"));
 const only = process.argv.slice(2);
+const MAX_GALLERY = 14; // hero + up to 13 gallery images; override per project with "max" in mapping.json
 
 const isImg = (f) => /\.(jpe?g|png|tiff?|webp)$/i.test(f);
-// Drop collages, thumbnails, marketing crops, temp/PSD files — not real project photos.
-const JUNK = /thumbs\.db|collage|thumbnail|business.?card|post.?card|\blogo\b|-tn\.|~\$|\.psd$/i;
+// Drop collages, thumbnails, business cards, postcards, directory/guide listings, mood boards,
+// before/after & "existing" marketing crops, temp/PSD files — not real project photos.
+const JUNK = /thumbs\.db|collage|thumbnail|business|directory|\bguide\b|mood.?board|\bcard\b|post.?card|pos.?r?card|\blogo\b|-tn\.|~\$|\.psd$|before.?.?after|\bexisting\b|\d+\s*x\s*\d+|darker|_distorted/i;
 // Collapse near-duplicate variants of the same shot (X.jpg / X_RIBA.jpg / X_edited-1.jpg / X small).
 const baseKey = (f) =>
   f.toLowerCase()
@@ -78,7 +80,12 @@ for (const [slug, cfg] of Object.entries(map)) {
   if (!imgs.length) { console.warn(`! ${slug}: no usable images in ${dirs.join(", ")}`); continue; }
 
   const heroIdx = pickHero(imgs, cfg.hero);
-  const ordered = [imgs[heroIdx], ...imgs.filter((_, i) => i !== heroIdx)];
+  let ordered = [imgs[heroIdx], ...imgs.filter((_, i) => i !== heroIdx)];
+  const cap = cfg.max || MAX_GALLERY;
+  if (ordered.length > cap) {
+    console.log(`  (capped ${slug}: ${ordered.length} → ${cap})`);
+    ordered = ordered.slice(0, cap);
+  }
 
   // Remove existing hero-/gallery JPEGs (idempotent); leave index.md + anything else.
   for (const f of readdirSync(dir)) {

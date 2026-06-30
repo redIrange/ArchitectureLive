@@ -6,7 +6,7 @@ status: "Completed"
 year: 2020
 features: []
 heroImage: "./hero-01.jpg"
-gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg", "./g04.jpg"]
+gallery: ["./g01.jpg", "./g02.jpg", "./g03.jpg"]
 excerpt: "A contemporary, near Passivhaus single storey annex to a 1960s detached home featuring Cedar cladding and aluminium glazing."
 featured: true
 draft: false

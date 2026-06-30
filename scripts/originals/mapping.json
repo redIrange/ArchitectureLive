@@ -30,5 +30,13 @@
   "1960s-house-haslemere-surrey": {
     "dirs": ["01 RIBA Project Images/Escale"],
     "hero": "1960s-house-renovation-extension-Haslemere-Surrey.jpg"
+  },
+  "near-passivhaus-office-extension": {
+    "dirs": ["07 3rd party websites/Tall Trees Office"],
+    "hero": "ArchitectureLIVE-near-Passivhaus-office-entrance-view-SDNP.jpg"
+  },
+  "1960s-house-fernhurst-west-sussex": {
+    "dirs": ["13 AL projects/Tall Trees face lift", "01 RIBA Project Images/Tall Trees", "13 AL projects/Tall Trees"],
+    "hero": "south view.jpg"
   }
 }

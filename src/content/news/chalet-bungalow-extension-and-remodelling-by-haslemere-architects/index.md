@@ -1,7 +1,7 @@
 ---
 title: "Chalet bungalow extension & remodelling nearing completion by Haslemere architects"
 date: 2024-10-21
-category: "Extensions"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "design by Haslemere architects ArchitectureLIVE to remodel and extend an existing 1950s chalet bungalow in Haslemere, Surrey"
 draft: false

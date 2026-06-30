@@ -1,7 +1,7 @@
 ---
 title: "Upside-down house conversion in progress"
 date: 2019-09-10
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "An update on our bungalow conversion project in Haslemere, Surrey, where the roof and glazing installations are now complete."
 draft: false

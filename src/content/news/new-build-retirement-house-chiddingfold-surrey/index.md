@@ -1,7 +1,7 @@
 ---
 title: "New Build Retirement House, Chiddingfold, Surrey"
 date: 2020-11-04
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Delighted our contemporary two bed, new-build retirement annex is complete allowing a multigenerational family to be reunited."
 draft: false

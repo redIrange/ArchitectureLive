@@ -1,7 +1,7 @@
 ---
 title: "Season's Greetings from ArchitectureLIVE"
 date: 2019-12-18
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "As another year draws to the end, all of us at ArchitectureLIVE would like to thank you for your support in 2019 and wish you a Merry Christmas."
 draft: false

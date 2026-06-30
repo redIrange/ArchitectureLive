@@ -1,7 +1,7 @@
 ---
 title: "Work has begun to transform a bungalow in Haslemere, Surrey"
 date: 2019-06-05
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Contractors are on site at a 1970s bungalow in Haslemere, Surrey, beginning work to transform it into a contemporary, two storey family home."
 draft: false

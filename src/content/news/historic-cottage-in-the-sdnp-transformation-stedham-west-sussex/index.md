@@ -1,7 +1,7 @@
 ---
 title: "Historic cottage in the SDNP undergoing a wonderful transformation, Stedham, West Sussex"
 date: 2020-10-20
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Contractors are on site to transform and extend an historic cottage in Stedham, West Sussex and in the South Downs National Park"
 draft: false

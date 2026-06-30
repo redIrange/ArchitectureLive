@@ -1,7 +1,7 @@
 ---
 title: "Near-Passivhaus Annex - SIPs Day 5"
 date: 2018-11-26
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Daily progress for our near-Passivhaus Annex during its superstructure phase."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Merry Christmas from ArchitectureLIVE!"
 date: 2018-12-18
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "Your local architect, ArchitectureLIVE, sends you best wishes for Christmas and the new year."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Supporting students at St Bartholomew's School"
 date: 2018-10-25
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Irene Konschill held a workshop with 6th form students who entered a competition to design the mural to adorn our shortly to be completed conference centre."
 draft: false

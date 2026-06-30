@@ -1,7 +1,7 @@
 ---
 title: "Climate Change - Not All Bad News"
 date: 2019-11-26
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Here we explain where you can start and what we, as architects, can do to help you start making lowering your household's CO2 emissions."
 draft: false

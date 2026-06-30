@@ -1,7 +1,7 @@
 ---
 title: "Waverley Design Awards 2022 shortlist"
 date: 2022-09-23
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "We have been shortlisted for the Waverley Design Awards 2022 with on of our bungalow conversion in and upside down house extension."
 draft: false

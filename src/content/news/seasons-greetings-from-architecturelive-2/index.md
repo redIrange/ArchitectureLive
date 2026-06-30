@@ -1,7 +1,7 @@
 ---
 title: "Season's Greetings from ArchitectureLIVE"
 date: 2020-12-14
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "At the end of this extraordinary year, we, more than ever, would like to express our heartfelt gratitude to everyone we have had the pleasure to work with and who has supported our business and liveli"
 draft: false

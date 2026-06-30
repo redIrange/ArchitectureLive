@@ -1,7 +1,7 @@
 ---
 title: "Dramatic transformation at 1960s Detached House, Haslemere, Surrey"
 date: 2020-09-25
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "This is one of our projects which continued during lock down and is now nearing completion. A tired looking 1960s property has undergone a dramatic transformation with neighbours wondering whether thi"
 draft: false

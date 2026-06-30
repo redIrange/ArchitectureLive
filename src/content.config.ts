@@ -2,7 +2,7 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const SECTORS = ["Extensions", "New Build", "Education", "Commercial"] as const;
-const CATEGORIES = ["Extensions", "New Build", "Education", "Commercial", "General"] as const;
+const CATEGORIES = ["Awards", "Press", "Insight", "Studio", "Projects"] as const;
 
 const projects = defineCollection({
   loader: glob({ pattern: "**/index.md", base: "./src/content/projects" }),
@@ -31,7 +31,7 @@ const news = defineCollection({
     z.object({
       title: z.string(),
       date: z.coerce.date(),
-      category: z.enum(CATEGORIES).default("General"),
+      category: z.enum(CATEGORIES).default("Projects"),
       heroImage: image(),
       excerpt: z.string().default(""),
       draft: z.boolean().default(false),

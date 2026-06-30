@@ -1,7 +1,7 @@
 ---
 title: "Cottage extension and remodelling, Pulborough, Horsham"
 date: 2024-02-29
-category: "Extensions"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Our extension and remodelling project of a there storey 1800s cottage near Pulborough, Horsham is nearing completion."
 draft: false

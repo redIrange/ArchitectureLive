@@ -1,7 +1,7 @@
 ---
 title: "Intergenerational Living"
 date: 2020-05-01
-category: "General"
+category: "Press"
 heroImage: "./hero-01.jpg"
 excerpt: "With the plight of the elderly in care homes at the forefront of the coronavirus crises, is it time to consider a new way of intergenerational living?"
 draft: false

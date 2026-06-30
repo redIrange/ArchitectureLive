@@ -1,7 +1,7 @@
 ---
 title: "Site visit to St Bartholomew’s new build conference centre, Newbury"
 date: 2018-10-18
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "A new-build conference centre for St Bartholomews School in Newbury, Berkshire, is nearing completion."
 draft: false

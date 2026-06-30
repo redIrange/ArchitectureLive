@@ -1,7 +1,7 @@
 ---
 title: "Upside-down house with spectacular views"
 date: 2021-12-02
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "### _“Our architects pushed the boundaries of our imagination, and we’re so glad they did!”_"
 draft: false

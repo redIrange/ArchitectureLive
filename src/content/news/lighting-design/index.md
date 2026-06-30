@@ -1,7 +1,7 @@
 ---
 title: "Lighting Design"
 date: 2022-05-26
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Why natural and artificial lighting design is now a fundamental part of our holistic approach to designing your home."
 draft: false

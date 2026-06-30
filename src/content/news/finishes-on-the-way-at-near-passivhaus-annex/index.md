@@ -1,7 +1,7 @@
 ---
 title: "Finishes on the way at near-Passivhaus annex"
 date: 2019-04-25
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "The interior of this single storey annex extension in Fernhurst, West Sussex, is coming together as we enter the final stage of this build."
 draft: false

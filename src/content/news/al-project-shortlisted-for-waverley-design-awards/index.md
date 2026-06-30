@@ -1,7 +1,7 @@
 ---
 title: "AL project shortlisted for Waverley Design Awards!"
 date: 2018-12-17
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "We're delighted that one of our contemporary designs for an extension in Haslemere has been shortlisted for the Waverley Design Awards."
 draft: false

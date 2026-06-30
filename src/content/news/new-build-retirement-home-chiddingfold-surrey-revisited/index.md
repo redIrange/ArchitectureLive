@@ -1,7 +1,7 @@
 ---
 title: "New build retirement home, Chiddingfold Surrey, revisited"
 date: 2021-05-27
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "This new retirement home has now been occupied for half a year and its owner is enjoying the new bright and airy living accommodation with double aspect views."
 draft: false

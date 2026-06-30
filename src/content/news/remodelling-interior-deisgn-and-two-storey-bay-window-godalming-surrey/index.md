@@ -1,7 +1,7 @@
 ---
 title: "Remodelling, interior design and new two-storey bay window nearing completion, Godalming Surrey"
 date: 2024-12-14
-category: "Extensions"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "A first peak at our nearly completed Shackleford, Godalming Surrey remodelling, interior design and new two storey bay window %"
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "People's Choice Waverley Design Awards 2022"
 date: 2022-10-24
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "We have been shortlisted for the Waverley Design Awards in 3 categories and the peoples choice is now open to vote."
 draft: false

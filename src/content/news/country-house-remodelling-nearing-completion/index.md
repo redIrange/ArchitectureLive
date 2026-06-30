@@ -1,7 +1,7 @@
 ---
 title: "Country house remodelling nearing completion, Liss SDNP"
 date: 2023-04-01
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Whilst the external works are still ongoing, the country house renovation and remodelling project is now receiving its finishing touches."
 draft: false

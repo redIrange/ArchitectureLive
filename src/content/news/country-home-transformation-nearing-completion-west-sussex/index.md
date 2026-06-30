@@ -1,7 +1,7 @@
 ---
 title: "Country home transformation nearing completion, Lodsworth, West Sussex, SDNP"
 date: 2022-05-10
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Take a peak at a few of the finishing touches being put in place at our country cottage transformation in Lodsworth, West Sussex."
 draft: false

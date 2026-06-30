@@ -1,7 +1,7 @@
 ---
 title: "Country house planning design, SDNP"
 date: 2023-02-16
-category: "General"
+category: "Insight"
 heroImage: "./hero-01.jpg"
 excerpt: "This is a contemporary extension design to remodel an existing country house in the South Downs National Park."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Action is what’s needed now"
 date: 2021-11-15
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Following the disappointing result of COP26, we look at what we can all do to try and reach Net Zero by 2030."
 draft: false

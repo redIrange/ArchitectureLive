@@ -1,7 +1,7 @@
 ---
 title: "Planning permission granted for seafront property modernisation in Hill Head, Fareham"
 date: 2024-02-28
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Fareham BC has granted planning for our design to remodel and extend a 1920s sea-front property in Hill Head, Hampshire"
 draft: false

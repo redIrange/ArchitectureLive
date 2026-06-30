@@ -1,7 +1,7 @@
 ---
 title: "Near-Passivhaus Annex - roof nearing completion"
 date: 2018-12-11
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "The roof for our near-Passivhaus extension to a 1960s detached property in Fernhurst, West Sussex is nearing completion."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Eco-friendly retirement house design, Liss, Hampshire"
 date: 2019-07-22
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "A 3D animation of a design for a new build, sustainable, single storey retirment home with a layout that will enable its occupants to be cared for at home."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "It's progress.... our new branding"
 date: 2020-05-07
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "ArchitectureLIVE new website! Read about our latest projects and progress on site."
 draft: false

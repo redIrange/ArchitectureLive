@@ -1,7 +1,7 @@
 ---
 title: "Extraordinary Extensions, Series 2 features our extension"
 date: 2024-01-22
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "Channel 4 Extraordinary Extensions, Series 2, features our award winning Upside Down House Extension & Reconfiguration in Haslemere, Surrey"
 draft: false

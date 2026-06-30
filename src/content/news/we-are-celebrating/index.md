@@ -1,7 +1,7 @@
 ---
 title: "We are celebrating!!"
 date: 2019-03-19
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "We are absolutely delighted our project received ‘Highly Commended” in the Alterations & Extensions category at the Waverley Design Awards."
 draft: false

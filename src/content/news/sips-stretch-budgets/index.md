@@ -1,7 +1,7 @@
 ---
 title: "SIPs stretch budgets"
 date: 2024-02-15
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "ArchitectureLive designs SIPs in the domestic sector since a decade and has completed new-builds and extensions at speed, cost effectively"
 draft: false

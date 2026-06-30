@@ -1,7 +1,7 @@
 ---
 title: "Planning granted to modernise & extend 1950s bungalow, Haslemere, Surrey"
 date: 2021-11-09
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Waverley Borough Council has granted planning permission to modernise and extend a two bedroom, detached 1950s chalet bungalow in Haslemere."
 draft: false

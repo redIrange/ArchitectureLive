@@ -1,7 +1,7 @@
 ---
 title: "Self Build Cottage Extension & Renovation Completed"
 date: 2019-02-26
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "A 19th century cottage in Farley Green, Surrey, has been sympathetically extended and renovated providing a third bedroom and improved living accomodation."
 draft: false

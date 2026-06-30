@@ -1,7 +1,7 @@
 ---
 title: "Construction commences for our SDNP country home transformation, Lodsworth, West Sussex"
 date: 2020-11-12
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Work is commencing to completely reorientate the interior spaces and improve the energy efficiency of this country cottage in the South Downs"
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Homebuilding & Renovating Show - January 2020"
 date: 2019-12-16
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "Visit ArchitectureLIVE at the Homebuilding & Renovating Show taking place in Farnborough International on the 19th & 20th January 2020"
 draft: false

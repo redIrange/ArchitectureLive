@@ -1,7 +1,7 @@
 ---
 title: "ArchitectureLIVE Featured on msn.com"
 date: 2018-10-04
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "We were delighted to have been featured on msn.com in an article regarding home transformations."
 draft: false

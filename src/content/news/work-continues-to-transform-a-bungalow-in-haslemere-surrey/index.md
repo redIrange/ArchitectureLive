@@ -1,7 +1,7 @@
 ---
 title: "Work continues to transform a bungalow in Haslemere, Surrey"
 date: 2019-07-23
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "The transformation of a 1960s bungalow into a two storey upside down house in Haslemere, Surrey continues with SIPs already complete."
 draft: false

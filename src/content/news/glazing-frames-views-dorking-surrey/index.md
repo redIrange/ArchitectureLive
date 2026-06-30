@@ -1,7 +1,7 @@
 ---
 title: "Glazing frames views in Dorking, Surrey"
 date: 2021-11-23
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "The installation of large-format glazing has transformed this family home in Dorking, with stunning views of the Surrey Hills."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Construction of Bookend Extensions in West Horsley, Surrey"
 date: 2019-09-19
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Delighted to hear about the construction of our contemporary design for extensions to our clients' 1970s bungalow in West Horsley, Surrey."
 draft: false

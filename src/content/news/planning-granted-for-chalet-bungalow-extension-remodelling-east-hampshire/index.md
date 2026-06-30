@@ -1,7 +1,7 @@
 ---
 title: "Planning granted for chalet bungalow extension and remodelling, Liphook, East Hampshire"
 date: 2025-01-28
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Planning permission has been granted for our chalet bungalow conversion into a modern, energy-efficient 5-bedroom family home in East Hants"
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Planning granted to remodel & extend a 1940s home, Haslemere, Surrey"
 date: 2022-03-22
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "A 1940s detached home in Haslemere, Surrey is set to be remodelled and extended after planning was granted by Waverley BC."
 draft: false

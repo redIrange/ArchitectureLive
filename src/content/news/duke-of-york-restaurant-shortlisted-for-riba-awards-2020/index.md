@@ -1,7 +1,7 @@
 ---
 title: "Duke of York Restaurant shortlisted for RIBA Awards 2020"
 date: 2020-06-06
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "We were delighted to hear that the Duke of York Restaurant in London has been shortlisted for a RIBA Award."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Grand Designs Live 2019"
 date: 2019-04-11
-category: "General"
+category: "Press"
 heroImage: "./hero-01.jpg"
 excerpt: "We are delighted to be volunteering for the RIBA at Grand Designs Live on Saturday, 4th May 2019 at London's ExCel Centre ."
 draft: false

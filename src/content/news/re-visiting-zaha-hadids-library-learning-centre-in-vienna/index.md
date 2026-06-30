@@ -1,7 +1,7 @@
 ---
 title: "Re-visiting Zaha Hadid's Library & Learning Centre in Vienna"
 date: 2018-07-16
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "In the summer we visited the impressive Library & Learning Centre at the Vienna University of Economics and Business designed by Zaha Hadid."
 draft: false

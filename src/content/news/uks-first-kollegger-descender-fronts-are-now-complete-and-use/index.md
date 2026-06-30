@@ -1,7 +1,7 @@
 ---
 title: "The UK's first Kollegger Descender Fronts are now complete and in use"
 date: 2019-09-27
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Vardo, the new restaurant in the Duke of York Square, has taken up residence at the new pavilion which features Kollegger's Descender Fronts."
 draft: false

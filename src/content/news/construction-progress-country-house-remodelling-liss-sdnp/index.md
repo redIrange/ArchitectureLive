@@ -1,7 +1,7 @@
 ---
 title: "Construction progress country house remodelling, Liss SDNP"
 date: 2022-09-19
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Construction progress for our 1960s country house remodelling, located in Liss SDNP. The building superstructure is now completed."
 draft: false

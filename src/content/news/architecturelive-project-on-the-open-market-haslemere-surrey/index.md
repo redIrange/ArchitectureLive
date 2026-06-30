@@ -1,7 +1,7 @@
 ---
 title: "ArchitectureLIVE's project near Haslemere, Surrey on the open market"
 date: 2024-03-29
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "1960s property remodelling and extension near Haslemere Surrey in the SDNP now available on the open market"
 draft: false

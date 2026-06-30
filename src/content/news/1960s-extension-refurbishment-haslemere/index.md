@@ -1,7 +1,7 @@
 ---
 title: "Completed - a 1960s Extension & Refurbishment, Haslemere"
 date: 2021-10-06
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Take a look at our latest completed project - the transformation of a detached house in Haslemere into a contemporary family home."
 draft: false

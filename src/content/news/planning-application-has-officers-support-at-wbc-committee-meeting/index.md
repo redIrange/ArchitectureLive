@@ -1,7 +1,7 @@
 ---
 title: "Planning Application has officer’s support at Waverley Borough Council Committee Meeting"
 date: 2026-04-19
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "Planning Application due to be reviewed at Waverley Borough Councils committee meeting with the planning officer’s full support"
 draft: false

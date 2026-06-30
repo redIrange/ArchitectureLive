@@ -1,7 +1,7 @@
 ---
 title: "New-build, low-energy design, Waverley, Surrey"
 date: 2023-12-04
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "low-energy design based on the principles of Passivhaus for a Lifetime Homes Standard new-build dwelling in Waverley, Surrey"
 draft: false

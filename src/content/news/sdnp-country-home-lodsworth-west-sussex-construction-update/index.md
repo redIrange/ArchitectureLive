@@ -1,7 +1,7 @@
 ---
 title: "SDNP country home, Lodsworth, West Sussex, Construction update"
 date: 2021-01-07
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "It has not been an easy start onsite at our project in Lodsworth, awaiting the arrival of the bat licence. It was eventually issued during the first cold week in early December due to a, nowadays stan"
 draft: false

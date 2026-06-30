@@ -1,7 +1,7 @@
 ---
 title: "Waverley grants planning to extend Grade II Listed cottage in Haslemere"
 date: 2020-03-24
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "View our design for two extensions to a Grade II listed cottage which recently received planning permission from Waverley Borough Council."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Descender Fronts installed at the Duke of York Restaurant, London"
 date: 2018-08-21
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "Very exiting site visit to see the installation of Kollegger's Descender Fronts taking shape at the Duke of York Restaurant in Chelsea, London."
 draft: false

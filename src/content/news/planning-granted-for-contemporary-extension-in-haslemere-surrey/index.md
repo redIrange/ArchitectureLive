@@ -1,7 +1,7 @@
 ---
 title: "Planning granted for contemporary extension, Haslemere, Surrey"
 date: 2022-10-20
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Waverley BC has granted permission of a contemporary extension and remodelling of a detached 1950s family home in Haslemere Surrey."
 draft: false

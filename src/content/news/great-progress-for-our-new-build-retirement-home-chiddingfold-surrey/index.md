@@ -1,7 +1,7 @@
 ---
 title: "Great progress for our new build retirement home, Chiddingfold, Surrey"
 date: 2020-09-17
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "News from on-site at our new build, contemporary retirement house project near Chiddingfold, Surrey where great progress is being made."
 draft: false

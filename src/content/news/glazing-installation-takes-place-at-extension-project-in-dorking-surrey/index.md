@@ -1,7 +1,7 @@
 ---
 title: "Glazing installation takes place at extension project in Dorking, Surrey"
 date: 2021-11-04
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Large format glazing, roof-light and slider have been installed at our extension and renovation project in Dorking, Surrey."
 draft: false

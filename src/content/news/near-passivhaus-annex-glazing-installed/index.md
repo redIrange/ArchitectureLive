@@ -1,7 +1,7 @@
 ---
 title: "Near-Passivhaus Annex - glazing installed"
 date: 2018-12-06
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Progress updates for our near-Passivhaus Annex to a 1960s detached home during its construction phase - Fernhurst, West Sussex."
 draft: false

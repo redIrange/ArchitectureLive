@@ -1,7 +1,7 @@
 ---
 title: "Season’s Greetings from ArchitectureLIVE 2022"
 date: 2022-12-21
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "ArchitectureLive wishes you a merry Christmas and prosperous New Year! This has been another year of inspirational projects with our clients."
 draft: false

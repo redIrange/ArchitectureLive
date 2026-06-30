@@ -1,7 +1,7 @@
 ---
 title: "Commission for new build, low-energy, sustainable home, Surrey"
 date: 2020-11-05
-category: "General"
+category: "Insight"
 heroImage: "./hero-01.jpg"
 excerpt: "We are delighted to commence new commissions for a new-build, near Passivhaus, sustainable family & retirement homes taken on this month."
 draft: false

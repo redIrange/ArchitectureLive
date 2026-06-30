@@ -1,7 +1,7 @@
 ---
 title: "Arts & Crafts family home renovation approved by SDNPA"
 date: 2019-10-11
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Planning permission has been granted to modernise and extend an arts & crafts family home within the South Downs National Park."
 draft: false

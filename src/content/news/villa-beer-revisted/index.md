@@ -1,7 +1,7 @@
 ---
 title: "Villa Beer visited"
 date: 2022-07-27
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "We had an inspirational visit to Villa Beer in Vienna, Austria a masterpiece of modernist architecture by Josef Frank & Oskar Wlach."
 draft: false

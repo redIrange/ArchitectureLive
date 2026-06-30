@@ -1,7 +1,7 @@
 ---
 title: "Please vote for ArchitectureLIVE!"
 date: 2019-01-30
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "One of our projects has been shortlisted for the People’s Choice of Waverley Borough Council’s Design Awards so we need your support!"
 draft: false

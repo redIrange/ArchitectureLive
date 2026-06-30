@@ -1,7 +1,7 @@
 ---
 title: "Planning approved for contemporary extension, Haslemere, Surrey"
 date: 2019-05-08
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Waverley Borough Council has granted planning permission to extend a detached 1960s family home in central Haslemere, Surrey."
 draft: false

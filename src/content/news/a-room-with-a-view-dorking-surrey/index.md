@@ -1,7 +1,7 @@
 ---
 title: "A Room with a View, Dorking, Surrey"
 date: 2021-06-29
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Good progress has been made to transform this property into a sustainable and contemporary family home in Dorking, Surrey."
 draft: false

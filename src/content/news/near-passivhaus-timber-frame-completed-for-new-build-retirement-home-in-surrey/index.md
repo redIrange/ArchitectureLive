@@ -1,7 +1,7 @@
 ---
 title: "Near Passivhaus timber-frame completed for new build retirement home in Surrey"
 date: 2020-07-10
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Read the latest update on the construction of our near-Passivhaus new build retirement house near Chiddingfold, Surrey."
 draft: false

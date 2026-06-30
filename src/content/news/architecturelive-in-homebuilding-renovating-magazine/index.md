@@ -1,7 +1,7 @@
 ---
 title: "ArchitectureLIVE published in Homebuilding & Renovating magazine"
 date: 2021-05-06
-category: "General"
+category: "Press"
 heroImage: "./hero-01.jpg"
 excerpt: "Our project, the extension of a 1960s detached home in Fernhurst, West Sussex, has been featured in the June 2021 edition of the Homebuilding & Renovating magazine - Amazing Exterior Makeovers"
 draft: false

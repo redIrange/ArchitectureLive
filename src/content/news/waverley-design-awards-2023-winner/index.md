@@ -1,7 +1,7 @@
 ---
 title: "Waverley Design Awards 2023 winner"
 date: 2023-02-19
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "ArchitectureLIVE is the Waverley Design Awards 2023 winner for the Conversions, Alterations and Refurbishment category"
 draft: false

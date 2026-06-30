@@ -1,7 +1,7 @@
 ---
 title: "Our Concept for Multigenerational Living"
 date: 2020-10-12
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Our design for multi generational living replaces traditional homes with a concept that provides for today's different living requirements"
 draft: false

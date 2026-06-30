@@ -1,7 +1,7 @@
 ---
 title: "Extension & Refurbishment of 1960s Detached House, Haslemere, Surrey"
 date: 2020-10-19
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "This contemporary extension is tantilisingly close to completion, with stunning views across the house and a calm lighting conept."
 draft: false

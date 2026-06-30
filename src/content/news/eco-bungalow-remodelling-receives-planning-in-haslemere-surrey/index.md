@@ -1,7 +1,7 @@
 ---
 title: "Energy efficient bungalow remodelling & extension receives planning in Haslemere, Surrey"
 date: 2022-03-17
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Delighted that planning permission has been granted to remodel and extend a 1960s bungalow in Haslemere, Surrey."
 draft: false

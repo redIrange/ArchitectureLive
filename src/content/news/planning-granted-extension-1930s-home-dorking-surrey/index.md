@@ -1,7 +1,7 @@
 ---
 title: "Planning granted for extension & renovation of 1930 vernacular family home, Dorking"
 date: 2020-06-10
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Mole Valley DC has granted planning permission to extend and renoavate a 1930s family home in Dorking overlooking the Surrey Hills."
 draft: false

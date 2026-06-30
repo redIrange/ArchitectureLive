@@ -1,7 +1,7 @@
 ---
 title: "Near-Passivhaus Annex on its way"
 date: 2018-11-16
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "The first in a series of posts following the construction of a single storey annex extension to near Passivhaus standards in Fernhurst, West Sussex."
 draft: false

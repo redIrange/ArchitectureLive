@@ -1,7 +1,7 @@
 ---
 title: "Chichester DC grants permission for a new build annex nr. Chiddingfold, Surrey"
 date: 2020-03-24
-category: "General"
+category: "Press"
 heroImage: "./hero-01.jpg"
 excerpt: "Planning permission has been given for a new build annex to a property near Chiddingfold to serve as an independent retirment home."
 draft: false

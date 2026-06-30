@@ -1,7 +1,7 @@
 ---
 title: "Planning Submitted for a new Sports Pavilion for Newbury Athletic Club"
 date: 2019-01-10
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "An application to West Berkshire Council to upgrade valuable community sports facilities at Browns Meadow in Newbury has been submitted."
 draft: false

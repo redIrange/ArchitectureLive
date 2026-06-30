@@ -1,7 +1,7 @@
 ---
 title: "Season's Greetings from ArchitectureLIVE 2025"
 date: 2026-01-02
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "Season's Greetings from ArchitectureLIVE we thank all our clients, consultants and friends for a year filled with architectural endeavours"
 draft: false

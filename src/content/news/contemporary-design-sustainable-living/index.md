@@ -1,7 +1,7 @@
 ---
 title: "Contemporary Design & Sustainable Living"
 date: 2018-11-12
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "We are a team of RIBA Chartered architects delivering full architectural services from a local design studio based on the Surrey/Sussex/Hampshire border."
 draft: false

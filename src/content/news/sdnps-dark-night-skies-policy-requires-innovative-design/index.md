@@ -1,7 +1,7 @@
 ---
 title: "SDNP's Dark Night Skies policy requires innovative design"
 date: 2018-10-18
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "In this article we look at the challenges posed by SDNPs Dark Night Skies policies and the innovative solutions architects could embrace to overcome them."
 draft: false

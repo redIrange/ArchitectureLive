@@ -1,7 +1,7 @@
 ---
 title: "Construction work recommences for contemporary extension in Haslemere, Surrey"
 date: 2020-04-29
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Contractors are back on site to continue the building of a contemporary extension to a 1960s house in Haslemere, Surrey"
 draft: false

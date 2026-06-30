@@ -1,7 +1,7 @@
 ---
 title: "Country home renovation and extension, SDNP, construction update"
 date: 2021-07-19
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "As is often the case, challenging circumstances assist to strengthen our responses. This project illustrates the point as our design solutions have become more and more contextual. The latest addition"
 draft: false

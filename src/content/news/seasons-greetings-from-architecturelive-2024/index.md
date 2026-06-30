@@ -1,7 +1,7 @@
 ---
 title: "Season’s Greetings from ArchitectureLIVE 2024"
 date: 2024-12-15
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "count your blessings for the New Year 2025"
 draft: false

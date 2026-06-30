@@ -1,7 +1,7 @@
 ---
 title: "Last chance to vote for ArchitectureLIVE!"
 date: 2019-02-14
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "Voting for the People's Choice of Waverley Borough Council's Design Awards closes on Friday, February 15th 2019. Please vote for us!"
 draft: false

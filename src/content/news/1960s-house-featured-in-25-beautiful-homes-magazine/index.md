@@ -1,7 +1,7 @@
 ---
 title: "1960s house featured in 25 Beautiful Homes magazine"
 date: 2019-11-21
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "We were delighted to see one of our projects, a 1960s house extension and renovation, has been featured in the 25 Beautiful Homes magazine"
 draft: false

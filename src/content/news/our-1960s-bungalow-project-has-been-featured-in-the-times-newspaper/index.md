@@ -1,7 +1,7 @@
 ---
 title: "Our 1960s Bungalow project has been featured in The Times newspaper"
 date: 2022-04-01
-category: "General"
+category: "Press"
 heroImage: "./hero-01.jpg"
 excerpt: "Great to see our 1960s bungalow conversion into an upside down house featured in The Times newspapers today"
 draft: false

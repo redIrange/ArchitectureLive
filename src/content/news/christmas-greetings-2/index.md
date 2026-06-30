@@ -1,7 +1,7 @@
 ---
 title: "Christmas Greetings"
 date: 2023-12-15
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "We wish you and your family a very Merry Christmas and prosperous 2024!"
 draft: false

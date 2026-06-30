@@ -1,7 +1,7 @@
 ---
 title: "Near-Passivhaus Annex - update"
 date: 2019-01-29
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "The latest news on the progress made at the construction of our near-Passivhaus annex to a 1960s house in Fernhurst, West Sussex."
 draft: false

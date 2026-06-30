@@ -1,7 +1,7 @@
 ---
 title: "Near-Passivhaus Annex approaching completion"
 date: 2019-05-22
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "With marmoleum flooring now installed, this new single-storey extension to a 1960s detached house is ready to be furnished."
 draft: false

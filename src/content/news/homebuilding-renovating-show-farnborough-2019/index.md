@@ -1,7 +1,7 @@
 ---
 title: "Homebuilding Renovating Show Farnborough 2019"
 date: 2019-01-21
-category: "General"
+category: "Awards"
 heroImage: "./hero-01.jpg"
 excerpt: "Irene had a very busy day at the very first Homebuilding & Renovating Show at Farnborough volunteering on behalf of the RIBA."
 draft: false

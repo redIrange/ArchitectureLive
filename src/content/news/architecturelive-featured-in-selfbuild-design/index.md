@@ -1,7 +1,7 @@
 ---
 title: "ArchitectureLIVE featured in Selfbuild & Design magazine"
 date: 2020-06-02
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "We are delighted to be featured in June 2020's issue of Selfbuild & Design. ‘Sixties revival’ is an in-depth case study of one of our projects in the SDNP."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Christmas Greetings"
 date: 2021-12-10
-category: "General"
+category: "Studio"
 heroImage: "./hero-01.jpg"
 excerpt: "As 2021 draws to a close, we are grateful to reflect on yet another successful year for ArchitectureLIVE. Despite many a challenges we have been fortunate to work with inspirational clients and resour"
 draft: false

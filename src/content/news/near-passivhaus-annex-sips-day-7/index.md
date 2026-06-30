@@ -1,7 +1,7 @@
 ---
 title: "Near-Passivhaus Annex - SIPs Day 7"
 date: 2018-11-28
-category: "General"
+category: "Press"
 heroImage: "./hero-01.jpg"
 excerpt: "Daily progress of the construction of our near-Passivhaus Annex during its superstructure phase in Fernhurst, West Sussex."
 draft: false

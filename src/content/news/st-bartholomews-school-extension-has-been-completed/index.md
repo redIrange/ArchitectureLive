@@ -1,7 +1,7 @@
 ---
 title: "St Bartholomew's School Extension has been completed"
 date: 2018-12-13
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "The latest contemporary extension to the ever-expanding St Bartholomew's School in Newbury, Berkshire, has been completed."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Extension & remodelling to 1930s family home, Dorking, Surrey"
 date: 2021-04-28
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Contractors are making great progress at the extension and remodelling of a family home in Dorking, Surrey"
 draft: false

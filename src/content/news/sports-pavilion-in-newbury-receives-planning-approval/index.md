@@ -1,7 +1,7 @@
 ---
 title: "Sports Pavilion in Newbury receives planning approval"
 date: 2019-02-05
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Planning permission has been granted for a new, contemporary sports pavilion to replace an existing timber building at Browns Meadow, Newbury."
 draft: false

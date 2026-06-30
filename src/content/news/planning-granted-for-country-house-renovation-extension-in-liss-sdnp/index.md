@@ -1,7 +1,7 @@
 ---
 title: "Planning granted for country house renovation & extension in Liss, SDNP"
 date: 2020-07-10
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "A contemporary re-design of a 1960s house in Liss, Hampshire with views across the South Downs National Park has been granted planning permission."
 draft: false

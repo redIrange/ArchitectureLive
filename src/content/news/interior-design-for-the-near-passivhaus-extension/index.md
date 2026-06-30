@@ -1,7 +1,7 @@
 ---
 title: "Interior design for the near-Passivhaus extension"
 date: 2019-07-18
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Take a short tour of the completed contemporary single storey annex to a 1960s detached house in Fernhurst, West Sussex."
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Completed Contemporary Kitchen Extension in Rake, West Sussex"
 date: 2018-09-20
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "We were delighted to see the latest of our completed projects, a contemporary extension to a workers cottage in Rake, West Sussex."
 draft: false

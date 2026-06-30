@@ -1,7 +1,7 @@
 ---
 title: "Transformation taking shape as old meets new in Lodsworth, West Sussex"
 date: 2022-01-20
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "The latest update from our country home renovation and extension project in Lodsworth, West Sussex as we enter the final stages of this build"
 draft: false

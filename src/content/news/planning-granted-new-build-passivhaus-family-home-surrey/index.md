@@ -1,7 +1,7 @@
 ---
 title: "Planning approved for new build Passivhaus family home, Rushmoor, Surrey"
 date: 2021-10-19
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Bringing together intergenerational living with sustainable design based on Passivhaus principles for a new build family home."
 draft: false

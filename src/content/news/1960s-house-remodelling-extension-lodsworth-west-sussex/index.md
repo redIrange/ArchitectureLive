@@ -1,7 +1,7 @@
 ---
 title: "1960s House Remodelling & Extension, Lodsworth, West Sussex"
 date: 2025-06-27
-category: "General"
+category: "Projects"
 heroImage: "./hero-01.jpg"
 excerpt: "Our 1960s house renovation in Lodsworth, West Sussex, features a modern striking zinc-clad poolside pavilion."
 draft: false

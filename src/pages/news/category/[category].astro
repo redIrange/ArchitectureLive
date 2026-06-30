@@ -1,0 +1,114 @@
+---
+/**
+ * News category pages — /news/category/<awards|press|insight|studio|projects>
+ * Static paths over the 5 content categories; each page shows that category's
+ * posts (newest-first) as a 3-col NewsCard grid + the filter-pill nav.
+ * Empty state is shown when a category has no published posts.
+ */
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import PageShell from "../../../layouts/PageShell.astro";
+import NewsCard from "../../../components/ui/NewsCard.astro";
+import NewsFilter from "../../../components/ui/NewsFilter.astro";
+import Section from "../../../components/ui/Section.astro";
+import Container from "../../../components/ui/Container.astro";
+
+type Category = "Awards" | "Press" | "Insight" | "Studio" | "Projects";
+
+export async function getStaticPaths() {
+  const CATS: Category[] = ["Awards", "Press", "Insight", "Studio", "Projects"];
+  const allPosts = (await getCollection("news", (n: CollectionEntry<"news">) => !n.data.draft))
+    .sort((a: CollectionEntry<"news">, b: CollectionEntry<"news">) => b.data.date.valueOf() - a.data.date.valueOf());
+
+  return CATS.map((cat) => ({
+    params: { category: cat.toLowerCase() },
+    props: {
+      activeCategory: cat,
+      posts: allPosts.filter((p: CollectionEntry<"news">) => p.data.category === cat),
+    },
+  }));
+}
+
+const { activeCategory, posts } = Astro.props as {
+  activeCategory: Category;
+  posts: CollectionEntry<"news">[];
+};
+---
+<PageShell title={`${activeCategory} — News — ArchitectureLIVE`} active="news">
+
+  {/* ── Header: headline + category filter ──────────────────────── */}
+  <Section surface="light" pad="var(--space-xl)">
+    <Container>
+      <div class="news-header">
+        <h1 class="news-headline">News &amp; insight</h1>
+        <NewsFilter activeCategory={activeCategory} />
+      </div>
+    </Container>
+  </Section>
+
+  {/* ── Category card grid ──────────────────────────────────────── */}
+  <Section surface="alt" pad="var(--space-section)" style="padding-top:var(--space-xl)">
+    <Container>
+      {posts.length === 0 ? (
+        <p class="news-empty">No {activeCategory} posts yet — check back soon.</p>
+      ) : (
+        <div class="news-grid">
+          {posts.map((post) => (
+            <NewsCard
+              href={`/news/${post.id}`}
+              title={post.data.title}
+              date={post.data.date}
+              category={post.data.category}
+              excerpt={post.data.excerpt}
+              image={post.data.heroImage}
+            />
+          ))}
+        </div>
+      )}
+    </Container>
+  </Section>
+
+</PageShell>
+
+<style>
+/* ── Header row ─────────────────────────────────────────────────── */
+.news-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-xl);
+  padding-top: var(--space-md);
+}
+.news-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+
+/* ── Card grid ─────────────────────────────────────────────────── */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+@media (max-width: 900px) {
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .news-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Empty state ───────────────────────────────────────────────── */
+.news-empty {
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  color: var(--color-grey-mid);
+  padding: var(--space-xxl) 0;
+}
+</style>

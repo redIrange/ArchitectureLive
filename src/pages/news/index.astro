@@ -1,13 +1,14 @@
 ---
 /**
  * News index — page 1.
- * Port of News.jsx (ui_kits/website/News.jsx): intro eyebrow + headline,
- * 3-col card grid, paginated footer.
- * Articles live at /news/<slug> (Task 10); pages 2+ at /news/page/N.
+ * Port of News.jsx (ui_kits/website/News.jsx): headline + category filter pills,
+ * NewsFeaturePanel for the most-recent post, 3-col card grid for the rest,
+ * paginated footer. Articles live at /news/<slug>; pages 2+ at /news/page/N.
  */
 import PageShell from "../../layouts/PageShell.astro";
 import NewsCard from "../../components/ui/NewsCard.astro";
-import NewsIntro from "../../components/ui/NewsIntro.astro";
+import NewsFeaturePanel from "../../components/ui/NewsFeaturePanel.astro";
+import NewsFilter from "../../components/ui/NewsFilter.astro";
 import Pagination from "../../components/ui/Pagination.astro";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
@@ -18,17 +19,39 @@ const posts = (await getCollection("news", (n) => !n.data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const pageItems = posts.slice(0, PAGE_SIZE);
 const lastPage = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
+
+const [featured, ...gridItems] = pageItems;
+const featuredDate = featured
+  ? new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" }).format(featured.data.date)
+  : "";
 ---
 <PageShell title="News — ArchitectureLIVE" active="news">
 
-  {/* ── Intro (ported from News.jsx) ─────────────────────────── */}
-  <NewsIntro />
+  {/* ── Header: headline + category filter ──────────────────────── */}
+  <Section surface="light" pad="var(--space-xl)">
+    <Container>
+      <div class="news-header">
+        <h1 class="news-headline">News &amp; insight</h1>
+        <NewsFilter />
+      </div>
+    </Container>
+  </Section>
 
-  {/* ── Card grid ───────────────────────────────────────────────── */}
+  {/* ── Feature panel + card grid ───────────────────────────────── */}
   <Section surface="alt" pad="var(--space-section)" style="padding-top:var(--space-xl)">
     <Container>
+      {featured && (
+        <NewsFeaturePanel
+          href={`/news/${featured.id}`}
+          title={featured.data.title}
+          date={featuredDate}
+          category={featured.data.category}
+          excerpt={featured.data.excerpt}
+          image={featured.data.heroImage}
+        />
+      )}
       <div class="news-grid">
-        {pageItems.map((post) => (
+        {gridItems.map((post) => (
           <NewsCard
             href={`/news/${post.id}`}
             title={post.data.title}
@@ -55,6 +78,26 @@ const lastPage = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
 </PageShell>
 
 <style>
+/* ── Header row ─────────────────────────────────────────────────── */
+.news-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-xl);
+  padding-top: var(--space-md);
+}
+.news-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-hero-display-size);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+
 /* ── Card grid ─────────────────────────────────────────────────── */
 .news-grid {
   display: grid;

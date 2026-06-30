@@ -1,0 +1,35 @@
+---
+/**
+ * Category-pill filter nav for the news section.
+ * Renders as static links (no client JS) so it works with the static category pages.
+ * Pass `activeCategory` matching one of the CATS strings to highlight that pill;
+ * omit or pass null to highlight "All" (used on /news/ index).
+ */
+import Tag from "./Tag.astro";
+
+interface Props {
+  activeCategory?: string | null;
+}
+const { activeCategory = null } = Astro.props;
+const CATS = ["Awards", "Press", "Insight", "Studio", "Projects"];
+---
+<nav class="news-filter" aria-label="Filter news by category">
+  <a href="/news"><Tag variant="filter" selected={activeCategory === null} label="All" /></a>
+  {CATS.map((c) => (
+    <a href={`/news/category/${c.toLowerCase()}`}>
+      <Tag variant="filter" selected={activeCategory === c} label={c} />
+    </a>
+  ))}
+</nav>
+
+<style>
+.news-filter {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.news-filter a {
+  text-decoration: none;
+}
+</style>

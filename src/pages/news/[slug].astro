@@ -17,6 +17,7 @@ import { Image, Picture, getImage } from "astro:assets";
 import { getCollection } from "astro:content";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import { splitBlocks } from "../../lib/project-body.mjs";
+import { clampDescription, mentionsTown } from "../../lib/seo.mjs";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
 import NewsCard from "../../components/ui/NewsCard.astro";
@@ -68,10 +69,19 @@ const proseHtml = proseBlocks.length
   ? (await mdProcessor.render(proseBlocks.join("\n\n"))).code
   : "";
 
-// Related articles — other published posts, newest first, capped at 3
-const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !== post.id))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+// Related articles — same category first (topical), then newest overall, capped at 3
+const otherPosts = (await getCollection("news", (n) => !n.data.draft && n.id !== post.id))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const relatedPosts = [
+  ...otherPosts.filter((n) => n.data.category === post.data.category),
+  ...otherPosts.filter((n) => n.data.category !== post.data.category),
+].slice(0, 3);
+
+// Related project — the portfolio entry whose town this post mentions (if any).
+const relatedProject =
+  (await getCollection("projects", (p) => !p.data.draft)).find((p) =>
+    mentionsTown(`${post.data.title} ${post.data.excerpt}`, p.data.location),
+  ) ?? null;
 
 // Structured data — Article + breadcrumb (News → Category → Article).
 const origin = new URL(Astro.site!).origin;
@@ -98,7 +108,7 @@ const schemas = [
 
 <PageShell
   title={`${post.data.title} · ArchitectureLIVE`}
-  description={post.data.excerpt}
+  description={clampDescription(post.data.excerpt)}
   active="news"
   ogImage={post.data.heroImage}
   type="article"
@@ -126,7 +136,9 @@ const schemas = [
     <div class="article-caption">
       <div class="article-caption-eyebrow">{post.data.category}</div>
       <h1 class="article-caption-title">{post.data.title}</h1>
-      <div class="article-caption-meta">{dateStr} · {mins} min read</div>
+      <div class="article-caption-meta">
+        By <a href="/about/" class="article-caption-author">ArchitectureLIVE</a> · {dateStr} · {mins} min read
+      </div>
       {post.data.excerpt && (
         <p class="article-caption-lead">{post.data.excerpt}</p>
       )}
@@ -143,8 +155,9 @@ const schemas = [
   {/* ── Body images — single band / responsive gallery grid ─────── */}
   {bodyImages.length === 1 && (
     <div class="article-band">
-      <Image
+      <Picture
         src={bodyImages[0]}
+        formats={["avif", "webp"]}
         widths={[800, 1200, 1920, 2560]}
         sizes="100vw"
         alt={post.data.title}
@@ -155,8 +168,9 @@ const schemas = [
   {bodyImages.length > 1 && (
     <div class="article-gallery-grid">
       {bodyImages.map((img, i) => (
-        <Image
+        <Picture
           src={img}
+          formats={["avif", "webp"]}
           widths={[400, 700, 1000]}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt={`${post.data.title}, view ${i + 1}`}
@@ -164,6 +178,18 @@ const schemas = [
         />
       ))}
     </div>
+  )}
+
+  {/* ── Related project — the portfolio entry this post documents ─ */}
+  {relatedProject && (
+    <Section surface="light" pad="var(--space-xl)">
+      <div class="article-measure">
+        <p class="article-related-project">
+          See the project:{" "}
+          <a href={`/projects/${relatedProject.id}/`}>{relatedProject.data.title}</a>
+        </p>
+      </div>
+    </Section>
   )}
 
   {/* ── Share bar ───────────────────────────────────────────────── */}
@@ -193,7 +219,7 @@ const schemas = [
         <div class="article-related-grid">
           {relatedPosts.map((n) => (
             <NewsCard
-              href={`/news/${n.id}`}
+              href={`/news/${n.id}/`}
               title={n.data.title}
               date={n.data.date}
               category={n.data.category}
@@ -253,6 +279,30 @@ const schemas = [
   font-family: var(--font-text);
   font-size: var(--type-caption-size);
   color: var(--color-grey-light);
+}
+.article-caption-author {
+  color: var(--color-indigo-deep);
+  text-decoration: none;
+  font-weight: 600;
+}
+.article-caption-author:hover {
+  color: var(--color-indigo-vivid);
+  text-decoration: underline;
+}
+.article-related-project {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  color: var(--color-grey-mid);
+}
+.article-related-project a {
+  color: var(--color-indigo-deep);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.article-related-project a:hover {
+  color: var(--color-indigo-vivid);
 }
 .article-caption-lead {
   max-width: 52ch;

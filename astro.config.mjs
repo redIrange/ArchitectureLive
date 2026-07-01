@@ -21,6 +21,10 @@ try {
 export default defineConfig({
   site: "https://architecturelive.co.uk",
   output: "static",
+  // Directory build already emits /path/index.html; make Astro's own generated
+  // URLs (canonical, pagination) trailing-slashed to match the sitemap and our
+  // internal links, so nothing hops through a 308 redirect at cutover.
+  trailingSlash: "always",
   integrations: [
     sitemap({
       serialize(item) {

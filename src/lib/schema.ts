@@ -37,6 +37,9 @@ export function localBusinessSchema(origin: string) {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": practiceId(origin),
+    // Marks the practice as an architect entity for parsers that resolve
+    // Wikidata types (schema.org has no dedicated "Architect" type).
+    additionalType: "https://www.wikidata.org/wiki/Q42973",
     name: "ArchitectureLIVE",
     alternateName: "ArchitectureLIVE Ltd",
     description:
@@ -59,6 +62,14 @@ export function localBusinessSchema(origin: string) {
       "@type": "GeoCoordinates",
       latitude: 51.04695,
       longitude: -0.72434,
+    },
+    hasMap: "https://www.openstreetmap.org/?mlat=51.04695&mlon=-0.72434#map=17/51.04695/-0.72434",
+    priceRange: "£££",
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:30",
     },
     areaServed: [
       "Surrey",

@@ -21,8 +21,8 @@ const sectors = ["All", "Extensions", "New Build", "Education", "Commercial"];
 ---
 
 <PageShell
-  title="Projects · ArchitectureLIVE"
-  description="Contemporary house extensions, new builds, education and commercial architecture across Surrey, West Sussex and Hampshire. Selected work from ArchitectureLIVE, RIBA Chartered architects in Haslemere."
+  title="Projects · Architects in Surrey & West Sussex · ArchitectureLIVE"
+  description="House extensions, new builds, education and commercial projects across Surrey, West Sussex and Hampshire, from RIBA Chartered architects in Haslemere."
   active="projects"
 >
 
@@ -30,7 +30,10 @@ const sectors = ["All", "Extensions", "New Build", "Education", "Commercial"];
   <Section surface="light" pad="var(--space-xl)">
     <Container>
       <div class="projects-header">
-        <h1 class="projects-headline">Selected work</h1>
+        <div class="projects-header__head">
+          <h1 class="projects-headline">Selected work</h1>
+          <p class="projects-sub">Contemporary house extensions, new builds, education and commercial architecture across Surrey, West Sussex and Hampshire.</p>
+        </div>
         <div class="projects-filters" role="group" aria-label="Filter projects by sector">
           {sectors.map((s) => (
             <button
@@ -54,7 +57,7 @@ const sectors = ["All", "Extensions", "New Build", "Education", "Commercial"];
           <div data-sector={p.data.sector}>
             <ProjectCard
               variant="reveal"
-              href={`/projects/${p.id}`}
+              href={`/projects/${p.id}/`}
               title={p.data.title}
               sector={p.data.sector}
               meta={`${p.data.location} · ${p.data.status}`}
@@ -81,6 +84,9 @@ const sectors = ["All", "Extensions", "New Build", "Education", "Commercial"];
   gap: var(--space-md) var(--space-xl);
   padding-top: var(--space-md);
 }
+.projects-header__head {
+  max-width: 46ch;
+}
 .projects-headline {
   margin: 0;
   font-family: var(--font-display);
@@ -90,6 +96,13 @@ const sectors = ["All", "Extensions", "New Build", "Education", "Commercial"];
   letter-spacing: -0.3px;
   text-transform: uppercase;
   color: var(--color-charcoal);
+}
+.projects-sub {
+  margin: var(--space-sm) 0 0;
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  line-height: 1.5;
+  color: var(--color-grey-mid);
 }
 .projects-filters {
   display: flex;

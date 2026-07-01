@@ -14,9 +14,9 @@ const { activeCategory = null } = Astro.props;
 const CATS = ["Awards", "Press", "Insight", "Studio", "Projects"];
 ---
 <nav class="news-filter" aria-label="Filter news by category">
-  <a href="/news" aria-current={activeCategory === null ? "page" : undefined}><Tag variant="filter" selected={activeCategory === null} label="All" /></a>
+  <a href="/news/" aria-current={activeCategory === null ? "page" : undefined}><Tag variant="filter" selected={activeCategory === null} label="All" /></a>
   {CATS.map((c) => (
-    <a href={`/news/category/${c.toLowerCase()}`} aria-current={activeCategory === c ? "page" : undefined}>
+    <a href={`/news/category/${c.toLowerCase()}/`} aria-current={activeCategory === c ? "page" : undefined}>
       <Tag variant="filter" selected={activeCategory === c} label={c} />
     </a>
   ))}

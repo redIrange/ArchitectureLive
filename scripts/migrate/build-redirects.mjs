@@ -13,11 +13,13 @@ for (const p of posts.filter((x) => x.post_type === "post" && x.post_status === 
   const mm = date.slice(5, 7);
   const slug = p.post_name;
   if (yyyy && mm) {
-    // Real dated WordPress permalink (most inbound links point here)
-    lines.push(`/${yyyy}/${mm}/${slug}  /news/${slug}  301`);
+    // Real dated WordPress permalink (most inbound links point here).
+    // Trailing slash on the target matches the canonical /news/<slug>/ URL,
+    // so the 301 lands directly with no second (308) hop at cutover.
+    lines.push(`/${yyyy}/${mm}/${slug}  /news/${slug}/  301`);
   }
   // Root catch-all (handles any bare /<slug> links in the wild)
-  lines.push(`/${slug}  /news/${slug}  301`);
+  lines.push(`/${slug}  /news/${slug}/  301`);
 }
 writeFileSync("public/_redirects", lines.join("\n") + "\n");
 const newsCount = posts.filter((x) => x.post_type === "post" && x.post_status === "publish").length;

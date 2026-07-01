@@ -12,10 +12,12 @@ import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import { adjacent } from "../../lib/adjacent.mjs";
 import { bodySegments } from "../../lib/project-body.mjs";
 import { breadcrumbSchema } from "../../lib/schema";
+import { imageAlt, mentionsTown } from "../../lib/seo.mjs";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
 import Testimonial from "../../components/ui/Testimonial.astro";
 import Button from "../../components/ui/Button.astro";
+import NewsCard from "../../components/ui/NewsCard.astro";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects", (p) => !p.data.draft))
@@ -60,7 +62,14 @@ const schemas = [
     { name: project.data.title, url: `${origin}/projects/${project.id}/` },
   ]),
 ];
-const heroAlt = `${project.data.title}, ${project.data.location}`;
+const heroAlt = imageAlt(project.data.title, project.data.location);
+
+// Related news — published posts that mention this project's town, newest first.
+// Links the portfolio to the project's construction diary / press coverage.
+const relatedNews = (await getCollection("news", (n) => !n.data.draft))
+  .filter((n) => mentionsTown(`${n.data.title} ${n.data.excerpt}`, project.data.location))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
 ---
 
 <PageShell
@@ -101,8 +110,9 @@ const heroAlt = `${project.data.title}, ${project.data.location}`;
       </Section>
     ) : (
       <div class="detail-band">
-        <Image
+        <Picture
           src={item.img}
+          formats={["avif", "webp"]}
           widths={[800, 1200, 1920, 2560]}
           sizes="100vw"
           alt={heroAlt}
@@ -115,8 +125,9 @@ const heroAlt = `${project.data.title}, ${project.data.location}`;
   {/* ── Remaining gallery images — as before, after the body ──── */}
   {leftover.length === 1 && (
     <div class="detail-band">
-      <Image
+      <Picture
         src={leftover[0]}
+        formats={["avif", "webp"]}
         widths={[800, 1200, 1920, 2560]}
         sizes="100vw"
         alt={heroAlt}
@@ -127,11 +138,12 @@ const heroAlt = `${project.data.title}, ${project.data.location}`;
   {leftover.length > 1 && (
     <div class="detail-gallery-grid">
       {leftover.map((img, i) => (
-        <Image
+        <Picture
           src={img}
+          formats={["avif", "webp"]}
           widths={[400, 700, 1000]}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          alt={`${project.data.title}, ${project.data.location}, view ${i + 1}`}
+          alt={`${heroAlt}, view ${i + 1}`}
           class="detail-gallery-grid-img"
         />
       ))}
@@ -178,13 +190,34 @@ const heroAlt = `${project.data.title}, ${project.data.location}`;
     </Section>
   )}
 
+  {/* ── In the news — posts that mention this project's town ───── */}
+  {relatedNews.length > 0 && (
+    <Section surface="light" pad="var(--space-section)">
+      <Container>
+        <h2 class="detail-related-heading">In the news</h2>
+        <div class="detail-related-grid">
+          {relatedNews.map((n) => (
+            <NewsCard
+              href={`/news/${n.id}/`}
+              title={n.data.title}
+              date={n.data.date}
+              category={n.data.category}
+              excerpt={n.data.excerpt}
+              image={n.data.heroImage}
+            />
+          ))}
+        </div>
+      </Container>
+    </Section>
+  )}
+
   {/* ── Prev / Next ──────────────────────────────────────────── */}
   <Section surface="alt" pad="var(--space-xxl)">
     <Container>
       <div class="detail-prevnext">
 
         {prev && (
-          <a href={`/projects/${prev}`} class="detail-prevnext-link detail-prevnext-link--prev">
+          <a href={`/projects/${prev}/`} class="detail-prevnext-link detail-prevnext-link--prev">
             <div class="detail-prevnext-dir">← Previous</div>
             <div class="detail-prevnext-name">
               {prevTitle ?? "Previous project"}
@@ -192,10 +225,10 @@ const heroAlt = `${project.data.title}, ${project.data.location}`;
           </a>
         )}
 
-        <Button href="/contact" variant="primary">Enquire about a project</Button>
+        <Button href="/contact/" variant="primary">Enquire about a project</Button>
 
         {next && (
-          <a href={`/projects/${next}`} class="detail-prevnext-link detail-prevnext-link--next">
+          <a href={`/projects/${next}/`} class="detail-prevnext-link detail-prevnext-link--next">
             <div class="detail-prevnext-dir">Next →</div>
             <div class="detail-prevnext-name">
               {nextTitle ?? "Next project"}
@@ -430,6 +463,29 @@ const heroAlt = `${project.data.title}, ${project.data.location}`;
 }
 .detail-prevnext-link:hover .detail-prevnext-name {
   color: var(--color-indigo-vivid);
+}
+
+/* ── In the news (related) ───────────────────────────────────── */
+.detail-related-heading {
+  margin: 0 0 var(--space-xxl);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+.detail-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+@media (max-width: 900px) {
+  .detail-related-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .detail-related-grid { grid-template-columns: 1fr; }
 }
 
 </style>

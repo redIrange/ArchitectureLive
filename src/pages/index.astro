@@ -15,6 +15,7 @@ import Container from "../components/ui/Container.astro";
 import SectionHead from "../components/ui/SectionHead.astro";
 import NewsCard from "../components/ui/NewsCard.astro";
 import Button from "../components/ui/Button.astro";
+import { imageAlt } from "../lib/seo.mjs";
 
 /* ── Hero slideshow images (src/assets/slider/*.jpg, sorted) ── */
 const sliderMods = import.meta.glob<ImageMetadata>("../assets/slider/*.jpg", {
@@ -43,8 +44,8 @@ const homeProjects = HOME_PROJECT_SLUGS
 ---
 
 <PageShell
-  title="ArchitectureLIVE · Contemporary design & sustainable living"
-  description="Contemporary design and sustainable living from a collaborative team of RIBA Chartered architects in Haslemere, Surrey, working across Surrey, West Sussex and Hampshire."
+  title="Architects in Haslemere, Surrey · ArchitectureLIVE"
+  description="RIBA Chartered architects in Haslemere, Surrey. Contemporary, sustainable house extensions and new builds across Surrey, West Sussex and Hampshire."
   active="home"
   ogImage={sliderImages[0]}
 >
@@ -70,6 +71,7 @@ const homeProjects = HOME_PROJECT_SLUGS
     <div class="intro">
       <h1 class="intro__title">Contemporary design &amp; sustainable living</h1>
       <p class="intro__meta">A collaborative team of RIBA Chartered architects · Haslemere, Surrey</p>
+      <p class="intro__trust">Waverley Design Award winners · Featured on Channel 4's <em>Extraordinary Extensions</em></p>
     </div>
   </Section>
 
@@ -78,14 +80,14 @@ const homeProjects = HOME_PROJECT_SLUGS
     {homeProjects.map((p, i) => (
       <div class="project-item">
         <a
-          href={`/projects/${p.id}`}
+          href={`/projects/${p.id}/`}
           class={`project-band project-band--${i % 2 === 0 ? "wide" : "tall"}`}
           aria-label={p.data.title}
         >
           {p.data.heroImage && (
             <Image
               src={p.data.heroImage}
-              alt={`${p.data.title}, ${p.data.location}`}
+              alt={imageAlt(p.data.title, p.data.location)}
               widths={[800, 1200, 1920, 2560]}
               sizes="100vw"
               class="project-band__image"
@@ -98,7 +100,7 @@ const homeProjects = HOME_PROJECT_SLUGS
       </div>
     ))}
     <div class="selected-work__cta">
-      <Button href="/projects" variant="primary" size="large">View all projects</Button>
+      <Button href="/projects/" variant="primary" size="large">View all projects</Button>
     </div>
   </section>
 
@@ -114,7 +116,7 @@ const homeProjects = HOME_PROJECT_SLUGS
           of Passivhaus and BREEAM, we shape a response for each project.
         </p>
         <div class="approach__cta">
-          <Button href="/about" variant="primary">Read our story</Button>
+          <Button href="/about/" variant="primary">Read our story</Button>
         </div>
       </div>
     </Container>
@@ -127,12 +129,12 @@ const homeProjects = HOME_PROJECT_SLUGS
         eyebrow="From the journal"
         title="Latest news"
         link="All news"
-        href="/news"
+        href="/news/"
       />
       <div class="al-grid-3">
         {latestNews.map((n) => (
           <NewsCard
-            href={`/news/${n.id}`}
+            href={`/news/${n.id}/`}
             title={n.data.title}
             date={n.data.date}
             category={n.data.category}
@@ -205,6 +207,16 @@ const homeProjects = HOME_PROJECT_SLUGS
   font-size: var(--type-caption-size);
   letter-spacing: 0.4px;
   color: var(--color-grey-light);
+}
+.intro__trust {
+  margin: var(--space-xs) 0 0;
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  letter-spacing: 0.3px;
+  color: var(--color-grey-light);
+}
+.intro__trust em {
+  font-style: italic;
 }
 
 /* ── Selected work ────────────────────────────────────────────── */

@@ -9,5 +9,6 @@
  * @param {{ firstPageUrl: string, pageBase: string }} opts
  */
 export function pageHref(p, { firstPageUrl, pageBase }) {
-  return p === 1 ? firstPageUrl : `${pageBase}/${p}`;
+  const url = p === 1 ? firstPageUrl : `${pageBase}/${p}`;
+  return url.endsWith("/") ? url : `${url}/`;
 }

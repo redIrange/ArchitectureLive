@@ -43,7 +43,7 @@ const featuredDate = featured
     <Container>
       {featured && (
         <NewsFeaturePanel
-          href={`/news/${featured.id}`}
+          href={`/news/${featured.id}/`}
           title={featured.data.title}
           date={featuredDate}
           category={featured.data.category}
@@ -54,7 +54,7 @@ const featuredDate = featured
       <div class="news-grid">
         {gridItems.map((post) => (
           <NewsCard
-            href={`/news/${post.id}`}
+            href={`/news/${post.id}/`}
             title={post.data.title}
             date={post.data.date}
             category={post.data.category}
@@ -68,8 +68,8 @@ const featuredDate = featured
           currentPage={1}
           lastPage={lastPage}
           urlPrev={undefined}
-          urlNext={lastPage > 1 ? "/news/page/2" : undefined}
-          firstPageUrl="/news"
+          urlNext={lastPage > 1 ? "/news/page/2/" : undefined}
+          firstPageUrl="/news/"
           pageBase="/news/page"
         />
       </div>

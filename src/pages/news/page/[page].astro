@@ -21,8 +21,8 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   return paginate(posts, { pageSize: 9 }).filter((p: { params: { page: string | undefined } }) => p.params.page !== "1" && p.params.page !== undefined);
 }
 const { page } = Astro.props as { page: Page<CollectionEntry<"news">> };
-// page-1 link should point to /news, not /news/page/1
-const prevUrl = page.currentPage === 2 ? "/news" : page.url.prev;
+// page-1 link should point to /news/, not /news/page/1/
+const prevUrl = page.currentPage === 2 ? "/news/" : page.url.prev;
 ---
 <PageShell
   title={`News · ArchitectureLIVE (page ${page.currentPage})`}
@@ -43,7 +43,7 @@ const prevUrl = page.currentPage === 2 ? "/news" : page.url.prev;
       <div class="news-grid">
         {page.data.map((post) => (
           <NewsCard
-            href={`/news/${post.id}`}
+            href={`/news/${post.id}/`}
             title={post.data.title}
             date={post.data.date}
             category={post.data.category}
@@ -58,7 +58,7 @@ const prevUrl = page.currentPage === 2 ? "/news" : page.url.prev;
           lastPage={page.lastPage}
           urlPrev={prevUrl}
           urlNext={page.url.next}
-          firstPageUrl="/news"
+          firstPageUrl="/news/"
           pageBase="/news/page"
         />
       </div>

@@ -52,7 +52,7 @@ const { activeCategory, posts } = Astro.props as {
   <Section surface="alt" pad="var(--space-section)" style="padding-top:var(--space-xl)">
     <Container>
       {posts.length === 0 ? (
-        <p class="news-empty">No {activeCategory} posts yet — check back soon.</p>
+        <p class="news-empty">No {activeCategory} posts yet. Check back soon.</p>
       ) : (
         <div class="news-grid">
           {posts.map((post) => (

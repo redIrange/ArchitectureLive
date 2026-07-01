@@ -6,6 +6,7 @@ dist/
 # large local-only migration sources (NOT committed)
 Old_Website/
 Original_Images/
+New_Images/
 # os
 .DS_Store
 # secrets

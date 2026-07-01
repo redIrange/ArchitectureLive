@@ -6,7 +6,7 @@ export async function GET(context: APIContext) {
   const posts = (await getCollection("news", (n) => !n.data.draft))
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return rss({
-    title: "ArchitectureLIVE — News",
+    title: "ArchitectureLIVE · News",
     description: "Contemporary Design & Sustainable Living",
     site: context.site!,
     items: posts.map((p) => ({

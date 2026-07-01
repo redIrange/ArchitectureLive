@@ -1,22 +1,78 @@
 ---
-interface Props { title: string; description?: string; image?: string; }
-const { title, description = "Contemporary, sustainable architecture in Haslemere, Surrey.", image = "/favicon.svg" } = Astro.props;
+import { getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import JsonLd from "./JsonLd.astro";
+import { localBusinessSchema } from "../lib/schema";
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Page-specific hero used for the social-share card. Falls back to /og-default.jpg. */
+  ogImage?: ImageMetadata;
+  type?: "website" | "article";
+  publishedTime?: string; // ISO 8601
+  section?: string;
+  noindex?: boolean;
+  /** Extra JSON-LD objects (Article, BreadcrumbList) beyond the sitewide LocalBusiness. */
+  schemas?: unknown[];
+}
+const {
+  title,
+  description = "Contemporary, sustainable architecture in Haslemere, Surrey.",
+  ogImage,
+  type = "website",
+  publishedTime,
+  section,
+  noindex = false,
+  schemas = [],
+} = Astro.props;
+
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const ogImage = new URL(image, Astro.site).href;
+const origin = new URL(Astro.site!).origin;
+
+// Social-share image: generate a 1200-wide JPEG from the page hero, or fall
+// back to the branded default card. JPEG (not WebP/AVIF) for scraper support.
+let ogImageUrl = new URL("/og-default.jpg", Astro.site).href;
+let ogWidth = 1200;
+let ogHeight = 630;
+if (ogImage) {
+  const gen = await getImage({ src: ogImage, width: 1200, format: "jpeg", quality: 80 });
+  ogImageUrl = new URL(gen.src, Astro.site).href;
+  ogWidth = Number(gen.attributes.width) || 1200;
+  ogHeight = Number(gen.attributes.height) || 630;
+}
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+{noindex && <meta name="robots" content="noindex, follow" />}
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
 <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
-<meta property="og:type" content="website" />
+
+<meta property="og:site_name" content="ArchitectureLIVE" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content={type} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:width" content={String(ogWidth)} />
+<meta property="og:image:height" content={String(ogHeight)} />
+{type === "article" && publishedTime && (
+  <meta property="article:published_time" content={publishedTime} />
+)}
+{type === "article" && section && <meta property="article:section" content={section} />}
+
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
 <link rel="sitemap" href="/sitemap-index.xml" />
-<link rel="alternate" type="application/rss+xml" title="ArchitectureLIVE — News" href="/rss.xml" />
+<link rel="alternate" type="application/rss+xml" title="ArchitectureLIVE · News" href="/rss.xml" />
+
+<JsonLd schema={localBusinessSchema(origin)} />
+{schemas.map((s) => <JsonLd schema={s} />)}

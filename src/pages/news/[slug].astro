@@ -8,13 +8,14 @@
  * Hover JS → CSS; tokens-only colours throughout.
  */
 import PageShell from "../../layouts/PageShell.astro";
-import { Image } from "astro:assets";
+import { Picture, getImage } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
 import Tag from "../../components/ui/Tag.astro";
 import NewsCard from "../../components/ui/NewsCard.astro";
 import { readingTime } from "../../lib/reading-time.mjs";
+import { articleSchema, breadcrumbSchema } from "../../lib/schema";
 
 export async function getStaticPaths() {
   const posts = await getCollection("news", (n) => !n.data.draft);
@@ -35,12 +36,39 @@ const dateStr = post.data.date.toLocaleDateString("en-GB", {
 const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !== post.id))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
+
+// Structured data — Article + breadcrumb (News → Category → Article).
+const origin = new URL(Astro.site!).origin;
+const canonical = `${origin}/news/${post.id}/`;
+const heroOg = await getImage({ src: post.data.heroImage, width: 1200, format: "jpeg", quality: 80 });
+const heroOgUrl = new URL(heroOg.src, Astro.site).href;
+const schemas = [
+  articleSchema({
+    origin,
+    url: canonical,
+    headline: post.data.title,
+    description: post.data.excerpt,
+    image: heroOgUrl,
+    datePublished: post.data.date.toISOString(),
+    section: post.data.category,
+  }),
+  breadcrumbSchema([
+    { name: "News", url: `${origin}/news/` },
+    { name: post.data.category, url: `${origin}/news/category/${post.data.category.toLowerCase()}/` },
+    { name: post.data.title, url: canonical },
+  ]),
+];
 ---
 
 <PageShell
-  title={`${post.data.title} — ArchitectureLIVE`}
+  title={`${post.data.title} · ArchitectureLIVE`}
   description={post.data.excerpt}
   active="news"
+  ogImage={post.data.heroImage}
+  type="article"
+  publishedTime={post.data.date.toISOString()}
+  section={post.data.category}
+  schemas={schemas}
 >
 
   {/* ── Header ─────────────────────────────────────────────────── */}
@@ -74,9 +102,10 @@ const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !
   {/* ── Hero image ─────────────────────────────────────────────── */}
   <Container style="padding-bottom:var(--space-section)">
     <div class="article-hero-wrap">
-      <Image
+      <Picture
         src={post.data.heroImage}
         alt={post.data.title}
+        formats={["avif", "webp"]}
         widths={[800, 1200, 1600, 2400]}
         sizes="(max-width:1200px) 100vw, 1200px"
         class="article-hero-img"

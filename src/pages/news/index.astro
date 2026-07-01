@@ -25,7 +25,11 @@ const featuredDate = featured
   ? new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" }).format(featured.data.date)
   : "";
 ---
-<PageShell title="News — ArchitectureLIVE" active="news">
+<PageShell
+  title="News · ArchitectureLIVE"
+  description="News, insight and awards from ArchitectureLIVE, a contemporary and sustainable architecture practice in Haslemere, Surrey."
+  active="news"
+>
 
   {/* ── Header: headline + category filter ──────────────────────── */}
   <Section surface="light" pad="var(--space-xl)">

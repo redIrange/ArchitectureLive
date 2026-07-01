@@ -1,0 +1,10 @@
+---
+/**
+ * Renders a Schema.org object as a JSON-LD <script>.
+ * `<` is escaped so a value can never break out of the script context.
+ */
+interface Props { schema: unknown; }
+const { schema } = Astro.props;
+const json = JSON.stringify(schema).replace(/</g, "\\u003c");
+---
+<script type="application/ld+json" is:inline set:html={json} />

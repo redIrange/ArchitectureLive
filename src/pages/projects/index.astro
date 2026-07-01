@@ -20,7 +20,11 @@ const projects = (await getCollection("projects", (p) => !p.data.draft))
 const sectors = ["All", "Extensions", "New Build", "Education", "Commercial"];
 ---
 
-<PageShell title="Projects — ArchitectureLIVE" active="projects">
+<PageShell
+  title="Projects · ArchitectureLIVE"
+  description="Contemporary house extensions, new builds, education and commercial architecture across Surrey, West Sussex and Hampshire. Selected work from ArchitectureLIVE, RIBA Chartered architects in Haslemere."
+  active="projects"
+>
 
   {/* ── Slim header row ─────────────────────────────────────────── */}
   <Section surface="light" pad="var(--space-xl)">

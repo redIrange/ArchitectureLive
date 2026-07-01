@@ -7,7 +7,7 @@
  * CtaBand is provided by PageShell (cta defaults to true) — not added here.
  */
 import type { ImageMetadata } from "astro";
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import { getCollection } from "astro:content";
 import PageShell from "../layouts/PageShell.astro";
 import Section from "../components/ui/Section.astro";
@@ -46,14 +46,16 @@ const homeProjects = HOME_PROJECT_SLUGS
   title="ArchitectureLIVE · Contemporary design & sustainable living"
   description="Contemporary design and sustainable living from a collaborative team of RIBA Chartered architects in Haslemere, Surrey, working across Surrey, West Sussex and Hampshire."
   active="home"
+  ogImage={sliderImages[0]}
 >
 
   {/* ── Hero — rotating cross-fade slideshow (src/assets/slider) ─ */}
   <section class="hero">
     {sliderImages.map((img, i) => (
-      <Image
+      <Picture
         src={img}
-        alt="ArchitectureLIVE — contemporary, sustainable architecture"
+        alt="Contemporary, sustainable architecture by ArchitectureLIVE"
+        formats={["avif", "webp"]}
         widths={[800, 1200, 1920, 2560]}
         sizes="100vw"
         class={`hero__image${i === 0 ? " is-active" : ""}`}

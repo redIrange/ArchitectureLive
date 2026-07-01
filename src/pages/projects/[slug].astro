@@ -6,11 +6,12 @@
  * Lightbox omitted — static site.
  */
 import PageShell from "../../layouts/PageShell.astro";
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import { getCollection } from "astro:content";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import { adjacent } from "../../lib/adjacent.mjs";
 import { bodySegments } from "../../lib/project-body.mjs";
+import { breadcrumbSchema } from "../../lib/schema";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
 import Testimonial from "../../components/ui/Testimonial.astro";
@@ -50,19 +51,32 @@ proseHtml.forEach((html, idx) => {
   }
 });
 const leftover = gallery.slice(gi);
+
+// Structured data — breadcrumb (Projects → Title). OG card uses the hero.
+const origin = new URL(Astro.site!).origin;
+const schemas = [
+  breadcrumbSchema([
+    { name: "Projects", url: `${origin}/projects/` },
+    { name: project.data.title, url: `${origin}/projects/${project.id}/` },
+  ]),
+];
+const heroAlt = `${project.data.title}, ${project.data.location}`;
 ---
 
 <PageShell
-  title={`${project.data.title} — ArchitectureLIVE`}
-  description={project.data.excerpt}
+  title={`${project.data.title} · ArchitectureLIVE`}
+  description={project.data.excerpt || `${project.data.sector} project in ${project.data.location} by ArchitectureLIVE.`}
   active="projects"
+  ogImage={project.data.heroImage}
+  schemas={schemas}
 >
 
   {/* ── Hero — full-bleed (94vh, slides under the glass header) ─ */}
   <section class="detail-hero" aria-label={project.data.title}>
-    <Image
+    <Picture
       src={project.data.heroImage}
-      alt={project.data.title}
+      alt={heroAlt}
+      formats={["avif", "webp"]}
       widths={[800, 1200, 1920, 2560]}
       sizes="100vw"
       class="detail-hero__image"
@@ -91,7 +105,7 @@ const leftover = gallery.slice(gi);
           src={item.img}
           widths={[800, 1200, 1920, 2560]}
           sizes="100vw"
-          alt={project.data.title}
+          alt={heroAlt}
           class="detail-band-img"
         />
       </div>
@@ -105,7 +119,7 @@ const leftover = gallery.slice(gi);
         src={leftover[0]}
         widths={[800, 1200, 1920, 2560]}
         sizes="100vw"
-        alt={project.data.title}
+        alt={heroAlt}
         class="detail-band-img"
       />
     </div>
@@ -117,7 +131,7 @@ const leftover = gallery.slice(gi);
           src={img}
           widths={[400, 700, 1000]}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          alt={`${project.data.title} — image ${i + 1}`}
+          alt={`${project.data.title}, ${project.data.location}, view ${i + 1}`}
           class="detail-gallery-grid-img"
         />
       ))}

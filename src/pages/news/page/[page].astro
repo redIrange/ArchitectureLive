@@ -24,7 +24,11 @@ const { page } = Astro.props as { page: Page<CollectionEntry<"news">> };
 // page-1 link should point to /news, not /news/page/1
 const prevUrl = page.currentPage === 2 ? "/news" : page.url.prev;
 ---
-<PageShell title={`News — ArchitectureLIVE (page ${page.currentPage})`} active="news">
+<PageShell
+  title={`News · ArchitectureLIVE (page ${page.currentPage})`}
+  description={`More news, insight and awards from ArchitectureLIVE, Haslemere. Page ${page.currentPage} of ${page.lastPage}.`}
+  active="news"
+>
 
   {/* ── Header: headline + category filter (matches news/index.astro) ── */}
   <Section surface="light" pad="var(--space-xl)">

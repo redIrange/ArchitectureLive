@@ -90,10 +90,10 @@
         </h4>
         <ul style="list-style:none;margin:0;padding:0;">
           {[
-            { label: "Haslemere, Surrey", href: "#"        },
-            { label: "Our approach",      href: "/about"   },
-            { label: "Awards",            href: "/news"    },
-            { label: "Contact",           href: "/contact" },
+            { label: "Haslemere, Surrey", href: "/contact"              },
+            { label: "Our approach",      href: "/about"                },
+            { label: "Awards",            href: "/news/category/awards" },
+            { label: "Contact",           href: "/contact"              },
           ].map(({ label, href }) => (
             <li style="line-height:2;">
               <a href={href} class="al-footer-link">{label}</a>
@@ -106,20 +106,17 @@
     {/* ── Legal row ── */}
     <div style="display:flex;flex-wrap:wrap;gap:var(--space-md);justify-content:space-between;align-items:center;padding-top:var(--space-lg);">
       <p style="margin:0;max-width:62ch;font-family:var(--font-text);font-size:var(--type-micro-legal-size);color:rgba(255,255,255,0.62);line-height:1.5;">
-        &copy; 2026 ArchitectureLIVE Ltd. Chartered architectural practice — Surrey &middot; West Sussex &middot; Hampshire &middot; Berkshire.
+        &copy; 2026 ArchitectureLIVE Ltd. Chartered architectural practice serving Surrey &middot; West Sussex &middot; Hampshire &middot; Berkshire.
       </p>
       <ul style="display:flex;flex-wrap:wrap;gap:var(--space-md);list-style:none;margin:0;padding:0;">
         {[
-          { label: "Houzz",     href: "#" },
-          { label: "Homify",    href: "#" },
-          { label: "LinkedIn",  href: "#" },
-          { label: "Instagram", href: "#" },
-          { label: "Privacy",   href: "#" },
-          { label: "Terms",     href: "#" },
-          { label: "Cookies",   href: "#" },
+          { label: "Houzz",     href: "https://www.houzz.co.uk/pro/architecturelive/architecturelive" },
+          { label: "Homify",    href: "https://www.homify.co.uk/professionals/2952/architecturelive" },
+          { label: "LinkedIn",  href: "https://www.linkedin.com/company/architecturelive" },
+          { label: "Instagram", href: "https://www.instagram.com/architectureliveltd/" },
         ].map(({ label, href }) => (
           <li>
-            <a href={href} class="al-footer-link al-footer-link--micro">{label}</a>
+            <a href={href} class="al-footer-link al-footer-link--micro" target="_blank" rel="noopener noreferrer">{label}</a>
           </li>
         ))}
       </ul>

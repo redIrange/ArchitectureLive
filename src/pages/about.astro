@@ -5,7 +5,7 @@
  * Section order: hero → title (h1) → intro → team → story → process → belief.
  * Belief = lavender tint section (Section surface="tint"); not a dark ProjectTile.
  */
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import PageShell from "../layouts/PageShell.astro";
 import Section from "../components/ui/Section.astro";
 import Container from "../components/ui/Container.astro";
@@ -36,14 +36,16 @@ const steps = [
   title="Studio · ArchitectureLIVE"
   description="ArchitectureLIVE is a collaborative team of RIBA Chartered architects in Haslemere, Surrey, combining contemporary design with a hands-on, sustainable approach."
   active="about"
+  ogImage={studioHero}
 >
 
   {/* ── Hero: full-bleed studio image (94vh, slides under glass header) ──── */}
   {/* Default: AL office. Swap for a dedicated studio/team photo when available. */}
   <section class="hero" aria-label="The studio, Haslemere">
-    <Image
+    <Picture
       src={studioHero}
       alt="ArchitectureLIVE studio, Fernhurst office extension"
+      formats={["avif", "webp"]}
       widths={[800, 1200, 1920, 2560]}
       sizes="100vw"
       class="hero__image"

@@ -34,7 +34,12 @@ const { activeCategory, posts } = Astro.props as {
   posts: CollectionEntry<"news">[];
 };
 ---
-<PageShell title={`${activeCategory} — News — ArchitectureLIVE`} active="news">
+<PageShell
+  title={`${activeCategory} · News · ArchitectureLIVE`}
+  description={`${activeCategory} from ArchitectureLIVE, a contemporary and sustainable architecture practice in Haslemere, Surrey.`}
+  active="news"
+  noindex={posts.length === 0}
+>
 
   {/* ── Header: headline + category filter ──────────────────────── */}
   <Section surface="light" pad="var(--space-xl)">

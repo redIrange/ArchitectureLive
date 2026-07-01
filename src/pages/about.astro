@@ -135,6 +135,13 @@ const steps = [
   overflow: hidden;
   background: var(--color-charcoal);
 }
+/* <Picture> wraps the <img> in a <picture>; make it fill the hero so the
+   img's height:100% resolves against .hero (not the picture box). */
+.hero :global(picture) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .hero__image {
   width: 100%;
   height: 100%;

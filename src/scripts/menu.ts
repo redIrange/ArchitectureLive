@@ -10,21 +10,30 @@ function openMenu(): void {
   if (!drawer) return;
   drawer.classList.add('is-open');
   drawer.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
   btn?.setAttribute('aria-expanded', 'true');
-  (drawer.querySelector<HTMLElement>('a, button'))?.focus();
 }
 
 function closeMenu(): void {
   if (!drawer) return;
   drawer.classList.remove('is-open');
   drawer.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
   btn?.setAttribute('aria-expanded', 'false');
 }
 
-btn?.addEventListener('click', () => {
+btn?.addEventListener('click', (e: MouseEvent) => {
+  e.stopPropagation();
   drawer?.classList.contains('is-open') ? closeMenu() : openMenu();
+});
+
+// Tap / click anywhere outside the open panel closes it.
+document.addEventListener('click', (e: MouseEvent) => {
+  if (
+    drawer?.classList.contains('is-open') &&
+    !drawer.contains(e.target as Node) &&
+    !btn?.contains(e.target as Node)
+  ) {
+    closeMenu();
+  }
 });
 
 document.addEventListener('keydown', (e: KeyboardEvent) => {

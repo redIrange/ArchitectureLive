@@ -184,6 +184,15 @@ const homeProjects = HOME_PROJECT_SLUGS
 .hero__image.is-active {
   opacity: 1;
 }
+/* On mobile a 94vh hero crops a landscape photo's sides hard; show it full
+   width at 16/9 (like the project bands) below the header instead. */
+@media (max-width: 768px) {
+  .hero {
+    margin-top: 0;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
 
 /* ── Intro block ──────────────────────────────────────────────── */
 .intro {

@@ -145,37 +145,55 @@ const NAV_LINKS = [
     outline-offset: 3px;
   }
 
-  /* ── Mobile drawer ── */
+  /* ── Mobile menu — a dropdown panel under the header ──
+     Sized to its content (all links visible at once, no scrolling). */
   .al-nav-drawer {
     display: flex;
     flex-direction: column;
     position: fixed;
-    inset: 0;
     top: var(--header-height);
+    left: 0;
+    right: 0;
     background: var(--color-white);
-    padding: var(--space-xl);
-    gap: var(--space-lg);
     border-top: var(--border-hairline);
-    transform: translateX(100%);
-    transition: transform var(--duration-base) var(--ease-out);
+    box-shadow: 0 16px 32px rgba(54, 54, 54, 0.14);
+    padding: var(--space-xs) 0 var(--space-sm);
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--duration-base) var(--ease-out),
+      transform var(--duration-base) var(--ease-out),
+      visibility 0s linear var(--duration-base);
     z-index: 99;
-    overflow-y: auto;
-    pointer-events: none;
   }
 
   .al-nav-drawer.is-open {
-    transform: translateX(0);
-    pointer-events: auto;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity var(--duration-base) var(--ease-out),
+      transform var(--duration-base) var(--ease-out);
   }
 
   .al-drawer-link {
     font-family: var(--font-display);
     font-size: var(--type-display-md-size);
+    font-weight: 500;
+    line-height: 1.2;
+    padding: var(--space-md) var(--space-xl);
+    text-align: center;
     text-decoration: none;
     transition: color var(--duration-base) var(--ease-standard);
   }
 
-  .al-drawer-link:hover {
+  .al-drawer-link + .al-drawer-link {
+    border-top: var(--border-hairline);
+  }
+
+  .al-drawer-link:hover,
+  .al-drawer-link:focus-visible {
     color: var(--color-indigo-vivid);
   }
 

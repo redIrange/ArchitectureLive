@@ -248,6 +248,15 @@ const schemas = [
   object-fit: cover;
   display: block;
 }
+/* On mobile a 94vh hero crops the landscape photo's sides; show it full
+   width at 16/9 (like the gallery bands) below the header instead. */
+@media (max-width: 768px) {
+  .article-hero {
+    margin-top: 0;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
 
 /* ── Caption block below hero ────────────────────────────────── */
 .article-caption {

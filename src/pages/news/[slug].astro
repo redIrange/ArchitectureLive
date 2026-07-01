@@ -1,18 +1,24 @@
 ---
 /**
  * News article page — ArchitectureLIVE
- * Port of NewsArticle.jsx (ui_kits/website/NewsArticle.jsx).
- * Sections: breadcrumb · header (category, date, title, dek) · hero image ·
- *           prose body · share bar · related reading.
- * NS runtime lookups, go() router and onNav removed; real <a href> used throughout.
- * Hover JS → CSS; tokens-only colours throughout.
+ * Re-ported to mirror the project detail page (projects/[slug].astro):
+ * full-bleed hero → centred caption (category · date · read · lead) →
+ * centred editorial prose → neat image band / gallery grid → share → related.
+ *
+ * News bodies are prose paragraphs followed by a stack of ./gNN.jpg images.
+ * Those images are lifted out of the prose here so the article stays clean and
+ * the photos can be arranged as a full-width band (single) or a responsive
+ * gallery grid (multiple) — the same treatment the project pages use — instead
+ * of a narrow left-aligned column at reading width.
  */
+import type { ImageMetadata } from "astro";
 import PageShell from "../../layouts/PageShell.astro";
-import { Picture, getImage } from "astro:assets";
-import { getCollection, render } from "astro:content";
+import { Image, Picture, getImage } from "astro:assets";
+import { getCollection } from "astro:content";
+import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import { splitBlocks } from "../../lib/project-body.mjs";
 import Section from "../../components/ui/Section.astro";
 import Container from "../../components/ui/Container.astro";
-import Tag from "../../components/ui/Tag.astro";
 import NewsCard from "../../components/ui/NewsCard.astro";
 import { readingTime } from "../../lib/reading-time.mjs";
 import { articleSchema, breadcrumbSchema } from "../../lib/schema";
@@ -23,7 +29,6 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
 const mins = readingTime(post.body);
 
 const dateStr = post.data.date.toLocaleDateString("en-GB", {
@@ -31,6 +36,37 @@ const dateStr = post.data.date.toLocaleDateString("en-GB", {
   month: "long",
   day: "numeric",
 });
+
+/* ── Split body → centred prose + trailing images ─────────────────────
+ * Every body image is a ./gNN.jpg living beside index.md; glob-import them
+ * (a perfect 1:1 with the files on disk, so nothing extra is emitted) and
+ * resolve each reference to its optimized ImageMetadata. */
+const newsImages = import.meta.glob<ImageMetadata>(
+  "../../content/news/**/g*.jpg",
+  { eager: true, import: "default" },
+);
+const ZERO_WIDTH = /[​‌‍﻿]/g;
+const IMG_ONLY = /^!\[[^\]]*\]\(([^)]+)\)$/;
+
+const proseBlocks: string[] = [];
+const bodyImages: ImageMetadata[] = [];
+for (const raw of splitBlocks(post.body)) {
+  const block = raw.replace(ZERO_WIDTH, "").trim();
+  if (!block) continue;
+  const match = block.match(IMG_ONLY);
+  if (match) {
+    const file = match[1].replace(/^\.\//, "");
+    const img = newsImages[`../../content/news/${post.id}/${file}`];
+    if (img) bodyImages.push(img);
+  } else {
+    proseBlocks.push(block);
+  }
+}
+
+const mdProcessor = await createMarkdownProcessor({});
+const proseHtml = proseBlocks.length
+  ? (await mdProcessor.render(proseBlocks.join("\n\n"))).code
+  : "";
 
 // Related articles — other published posts, newest first, capped at 3
 const relatedPosts = (await getCollection("news", (n) => !n.data.draft && n.id !== post.id))
@@ -71,74 +107,83 @@ const schemas = [
   schemas={schemas}
 >
 
-  {/* ── Header ─────────────────────────────────────────────────── */}
+  {/* ── Full-bleed hero (slides under the glass header) ─────────── */}
+  <section class="article-hero" aria-label={post.data.title}>
+    <Picture
+      src={post.data.heroImage}
+      alt={post.data.title}
+      formats={["avif", "webp"]}
+      widths={[800, 1200, 1920, 2560]}
+      sizes="100vw"
+      class="article-hero__image"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </section>
+
+  {/* ── Caption below hero — h1 lives here ──────────────────────── */}
   <Section surface="light" pad="var(--space-xxl)">
-    <div class="article-measure">
-
-      {/* Breadcrumb */}
-      <nav class="article-breadcrumb" aria-label="Breadcrumb">
-        <a href="/news">News</a>
-        <span aria-hidden="true">/</span>
-        <span>{post.data.category}</span>
-      </nav>
-
-      {/* Category tag + date */}
-      <div class="article-meta">
-        <Tag label={post.data.category} />
-        <span class="article-date">{dateStr} · {mins} min read</span>
-      </div>
-
-      {/* Title */}
-      <h1 class="article-title">{post.data.title}</h1>
-
-      {/* Dek / excerpt */}
+    <div class="article-caption">
+      <div class="article-caption-eyebrow">{post.data.category}</div>
+      <h1 class="article-caption-title">{post.data.title}</h1>
+      <div class="article-caption-meta">{dateStr} · {mins} min read</div>
       {post.data.excerpt && (
-        <p class="article-dek">{post.data.excerpt}</p>
+        <p class="article-caption-lead">{post.data.excerpt}</p>
       )}
-
     </div>
   </Section>
 
-  {/* ── Hero image ─────────────────────────────────────────────── */}
-  <Container style="padding-bottom:var(--space-section)">
-    <div class="article-hero-wrap">
-      <Picture
-        src={post.data.heroImage}
+  {/* ── Centred editorial prose ─────────────────────────────────── */}
+  {proseHtml && (
+    <Section surface="light" pad="var(--space-xl)">
+      <div class="article-prose-wrap" set:html={proseHtml} />
+    </Section>
+  )}
+
+  {/* ── Body images — single band / responsive gallery grid ─────── */}
+  {bodyImages.length === 1 && (
+    <div class="article-band">
+      <Image
+        src={bodyImages[0]}
+        widths={[800, 1200, 1920, 2560]}
+        sizes="100vw"
         alt={post.data.title}
-        formats={["avif", "webp"]}
-        widths={[800, 1200, 1600, 2400]}
-        sizes="(max-width:1200px) 100vw, 1200px"
-        class="article-hero-img"
+        class="article-band-img"
       />
     </div>
-  </Container>
-
-  {/* ── Prose body ─────────────────────────────────────────────── */}
-  <div class="article-measure article-body-wrap">
-    <article class="article-prose">
-      <Content />
-    </article>
-
-    {/* Share bar */}
-    <div class="article-share">
-      <span class="article-share-label">Share</span>
-      <a
-        href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://architecturelive.co.uk/news/${post.id}`)}&title=${encodeURIComponent(post.data.title)}`}
-        rel="noopener noreferrer"
-        target="_blank"
-        class="article-share-link"
-      >LinkedIn</a>
-      <a
-        href="#"
-        aria-disabled="true"
-        class="article-share-link"
-      >Houzz</a>
-      <button
-        class="article-share-link article-copy-btn"
-        aria-label="Copy article link"
-      >Copy link</button>
+  )}
+  {bodyImages.length > 1 && (
+    <div class="article-gallery-grid">
+      {bodyImages.map((img, i) => (
+        <Image
+          src={img}
+          widths={[400, 700, 1000]}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          alt={`${post.data.title}, view ${i + 1}`}
+          class="article-gallery-grid-img"
+        />
+      ))}
     </div>
-  </div>
+  )}
+
+  {/* ── Share bar ───────────────────────────────────────────────── */}
+  <Section surface="light" pad="var(--space-section)" style="padding-top:var(--space-xxl);">
+    <div class="article-measure">
+      <div class="article-share">
+        <span class="article-share-label">Share</span>
+        <a
+          href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://architecturelive.co.uk/news/${post.id}`)}&title=${encodeURIComponent(post.data.title)}`}
+          rel="noopener noreferrer"
+          target="_blank"
+          class="article-share-link"
+        >LinkedIn</a>
+        <button
+          class="article-share-link article-copy-btn"
+          aria-label="Copy article link"
+        >Copy link</button>
+      </div>
+    </div>
+  </Section>
 
   {/* ── Related reading ────────────────────────────────────────── */}
   {relatedPosts.length > 0 && (
@@ -164,68 +209,151 @@ const schemas = [
 </PageShell>
 
 <style>
-/* ── Measure container (max reading width, centred) ─────────── */
-.article-measure {
-  max-width: var(--content-max-text);
+/* ── Full-bleed hero ─────────────────────────────────────────── */
+.article-hero {
+  margin-top: calc(-1 * var(--header-height));
+  height: 94vh;
+  overflow: hidden;
+  background: var(--color-charcoal);
+}
+.article-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Caption block below hero ────────────────────────────────── */
+.article-caption {
+  text-align: center;
+  max-width: 60ch;
   margin: 0 auto;
-  padding: 0 var(--space-xl);
 }
-
-/* ── Breadcrumb ─────────────────────────────────────────────── */
-.article-breadcrumb {
-  display: flex;
-  gap: 8px;
-  align-items: center;
+.article-caption-eyebrow {
   font-family: var(--font-text);
-  font-size: var(--type-caption-size);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
   color: var(--color-grey-light);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm);
 }
-.article-breadcrumb a {
-  color: var(--color-indigo-deep);
-  text-decoration: none;
-}
-.article-breadcrumb a:hover { text-decoration: underline; }
-
-/* ── Category + date row ────────────────────────────────────── */
-.article-meta {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: var(--space-md);
-}
-.article-date {
-  font-family: var(--font-text);
-  font-size: var(--type-caption-size);
-  color: var(--color-grey-light);
-}
-
-/* ── Title ──────────────────────────────────────────────────── */
-.article-title {
+.article-caption-title {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-hero-display-size);
-  font-weight: 600;
-  line-height: 1.08;
+  font-weight: 400;
+  line-height: 1.05;
   letter-spacing: -0.5px;
+  text-transform: uppercase;
   color: var(--color-charcoal);
 }
+.article-caption-meta {
+  margin-top: var(--space-md);
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  color: var(--color-grey-light);
+}
+.article-caption-lead {
+  max-width: 52ch;
+  margin: var(--space-lg) auto 0;
+  font-family: var(--font-text);
+  font-size: var(--type-lead-airy-size);
+  line-height: 1.6;
+  color: var(--color-grey-mid);
+}
 
-/* ── Dek (excerpt as intro pull line) ───────────────────────── */
-.article-dek {
-  margin: var(--space-lg) 0 0;
-  font-family: var(--font-script);
-  font-size: 28px;
-  font-weight: 400;
+/* ── Centred editorial prose (mirrors the project detail page) ──
+ * :global() throughout — <set:html> Markdown renders beyond Astro's
+ * scoped-style boundary, so scoped selectors would never match it. */
+.article-prose-wrap {
+  max-width: 60ch;
+  margin: 0 auto;
+  font-family: var(--font-text);
+  font-size: var(--type-lead-airy-size);
+  line-height: var(--type-lead-airy-leading);
+  color: var(--color-charcoal);
+  text-align: center;
+}
+.article-prose-wrap :global(h2) {
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+  color: var(--color-charcoal);
+  margin: var(--space-xl) 0 var(--space-md);
+}
+.article-prose-wrap :global(h3) {
+  font-family: var(--font-display);
+  font-size: var(--type-tagline-size);
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  color: var(--color-charcoal);
+  margin: var(--space-lg) 0 var(--space-sm);
+}
+.article-prose-wrap :global(h4) {
+  font-family: var(--font-display);
+  font-size: var(--type-tagline-size);
+  font-weight: 600;
   line-height: 1.3;
-  color: var(--color-indigo-slate);
+  color: var(--color-charcoal);
+  margin: var(--space-md) 0 var(--space-sm);
+}
+.article-prose-wrap :global(p) { margin: 0 0 var(--space-md); }
+.article-prose-wrap :global(p:last-child) { margin-bottom: 0; }
+.article-prose-wrap :global(ul),
+.article-prose-wrap :global(ol) {
+  margin: 0 0 var(--space-md);
+  padding-left: 1.5em;
+  text-align: left;
+}
+.article-prose-wrap :global(li) { margin-bottom: 0.4em; }
+.article-prose-wrap :global(a) {
+  color: var(--color-indigo-vivid);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.article-prose-wrap :global(a:hover) { color: var(--color-indigo-deep); }
+.article-prose-wrap :global(strong) {
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+.article-prose-wrap :global(em) { font-style: italic; }
+.article-prose-wrap :global(blockquote) {
+  margin: var(--space-lg) 0;
+  border-left: 3px solid var(--color-purple);
+  padding-left: var(--space-lg);
+  text-align: left;
+}
+.article-prose-wrap :global(blockquote p) {
+  font-family: var(--font-display);
+  font-size: var(--type-display-md-size);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  color: var(--color-indigo-deep);
+  margin: 0;
+}
+.article-prose-wrap :global(hr) {
+  border: none;
+  border-top: 1px solid var(--color-hairline);
+  margin: var(--space-xl) 0;
+}
+.article-prose-wrap :global(img) {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: var(--space-lg) auto;
+  border-radius: var(--radius-md);
 }
 
-/* ── Hero image ─────────────────────────────────────────────── */
-.article-hero-wrap {
-  filter: drop-shadow(var(--shadow-image));
+/* ── Full-width image band ───────────────────────────────────── */
+.article-band {
+  width: 100%;
+  line-height: 0;
 }
-.article-hero-img {
+.article-band-img {
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
@@ -233,112 +361,31 @@ const schemas = [
   display: block;
 }
 
-/* ── Body wrapper (measure + spacing) ──────────────────────── */
-.article-body-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-  padding-bottom: var(--space-section);
+/* ── Gallery grid (2+ images) ────────────────────────────────── */
+.article-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
 }
-
-/* ── Prose typography ───────────────────────────────────────── */
-.article-prose {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-  font-family: var(--font-text);
-  font-size: var(--type-lead-airy-size);
-  line-height: 1.7;
-  color: var(--color-charcoal);
+@media (min-width: 641px) {
+  .article-gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-/* Paragraphs */
-.article-prose :global(p) {
-  margin: 0;
+@media (min-width: 1025px) {
+  .article-gallery-grid { grid-template-columns: repeat(3, 1fr); }
 }
-
-/* Headings */
-.article-prose :global(h2) {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-display-lg-size);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.3px;
-  color: var(--color-charcoal);
-}
-.article-prose :global(h3) {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-display-md-size);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.2px;
-  color: var(--color-charcoal);
-}
-.article-prose :global(h4) {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-tagline-size);
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--color-charcoal);
-}
-
-/* Lists */
-.article-prose :global(ul),
-.article-prose :global(ol) {
-  margin: 0;
-  padding-left: var(--space-xl);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-.article-prose :global(li) {
-  line-height: 1.6;
-}
-
-/* Blockquote — pull quote with indigo-purple accent border */
-.article-prose :global(blockquote) {
-  margin: 0;
-  border-left: 3px solid var(--color-purple);
-  padding-left: var(--space-lg);
-}
-.article-prose :global(blockquote p) {
-  font-family: var(--font-display);
-  font-size: var(--type-display-md-size);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.2px;
-  color: var(--color-indigo-deep);
-}
-
-/* Links */
-.article-prose :global(a) {
-  color: var(--color-indigo-deep);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-.article-prose :global(a:hover) {
-  color: var(--color-indigo-vivid);
-}
-
-/* Inline images */
-.article-prose :global(img) {
+.article-gallery-grid-img {
   width: 100%;
   height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   display: block;
-  border-radius: var(--radius-md);
 }
 
-/* Strong / em */
-.article-prose :global(strong) {
-  font-weight: 600;
-  color: var(--color-charcoal);
-}
-.article-prose :global(em) {
-  font-style: italic;
+/* ── Reading measure (share bar) ─────────────────────────────── */
+.article-measure {
+  max-width: var(--content-max-text);
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
 }
 
 /* ── Share bar ──────────────────────────────────────────────── */
@@ -346,6 +393,7 @@ const schemas = [
   display: flex;
   gap: var(--space-md);
   align-items: center;
+  justify-content: center;
   padding-top: var(--space-lg);
   border-top: var(--border-hairline);
 }
@@ -390,7 +438,7 @@ const schemas = [
   .article-related-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
-  .article-title { font-size: clamp(32px, 8vw, var(--type-hero-display-size)); }
+  .article-caption-title { font-size: clamp(32px, 8vw, var(--type-hero-display-size)); }
   .article-related-grid { grid-template-columns: 1fr; }
 }
 </style>

@@ -1,0 +1,67 @@
+---
+/**
+ * Cross-link strip shared by the sector / location landing pages. Links to the
+ * other landing pages (and the full portfolio), excluding the current one, so
+ * the pages form an internal-link mesh. Pass `current` as the page's own href.
+ */
+interface Props {
+  current: string;
+}
+const { current } = Astro.props;
+
+const LINKS = [
+  { label: "House extensions", href: "/house-extensions/" },
+  { label: "New build homes", href: "/new-build-homes/" },
+  { label: "Education buildings", href: "/education-architecture/" },
+  { label: "Commercial projects", href: "/commercial-architecture/" },
+  { label: "Architects in Haslemere", href: "/haslemere-architects/" },
+  { label: "All projects", href: "/projects/" },
+];
+const links = LINKS.filter((l) => l.href !== current);
+---
+<nav class="service-links" aria-label="Explore more">
+  <span class="service-links__label">Explore more</span>
+  <ul>
+    {links.map((l) => (
+      <li><a href={l.href}>{l.label}</a></li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+.service-links {
+  max-width: 60ch;
+  margin: 0 auto;
+  text-align: center;
+}
+.service-links__label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-grey-light);
+  margin-bottom: var(--space-md);
+}
+.service-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm) var(--space-lg);
+}
+.service-links a {
+  font-family: var(--font-text);
+  font-size: var(--type-body-size);
+  font-weight: 600;
+  color: var(--color-indigo-deep);
+  text-decoration: none;
+}
+.service-links a:hover {
+  color: var(--color-indigo-vivid);
+  text-decoration: underline;
+}
+</style>

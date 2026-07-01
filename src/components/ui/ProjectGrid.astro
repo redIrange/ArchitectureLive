@@ -1,0 +1,42 @@
+---
+/**
+ * Dense reveal grid of project cards, shared by the projects index and the
+ * sector / location landing pages. Pass an array of project collection entries.
+ */
+import type { CollectionEntry } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
+
+interface Props {
+  projects: CollectionEntry<"projects">[];
+}
+const { projects } = Astro.props;
+---
+<div class="al-grid-projects">
+  {projects.map((p) => (
+    <div data-sector={p.data.sector}>
+      <ProjectCard
+        variant="reveal"
+        href={`/projects/${p.id}/`}
+        title={p.data.title}
+        sector={p.data.sector}
+        meta={`${p.data.location} · ${p.data.status}`}
+        image={p.data.heroImage}
+        label={p.data.location}
+      />
+    </div>
+  ))}
+</div>
+
+<style>
+.al-grid-projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+@media (max-width: 900px) {
+  .al-grid-projects { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .al-grid-projects { grid-template-columns: 1fr; }
+}
+</style>

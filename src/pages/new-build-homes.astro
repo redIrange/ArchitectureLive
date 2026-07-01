@@ -1,0 +1,55 @@
+---
+/**
+ * Service landing page — new build homes.
+ * Targets "new build architect Surrey / West Sussex / Hampshire".
+ */
+import { getCollection } from "astro:content";
+import PageShell from "../layouts/PageShell.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+import LandingIntro from "../components/ui/LandingIntro.astro";
+import ProjectGrid from "../components/ui/ProjectGrid.astro";
+import ServiceLinks from "../components/ui/ServiceLinks.astro";
+
+const projects = (await getCollection("projects", (p) => !p.data.draft && p.data.sector === "New Build"))
+  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+---
+<PageShell
+  title="New Build Home Architects · Surrey & Hampshire · ArchitectureLIVE"
+  description="New build home architects in Haslemere, Surrey. Low-energy new houses and small developments across Surrey, West Sussex and Hampshire."
+  active="projects"
+  ogImage={projects[0]?.data.heroImage}
+>
+
+  <Section surface="light" pad="var(--space-section)">
+    <Container>
+      <LandingIntro eyebrow="New build homes" headline="New build home architects">
+        <p>
+          A new house is a rare chance to get everything right from the ground up: the way rooms
+          catch the light, how the building sits on its plot, and how little energy it needs to
+          run. We design contemporary new homes and small developments across Surrey, West Sussex
+          and Hampshire from our studio in Haslemere.
+        </p>
+        <p>
+          We work to the principles of Passivhaus and BREEAM, so comfort and low running costs are
+          built in rather than added later. From retirement houses to family homes and housing
+          schemes, we take each project from feasibility and planning through to a finished
+          building, with the people you meet at the start staying involved on site.
+        </p>
+      </LandingIntro>
+    </Container>
+  </Section>
+
+  <Section surface="alt" pad="var(--space-xxl)" style="padding-top:var(--space-lg)">
+    <Container>
+      <ProjectGrid projects={projects} />
+    </Container>
+  </Section>
+
+  <Section surface="light" pad="var(--space-section)">
+    <Container>
+      <ServiceLinks current="/new-build-homes/" />
+    </Container>
+  </Section>
+
+</PageShell>

@@ -1,0 +1,58 @@
+---
+/**
+ * Location landing page — Haslemere (the practice's home town).
+ * Anchored to real completed Haslemere projects, with genuinely local context
+ * (planning authorities, conservation areas, nearby villages) so it is not a
+ * swappable doorway page. This is the only town page: Haslemere is the one town
+ * with enough real work to justify a dedicated page.
+ */
+import { getCollection } from "astro:content";
+import PageShell from "../layouts/PageShell.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+import LandingIntro from "../components/ui/LandingIntro.astro";
+import ProjectGrid from "../components/ui/ProjectGrid.astro";
+import ServiceLinks from "../components/ui/ServiceLinks.astro";
+import { townOf } from "../lib/seo.mjs";
+
+const projects = (await getCollection("projects", (p) => !p.data.draft && townOf(p.data.location) === "haslemere"))
+  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+---
+<PageShell
+  title="Haslemere Architects · Local Projects · ArchitectureLIVE"
+  description="Architects in Haslemere, Surrey. Contemporary, low-energy extensions and remodelling of period and 1960s homes in and around Haslemere."
+  active="projects"
+  ogImage={projects[0]?.data.heroImage}
+>
+
+  <Section surface="light" pad="var(--space-section)">
+    <Container>
+      <LandingIntro eyebrow="Haslemere, Surrey" headline="Architects in Haslemere">
+        <p>
+          Haslemere is our home. Our studio sits just outside the town at The Cylinders in
+          Fernhurst, and a good share of our work is within a few miles of it: period cottages,
+          arts-and-crafts houses and 1960s homes reworked for the way families live now.
+        </p>
+        <p>
+          Working on our doorstep means we know the ground. We understand how Waverley Borough
+          Council and the South Downs National Park Authority read a proposal, where the
+          conservation areas fall, and what tends to work on the older housing around Haslemere,
+          Hindhead and Fernhurst. The projects below were completed in and around the town.
+        </p>
+      </LandingIntro>
+    </Container>
+  </Section>
+
+  <Section surface="alt" pad="var(--space-xxl)" style="padding-top:var(--space-lg)">
+    <Container>
+      <ProjectGrid projects={projects} />
+    </Container>
+  </Section>
+
+  <Section surface="light" pad="var(--space-section)">
+    <Container>
+      <ServiceLinks current="/haslemere-architects/" />
+    </Container>
+  </Section>
+
+</PageShell>

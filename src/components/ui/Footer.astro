@@ -57,10 +57,10 @@
         </h4>
         <ul style="list-style:none;margin:0;padding:0;">
           {[
-            { label: "Projects", href: "/projects" },
-            { label: "News",     href: "/news"     },
-            { label: "About",    href: "/about"    },
-            { label: "Studio",   href: "/about"    },
+            { label: "Projects", href: "/projects/" },
+            { label: "News",     href: "/news/"     },
+            { label: "Studio",   href: "/about/"    },
+            { label: "Contact",  href: "/contact/"  },
           ].map(({ label, href }) => (
             <li style="line-height:2;">
               <a href={href} class="al-footer-link">{label}</a>
@@ -75,9 +75,14 @@
           Sectors
         </h4>
         <ul style="list-style:none;margin:0;padding:0;">
-          {["Extensions", "New Build", "Education", "Commercial"].map((label) => (
+          {[
+            { label: "House extensions", href: "/house-extensions/"       },
+            { label: "New build homes",  href: "/new-build-homes/"        },
+            { label: "Education",        href: "/education-architecture/" },
+            { label: "Commercial",       href: "/commercial-architecture/" },
+          ].map(({ label, href }) => (
             <li style="line-height:2;">
-              <a href="/projects" class="al-footer-link">{label}</a>
+              <a href={href} class="al-footer-link">{label}</a>
             </li>
           ))}
         </ul>
@@ -90,10 +95,10 @@
         </h4>
         <ul style="list-style:none;margin:0;padding:0;">
           {[
-            { label: "Haslemere, Surrey", href: "/contact"              },
-            { label: "Our approach",      href: "/about"                },
-            { label: "Awards",            href: "/news/category/awards" },
-            { label: "Contact",           href: "/contact"              },
+            { label: "Haslemere architects", href: "/haslemere-architects/" },
+            { label: "Our approach",         href: "/about/"                },
+            { label: "Awards",               href: "/news/category/awards/" },
+            { label: "Contact",              href: "/contact/"              },
           ].map(({ label, href }) => (
             <li style="line-height:2;">
               <a href={href} class="al-footer-link">{label}</a>

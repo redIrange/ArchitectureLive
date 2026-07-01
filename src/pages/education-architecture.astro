@@ -1,0 +1,53 @@
+---
+/**
+ * Service landing page — education buildings.
+ * Targets "education / school architect" queries.
+ */
+import { getCollection } from "astro:content";
+import PageShell from "../layouts/PageShell.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+import LandingIntro from "../components/ui/LandingIntro.astro";
+import ProjectGrid from "../components/ui/ProjectGrid.astro";
+import ServiceLinks from "../components/ui/ServiceLinks.astro";
+
+const projects = (await getCollection("projects", (p) => !p.data.draft && p.data.sector === "Education"))
+  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+---
+<PageShell
+  title="Education & School Architects · ArchitectureLIVE"
+  description="Education architects designing schools, sixth-form and sports buildings, including the new-build St Bartholomew's secondary school in Newbury."
+  active="projects"
+  ogImage={projects[0]?.data.heroImage}
+>
+
+  <Section surface="light" pad="var(--space-section)">
+    <Container>
+      <LandingIntro eyebrow="Education buildings" headline="Education and school architects">
+        <p>
+          Good learning spaces are calm, well lit and easy to run. We design education buildings
+          that do the quiet work well: daylight where it is needed, sensible circulation, and low
+          energy use so the running costs stay manageable for years.
+        </p>
+        <p>
+          Our education work ranges from a new-build secondary school and a sixth-form centre to a
+          replacement sports pavilion. We coordinate the wider team, manage the planning process,
+          and stay involved through construction to handover.
+        </p>
+      </LandingIntro>
+    </Container>
+  </Section>
+
+  <Section surface="alt" pad="var(--space-xxl)" style="padding-top:var(--space-lg)">
+    <Container>
+      <ProjectGrid projects={projects} />
+    </Container>
+  </Section>
+
+  <Section surface="light" pad="var(--space-section)">
+    <Container>
+      <ServiceLinks current="/education-architecture/" />
+    </Container>
+  </Section>
+
+</PageShell>

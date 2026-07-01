@@ -1,0 +1,54 @@
+---
+/**
+ * Service landing page — commercial projects.
+ * Targets "commercial architect" queries.
+ */
+import { getCollection } from "astro:content";
+import PageShell from "../layouts/PageShell.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+import LandingIntro from "../components/ui/LandingIntro.astro";
+import ProjectGrid from "../components/ui/ProjectGrid.astro";
+import ServiceLinks from "../components/ui/ServiceLinks.astro";
+
+const projects = (await getCollection("projects", (p) => !p.data.draft && p.data.sector === "Commercial"))
+  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+---
+<PageShell
+  title="Commercial Architects · ArchitectureLIVE"
+  description="Commercial architecture from ArchitectureLIVE, Haslemere. Workplaces, hospitality and conference buildings across the South East, designed for low energy use."
+  active="projects"
+  ogImage={projects[0]?.data.heroImage}
+>
+
+  <Section surface="light" pad="var(--space-section)">
+    <Container>
+      <LandingIntro eyebrow="Commercial projects" headline="Commercial architects">
+        <p>
+          Commercial buildings have to earn their keep. They need to work hard for the people who
+          use them, read well to the people who visit, and cost as little as possible to run. We
+          bring the same care to a workplace or a hospitality project as we do to a private home.
+        </p>
+        <p>
+          Our commercial work includes a conference centre and a restaurant fit-out in London,
+          alongside the low-energy thinking that runs through everything we do. We are happy to
+          come in early, test the brief against a realistic budget, and see the project through to
+          completion.
+        </p>
+      </LandingIntro>
+    </Container>
+  </Section>
+
+  <Section surface="alt" pad="var(--space-xxl)" style="padding-top:var(--space-lg)">
+    <Container>
+      <ProjectGrid projects={projects} />
+    </Container>
+  </Section>
+
+  <Section surface="light" pad="var(--space-section)">
+    <Container>
+      <ServiceLinks current="/commercial-architecture/" />
+    </Container>
+  </Section>
+
+</PageShell>

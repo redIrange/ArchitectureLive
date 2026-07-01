@@ -3,7 +3,7 @@ title: "Near-Passivhaus Annex - SIPs Day 2"
 date: 2018-11-21
 category: "Projects"
 heroImage: "./hero-01.jpg"
-excerpt: "Daily progress of the construction of our near-Passivhaus Annex during its superstructure phase in Fernhurst, West Sussex."
+excerpt: "Day 2 of the SIPs superstructure going up on our near-Passivhaus Annex in Fernhurst, West Sussex."
 draft: false
 ---
 

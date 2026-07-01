@@ -1,0 +1,57 @@
+---
+/**
+ * Service landing page — house extensions.
+ * Indexable page targeting "house extension architect Surrey / West Sussex".
+ * Real copy + the filtered Extensions portfolio (no doorway content).
+ */
+import { getCollection } from "astro:content";
+import PageShell from "../layouts/PageShell.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+import LandingIntro from "../components/ui/LandingIntro.astro";
+import ProjectGrid from "../components/ui/ProjectGrid.astro";
+import ServiceLinks from "../components/ui/ServiceLinks.astro";
+
+const projects = (await getCollection("projects", (p) => !p.data.draft && p.data.sector === "Extensions"))
+  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+---
+<PageShell
+  title="House Extension Architects in Surrey & West Sussex · ArchitectureLIVE"
+  description="House extension architects in Haslemere, Surrey. Contemporary, low-energy extensions and remodelling across Surrey, West Sussex and Hampshire."
+  active="projects"
+  ogImage={projects[0]?.data.heroImage}
+>
+
+  <Section surface="light" pad="var(--space-section)">
+    <Container>
+      <LandingIntro eyebrow="House extensions" headline="House extension architects">
+        <p>
+          Most of our work is exactly this: reworking and extending existing homes so they
+          suit how people really live, without losing what made the original worth keeping.
+          We are based in Haslemere and work across Surrey, West Sussex and Hampshire.
+        </p>
+        <p>
+          Every extension starts with the house you already have. We look at light, flow and
+          orientation, then design a response that fits the building and its setting rather than
+          a house style of our own. Using the principles of Passivhaus and BREEAM, we bring down
+          energy use and running costs at the same time. Many of these homes sit within the South
+          Downs National Park or a conservation area, so we handle the planning, listed building
+          and Building Regulations side throughout.
+        </p>
+      </LandingIntro>
+    </Container>
+  </Section>
+
+  <Section surface="alt" pad="var(--space-xxl)" style="padding-top:var(--space-lg)">
+    <Container>
+      <ProjectGrid projects={projects} />
+    </Container>
+  </Section>
+
+  <Section surface="light" pad="var(--space-section)">
+    <Container>
+      <ServiceLinks current="/house-extensions/" />
+    </Container>
+  </Section>
+
+</PageShell>

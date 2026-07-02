@@ -13,7 +13,7 @@
  */
 import type { ImageMetadata } from "astro";
 import PageShell from "../../layouts/PageShell.astro";
-import { Image, Picture, getImage } from "astro:assets";
+import { Picture, getImage } from "astro:assets";
 import { getCollection } from "astro:content";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import { splitBlocks } from "../../lib/project-body.mjs";
@@ -122,7 +122,7 @@ const schemas = [
     <Picture
       src={post.data.heroImage}
       alt={post.data.title}
-      formats={["avif", "webp"]}
+      formats={["webp"]}
       widths={[800, 1200, 1920, 2560]}
       sizes="100vw"
       class="article-hero__image"
@@ -157,7 +157,7 @@ const schemas = [
     <div class="article-band">
       <Picture
         src={bodyImages[0]}
-        formats={["avif", "webp"]}
+        formats={["webp"]}
         widths={[800, 1200, 1920, 2560]}
         sizes="100vw"
         alt={post.data.title}
@@ -170,7 +170,7 @@ const schemas = [
       {bodyImages.map((img, i) => (
         <Picture
           src={img}
-          formats={["avif", "webp"]}
+          formats={["webp"]}
           widths={[400, 700, 1000]}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt={`${post.data.title}, view ${i + 1}`}
